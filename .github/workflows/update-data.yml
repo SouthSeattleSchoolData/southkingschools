@@ -1,0 +1,51 @@
+# Refreshes the school data from the public sources twice a month and republishes the site.
+# Run it by hand any time: GitHub → Actions → "Update school data" → Run workflow.
+name: Update school data
+
+on:
+  schedule:
+    - cron: '17 14 1,15 * *' # 1st and 15th of each month, early morning Pacific
+  workflow_dispatch:
+    inputs:
+      year:
+        description: 'School year to build, like 2025-26 (leave blank for the newest)'
+        required: false
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Rebuild data/schools.json and the school pages
+        run: node tools/update-data.mjs ${{ github.event.inputs.year }}
+
+      - name: Save changes
+        id: commit
+        run: |
+          git config user.name "school-data-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/schools.json school sitemap.xml robots.txt
+          if git diff --cached --quiet; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No changes in the data."
+          else
+            git commit -m "Update school data ($(date -u +%Y-%m-%d))"
+            git push
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Republish the site
+        if: steps.commit.outputs.changed == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds" || echo "Pages will rebuild on its own."
