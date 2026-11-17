@@ -1,0 +1,35 @@
+[
+  {
+    "name": "Seattle Public Schools",
+    "text": "No police on campus since 2020. In 2025 the board weighed a one-year \"School Engagement Officer\" pilot at Garfield High and voted it down 5–2 in October. Security staff are district employees under Policy 4311.",
+    "links": [["Garfield officer debate", "https://garfieldptsa.org/?p=20142"]]
+  },
+  {
+    "name": "Renton School District",
+    "text": "Renton Police and the district planned one school resource officer at each comprehensive high school (Renton, Hazen, Lindbergh) starting in 2024-25.",
+    "links": [["Kent Reporter", "https://kentreporter.com/news/threats-to-renton-auburn-and-kent-school-districts-under-investigation"]]
+  },
+  {
+    "name": "Kent School District",
+    "text": "Contracts with Kent Police for two school resource officers and a commander who serves as safety liaison, alongside district Safety Services staff.",
+    "links": [["Kent Reporter", "https://www.kentreporter.com/news/two-student-arrests-social-media-threats-disrupt-kent-high-schools"]]
+  },
+  {
+    "name": "Bellevue School District",
+    "text": "Removed campus officers in 2021. Since fall 2022, sworn Bellevue Police \"Community Engagement Officers\" work from the central office and cover groups of schools.",
+    "links": [
+      ["District FAQ", "https://bsd405.org/departments/security/community-engagement-officer-program/faq/"],
+      ["Weapons policy", "https://www.bsd405.org/about-us/official-notices/weapons-policy"]
+    ]
+  },
+  {
+    "name": "Issaquah School District",
+    "text": "Doesn't use school resource officers. A district Safety and Security Department runs safety under Regulation 4312, including threat assessment.",
+    "links": [["Regulation 4312", "https://www.isd411.org/about-us/regulations/4000-series/4312-school-safety-and-security-services-program"]]
+  },
+  {
+    "name": "Every Washington district",
+    "text": "Must have a bullying (HIB) policy with a compliance officer (RCW 28A.600.477), a behavioral threat-assessment program (RCW 28A.320.123), discipline rules that limit exclusion (WAC 392-400), and a weapons ban on school grounds (RCW 9.41.280).",
+    "links": []
+  }
+]

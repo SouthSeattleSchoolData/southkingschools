@@ -1,0 +1,379 @@
+{
+  "_about": "Definitions shown in the ⓘ hover tips and on the Glossary page. 'key' links a definition to the measure it explains. Edit the wording freely.",
+  "groups": [
+    {
+      "title": "The four scores",
+      "intro": "Each score runs from 0 to 100 and compares a school only with schools at the same level (elementary, middle or high) in these six areas. A 70 means the school did better than 70% of those peers. It is not a grade and not a statewide ranking.",
+      "items": [
+        {
+          "key": "score:academics",
+          "term": "Academics",
+          "what": "How many students meet state standards in reading, math and science, compared with similar-level schools here.",
+          "read": "Mostly reflects who attends: schools with more low-income students tend to score lower. Read it alongside Growth and Equity."
+        },
+        {
+          "key": "score:growth",
+          "term": "Growth",
+          "what": "How fast students improve from one year to the next compared with students statewide who started at the same score. Based on grades 4–8 only, so high schools don't get one.",
+          "read": "The best single measure of what the school itself adds, because it doesn't depend much on where students started."
+        },
+        {
+          "key": "score:equity",
+          "term": "Equity",
+          "what": "How the school does relative to its circumstances: results compared with what its low-income share predicts, how its low-income students score, and whether students with disabilities are suspended out of proportion.",
+          "read": "A high Equity score means the school serves all of its students well, not just the ones who arrive with advantages."
+        },
+        {
+          "key": "score:climate",
+          "term": "Climate",
+          "what": "Regular attendance and how rarely students are suspended, plus (for high schools) the share of 9th graders on track to graduate.",
+          "read": "Kids who feel safe and connected show up. Low attendance and frequent suspensions are early warning signs of a school where students don't feel they belong."
+        }
+      ]
+    },
+    {
+      "title": "Learning",
+      "items": [
+        {
+          "key": "ela_proficient",
+          "term": "Reading proficiency",
+          "what": "Share of tested students who met the state standard on the Smarter Balanced English language arts test (grades 3–8 and 10).",
+          "read": "State average is about 51%. Strongly tied to family income, so compare schools with similar low-income shares."
+        },
+        {
+          "key": "math_proficient",
+          "term": "Math proficiency",
+          "what": "Share of tested students who met the state standard on the Smarter Balanced math test (grades 3–8 and 10).",
+          "read": "State average is about 41%. Math usually runs lower than reading, especially in high school."
+        },
+        {
+          "key": "science_proficient",
+          "term": "Science proficiency",
+          "what": "Share of tested students who met the standard on the state science test (WCAS), given in grades 5, 8 and 11.",
+          "read": "Only three grades take it, so it can swing more. A result far below a school's reading and math may mean many students skipped the test."
+        },
+        {
+          "key": "ela_proficient_low_income",
+          "term": "Reading, low-income students",
+          "what": "Reading proficiency for students from low-income families only (those eligible for free or reduced-price meals).",
+          "read": "Compare it with the school's overall rate. A small gap means the school serves all students well; a gap over 20 points is worth asking about."
+        },
+        {
+          "key": "math_proficient_low_income",
+          "term": "Math, low-income students",
+          "what": "Math proficiency for students from low-income families only.",
+          "read": "Same idea as the reading version: the closer to the school's overall rate, the better."
+        },
+        {
+          "key": "growth_ela",
+          "term": "Reading growth",
+          "what": "The median student growth percentile in reading. Each student is compared with students statewide who had similar scores the year before.",
+          "read": "50 is typical. Above 55 means students here are gaining faster than similar students elsewhere; below 45 means slower."
+        },
+        {
+          "key": "growth_math",
+          "term": "Math growth",
+          "what": "The median student growth percentile in math.",
+          "read": "50 is typical. Above 55 is strong, below 45 is weak."
+        },
+        {
+          "key": "regular_attendance",
+          "term": "Regular attendance",
+          "what": "Share of students who missed fewer than 10% of school days (about 18 days a year).",
+          "read": "State average is about 73%. Below 65% is a concern: chronic absence often signals disengagement, anxiety, illness or instability at home."
+        },
+        {
+          "key": "grad_rate_4yr",
+          "term": "4-year graduation",
+          "what": "Share of students who started 9th grade together and graduated within four years.",
+          "read": "State average is about 83%. Alternative and re-engagement schools serve students who are already behind, so their rates aren't comparable."
+        },
+        {
+          "key": "ninth_grade_on_track",
+          "term": "9th graders on track",
+          "what": "Share of 9th graders who passed all their classes and earned a full year of credits.",
+          "read": "One of the strongest predictors of graduating. State average is about 72%."
+        },
+        {
+          "key": "dual_credit",
+          "term": "Dual credit",
+          "what": "Share of high school students who completed at least one course that also counts for college credit (AP, IB, College in the High School, Running Start, career and technical courses).",
+          "read": "Shows access to advanced and college-level work."
+        }
+      ]
+    },
+    {
+      "title": "Discipline",
+      "items": [
+        {
+          "key": "discipline_all",
+          "term": "Suspended or expelled",
+          "what": "Share of students suspended (in or out of school) or expelled at least once during the year. OSPI calls this exclusionary discipline.",
+          "read": "State average is about 3.7%. Very low can mean a calm, preventive school, or under-reporting. Very high usually means students are losing a lot of class time."
+        },
+        {
+          "key": "discipline_group",
+          "term": "Suspension rate for a student group",
+          "what": "The same suspension rate, for one group of students only (for example, students with disabilities or Black students).",
+          "read": "Compare it with the all-students rate. If a group is suspended at twice the overall rate or more, ask how the school reviews discipline decisions and supports those students."
+        },
+        {
+          "key": "discipline_count",
+          "term": "Students disciplined",
+          "what": "Number of students suspended or expelled at least once.",
+          "read": "Hidden when fewer than 10 students, to protect privacy."
+        }
+      ]
+    },
+    {
+      "title": "Who attends",
+      "items": [
+        {
+          "key": "enrollment",
+          "term": "Enrollment",
+          "what": "Number of students enrolled on October 1 of the school year.",
+          "read": "In small schools, a few students can move percentages a lot."
+        },
+        {
+          "key": "pct_low_income",
+          "term": "Low-income",
+          "what": "Share of students from low-income families (eligible for free or reduced-price meals).",
+          "read": "The strongest predictor of test scores. Use it to compare schools fairly."
+        },
+        {
+          "key": "pct_english_learners",
+          "term": "English learners",
+          "what": "Share of students still learning English and receiving language services.",
+          "read": "Tests are in English, so high shares pull proficiency down even when teaching is strong. Growth is a fairer measure here."
+        },
+        {
+          "key": "pct_disability",
+          "term": "Students with disabilities",
+          "what": "Share of students with an Individualized Education Program (IEP) for special education.",
+          "read": "Schools with district special-education programs often have higher shares."
+        },
+        {
+          "key": "pct_highly_capable",
+          "term": "Highly capable",
+          "what": "Share of students identified for the gifted (highly capable) program.",
+          "read": "Schools that host a gifted program get a boost in scores from that selection."
+        },
+        {
+          "key": "pct_homeless",
+          "term": "Experiencing homelessness",
+          "what": "Share of students without stable housing during the year (McKinney-Vento eligible).",
+          "read": "A marker of family stress that affects attendance and learning."
+        },
+        {
+          "key": "students_per_teacher",
+          "term": "Students per teacher",
+          "what": "Enrollment divided by the number of full-time teachers.",
+          "read": "Not the same as class size. Schools with many specialists show lower ratios."
+        },
+        {
+          "key": "demographics",
+          "term": "Race and ethnicity",
+          "what": "Share of students in each racial or ethnic group, as reported by families to OSPI.",
+          "read": "Context for the school community, and for reading discipline gaps between groups."
+        }
+      ]
+    },
+    {
+      "title": "Safety and support (federal data, 2021-22)",
+      "intro": "From the U.S. Department of Education's Civil Rights Data Collection, which every public school must complete. 2021-22 is the latest year released. Schools report their own counts and interpret the categories differently, so compare with care.",
+      "items": [
+        {
+          "key": "incident:firearm_possession",
+          "term": "Firearm or explosive possession",
+          "what": "Incidents where a student had a gun or explosive device at school or a school event.",
+          "read": "Any number above zero is worth asking the school about today."
+        },
+        {
+          "key": "incident:attacks_with_weapon",
+          "term": "Attacks with a weapon",
+          "what": "Physical attacks or fights in which a weapon was used.",
+          "read": "Rare and serious."
+        },
+        {
+          "key": "incident:threats",
+          "term": "Threats of physical attack",
+          "what": "Threats to hurt someone physically, with or without a weapon.",
+          "read": "Includes verbal threats. Coding varies a lot between schools."
+        },
+        {
+          "key": "incident:attacks",
+          "term": "Physical attacks or fights",
+          "what": "Incidents where a student used physical force against someone, with or without a weapon. Includes fights.",
+          "read": "In elementary schools this often counts routine physical aggression among young children. Compare with schools at the same level."
+        },
+        {
+          "key": "incident:sexual_assault",
+          "term": "Rape or sexual assault",
+          "what": "Reported incidents of rape, attempted rape or sexual assault at school.",
+          "read": "Usually zero; any count deserves a question about prevention and reporting."
+        },
+        {
+          "key": "incident:harassment_allegations",
+          "term": "Harassment or bullying allegations",
+          "what": "Reports of harassment or bullying based on sex, race, color, national origin, disability, sexual orientation or religion. Bullying for other reasons isn't counted here.",
+          "read": "A count of zero often means reports weren't categorized this way, not that nothing happened. Students report bullying in surveys far more often than schools record it."
+        },
+        {
+          "key": "incident:arrests",
+          "term": "Students arrested",
+          "what": "Students arrested for something that happened at school or a school event. Counts students, not incidents.",
+          "read": "Arrests reflect police presence and local practice as much as student behavior."
+        },
+        {
+          "key": "incident:police_referrals",
+          "term": "Students referred to police",
+          "what": "Students the school reported to law enforcement, whether or not they were arrested. Counts students, not incidents.",
+          "read": "A school with an officer on site usually refers more students."
+        },
+        {
+          "key": "incident:robbery",
+          "term": "Robberies",
+          "what": "Taking something from a person by force or threat of force, with or without a weapon.",
+          "read": "Rare at most schools. More than one or two in a year is worth asking about."
+        },
+        {
+          "key": "restraint",
+          "term": "Restraint and seclusion",
+          "what": "Restraint is physically holding a student or restricting movement; mechanical restraint uses a device. Seclusion (isolation) is confining a student alone in a space they can't leave. Counts are uses, not students.",
+          "read": "High counts usually come from programs for students with significant disabilities. Ask how the school is reducing uses and how parents are told."
+        },
+        {
+          "key": "staff:fte",
+          "term": "Full-time equivalent (FTE)",
+          "what": "Staff counted by time on site: 1.0 is one full-time person, 0.5 is half-time. A psychologist shared by two schools shows as 0.5 at each.",
+          "read": "Divide enrollment by FTE to see how many students each person serves."
+        },
+        {
+          "key": "staff:counselors",
+          "term": "School counselors",
+          "what": "Certified school counselors who support students' academic, career and social-emotional needs.",
+          "read": "The American School Counselor Association recommends no more than 250 students per counselor. Many schools here are well above that."
+        },
+        {
+          "key": "staff:police",
+          "term": "Police officers on site",
+          "what": "Sworn law enforcement officers, such as school resource officers, assigned to the school.",
+          "read": "Districts have changed officer programs since 2021-22. Check each district's current policy on this page."
+        }
+      ]
+    },
+    {
+      "title": "Trends, staff and resources",
+      "intro": "Measures added from other public sources.",
+      "items": [
+        {
+          "key": "trends",
+          "term": "Changes over time",
+          "what": "Each school's results by year: 2018-19, the last year before the pandemic, then the four most recent years. No state tests were given in 2019-20 or 2020-21.",
+          "read": "A steady direction over several years means more than any single year. Small schools jump around by chance."
+        },
+        {
+          "key": "math_change",
+          "term": "Math change since 2018-19",
+          "what": "Percentage points gained or lost in math proficiency between 2018-19 and the latest year.",
+          "read": "Most schools here are still below their 2018-19 math level. Compare a school with similar schools, not with zero."
+        },
+        {
+          "key": "ela_change",
+          "term": "Reading change since 2018-19",
+          "what": "Percentage points gained or lost in reading proficiency between 2018-19 and the latest year.",
+          "read": "Most schools here are still below their 2018-19 reading level, by a little more than in math. Compare with similar schools."
+        },
+        {
+          "key": "small_school",
+          "term": "Small school caution",
+          "what": "Shown when a school has fewer than 150 students, or when its reading and math results have moved an average of 8 or more points a year since 2021-22.",
+          "read": "Look at the trend and the growth score rather than one year's percentages."
+        },
+        {
+          "key": "teachers_new_pct",
+          "term": "Teachers in their first 5 years",
+          "what": "Share of the school's teachers with less than five years of experience, from OSPI.",
+          "read": "New teachers can be excellent, but a high share often signals turnover. Ask how many teachers left last year."
+        },
+        {
+          "key": "per_pupil_spending",
+          "term": "Spending per student",
+          "what": "All money spent at the school (state, federal and local) divided by enrollment, from OSPI's per-pupil expenditure report.",
+          "read": "Schools serving more students with disabilities, English learners or low-income students receive more by design. Very small programs show very high amounts."
+        },
+        {
+          "key": "students_per_counselor",
+          "term": "Students per counselor",
+          "what": "This year's enrollment divided by the counselor FTE the school reported in 2021-22.",
+          "read": "The recommended maximum is 250. \"None on staff\" means the school reported no counselor."
+        },
+        {
+          "key": "students_per_psychologist",
+          "term": "Students per psychologist",
+          "what": "This year's enrollment divided by the school psychologist FTE reported in 2021-22.",
+          "read": "The National Association of School Psychologists recommends no more than 500 students per psychologist."
+        },
+        {
+          "key": "lead",
+          "term": "Lead in drinking water",
+          "what": "Washington Department of Health test results for drinking and cooking outlets. Above 5 parts per billion (ppb) the school must fix the outlet; above 15 ppb it must shut it off until fixed.",
+          "read": "One high outlet doesn't mean the whole building's water is unsafe. What matters is whether high outlets were shut off and passed a retest."
+        },
+        {
+          "key": "child_poverty",
+          "term": "Children in poverty",
+          "what": "Census Bureau estimate of the share of school-age children (5-17) living in the district who are in families below the federal poverty line.",
+          "read": "Different from the low-income share of enrolled students, which uses a higher income cutoff."
+        }
+      ]
+    },
+    {
+      "title": "Other terms",
+      "items": [
+        {
+          "key": "suppressed",
+          "term": "Gray values like \"<3.7\" or \"n<10\"",
+          "what": "OSPI hides small numbers to protect student privacy. \"<3.7%\" means the true rate is somewhere between 0 and 3.7%. \"n<10\" means fewer than 10 students, so nothing is shown.",
+          "read": "For scores and charts, the site treats \"<3.7\" as 1.85 (the middle of the range)."
+        },
+        {
+          "key": "trend",
+          "term": "Versus the trend",
+          "what": "How far a school's result sits above or below what you'd expect from its low-income share, based on all the schools here.",
+          "read": "+10 means 10 points better than schools with similar poverty levels. This is the core of the Equity score."
+        },
+        {
+          "key": "tag:Charter",
+          "term": "Charter",
+          "what": "A free public school run by an independent nonprofit board and overseen by the state Charter School Commission instead of a school district.",
+          "read": "Anyone can apply; there are no attendance boundaries."
+        },
+        {
+          "key": "tag:Alternative",
+          "term": "Alternative",
+          "what": "A district school with a different model, such as project-based learning, a smaller setting or flexible schedules.",
+          "read": "Often serves students who didn't thrive in a traditional school, so compare with care."
+        },
+        {
+          "key": "tag:Re-engagement",
+          "term": "Re-engagement",
+          "what": "A program for students who left school or fell far behind, helping them finish a diploma or GED.",
+          "read": "Not comparable with regular high schools."
+        },
+        {
+          "key": "tag:Special ed",
+          "term": "Special ed",
+          "what": "A program serving only students with significant disabilities.",
+          "read": "Not scored against neighborhood schools."
+        },
+        {
+          "key": "tag:Online",
+          "term": "Online",
+          "what": "A school where most learning happens online.",
+          "read": "Not scored against neighborhood schools."
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1001 @@
+{
+ "_about": "Interface translations. Keys are the exact English text shown on the site. Explanations, notes and sources stay in English. Corrections from native speakers are welcome.",
+ "languages": {
+  "en": "English",
+  "es": "Español",
+  "vi": "Tiếng Việt",
+  "zh": "中文"
+ },
+ "notice": {
+  "es": "Las explicaciones, notas y fuentes están en inglés. La traducción de la interfaz se hizo con ayuda de computadora; avísenos si algo no se entiende.",
+  "vi": "Phần giải thích, ghi chú và nguồn dữ liệu bằng tiếng Anh. Giao diện được dịch với sự hỗ trợ của máy; hãy báo cho chúng tôi nếu có chỗ khó hiểu.",
+  "zh": "说明、注释和数据来源为英文。界面翻译借助了机器辅助；如有不清楚之处，请告诉我们。"
+ },
+ "strings": {
+  "Find schools": {
+   "es": "Buscar escuelas",
+   "vi": "Tìm trường",
+   "zh": "查找学校"
+  },
+  "Compare": {
+   "es": "Comparar",
+   "vi": "So sánh",
+   "zh": "比较"
+  },
+  "Findings": {
+   "es": "Hallazgos",
+   "vi": "Phát hiện",
+   "zh": "发现"
+  },
+  "Safety & wellbeing": {
+   "es": "Seguridad y bienestar",
+   "vi": "An toàn và sức khỏe tinh thần",
+   "zh": "安全与身心健康"
+  },
+  "Glossary": {
+   "es": "Glosario",
+   "vi": "Thuật ngữ",
+   "zh": "术语表"
+  },
+  "How it works": {
+   "es": "Cómo funciona",
+   "vi": "Cách hoạt động",
+   "zh": "运作方式"
+  },
+  "Theme": {
+   "es": "Tema",
+   "vi": "Giao diện",
+   "zh": "主题"
+  },
+  "Search": {
+   "es": "Buscar",
+   "vi": "Tìm kiếm",
+   "zh": "搜索"
+  },
+  "Use my location": {
+   "es": "Usar mi ubicación",
+   "vi": "Dùng vị trí của tôi",
+   "zh": "使用我的位置"
+  },
+  "School name, address or ZIP": {
+   "es": "Nombre de la escuela, dirección o código postal",
+   "vi": "Tên trường, địa chỉ hoặc mã ZIP",
+   "zh": "学校名称、地址或邮编"
+  },
+  "Name, address or ZIP": {
+   "es": "Nombre, dirección o código postal",
+   "vi": "Tên, địa chỉ hoặc mã ZIP",
+   "zh": "名称、地址或邮编"
+  },
+  "See what the public record says about your school.": {
+   "es": "Vea lo que dicen los registros públicos sobre su escuela.",
+   "vi": "Xem hồ sơ công khai nói gì về trường của quý vị.",
+   "zh": "看看公开记录如何描述您的学校。"
+  },
+  "schools": {
+   "es": "escuelas",
+   "vi": "trường",
+   "zh": "所学校"
+  },
+  "students": {
+   "es": "estudiantes",
+   "vi": "học sinh",
+   "zh": "名学生"
+  },
+  "Academics score": {
+   "es": "Puntaje académico",
+   "vi": "Điểm học lực",
+   "zh": "学业分数"
+  },
+  "What the data shows": {
+   "es": "Lo que muestran los datos",
+   "vi": "Dữ liệu cho thấy điều gì",
+   "zh": "数据显示了什么"
+  },
+  "Four patterns worth knowing before you compare any two schools.": {
+   "es": "Cuatro patrones que conviene conocer antes de comparar dos escuelas.",
+   "vi": "Bốn xu hướng nên biết trước khi so sánh hai trường.",
+   "zh": "比较任何两所学校之前值得了解的四个规律。"
+  },
+  "The six areas side by side": {
+   "es": "Las seis zonas, lado a lado",
+   "vi": "So sánh sáu khu vực",
+   "zh": "六个地区并列比较"
+  },
+  "Area": {
+   "es": "Zona",
+   "vi": "Khu vực",
+   "zh": "地区"
+  },
+  "Schools": {
+   "es": "Escuelas",
+   "vi": "Trường",
+   "zh": "学校"
+  },
+  "School": {
+   "es": "Escuela",
+   "vi": "Trường",
+   "zh": "学校"
+  },
+  "Level": {
+   "es": "Nivel",
+   "vi": "Cấp học",
+   "zh": "学段"
+  },
+  "Include": {
+   "es": "Incluir",
+   "vi": "Bao gồm",
+   "zh": "包括"
+  },
+  "Sort by": {
+   "es": "Ordenar por",
+   "vi": "Sắp xếp theo",
+   "zh": "排序方式"
+  },
+  "All schools": {
+   "es": "Todas las escuelas",
+   "vi": "Tất cả các trường",
+   "zh": "所有学校"
+  },
+  "Filters": {
+   "es": "Filtros",
+   "vi": "Bộ lọc",
+   "zh": "筛选"
+  },
+  "List": {
+   "es": "Lista",
+   "vi": "Danh sách",
+   "zh": "列表"
+  },
+  "Map": {
+   "es": "Mapa",
+   "vi": "Bản đồ",
+   "zh": "地图"
+  },
+  "Table": {
+   "es": "Tabla",
+   "vi": "Bảng",
+   "zh": "表格"
+  },
+  "Go": {
+   "es": "Ir",
+   "vi": "Đi",
+   "zh": "前往"
+  },
+  "Elementary": {
+   "es": "Primaria",
+   "vi": "Tiểu học",
+   "zh": "小学"
+  },
+  "Middle": {
+   "es": "Secundaria",
+   "vi": "Trung học cơ sở",
+   "zh": "初中"
+  },
+  "High": {
+   "es": "Preparatoria",
+   "vi": "Trung học phổ thông",
+   "zh": "高中"
+  },
+  "K-8 / 6-12": {
+   "es": "K-8 / 6-12",
+   "vi": "K-8 / 6-12",
+   "zh": "K-8 / 6-12"
+  },
+  "Charter schools": {
+   "es": "Escuelas chárter",
+   "vi": "Trường bán công (charter)",
+   "zh": "特许学校"
+  },
+  "Alternative schools": {
+   "es": "Escuelas alternativas",
+   "vi": "Trường thay thế",
+   "zh": "替代学校"
+  },
+  "Special programs & online": {
+   "es": "Programas especiales y en línea",
+   "vi": "Chương trình đặc biệt và trực tuyến",
+   "zh": "特殊项目和在线学校"
+  },
+  "Add to compare": {
+   "es": "Agregar a comparar",
+   "vi": "Thêm để so sánh",
+   "zh": "加入比较"
+  },
+  "Added to compare": {
+   "es": "Agregada a comparar",
+   "vi": "Đã thêm để so sánh",
+   "zh": "已加入比较"
+  },
+  "Remove": {
+   "es": "Quitar",
+   "vi": "Xóa",
+   "zh": "移除"
+  },
+  "Compare schools": {
+   "es": "Comparar escuelas",
+   "vi": "So sánh các trường",
+   "zh": "比较学校"
+  },
+  "Report a mistake": {
+   "es": "Reportar un error",
+   "vi": "Báo lỗi",
+   "zh": "报告错误"
+  },
+  "Report a mistake on this page": {
+   "es": "Reportar un error en esta página",
+   "vi": "Báo lỗi trên trang này",
+   "zh": "报告本页错误"
+  },
+  "OSPI Report Card": {
+   "es": "Boletín de OSPI",
+   "vi": "Phiếu điểm OSPI",
+   "zh": "OSPI 成绩报告"
+  },
+  "Academics": {
+   "es": "Académico",
+   "vi": "Học lực",
+   "zh": "学业"
+  },
+  "Growth": {
+   "es": "Progreso",
+   "vi": "Tiến bộ",
+   "zh": "进步"
+  },
+  "Equity": {
+   "es": "Equidad",
+   "vi": "Công bằng",
+   "zh": "公平"
+  },
+  "Climate": {
+   "es": "Ambiente escolar",
+   "vi": "Môi trường học đường",
+   "zh": "校园氛围"
+  },
+  "Growth score": {
+   "es": "Puntaje de progreso",
+   "vi": "Điểm tiến bộ",
+   "zh": "进步分数"
+  },
+  "Equity score": {
+   "es": "Puntaje de equidad",
+   "vi": "Điểm công bằng",
+   "zh": "公平分数"
+  },
+  "Climate score": {
+   "es": "Puntaje de ambiente",
+   "vi": "Điểm môi trường",
+   "zh": "氛围分数"
+  },
+  "Not measured in high school": {
+   "es": "No se mide en preparatoria",
+   "vi": "Không đo ở bậc trung học phổ thông",
+   "zh": "高中不测量"
+  },
+  "Not enough data": {
+   "es": "Datos insuficientes",
+   "vi": "Không đủ dữ liệu",
+   "zh": "数据不足"
+  },
+  "What the scores and measures mean": {
+   "es": "Qué significan los puntajes y las medidas",
+   "vi": "Ý nghĩa của các điểm số và chỉ số",
+   "zh": "分数和指标的含义"
+  },
+  "Reading this school": {
+   "es": "Cómo leer esta escuela",
+   "vi": "Đọc hiểu trường này",
+   "zh": "解读这所学校"
+  },
+  "Learning": {
+   "es": "Aprendizaje",
+   "vi": "Học tập",
+   "zh": "学习"
+  },
+  "Changes over time": {
+   "es": "Cambios con el tiempo",
+   "vi": "Thay đổi theo thời gian",
+   "zh": "随时间的变化"
+  },
+  "Who attends": {
+   "es": "Quién asiste",
+   "vi": "Ai theo học",
+   "zh": "学生构成"
+  },
+  "Support staff on site": {
+   "es": "Personal de apoyo en la escuela",
+   "vi": "Nhân viên hỗ trợ tại trường",
+   "zh": "校内支持人员"
+  },
+  "Teachers and resources": {
+   "es": "Maestros y recursos",
+   "vi": "Giáo viên và nguồn lực",
+   "zh": "教师与资源"
+  },
+  "Lead in drinking water": {
+   "es": "Plomo en el agua potable",
+   "vi": "Chì trong nước uống",
+   "zh": "饮用水中的铅"
+  },
+  "Questions to ask on a tour": {
+   "es": "Preguntas para hacer en una visita",
+   "vi": "Câu hỏi nên hỏi khi tham quan",
+   "zh": "参观时可以问的问题"
+  },
+  "Boundaries": {
+   "es": "Límites escolares",
+   "vi": "Ranh giới tuyển sinh",
+   "zh": "学区边界"
+  },
+  "More about this school": {
+   "es": "Más sobre esta escuela",
+   "vi": "Thêm về trường này",
+   "zh": "关于这所学校的更多信息"
+  },
+  "Federal school record (NCES)": {
+   "es": "Registro escolar federal (NCES)",
+   "vi": "Hồ sơ trường liên bang (NCES)",
+   "zh": "联邦学校记录 (NCES)"
+  },
+  "Department of Health results": {
+   "es": "Resultados del Departamento de Salud",
+   "vi": "Kết quả của Sở Y tế",
+   "zh": "卫生部检测结果"
+  },
+  "See every outlet": {
+   "es": "Ver cada grifo",
+   "vi": "Xem từng vòi nước",
+   "zh": "查看每个出水口"
+  },
+  "School year": {
+   "es": "Año escolar",
+   "vi": "Năm học",
+   "zh": "学年"
+  },
+  "This school": {
+   "es": "Esta escuela",
+   "vi": "Trường này",
+   "zh": "本校"
+  },
+  "no tests": {
+   "es": "sin pruebas",
+   "vi": "không thi",
+   "zh": "无考试"
+  },
+  "Student group": {
+   "es": "Grupo de estudiantes",
+   "vi": "Nhóm học sinh",
+   "zh": "学生群体"
+  },
+  "All students": {
+   "es": "Todos los estudiantes",
+   "vi": "Tất cả học sinh",
+   "zh": "全体学生"
+  },
+  "Share of each group suspended or expelled at least once.": {
+   "es": "Porcentaje de cada grupo suspendido o expulsado al menos una vez.",
+   "vi": "Tỷ lệ mỗi nhóm bị đình chỉ hoặc đuổi học ít nhất một lần.",
+   "zh": "每个群体中至少被停学或开除一次的比例。"
+  },
+  "Reading proficiency": {
+   "es": "Dominio de lectura",
+   "vi": "Thành thạo môn đọc",
+   "zh": "阅读达标率"
+  },
+  "Math proficiency": {
+   "es": "Dominio de matemáticas",
+   "vi": "Thành thạo môn toán",
+   "zh": "数学达标率"
+  },
+  "Science proficiency": {
+   "es": "Dominio de ciencias",
+   "vi": "Thành thạo môn khoa học",
+   "zh": "科学达标率"
+  },
+  "Reading, low-income students": {
+   "es": "Lectura, estudiantes de bajos ingresos",
+   "vi": "Môn đọc, học sinh thu nhập thấp",
+   "zh": "阅读，低收入学生"
+  },
+  "Math, low-income students": {
+   "es": "Matemáticas, estudiantes de bajos ingresos",
+   "vi": "Môn toán, học sinh thu nhập thấp",
+   "zh": "数学，低收入学生"
+  },
+  "Reading growth (50 = typical)": {
+   "es": "Progreso en lectura (50 = típico)",
+   "vi": "Tiến bộ môn đọc (50 = bình thường)",
+   "zh": "阅读进步（50 = 一般）"
+  },
+  "Math growth (50 = typical)": {
+   "es": "Progreso en matemáticas (50 = típico)",
+   "vi": "Tiến bộ môn toán (50 = bình thường)",
+   "zh": "数学进步（50 = 一般）"
+  },
+  "Regular attendance": {
+   "es": "Asistencia regular",
+   "vi": "Đi học đều đặn",
+   "zh": "经常出勤"
+  },
+  "4-year graduation": {
+   "es": "Graduación en 4 años",
+   "vi": "Tốt nghiệp trong 4 năm",
+   "zh": "四年毕业率"
+  },
+  "9th graders on track": {
+   "es": "Estudiantes de 9.º grado encaminados",
+   "vi": "Học sinh lớp 9 đúng tiến độ",
+   "zh": "九年级学生进度达标"
+  },
+  "Earned dual credit": {
+   "es": "Obtuvieron doble crédito",
+   "vi": "Đạt tín chỉ kép",
+   "zh": "获得双学分"
+  },
+  "Suspended or expelled": {
+   "es": "Suspendidos o expulsados",
+   "vi": "Bị đình chỉ hoặc đuổi học",
+   "zh": "被停学或开除"
+  },
+  "Low-income": {
+   "es": "Bajos ingresos",
+   "vi": "Thu nhập thấp",
+   "zh": "低收入"
+  },
+  "English learners": {
+   "es": "Estudiantes de inglés",
+   "vi": "Học sinh đang học tiếng Anh",
+   "zh": "英语学习者"
+  },
+  "Students with disabilities": {
+   "es": "Estudiantes con discapacidades",
+   "vi": "Học sinh khuyết tật",
+   "zh": "残障学生"
+  },
+  "Highly capable": {
+   "es": "Altamente capaces",
+   "vi": "Học sinh năng khiếu",
+   "zh": "资优学生"
+  },
+  "Experiencing homelessness": {
+   "es": "Sin hogar",
+   "vi": "Vô gia cư",
+   "zh": "无家可归"
+  },
+  "Students per teacher": {
+   "es": "Estudiantes por maestro",
+   "vi": "Số học sinh mỗi giáo viên",
+   "zh": "生师比"
+  },
+  "Enrollment": {
+   "es": "Inscripción",
+   "vi": "Sĩ số",
+   "zh": "在校人数"
+  },
+  "Teachers in their first 5 years": {
+   "es": "Maestros en sus primeros 5 años",
+   "vi": "Giáo viên trong 5 năm đầu",
+   "zh": "从教不满5年的教师"
+  },
+  "Spending per student": {
+   "es": "Gasto por estudiante",
+   "vi": "Chi tiêu cho mỗi học sinh",
+   "zh": "生均支出"
+  },
+  "Students per counselor": {
+   "es": "Estudiantes por consejero",
+   "vi": "Số học sinh mỗi cố vấn",
+   "zh": "每位辅导员负责的学生数"
+  },
+  "Students per psychologist": {
+   "es": "Estudiantes por psicólogo",
+   "vi": "Số học sinh mỗi chuyên viên tâm lý",
+   "zh": "每位心理师负责的学生数"
+  },
+  "Reading proficiency (%)": {
+   "es": "Dominio de lectura (%)",
+   "vi": "Thành thạo môn đọc (%)",
+   "zh": "阅读达标率 (%)"
+  },
+  "Math proficiency (%)": {
+   "es": "Dominio de matemáticas (%)",
+   "vi": "Thành thạo môn toán (%)",
+   "zh": "数学达标率 (%)"
+  },
+  "Regular attendance (%)": {
+   "es": "Asistencia regular (%)",
+   "vi": "Đi học đều đặn (%)",
+   "zh": "经常出勤 (%)"
+  },
+  "Suspended or expelled (%)": {
+   "es": "Suspendidos o expulsados (%)",
+   "vi": "Bị đình chỉ hoặc đuổi học (%)",
+   "zh": "被停学或开除 (%)"
+  },
+  "Reading + math proficiency (%)": {
+   "es": "Dominio de lectura y matemáticas (%)",
+   "vi": "Thành thạo đọc + toán (%)",
+   "zh": "阅读和数学达标率 (%)"
+  },
+  "Low-income students (% of enrollment)": {
+   "es": "Estudiantes de bajos ingresos (% de la inscripción)",
+   "vi": "Học sinh thu nhập thấp (% sĩ số)",
+   "zh": "低收入学生（占在校人数 %）"
+  },
+  "Share of students suspended or expelled (%)": {
+   "es": "Porcentaje de estudiantes suspendidos o expulsados (%)",
+   "vi": "Tỷ lệ học sinh bị đình chỉ hoặc đuổi học (%)",
+   "zh": "被停学或开除的学生比例 (%)"
+  },
+  "Share of the group suspended or expelled (%)": {
+   "es": "Porcentaje del grupo suspendido o expulsado (%)",
+   "vi": "Tỷ lệ của nhóm bị đình chỉ hoặc đuổi học (%)",
+   "zh": "该群体被停学或开除的比例 (%)"
+  },
+  "Reading": {
+   "es": "Lectura",
+   "vi": "Đọc",
+   "zh": "阅读"
+  },
+  "Math": {
+   "es": "Matemáticas",
+   "vi": "Toán",
+   "zh": "数学"
+  },
+  "Reading + math": {
+   "es": "Lectura y matemáticas",
+   "vi": "Đọc + toán",
+   "zh": "阅读和数学"
+  },
+  "Attendance": {
+   "es": "Asistencia",
+   "vi": "Chuyên cần",
+   "zh": "出勤"
+  },
+  "Suspension rate": {
+   "es": "Tasa de suspensión",
+   "vi": "Tỷ lệ đình chỉ",
+   "zh": "停学率"
+  },
+  "Reading growth": {
+   "es": "Progreso en lectura",
+   "vi": "Tiến bộ môn đọc",
+   "zh": "阅读进步"
+  },
+  "Math growth": {
+   "es": "Progreso en matemáticas",
+   "vi": "Tiến bộ môn toán",
+   "zh": "数学进步"
+  },
+  "Name": {
+   "es": "Nombre",
+   "vi": "Tên",
+   "zh": "名称"
+  },
+  "Low-income share": {
+   "es": "Porcentaje de bajos ingresos",
+   "vi": "Tỷ lệ thu nhập thấp",
+   "zh": "低收入比例"
+  },
+  "Black": {
+   "es": "Negros",
+   "vi": "Người da đen",
+   "zh": "黑人"
+  },
+  "Hispanic": {
+   "es": "Hispanos",
+   "vi": "Người gốc Tây Ban Nha",
+   "zh": "西班牙裔"
+  },
+  "White": {
+   "es": "Blancos",
+   "vi": "Người da trắng",
+   "zh": "白人"
+  },
+  "Asian": {
+   "es": "Asiáticos",
+   "vi": "Người châu Á",
+   "zh": "亚裔"
+  },
+  "Firearm or explosive possession": {
+   "es": "Posesión de armas de fuego o explosivos",
+   "vi": "Tàng trữ súng hoặc chất nổ",
+   "zh": "持有枪支或爆炸物"
+  },
+  "Attacks with a weapon": {
+   "es": "Ataques con un arma",
+   "vi": "Tấn công có vũ khí",
+   "zh": "持械攻击"
+  },
+  "Threats of physical attack": {
+   "es": "Amenazas de ataque físico",
+   "vi": "Đe dọa tấn công thân thể",
+   "zh": "人身攻击威胁"
+  },
+  "Physical attacks or fights": {
+   "es": "Ataques físicos o peleas",
+   "vi": "Tấn công thân thể hoặc đánh nhau",
+   "zh": "人身攻击或打架"
+  },
+  "Robberies": {
+   "es": "Robos",
+   "vi": "Cướp",
+   "zh": "抢劫"
+  },
+  "Rape or sexual assault": {
+   "es": "Violación o agresión sexual",
+   "vi": "Hiếp dâm hoặc tấn công tình dục",
+   "zh": "强奸或性侵犯"
+  },
+  "Harassment or bullying allegations": {
+   "es": "Denuncias de acoso",
+   "vi": "Cáo buộc quấy rối hoặc bắt nạt",
+   "zh": "骚扰或欺凌指控"
+  },
+  "Students arrested": {
+   "es": "Estudiantes arrestados",
+   "vi": "Học sinh bị bắt",
+   "zh": "被逮捕的学生"
+  },
+  "Students referred to police": {
+   "es": "Estudiantes remitidos a la policía",
+   "vi": "Học sinh bị chuyển cho cảnh sát",
+   "zh": "被移交警方的学生"
+  },
+  "Physical restraint": {
+   "es": "Restricción física",
+   "vi": "Khống chế thân thể",
+   "zh": "身体约束"
+  },
+  "Mechanical restraint": {
+   "es": "Restricción mecánica",
+   "vi": "Khống chế bằng dụng cụ",
+   "zh": "器械约束"
+  },
+  "Seclusion": {
+   "es": "Aislamiento",
+   "vi": "Cách ly",
+   "zh": "隔离"
+  },
+  "Counselors": {
+   "es": "Consejeros",
+   "vi": "Cố vấn học đường",
+   "zh": "辅导员"
+  },
+  "Psychologists": {
+   "es": "Psicólogos",
+   "vi": "Chuyên viên tâm lý",
+   "zh": "心理师"
+  },
+  "Social workers": {
+   "es": "Trabajadores sociales",
+   "vi": "Nhân viên xã hội",
+   "zh": "社工"
+  },
+  "Nurses": {
+   "es": "Enfermeros",
+   "vi": "Y tá",
+   "zh": "护士"
+  },
+  "Security guards": {
+   "es": "Guardias de seguridad",
+   "vi": "Bảo vệ",
+   "zh": "保安"
+  },
+  "Police officers": {
+   "es": "Policías",
+   "vi": "Cảnh sát",
+   "zh": "警察"
+  },
+  "None": {
+   "es": "Ninguno",
+   "vi": "Không có",
+   "zh": "无"
+  },
+  "None on staff": {
+   "es": "Ninguno en el personal",
+   "vi": "Không có nhân viên",
+   "zh": "无此人员"
+  },
+  "Results vs. low-income share": {
+   "es": "Resultados frente al porcentaje de bajos ingresos",
+   "vi": "Kết quả so với tỷ lệ thu nhập thấp",
+   "zh": "成绩与低收入比例"
+  },
+  "Highlight": {
+   "es": "Resaltar",
+   "vi": "Làm nổi bật",
+   "zh": "突出显示"
+  },
+  "Furthest above the trend": {
+   "es": "Más por encima de la tendencia",
+   "vi": "Cao hơn xu hướng nhiều nhất",
+   "zh": "最高于趋势线"
+  },
+  "Furthest below the trend": {
+   "es": "Más por debajo de la tendencia",
+   "vi": "Thấp hơn xu hướng nhiều nhất",
+   "zh": "最低于趋势线"
+  },
+  "Since the pandemic": {
+   "es": "Desde la pandemia",
+   "vi": "Kể từ đại dịch",
+   "zh": "疫情以来"
+  },
+  "Discipline rate by year": {
+   "es": "Tasa de disciplina por año",
+   "vi": "Tỷ lệ kỷ luật theo năm",
+   "zh": "历年纪律处分率"
+  },
+  "Restraint and seclusion, 2021-22": {
+   "es": "Restricción y aislamiento, 2021-22",
+   "vi": "Khống chế và cách ly, 2021-22",
+   "zh": "约束与隔离，2021-22"
+  },
+  "Counselors, psychologists and police": {
+   "es": "Consejeros, psicólogos y policía",
+   "vi": "Cố vấn, chuyên viên tâm lý và cảnh sát",
+   "zh": "辅导员、心理师和警察"
+  },
+  "Lead in school drinking water": {
+   "es": "Plomo en el agua potable de las escuelas",
+   "vi": "Chì trong nước uống ở trường",
+   "zh": "学校饮用水中的铅"
+  },
+  "Healthy Youth Survey 2025": {
+   "es": "Encuesta de Jóvenes Saludables 2025",
+   "vi": "Khảo sát Thanh thiếu niên Khỏe mạnh 2025",
+   "zh": "2025 年健康青少年调查"
+  },
+  "Youth risk and child poverty by district": {
+   "es": "Riesgo juvenil y pobreza infantil por distrito",
+   "vi": "Rủi ro thanh thiếu niên và trẻ em nghèo theo học khu",
+   "zh": "各学区青少年风险与儿童贫困"
+  },
+  "Youth suicide": {
+   "es": "Suicidio juvenil",
+   "vi": "Tự tử ở thanh thiếu niên",
+   "zh": "青少年自杀"
+  },
+  "How each district handles security": {
+   "es": "Cómo maneja la seguridad cada distrito",
+   "vi": "Cách mỗi học khu xử lý an ninh",
+   "zh": "各学区的安保做法"
+  },
+  "Request the records that aren't published": {
+   "es": "Solicite los registros que no se publican",
+   "vi": "Yêu cầu các hồ sơ chưa được công bố",
+   "zh": "申请未公开的记录"
+  },
+  "Copy request": {
+   "es": "Copiar solicitud",
+   "vi": "Sao chép yêu cầu",
+   "zh": "复制申请"
+  },
+  "If someone is struggling, call or text 988": {
+   "es": "Si alguien está pasando por un momento difícil, llame o envíe un mensaje al 988",
+   "vi": "Nếu ai đó đang gặp khó khăn, hãy gọi hoặc nhắn tin 988",
+   "zh": "如果有人陷入困境，请拨打或发短信至 988"
+  },
+  "Staff and resources": {
+   "es": "Personal y recursos",
+   "vi": "Nhân sự và nguồn lực",
+   "zh": "人员与资源"
+  },
+  "Scores": {
+   "es": "Puntajes",
+   "vi": "Điểm số",
+   "zh": "分数"
+  },
+  "Discipline": {
+   "es": "Disciplina",
+   "vi": "Kỷ luật",
+   "zh": "纪律"
+  },
+  "Students": {
+   "es": "Estudiantes",
+   "vi": "Học sinh",
+   "zh": "学生"
+  },
+  "Reading the numbers": {
+   "es": "Cómo leer los números",
+   "vi": "Cách đọc các con số",
+   "zh": "如何解读数据"
+  },
+  "Sources": {
+   "es": "Fuentes",
+   "vi": "Nguồn",
+   "zh": "数据来源"
+  },
+  "Which schools are included": {
+   "es": "Qué escuelas se incluyen",
+   "vi": "Những trường nào được đưa vào",
+   "zh": "包括哪些学校"
+  },
+  "The four scores": {
+   "es": "Los cuatro puntajes",
+   "vi": "Bốn điểm số",
+   "zh": "四项分数"
+  },
+  "Not available publicly": {
+   "es": "No disponible públicamente",
+   "vi": "Không công khai",
+   "zh": "未公开的数据"
+  },
+  "Shade by": {
+   "es": "Colorear por",
+   "vi": "Tô màu theo",
+   "zh": "着色依据"
+  },
+  "Map of the schools, colored by academics score": {
+   "es": "Mapa de las escuelas, coloreado por puntaje académico",
+   "vi": "Bản đồ các trường, tô màu theo điểm học lực",
+   "zh": "学校地图，按学业分数着色"
+  },
+  "Show results as": {
+   "es": "Mostrar resultados como",
+   "vi": "Hiển thị kết quả dạng",
+   "zh": "结果显示方式"
+  },
+  "Sort schools": {
+   "es": "Ordenar escuelas",
+   "vi": "Sắp xếp trường",
+   "zh": "学校排序"
+  },
+  "Other areas": {
+   "es": "Otras zonas",
+   "vi": "Khu vực khác",
+   "zh": "其他地区"
+  },
+  "No area": {
+   "es": "Ninguna zona",
+   "vi": "Không chọn khu vực",
+   "zh": "不选地区"
+  },
+  "academics score": {
+   "es": "puntaje académico",
+   "vi": "điểm học lực",
+   "zh": "学业分数"
+  },
+  "growth score": {
+   "es": "puntaje de progreso",
+   "vi": "điểm tiến bộ",
+   "zh": "进步分数"
+  },
+  "equity score": {
+   "es": "puntaje de equidad",
+   "vi": "điểm công bằng",
+   "zh": "公平分数"
+  },
+  "climate score": {
+   "es": "puntaje de ambiente",
+   "vi": "điểm môi trường",
+   "zh": "氛围分数"
+  },
+  "distance": {
+   "es": "distancia",
+   "vi": "khoảng cách",
+   "zh": "距离"
+  },
+  "name": {
+   "es": "nombre",
+   "vi": "tên",
+   "zh": "名称"
+  },
+  "enrollment": {
+   "es": "inscripción",
+   "vi": "sĩ số",
+   "zh": "在校人数"
+  },
+  "low-income share": {
+   "es": "porcentaje de bajos ingresos",
+   "vi": "tỷ lệ thu nhập thấp",
+   "zh": "低收入比例"
+  },
+  "Distance": {
+   "es": "Distancia",
+   "vi": "Khoảng cách",
+   "zh": "距离"
+  },
+  "Switch light or dark theme": {
+   "es": "Cambiar tema claro u oscuro",
+   "vi": "Đổi giao diện sáng hoặc tối",
+   "zh": "切换浅色或深色主题"
+  },
+  "Language": {
+   "es": "Idioma",
+   "vi": "Ngôn ngữ",
+   "zh": "语言"
+  },
+  "Search by school name, address or ZIP": {
+   "es": "Buscar por nombre de escuela, dirección o código postal",
+   "vi": "Tìm theo tên trường, địa chỉ hoặc mã ZIP",
+   "zh": "按学校名称、地址或邮编搜索"
+  },
+  "Filter schools or enter an address": {
+   "es": "Filtrar escuelas o escribir una dirección",
+   "vi": "Lọc trường hoặc nhập địa chỉ",
+   "zh": "筛选学校或输入地址"
+  }
+ },
+ "patterns": [
+  {
+   "re": "^District ([<>]?[\\d.]+%?|n<10), state ([\\d.]+%?)$",
+   "es": "Distrito $1, estado $2",
+   "vi": "Học khu $1, tiểu bang $2",
+   "zh": "学区 $1，全州 $2"
+  },
+  {
+   "re": "^District ([<>]?[\\d.]+%?|n<10)$",
+   "es": "Distrito $1",
+   "vi": "Học khu $1",
+   "zh": "学区 $1"
+  },
+  {
+   "re": "^Better than (\\d+)% of (.+) here$",
+   "es": "Mejor que el $1% de las escuelas comparables aquí",
+   "vi": "Tốt hơn $1% các trường cùng cấp ở đây",
+   "zh": "优于本地 $1% 的同类学校"
+  },
+  {
+   "re": "^(\\d+) schools?, sorted by (.+)$",
+   "es": "$1 escuelas, ordenadas por $2",
+   "vi": "$1 trường, sắp xếp theo $2",
+   "zh": "$1 所学校，按$2排序"
+  },
+  {
+   "re": "^Nearby (.+) schools$",
+   "es": "Escuelas cercanas",
+   "vi": "Các trường gần đây",
+   "zh": "附近的学校"
+  },
+  {
+   "re": "^Discipline, (.+)$",
+   "es": "Disciplina, $1",
+   "vi": "Kỷ luật, $1",
+   "zh": "纪律，$1"
+  },
+  {
+   "re": "^Safety and support, (.+)$",
+   "es": "Seguridad y apoyo, $1",
+   "vi": "An toàn và hỗ trợ, $1",
+   "zh": "安全与支持，$1"
+  },
+  {
+   "re": "^Incidents, (.+)$",
+   "es": "Incidentes, $1",
+   "vi": "Sự cố, $1",
+   "zh": "事件，$1"
+  },
+  {
+   "re": "^Neighborhood \\(ZIP (\\d+)\\) on Census Reporter$",
+   "es": "Vecindario (código postal $1) en Census Reporter",
+   "vi": "Khu dân cư (ZIP $1) trên Census Reporter",
+   "zh": "社区（邮编 $1）在 Census Reporter 上的资料"
+  },
+  {
+   "re": "^(.+) schools here \\(median\\)$",
+   "es": "Escuelas comparables aquí (mediana)",
+   "vi": "Các trường cùng cấp ở đây (trung vị)",
+   "zh": "本地同类学校（中位数）"
+  },
+  {
+   "re": "^Show (\\d+) more of (\\d+)$",
+   "es": "Mostrar $1 más de $2",
+   "vi": "Hiển thị thêm $1 trong $2",
+   "zh": "再显示 $1 所（共 $2 所）"
+  },
+  {
+   "re": "^Who gets suspended or expelled, (.+)$",
+   "es": "Quién es suspendido o expulsado, $1",
+   "vi": "Ai bị đình chỉ hoặc đuổi học, $1",
+   "zh": "谁被停学或开除，$1"
+  },
+  {
+   "re": "^Incidents each school reported to the federal government, (.+)$",
+   "es": "Incidentes que cada escuela reportó al gobierno federal, $1",
+   "vi": "Sự cố mỗi trường báo cáo cho chính phủ liên bang, $1",
+   "zh": "各校向联邦政府报告的事件，$1"
+  }
+ ]
+}
