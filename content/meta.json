@@ -173,7 +173,12 @@
     "email": ""
   },
   "analytics": {
-    "_about": "Optional privacy-friendly visit counts. Create a free account at goatcounter.com, then put your site code here (the part before .goatcounter.com). Leave empty to turn counting off.",
+    "_about": "Visit counter: counts one visit per browser per day on the live site and shows the total in the footer, using the free Abacus service (abacus.jasoncameron.dev, no account needed). To check the count without opening the site: https://abacus.jasoncameron.dev/get/southkingschools-sseattle/visits . Remove 'counter' to turn it off. For a fuller dashboard (pages, referrers), create a free goatcounter.com account and put its code in 'goatcounter'.",
+    "counter": {
+      "namespace": "southkingschools-sseattle",
+      "key": "visits",
+      "since": "November 2026"
+    },
     "goatcounter": ""
   },
   "district_context": {

@@ -100,6 +100,31 @@ function initAnalytics() {
   document.head.append(sc);
 }
 
+/**
+ * Simple visit counter: one count per browser per day, on the live site only, through the free
+ * Abacus counter service (no account, no cookies, no personal data). The total shows in the footer.
+ * Hidden quietly if the service is down.
+ */
+async function initVisitCounter() {
+  const c = store.meta.analytics?.counter;
+  const el = $('#visitCount');
+  if (!c?.namespace || !c?.key || !el) return;
+  const live = location.hostname.endsWith('github.io') || (c.hosts || []).includes(location.hostname);
+  const today = new Date().toISOString().slice(0, 10);
+  let counted = false;
+  try { counted = localStorage.getItem('sks-visit') === today; } catch { /* storage blocked: count anyway */ }
+  const action = live && !counted ? 'hit' : 'get';
+  try {
+    const res = await fetch(`https://abacus.jasoncameron.dev/${action}/${encodeURIComponent(c.namespace)}/${encodeURIComponent(c.key)}`);
+    if (!res.ok) return;
+    const { value } = await res.json();
+    if (typeof value !== 'number') return;
+    if (action === 'hit') { try { localStorage.setItem('sks-visit', today); } catch { /* ignore */ } }
+    el.textContent = `${value.toLocaleString()} visits since ${c.since || 'launch'}.`;
+    el.hidden = false;
+  } catch { /* counter service unreachable: show nothing */ }
+}
+
 function countPage() {
   // Count the page type, never the address someone searched for.
   const page = (location.hash.slice(1) || 'home').replace(/^s-\d+$/, 'school');
@@ -120,6 +145,7 @@ async function start() {
   initFooter();
   initSources();
   initAnalytics();
+  initVisitCounter();
   initI18n(store.i18n, () => route());
 
   let previousHash = location.hash;
