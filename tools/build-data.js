@@ -343,6 +343,12 @@ export async function buildData(year, config, log = () => {}) {
     }
   }
 
+  log('Downloading district discipline trend and child poverty…');
+  let disciplineTrend = null;
+  let districtPoverty = null;
+  try { disciplineTrend = await loadDisciplineTrend(config, ids.years.discipline, log); } catch (err) { log(`District discipline trend unavailable (${err.message}); previous values will be kept.`); }
+  try { districtPoverty = await loadDistrictPoverty(config, log); } catch (err) { log(`Child poverty unavailable (${err.message}); previous values will be kept.`); }
+
   log(`Done: ${schools.length} schools, ${districts.length} districts.`);
   return {
     generated: new Date().toISOString().slice(0, 10),
@@ -353,10 +359,61 @@ export async function buildData(year, config, log = () => {}) {
       datasets: Object.fromEntries(Object.entries(ids).filter(([k]) => k !== 'years')),
     },
     trend_years: years,
+    discipline_trend: disciplineTrend,
+    district_poverty: districtPoverty,
     state,
     districts,
     schools,
   };
+}
+
+/**
+ * Share of all students suspended or expelled, by district and statewide, for the three latest
+ * discipline files. Rates stay as OSPI publishes them ("3.76", "<0.0146").
+ */
+async function loadDisciplineTrend(config, latest, log) {
+  const years = [previousYear(previousYear(latest)), previousYear(latest), latest];
+  const names = config.DISTRICTS.map((d) => d.name);
+  const byDistrict = {};
+  const found = [];
+  for (const y of years) {
+    const id = config.DATASETS[y]?.discipline || await findDataset(config.DATASET_NAMES.discipline.replace('{year}', y));
+    if (!id) { log(`Discipline trend: no file for ${y}`); continue; }
+    found.push({ y, id });
+    const rows = await soql(id, {
+      $where: `gradelevel='All' and student_group='All Students' and (organizationlevel='State' or (organizationlevel='District' and districtname in ${inList(names)}))`,
+      $select: 'organizationlevel,districtname,disciplinerate',
+    });
+    for (const r of rows) {
+      const name = r.organizationlevel === 'State' ? 'Washington State' : r.districtname.split(' ')[0];
+      (byDistrict[name] ??= {})[y] = String(r.disciplinerate ?? '').replace(/%/g, '').trim() || null;
+    }
+  }
+  if (found.length < 2 || !byDistrict['Washington State']) throw new Error('fewer than two discipline years found');
+  const ys = found.map((f) => f.y);
+  const last = (name) => parseFloat(String(byDistrict[name][ys.at(-1)] ?? '').replace(/[<>]/g, '')) || 0;
+  const districts = Object.keys(byDistrict).filter((n) => n !== 'Washington State').sort((a, b) => last(b) - last(a));
+  return {
+    years: ys,
+    datasets: Object.fromEntries(found.map((f) => [f.y, f.id])),
+    rows: [...districts, 'Washington State'].map((name) => ({ name, values: ys.map((y) => byDistrict[name][y] ?? '—'), ...(name === 'Washington State' ? { reference: true } : {}) })),
+  };
+}
+
+/** Census SAIPE share of children 5-17 in poverty by district, newest year the Urban Institute has. */
+async function loadDistrictPoverty(config, log) {
+  const thisYear = new Date().getFullYear();
+  for (let year = thisYear - 1; year >= thisYear - 4; year--) {
+    const out = {};
+    for (const d of config.DISTRICTS) {
+      let rows = [];
+      try { rows = await urban(`school-districts/saipe/${year}/?leaid=${d.leaid}`); } catch { rows = []; }
+      const r = rows[0];
+      if (r && r.est_population_5_17 > 0) out[d.name.split(' ')[0]] = Math.round((1000 * r.est_population_5_17_poverty) / r.est_population_5_17) / 10;
+    }
+    if (Object.keys(out).length === config.DISTRICTS.length) { log(`Child poverty: SAIPE ${year}`); return { year: String(year), byDistrict: out }; }
+  }
+  throw new Error('no complete SAIPE year found');
 }
 
 function withoutKeys(obj, keys) {
@@ -514,7 +571,7 @@ async function loadState(ids) {
 /** Same layout as the checked-in file: one school per line, so diffs stay readable. */
 export function formatJson(data) {
   const line = (o) => JSON.stringify(o);
-  return `{\n"generated": ${line(data.generated)},\n"school_year": ${line(data.school_year)},\n"notes": ${line(data.notes)},\n"sources": ${line(data.sources || {})},\n"trend_years": ${line(data.trend_years || [])},\n"state": ${line(data.state)},\n"districts": [\n${data.districts.map(line).join(',\n')}\n],\n"schools": [\n${data.schools.map(line).join(',\n')}\n]\n}\n`;
+  return `{\n"generated": ${line(data.generated)},\n"school_year": ${line(data.school_year)},\n"notes": ${line(data.notes)},\n"sources": ${line(data.sources || {})},\n"trend_years": ${line(data.trend_years || [])},\n"discipline_trend": ${line(data.discipline_trend || null)},\n"district_poverty": ${line(data.district_poverty || null)},\n"state": ${line(data.state)},\n"districts": [\n${data.districts.map(line).join(',\n')}\n],\n"schools": [\n${data.schools.map(line).join(',\n')}\n]\n}\n`;
 }
 
 /** Sanity checks on a built file. If OSPI changes a file format, stop rather than publish nonsense. */
@@ -556,5 +613,7 @@ export function carryOver(data, old) {
     if (!s.lead && prev.lead) { s.lead = prev.lead; kept.lead++; }
   }
   if (old.sources?.lead) data.sources = { ...data.sources, lead: old.sources.lead };
+  if (!data.discipline_trend && old.discipline_trend) data.discipline_trend = old.discipline_trend;
+  if (!data.district_poverty && old.district_poverty) data.district_poverty = old.district_poverty;
   return kept;
 }

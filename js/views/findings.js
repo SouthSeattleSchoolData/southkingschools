@@ -98,7 +98,7 @@ function renderRecovery() {
 }
 
 function renderTrend() {
-  const t = store.meta.discipline_trend;
+  const t = store.disciplineTrend || store.meta.discipline_trend;
   $('#trendTbl').innerHTML = `<thead><tr><th>District</th>${t.years.map((y) => `<th>${y}</th>`).join('')}</tr></thead><tbody>`
     + t.rows.map((r) => `<tr${r.reference ? ' class="ref"' : ''}><td>${r.name}</td>${r.values.map((v) => `<td>${escapeHtml(v)}%</td>`).join('')}</tr>`).join('')
     + '</tbody>';

@@ -1,7 +1,7 @@
 {
   "_about": "Hand-maintained figures that don't come from the school data file. Update when new results are published.",
   "discipline_trend": {
-    "_about": "Share of all students suspended or expelled at least once, from OSPI Report Card discipline files (data.wa.gov ixvm-ww8s, sm68-769y, c9tq-ntbq).",
+    "_about": "Fallback only. The data build now fills data/schools.json discipline_trend from the OSPI discipline files; this copy is used if that is missing.",
     "years": [
       "2022-23",
       "2023-24",
@@ -177,7 +177,7 @@
     "goatcounter": ""
   },
   "district_context": {
-    "_about": "District-level context. Child poverty: U.S. Census SAIPE 2024 estimates (released December 2025) of children 5-17 in poverty, via the Urban Institute Education Data Portal. Risk ratings: WA DSHS Community Outcome and Risk Evaluation (CORE), 2024 Community Risk Profile, King County (May 2024). Ratings place a district among Washington school districts: Very Low = bottom 10%, Low = bottom 25%, Average = middle half, High = top 25%, Very High = top 10%.",
+    "_about": "District-level context. Child poverty: U.S. Census SAIPE 2024 estimates (released December 2025) of children 5-17 in poverty, via the Urban Institute Education Data Portal. Risk ratings: WA DSHS Community Outcome and Risk Evaluation (CORE), 2024 Community Risk Profile, King County (May 2024). Ratings place a district among Washington school districts: Very Low = bottom 10%, Low = bottom 25%, Average = middle half, High = top 25%, Very High = top 10%. Child poverty figures here are a fallback; the data build fills data/schools.json district_poverty from the newest SAIPE year.",
     "saipe_year": "2024",
     "risk_year": "2024",
     "risk_columns": [

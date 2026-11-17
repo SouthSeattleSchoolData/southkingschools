@@ -3,12 +3,12 @@
 
 /** Districts included, with the short code the site uses and the area they belong to. */
 export const DISTRICTS = [
-  { name: 'Renton School District', code: 'R', area: 'Renton' },
-  { name: 'Kent School District', code: 'K', area: 'Kent' },
-  { name: 'Issaquah School District', code: 'I', area: 'Issaquah' },
-  { name: 'Bellevue School District', code: 'B', area: 'Bellevue' },
+  { name: 'Renton School District', code: 'R', area: 'Renton', leaid: '5307230' },
+  { name: 'Kent School District', code: 'K', area: 'Kent', leaid: '5303960' },
+  { name: 'Issaquah School District', code: 'I', area: 'Issaquah', leaid: '5303750' },
+  { name: 'Bellevue School District', code: 'B', area: 'Bellevue', leaid: '5300390' },
   // Seattle schools are split into West/South Seattle by ZIP code (see SEATTLE_AREAS); others are dropped.
-  { name: 'Seattle School District No. 1', code: 'S', area: null },
+  { name: 'Seattle School District No. 1', code: 'S', area: null, leaid: '5307710' },
 ];
 
 /** Seattle ZIP codes that count as each area. */

@@ -77,7 +77,7 @@ function initSources() {
       ['enrollment', 'enrollment'], ['assessment', 'assessment', ' (Smarter Balanced and WCAS; WA-AIM excluded)'], ['discipline', 'discipline'],
       ['graduation', 'graduation'], ['sqss', 'attendance, 9th grade on track and dual credit'], ['growth', 'growth'], ['wakids', 'kindergarten readiness'],
     ].filter(([k]) => ds[k]).map(([k, text, extra = '']) => `${link(ds[k], text)}${extra}${yr[k] && yr[k] !== store.schoolYear ? ` (${yr[k]}, the latest released)` : ''}`);
-    $('#ospiSrc').innerHTML = `OSPI Report Card files on data.wa.gov, ${store.schoolYear}: ${parts.join(', ')}, ${link('gks4-v7ka', 'student–teacher ratio')}. Discipline trend from the ${link('ixvm-ww8s', '2022-23')}, ${link('sm68-769y', '2023-24')} and ${link('c9tq-ntbq', '2024-25')} files.`;
+    $('#ospiSrc').innerHTML = `OSPI Report Card files on data.wa.gov, ${store.schoolYear}: ${parts.join(', ')}, ${link('gks4-v7ka', 'student–teacher ratio')}. ${store.disciplineTrend?.datasets ? `District discipline trend from the ${Object.entries(store.disciplineTrend.datasets).map(([y, id]) => link(id, y)).join(', ')} files.` : ''}`;
   }
   const ty = store.trendYears || [];
   if (ty.length > 1) $('#trendSrc').innerHTML = `Trends: the same OSPI files for ${link('4h5k-di3v', ty[0])} and ${ty[1]} through ${ty[ty.length - 1]} (assessment, discipline, attendance and enrollment for each year).`;

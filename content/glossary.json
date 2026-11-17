@@ -209,8 +209,8 @@
         {
           "key": "incident:sexual_assault",
           "term": "Rape or sexual assault",
-          "what": "Reported incidents of rape, attempted rape or sexual assault at school.",
-          "read": "Usually zero; any count deserves a question about prevention and reporting."
+          "what": "Reported incidents of rape, attempted rape or sexual battery at school, by students or staff. Since 2023-24 the federal form also says whether a staff member was responsible; the school page notes it when one was.",
+          "read": "Usually zero; any count deserves a question about prevention and reporting. Staff misconduct is likely undercounted: in July 2026 the U.S. Department of Education opened investigations into 20 districts whose reports looked too low. Teaching-license actions are public through OSPI's Office of Professional Practices."
         },
         {
           "key": "incident:harassment_allegations",

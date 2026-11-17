@@ -37,6 +37,7 @@ export function crdcRecord(r, year) {
     threats: v(r.threats),
     robbery: v(r.robbery),
     sexual_assault: v(r.sexual_assault),
+    sexual_assault_by_staff: v(r.sexual_assault_by_staff),
     harassment_allegations: v(r.harassment_allegations),
     bullying: {
       sex: v(r.bully_sex),
@@ -73,7 +74,7 @@ export function leadMatchKey(name, district) {
 }
 
 /** Incident and restraint counts from an earlier collection, kept so pages can show the change. */
-export const CRDC_PREV_KEYS = ['firearm_possession', 'attacks_with_weapon', 'attacks', 'threats', 'robbery', 'sexual_assault',
+export const CRDC_PREV_KEYS = ['enrollment', 'firearm_possession', 'attacks_with_weapon', 'attacks', 'threats', 'robbery', 'sexual_assault',
   'harassment_allegations', 'arrests', 'police_referrals', 'restraint_physical', 'restraint_mechanical', 'seclusion'];
 export function crdcPrevious(rec) {
   return rec ? Object.fromEntries([['year', rec.year], ...CRDC_PREV_KEYS.map((k) => [k, rec[k]])]) : null;

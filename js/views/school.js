@@ -71,7 +71,8 @@ function safetySection(s) {
   const c = s.crdc;
   if (!c) return `<p class="small muted">No ${CRDC_YEAR} federal record for this school. It may have opened later or reported under another name.</p>`;
   const was = (k) => { const p = incidentPrev(s, k); return p == null ? '' : `<div class="c">${CRDC_PREV_YEAR}: ${p}</div>`; };
-  const cell = (label, v, key, k) => `<div class="kv"><div class="k">${label}${key ? info(`incident:${key}`) : ''}</div><div class="v num">${fmt(v)}</div>${was(k)}</div>`;
+  const byStaff = (k) => (k === 'sexual_assault' && c.sexual_assault_by_staff > 0 ? `<div class="c">${c.sexual_assault_by_staff} by a staff member</div>` : '');
+  const cell = (label, v, key, k) => `<div class="kv"><div class="k">${label}${key ? info(`incident:${key}`) : ''}</div><div class="v num">${fmt(v)}</div>${byStaff(k)}${was(k)}</div>`;
   const bases = BULLYING_BASES.filter(([k]) => (c.bullying?.[k] || 0) > 0).map(([k, label]) => `${c.bullying[k]} based on ${label}`);
   const restraint = RESTRAINT.map(([k, label]) => [label, c[k], k]).filter(([, v]) => v != null);
   return `<div class="kgrid">${INCIDENTS.map(([key, label]) => cell(label, incident(s, key), key, key)).join('')}

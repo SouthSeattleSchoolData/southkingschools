@@ -50,7 +50,7 @@ function renderIncidents() {
     + '</tbody>';
 
   const total = (k) => reported.reduce((t, s) => t + (num(incident(s, k)) || 0), 0);
-  $('#crdcSum').textContent = `The 25 schools with the most serious reports are shown. Across all ${reported.length} schools with records: ${total('firearm_possession')} firearm possession incidents, ${total('attacks_with_weapon')} attacks with a weapon, ${total('threats')} threats, ${total('sexual_assault')} rapes or sexual assaults, ${total('harassment_allegations')} bullying or harassment allegations and ${total('arrests')} students arrested. Every school's counts are on its own page.`;
+  $('#crdcSum').textContent = `The 25 schools with the most serious reports are shown. Across all ${reported.length} schools with records: ${total('firearm_possession')} firearm possession incidents, ${total('attacks_with_weapon')} attacks with a weapon, ${total('threats')} threats, ${total('sexual_assault')} rapes or sexual assaults (${total('sexual_assault_by_staff')} attributed to a staff member), ${total('harassment_allegations')} bullying or harassment allegations and ${total('arrests')} students arrested. Every school's counts are on its own page.`;
 }
 
 /** Area totals in the two latest federal collections, schools reporting in both. */
@@ -65,19 +65,24 @@ function renderChange() {
     ['Restraint and seclusion', ['restraint_physical', 'restraint_mechanical', 'seclusion']],
   ];
   const sum = (list, keys, get) => list.reduce((t, s) => t + keys.reduce((u, k) => u + (num(get(s, k)) || 0), 0), 0);
+  const kids = (list, get) => list.reduce((t, s) => t + (get(s, 'enrollment') || 0), 0);
+  const per100 = (count, n) => (n ? (100 * count) / n : 0);
+  const fmtRate = (r) => (r === 0 ? '0' : r < 1 ? r.toFixed(2) : r.toFixed(1));
   const flagged = (list, keys) => keys.includes('threats') && list.some((s) => s.crdc.suspect?.includes('threats'));
   const cell = (list, keys) => {
     const a = sum(list, keys, incidentPrev), b = sum(list, keys, incident);
-    return `<td class="num"><span class="sup">${a.toLocaleString()} →</span> <b>${b.toLocaleString()}</b>${flagged(list, keys) ? '*' : ''}</td>`;
+    const ra = per100(a, kids(list, incidentPrev)), rb = per100(b, kids(list, incident));
+    const mark = flagged(list, keys) ? '*' : '';
+    return `<td class="num"><span class="sup">${fmtRate(ra)} →</span> <b>${fmtRate(rb)}</b>${mark}<div class="xs muted">${a.toLocaleString()} → ${b.toLocaleString()} reported</div></td>`;
   };
   const row = (label, list) => `<tr><td>${label}</td>${measures.map(([, keys]) => cell(list, keys)).join('')}</tr>`;
   $('#changeTbl').innerHTML = `<thead><tr><th>Area</th>${measures.map(([l]) => `<th>${l}</th>`).join('')}</tr></thead><tbody>`
     + AREAS.map((area) => row(area, both.filter((s) => s.area === area))).join('')
     + row('<b>All six areas</b>', both)
     + '</tbody>';
-  const t = (keys) => [sum(both, keys, incidentPrev), sum(both, keys, incident)];
-  const [a0, a1] = t(['attacks']); const [h0, h1] = t(['threats']); const [r0, r1] = t(['restraint_physical', 'restraint_mechanical', 'seclusion']);
-  $('#changeSum').textContent = `Counts from the ${both.length} schools that reported in both ${CRDC_PREV_YEAR} and ${CRDC_YEAR}, with no adjustment for enrollment. Across them, reported attacks or fights went from ${a0.toLocaleString()} to ${a1.toLocaleString()}, threats from ${h0.toLocaleString()} to ${h1.toLocaleString()}, and restraint and seclusion from ${r0.toLocaleString()} to ${r1.toLocaleString()}. A rise can mean more careful reporting rather than more incidents, so read it alongside the school climate survey and district reports.${both.some((s) => s.crdc.suspect?.includes('threats')) ? ` *Kent reported exactly as many threats as attacks at every school in ${CRDC_YEAR}, which looks like one figure entered twice, so its threat count (and the six-area total) is unreliable.` : ''}`;
+  const rate = (keys, get) => fmtRate(per100(sum(both, keys, get), kids(both, get)));
+  const enrolled = [kids(both, incidentPrev), kids(both, incident)];
+  $('#changeSum').textContent = `Big numbers are incidents per 100 students; the small line under each is the raw count. Based on the ${both.length} schools that reported in both ${CRDC_PREV_YEAR} and ${CRDC_YEAR}, with ${enrolled[0].toLocaleString()} and ${enrolled[1].toLocaleString()} students enrolled. Across them, attacks or fights went from ${rate(['attacks'], incidentPrev)} to ${rate(['attacks'], incident)} per 100 students, and restraint and seclusion from ${rate(['restraint_physical', 'restraint_mechanical', 'seclusion'], incidentPrev)} to ${rate(['restraint_physical', 'restraint_mechanical', 'seclusion'], incident)}. A rise can mean more careful reporting rather than more incidents, so read it alongside the school climate survey and district reports.${both.some((s) => s.crdc.suspect?.includes('threats')) ? ` *Kent reported exactly as many threats as attacks at every school in ${CRDC_YEAR}, which looks like one figure entered twice, so its threat rate (and the six-area total) is unreliable.` : ''}`;
 }
 
 function renderRestraint() {
@@ -123,7 +128,10 @@ function renderLead() {
 }
 
 function renderRisk() {
-  const c = store.meta.district_context;
+  const base = store.meta.district_context;
+  const pov = store.districtPoverty;
+  // Child poverty comes from the data build when available; Seattle rows use the Seattle-wide figure.
+  const c = pov ? { ...base, saipe_year: pov.year, seattle_note: base.seattle_note.replace(/\(\d+(\.\d+)?%\)/, `(${pov.byDistrict.Seattle}%)`), rows: base.rows.map((r) => ({ ...r, child_poverty: pov.byDistrict[r.district.split(' ')[0]] ?? r.child_poverty })) } : base;
   if (!c) return;
   const tone = (v) => ({ 'Very Low': 'r1', Low: 'r2', Average: 'r3', High: 'r4', 'Very High': 'r5' }[v] || '');
   $('#riskTbl').innerHTML = `<thead><tr><th>District or area</th><th>Children in poverty, ${c.saipe_year}${info('child_poverty')}</th>${c.risk_columns.map((col, i) => `<th title="${escapeHtml(c.risk_help[i])}">${col}</th>`).join('')}</tr></thead><tbody>`

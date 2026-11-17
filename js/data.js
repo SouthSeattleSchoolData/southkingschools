@@ -45,6 +45,8 @@ export async function loadData() {
   store.generated = data.generated;
   store.schoolYear = data.school_year;
   store.trendYears = data.trend_years || [];
+  store.disciplineTrend = data.discipline_trend || null;
+  store.districtPoverty = data.district_poverty || null;
   store.sources = data.sources || {};
   store.byCode = Object.fromEntries(store.schools.map((s) => [s.code, s]));
   store.news = news;
