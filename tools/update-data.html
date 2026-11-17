@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Update school data · South King Schools</title>
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="../css/styles.css">
+  <style>
+    main { max-width: 760px; margin: 0 auto; padding: 40px 20px 80px; }
+    .row { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin: 18px 0; }
+    .row input { width: 120px; }
+    pre { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px; font-size: 13px; max-height: 320px; overflow: auto; white-space: pre-wrap; }
+    ol li { margin: 6px 0; }
+  </style>
+</head>
+<body>
+  <main>
+    <h2>Update the school data</h2>
+    <p class="lede" style="margin-top:8px">Downloads the latest OSPI Report Card files from data.wa.gov and rebuilds <code>data/schools.json</code>. OSPI usually publishes a new school year's files in the fall.</p>
+    <ol class="small">
+      <li>Enter the school year and click <b>Build data</b>. It takes about a minute.</li>
+      <li>Check the summary, then click <b>Download schools.json</b>.</li>
+      <li>Replace <code>data/schools.json</code> in the GitHub repository with the downloaded file and commit.</li>
+    </ol>
+    <div class="row">
+      <label for="year" class="small">School year</label>
+      <input id="year" class="field" value="2024-25" pattern="\d{4}-\d{2}" aria-describedby="yearHelp">
+      <button class="btn" id="build" type="button">Build data</button>
+      <button class="btn ghost" id="download" type="button" hidden>Download schools.json</button>
+    </div>
+    <p class="xs muted" id="yearHelp">Format: 2025-26. If a year's files can't be found by name, add their IDs to <code>tools/config.js</code>.</p>
+    <pre id="log" aria-live="polite">Ready.</pre>
+    <div id="summary"></div>
+  </main>
+
+  <script type="module">
+    import * as config from './config.js';
+    import { buildData, formatJson, checkData } from './build-data.js';
+
+    const logEl = document.getElementById('log');
+    const log = (msg) => { logEl.textContent += `\n${msg}`; logEl.scrollTop = logEl.scrollHeight; };
+    let result = null;
+
+    document.getElementById('build').addEventListener('click', async (e) => {
+      const year = document.getElementById('year').value.trim();
+      if (!/^\d{4}-\d{2}$/.test(year)) { log('Enter the year like 2025-26.'); return; }
+      e.target.disabled = true;
+      logEl.textContent = `Building ${year}…`;
+      try {
+        result = await buildData(year, config, log);
+        const problems = checkData(result);
+        if (problems.length) throw new Error(`the result looks wrong (${problems.join('; ')}). Nothing to download.`);
+        const missingLocation = result.schools.filter((s) => s.lat == null).map((s) => s.name);
+        const byArea = {};
+        result.schools.forEach((s) => { byArea[s.area] = (byArea[s.area] || 0) + 1; });
+        document.getElementById('summary').innerHTML = `
+          <h3 style="margin-top:20px">Summary</h3>
+          <p class="small">${result.schools.length} schools: ${Object.entries(byArea).map(([a, n]) => `${a} ${n}`).join(', ')}.</p>
+          <p class="small">Without a map location (${missingLocation.length}): ${missingLocation.join(', ') || 'none'}. Programs without a building are expected here; for a regular school, add it to MANUAL_LOCATIONS in tools/config.js.</p>`;
+        document.getElementById('download').hidden = false;
+      } catch (err) {
+        log(`Stopped: ${err.message}`);
+      } finally {
+        e.target.disabled = false;
+      }
+    });
+
+    document.getElementById('download').addEventListener('click', () => {
+      const blob = new Blob([formatJson(result)], { type: 'application/json' });
+      const a = Object.assign(document.createElement('a'), { href: URL.createObjectURL(blob), download: 'schools.json' });
+      a.click();
+      URL.revokeObjectURL(a.href);
+    });
+  </script>
+</body>
+</html>

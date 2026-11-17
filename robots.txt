@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://southseattleschooldata.github.io/southkingschools/sitemap.xml
