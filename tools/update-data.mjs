@@ -11,7 +11,7 @@ import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { execFileSync } from 'node:child_process';
 import * as config from './config.js';
-import { buildData, formatJson, previousYear, checkData } from './build-data.js';
+import { buildData, formatJson, previousYear, checkData, carryOver } from './build-data.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const file = join(root, 'data/schools.json');
@@ -37,19 +37,15 @@ const year = process.argv[2] || await newestYear();
 log(`Building ${year} (currently ${old.school_year})`);
 const data = await buildData(year, config, log);
 
+// Keep values this build doesn't fetch (lead testing) or couldn't reach this time (federal data).
+const kept = carryOver(data, old);
+log(`Kept from the previous file: ${Object.entries(kept).map(([k, n]) => `${k} ${n}`).join(', ')}`);
+
 const problems = checkData(data);
 if (problems.length) {
   console.error(`Not saving: ${problems.join('; ')}. The existing data stays in place.`);
   process.exit(1);
 }
-
-// Keep values that this build doesn't fetch.
-const before = Object.fromEntries(old.schools.map((s) => [s.code, s]));
-for (const s of data.schools) {
-  const prev = before[s.code];
-  if (prev?.lead) s.lead = prev.lead;
-}
-data.sources = { ...data.sources, lead: old.sources?.lead };
 
 writeFileSync(file, formatJson(data));
 log(`Wrote ${data.schools.length} schools to data/schools.json`);

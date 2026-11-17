@@ -234,8 +234,15 @@ export async function buildData(year, config, log = () => {}) {
   const locate = await loadLocations(config, schoolCodes, log);
 
   log('Downloading the NCES school directory and federal civil rights data (CRDC 2021-22)…');
-  const nces = await loadNcesDirectory(schoolCodes);
-  const crdc = await loadCrdc(nces);
+  let nces = {};
+  let crdc = {};
+  try {
+    nces = await loadNcesDirectory(schoolCodes);
+    crdc = await loadCrdc(nces);
+  } catch (err) {
+    log(`Federal data unavailable (${err.message}); previous values will be kept.`);
+  }
+  log(`Federal data: ${Object.keys(nces).length} schools matched, ${Object.keys(crdc).length} with CRDC records.`);
 
   log('Downloading trends, teacher experience and spending…');
   const years = trendYears(ids.years.assessment);
@@ -365,8 +372,10 @@ function location(loc, nces, zip) {
 async function urban(path) {
   let url = `${URBAN}/${path}`;
   let rows = [];
+  // Identify ourselves when running outside a browser (some APIs turn away anonymous scripts).
+  const headers = typeof window === 'undefined' ? { 'User-Agent': 'south-king-schools-updater (github.com/SouthSeattleSchoolData/southkingschools)', Accept: 'application/json' } : {};
   while (url) {
-    const res = await fetch(url);
+    const res = await fetch(url, { headers });
     if (!res.ok) throw new Error(`Urban Institute API ${path}: ${res.status}`);
     const json = await res.json();
     rows = rows.concat(json.results || []);
@@ -381,7 +390,7 @@ async function loadNcesDirectory(schoolCodes) {
   const out = {};
   for (const year of [2023, 2022, 2021]) {
     let rows = [];
-    try { rows = await urban(`schools/ccd/directory/${year}/?fips=53&county_code=53033`); } catch { continue; }
+    try { rows = await urban(`schools/ccd/directory/${year}/?fips=53&county_code=53033`); } catch (err) { console.warn(`NCES directory ${year}: ${err.message}`); continue; }
     for (const r of rows) {
       const code = String(r.seasch || '').split('-')[1];
       if (wanted.has(code) && !out[code]) {
@@ -563,6 +572,7 @@ export function checkData(data) {
   const nums = (key) => data.schools.map((s) => s[key]).filter((v) => typeof v === 'number').sort((a, b) => a - b);
   const median = (v) => v[Math.floor(v.length / 2)];
   if (data.schools.length < 150) problems.push(`only ${data.schools.length} schools`);
+  if (data.schools.filter((s) => s.crdc).length < 150) problems.push('federal civil rights data is missing for most schools');
   for (const key of ['ela_proficient', 'math_proficient', 'regular_attendance', 'pct_low_income']) {
     const v = nums(key);
     if (v.length < 100) problems.push(`${key}: only ${v.length} schools have a value`);
@@ -573,4 +583,27 @@ export function checkData(data) {
     if (typeof v !== 'number' || v < 5 || v > 100) problems.push(`state ${key} is ${v}`);
   }
   return problems;
+}
+
+/**
+ * Fills a new build with values it couldn't fetch this time, from the previous file:
+ * federal records (2021-22, unchanging), NCES IDs and addresses, and lead testing.
+ * Returns how many schools needed each.
+ */
+export function carryOver(data, old) {
+  const before = Object.fromEntries((old.schools || []).map((s) => [s.code, s]));
+  const kept = { crdc: 0, nces_id: 0, location: 0, lead: 0 };
+  for (const s of data.schools) {
+    const prev = before[s.code];
+    if (!prev) continue;
+    if (!s.crdc && prev.crdc) { s.crdc = prev.crdc; kept.crdc++; }
+    if (!s.nces_id && prev.nces_id) { s.nces_id = prev.nces_id; kept.nces_id++; }
+    if (s.lat == null && prev.lat != null) {
+      Object.assign(s, { lat: prev.lat, lon: prev.lon, address: prev.address, zip: prev.zip || s.zip, location_source: prev.location_source || 'previous' });
+      kept.location++;
+    }
+    if (!s.lead && prev.lead) { s.lead = prev.lead; kept.lead++; }
+  }
+  if (old.sources?.lead) data.sources = { ...data.sources, lead: old.sources.lead };
+  return kept;
 }
