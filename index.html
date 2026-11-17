@@ -3,290 +3,395 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>South King School Lens</title>
+<title>South King Schools</title>
+<meta name="description" content="Public data on every public school in Renton, Kent, Issaquah, Bellevue, West Seattle and South Seattle: scores, growth, equity, discipline and safety.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,650;12..96,750&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
 <style>
 :root{
   color-scheme:light;
-  --bg:#f6f5f1;--surface:#fcfcfb;--surface-2:#efeee9;--line:#dedcd4;--line-2:#c9c7bd;
-  --ink:#0b0b0b;--ink-2:#52514e;--ink-3:#7a7974;
-  --accent:#2a78d6;--accent-ink:#1c5cab;--accent-soft:#e3eefc;
-  --s1:#2a78d6;--s2:#eb6834;--muted-mark:#b9b7ae;
+  --paper:#f1f4f3;--surface:#ffffff;--surface-2:#e8eeeb;--line:#d3dbd8;--line-2:#b7c3bf;
+  --ink:#12211d;--ink-2:#41504c;--ink-3:#6c7975;
+  --forest:#1e4d40;--forest-ink:#163b31;--forest-soft:#dfeae5;--on-forest:#ffffff;
+  --d1:#2a78d6;--hl:#eb6834;--mute:#b4bdb9;
   --q1:#cde2fb;--q2:#86b6ef;--q3:#3987e5;--q4:#1c5cab;--q5:#0d366b;
-  --warn-bg:#fff6df;--warn-line:#f0d58a;
-  --shadow:0 1px 2px rgba(0,0,0,.05),0 4px 16px rgba(0,0,0,.05);
+  --note-bg:#fbf3df;--note-line:#e8d39b;
+  --focus:#2a78d6;
 }
 @media (prefers-color-scheme:dark){
   :root:where(:not([data-theme="light"])){
     color-scheme:dark;
-    --bg:#121211;--surface:#1a1a19;--surface-2:#242422;--line:#33332f;--line-2:#47473f;
-    --ink:#f0efec;--ink-2:#c3c2b7;--ink-3:#97968c;
-    --accent:#3987e5;--accent-ink:#86b6ef;--accent-soft:#1b2a3d;
-    --s1:#3987e5;--s2:#d95926;--muted-mark:#5c5b55;
+    --paper:#0f1614;--surface:#16201d;--surface-2:#1d2925;--line:#2a3833;--line-2:#3c4c46;
+    --ink:#e9efec;--ink-2:#b9c6c1;--ink-3:#8d9b96;
+    --forest:#5fae94;--forest-ink:#8fd0b9;--forest-soft:#1d332c;--on-forest:#0f1614;
+    --d1:#3987e5;--hl:#d95926;--mute:#4a5853;
     --q1:#184f95;--q2:#256abf;--q3:#3987e5;--q4:#6da7ec;--q5:#b7d3f6;
-    --warn-bg:#2d2615;--warn-line:#6b5521;
-    --shadow:none;
+    --note-bg:#2a2414;--note-line:#5d4d22;
   }
 }
 :root[data-theme="dark"]{
   color-scheme:dark;
-  --bg:#121211;--surface:#1a1a19;--surface-2:#242422;--line:#33332f;--line-2:#47473f;
-  --ink:#f0efec;--ink-2:#c3c2b7;--ink-3:#97968c;
-  --accent:#3987e5;--accent-ink:#86b6ef;--accent-soft:#1b2a3d;
-  --s1:#3987e5;--s2:#d95926;--muted-mark:#5c5b55;
+  --paper:#0f1614;--surface:#16201d;--surface-2:#1d2925;--line:#2a3833;--line-2:#3c4c46;
+  --ink:#e9efec;--ink-2:#b9c6c1;--ink-3:#8d9b96;
+  --forest:#5fae94;--forest-ink:#8fd0b9;--forest-soft:#1d332c;--on-forest:#0f1614;
+  --d1:#3987e5;--hl:#d95926;--mute:#4a5853;
   --q1:#184f95;--q2:#256abf;--q3:#3987e5;--q4:#6da7ec;--q5:#b7d3f6;
-  --warn-bg:#2d2615;--warn-line:#6b5521;--shadow:none;
+  --note-bg:#2a2414;--note-line:#5d4d22;
 }
 *{box-sizing:border-box}
-html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "IBM Plex Sans",system-ui,sans-serif;-webkit-text-size-adjust:100%}
-a{color:var(--accent-ink)}
-.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
-header.top{padding:22px 0 10px}
-.brand{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
-.brand h1{font:600 26px/1.1 "IBM Plex Sans Condensed","IBM Plex Sans",sans-serif;margin:0;letter-spacing:-.01em}
-.brand .tag{color:var(--ink-2);font-size:14px}
-.areas-line{color:var(--ink-3);font-size:13px;margin-top:4px}
-nav.tabs{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);margin-top:8px}
-nav.tabs .wrap{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
-nav.tabs .wrap::-webkit-scrollbar{display:none}
-nav.tabs a{flex:0 0 auto;padding:11px 12px 10px;text-decoration:none;color:var(--ink-2);font-weight:500;font-size:14px;border-bottom:2px solid transparent;white-space:nowrap}
-nav.tabs a.on{color:var(--ink);border-bottom-color:var(--accent)}
-.themebtn{margin-left:auto;flex:0 0 auto;align-self:center;background:none;border:1px solid var(--line);color:var(--ink-2);border-radius:6px;font:inherit;font-size:12px;padding:4px 8px;cursor:pointer}
-main{padding:18px 0 60px}
-section.view{display:none}
-section.view.on{display:block}
-h2{font:600 20px/1.25 "IBM Plex Sans Condensed","IBM Plex Sans",sans-serif;margin:6px 0 4px}
-h3{font-size:15px;margin:18px 0 6px}
-.lede{color:var(--ink-2);margin:0 0 14px;max-width:760px}
-.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;box-shadow:var(--shadow)}
-.grid{display:grid;gap:12px}
-.g-areas{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
-.area-card h4{margin:0 0 2px;font-size:15px}
-.area-card .sub{color:var(--ink-3);font-size:12px}
-.kv{display:grid;grid-template-columns:1fr auto;gap:2px 8px;margin-top:8px;font-size:13px}
-.kv span:nth-child(odd){color:var(--ink-2)}
-.kv b{font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
-.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px}
-.chip{border:1px solid var(--line-2);background:var(--surface);color:var(--ink-2);border-radius:999px;padding:5px 11px;font:inherit;font-size:13px;cursor:pointer;min-height:32px}
-.chip.on{background:var(--accent-soft);border-color:var(--accent);color:var(--ink)}
-select,input[type=search]{font:inherit;font-size:14px;padding:6px 9px;border:1px solid var(--line-2);border-radius:7px;background:var(--surface);color:var(--ink);min-height:34px}
-input[type=search]{min-width:180px;flex:1 1 180px;max-width:280px}
-label.lbl{font-size:12px;color:var(--ink-3);margin-right:-4px}
-.note{background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:8px;padding:10px 12px;font-size:13.5px;color:var(--ink);margin:10px 0}
+[hidden]{display:none!important}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.55 "Public Sans",system-ui,sans-serif;font-feature-settings:"tnum" 0}
+a{color:var(--forest-ink);text-underline-offset:2px}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:4px}
+.num{font-variant-numeric:tabular-nums}
+.wrap{max-width:1160px;margin:0 auto;padding:0 20px}
+h1,h2,h3{font-family:"Bricolage Grotesque","Public Sans",sans-serif;letter-spacing:-.015em;margin:0}
+h1{font-weight:750;font-size:clamp(34px,6vw,64px);line-height:1.02}
+h2{font-weight:650;font-size:clamp(24px,3.2vw,32px);line-height:1.12}
+h3{font-weight:650;font-size:19px;line-height:1.25}
+p{margin:0 0 12px}
+.lede{color:var(--ink-2);font-size:17px;max-width:62ch}
+.small{font-size:13.5px}.xs{font-size:12.5px}
 .muted{color:var(--ink-3)}
-.small{font-size:12.5px}
-/* table */
-.tblwrap{overflow:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface);max-height:70vh}
-table.t{border-collapse:separate;border-spacing:0;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
-table.t th,table.t td{padding:7px 9px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
-table.t th{position:sticky;top:0;background:var(--surface-2);font-weight:600;color:var(--ink-2);cursor:pointer;user-select:none;z-index:2;font-size:12px}
-table.t th:first-child,table.t td:first-child{position:sticky;left:0;text-align:left;background:var(--surface);z-index:1;max-width:210px;overflow:hidden;text-overflow:ellipsis}
-table.t th:first-child{z-index:3;background:var(--surface-2)}
-table.t th.sorted{color:var(--ink)}
-table.t tr.ref td{background:var(--surface-2);color:var(--ink-2);font-style:italic}
-table.t tr.ref td:first-child{background:var(--surface-2)}
-table.t tbody tr.row{cursor:pointer}
-table.t tbody tr.row:hover td{background:var(--accent-soft)}
-table.t tr.hl td{background:var(--accent-soft)!important;font-weight:600}
-td .sup{color:var(--ink-3)}
-td .nm{font-weight:500}
-td .nm small{display:block;color:var(--ink-3);font-weight:400;font-size:11px}
-.badge{display:inline-block;font-size:10.5px;padding:0 5px;border-radius:4px;border:1px solid var(--line-2);color:var(--ink-2);margin-left:4px;vertical-align:1px}
-.subtabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
-/* charts */
-svg text{fill:var(--ink-2);font:12px "IBM Plex Sans",sans-serif}
-svg .axis{stroke:var(--line-2);stroke-width:1}
-svg .grid{stroke:var(--line);stroke-width:1}
-.tip{position:fixed;pointer-events:none;background:var(--surface);color:var(--ink);border:1px solid var(--line-2);border-radius:8px;padding:8px 10px;font-size:12.5px;box-shadow:0 4px 18px rgba(0,0,0,.15);z-index:60;max-width:260px;display:none}
-.tip b{display:block;margin-bottom:2px}
-.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-2);margin:6px 0}
-.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-2px}
-.ramp{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--ink-2)}
-.ramp i{width:22px;height:10px;display:inline-block;border-radius:2px}
-/* modal */
-.modal{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;display:none;align-items:flex-end;justify-content:center}
-.modal.on{display:flex}
-.sheet{background:var(--surface);width:100%;max-width:760px;max-height:88vh;overflow:auto;border-radius:14px 14px 0 0;padding:18px 16px 28px;position:relative}
-@media(min-width:800px){.modal{align-items:center}.sheet{border-radius:14px}}
-.close{position:absolute;right:10px;top:10px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink);border-radius:8px;width:34px;height:34px;font-size:18px;cursor:pointer}
-.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:8px}
-.m{border:1px solid var(--line);border-radius:8px;padding:8px 10px}
-.m .k{font-size:11.5px;color:var(--ink-3)}
-.m .v{font-size:18px;font-weight:600;font-variant-numeric:tabular-nums}
-.m .c{font-size:11.5px;color:var(--ink-2)}
-.timeline{list-style:none;padding:0;margin:0}
-.timeline li{border-left:2px solid var(--line-2);padding:0 0 14px 14px;position:relative}
-.timeline li::before{content:"";position:absolute;left:-6px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--surface);border:2px solid var(--ink-3)}
-.timeline .d{font-size:12px;color:var(--ink-3);font-weight:600}
-.cols2{display:grid;grid-template-columns:1fr;gap:12px}
-@media(min-width:860px){.cols2{grid-template-columns:1fr 1fr}}
-.pol h4{margin:0 0 4px}
-.pol ul{margin:6px 0 0;padding-left:18px;font-size:13.5px}
-.btn{font:inherit;font-size:13px;border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:7px;padding:6px 12px;cursor:pointer}
-textarea{width:100%;min-height:210px;font:12.5px/1.45 ui-monospace,Menlo,monospace;border:1px solid var(--line-2);border-radius:8px;padding:10px;background:var(--surface-2);color:var(--ink)}
-.help{position:fixed;right:14px;bottom:14px;z-index:30;background:var(--surface);border:1px solid var(--line-2);border-radius:10px;padding:8px 12px;font-size:12.5px;box-shadow:var(--shadow);max-width:280px}
-.help a{font-weight:600}
-footer{color:var(--ink-3);font-size:12px;border-top:1px solid var(--line);padding:16px 0 80px}
-.barlbl{font-variant-numeric:tabular-nums}
-.cards{display:none}
-.scard{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px;cursor:pointer}
-.scard .nm{font-weight:600;font-size:14.5px}
-.scard .sub{color:var(--ink-3);font-size:12px;margin-bottom:6px}
-.scard .st{display:grid;grid-template-columns:repeat(3,1fr);gap:6px 8px}
-.scard .st div{font-size:11px;color:var(--ink-3);line-height:1.25}
-.scard .st b{display:block;font-size:15px;color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
-.scard.sorted-hl .st div.on b{color:var(--accent-ink)}
-.mobsort{display:none}
-.tabsfade{position:relative}
-@media(max-width:640px){
-  html,body{font-size:14.5px}
-  header.top{padding:14px 0 4px}
-  .brand h1{font-size:22px}
-  .brand .tag{font-size:13px}
-  .areas-line{display:none}
-  nav.tabs .wrap{padding-right:28px}
-  nav.tabs::after{content:"";position:absolute;right:0;top:0;bottom:1px;width:36px;pointer-events:none;background:linear-gradient(to right,transparent,var(--bg))}
-  nav.tabs a{padding:11px 10px 10px}
-  .themebtn{display:none}
-  main{padding-top:12px}
-  .lede{font-size:13.5px}
-  .tblwrap.big{display:none}
-  .cards{display:block}
-  .mobsort{display:flex}
-  .g-areas{grid-template-columns:1fr 1fr;gap:8px}
-  .card{padding:11px}
-  .controls select{max-width:100%}
-  input[type=search]{max-width:none}
-  .help{display:none}
-}
 
+/* top bar */
+.bar{position:sticky;top:0;z-index:40;background:color-mix(in srgb,var(--paper) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.bar .wrap{display:flex;align-items:center;gap:18px;height:58px}
+.mark{display:flex;align-items:center;gap:9px;text-decoration:none;color:var(--ink);font-family:"Bricolage Grotesque",sans-serif;font-weight:750;font-size:18px;letter-spacing:-.02em;white-space:nowrap}
+.mark svg{flex:none}
+.nav{display:flex;gap:2px;margin-left:auto;overflow-x:auto;scrollbar-width:none}
+.nav::-webkit-scrollbar{display:none}
+.nav a{padding:7px 11px;border-radius:8px;text-decoration:none;color:var(--ink-2);font-weight:500;font-size:14.5px;white-space:nowrap}
+.nav a:hover{background:var(--surface-2)}
+.nav a.on{color:var(--ink);background:var(--forest-soft)}
+.cmpcount{display:inline-grid;place-items:center;min-width:19px;height:19px;padding:0 5px;border-radius:10px;background:var(--forest);color:var(--on-forest);font-size:11.5px;font-weight:700;margin-left:4px}
+.iconbtn{border:1px solid var(--line);background:var(--surface);color:var(--ink-2);border-radius:8px;height:34px;padding:0 10px;font:inherit;font-size:13px;cursor:pointer;flex:none}
+
+/* views */
+.view{display:none}.view.on{display:block}
+section.block{padding:44px 0}
+section.block+section.block{border-top:1px solid var(--line)}
+
+/* hero */
+.hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line)}
+.hero .wrap{position:relative;display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);gap:28px;align-items:center;min-height:540px;padding-top:40px;padding-bottom:40px}
+.hero h1{max-width:13ch}
+.hero .lede{margin-top:16px}
+.heromap{position:relative;height:100%;min-height:440px}
+.heromap svg{position:absolute;inset:0;width:100%;height:100%}
+.heromap .lbl{font:600 12.5px "Public Sans",sans-serif;fill:var(--ink-2);paint-order:stroke;stroke:var(--paper);stroke-width:4px}
+.heromap circle{transition:r .2s}
+.search{width:100%;margin-top:26px;background:var(--surface);border:1.5px solid var(--ink);border-radius:14px;padding:6px;display:flex;gap:6px;max-width:560px;box-shadow:0 10px 30px -18px rgba(18,33,29,.5)}
+.search input{flex:1;min-width:0;border:0;background:transparent;font:inherit;font-size:17px;padding:10px 12px;color:var(--ink)}
+.search input:focus{outline:none}
+.search:focus-within{border-color:var(--forest)}
+.btn{font:inherit;font-weight:600;font-size:15px;border:0;background:var(--forest);color:var(--on-forest);border-radius:10px;padding:10px 16px;cursor:pointer;white-space:nowrap}
+.btn.ghost{background:transparent;color:var(--forest-ink);border:1.5px solid var(--forest);padding:8px 14px}
+.btn.sm{font-size:13.5px;padding:7px 12px;border-radius:8px}
+.searchrow{display:flex;gap:14px;align-items:center;margin-top:12px;flex-wrap:wrap}
+.linkbtn{font:inherit;background:none;border:0;padding:0;color:var(--forest-ink);text-decoration:underline;text-underline-offset:3px;cursor:pointer;font-size:14.5px}
+.suggest{max-width:560px;background:var(--surface);border:1px solid var(--line);border-radius:12px;margin-top:6px;overflow:hidden;display:none}
+.suggest.on{display:block}
+.suggest button{display:flex;justify-content:space-between;gap:10px;width:100%;text-align:left;border:0;background:none;padding:10px 14px;font:inherit;font-size:15px;color:var(--ink);cursor:pointer;border-bottom:1px solid var(--line)}
+.suggest button:last-child{border-bottom:0}
+.suggest button:hover,.suggest button.act{background:var(--forest-soft)}
+.suggest span{color:var(--ink-3);font-size:13px}
+.herostats{display:flex;gap:26px;margin-top:28px;flex-wrap:wrap}
+.herostats div{font-size:13px;color:var(--ink-3)}
+.herostats b{display:block;font:650 26px "Bricolage Grotesque",sans-serif;color:var(--ink);letter-spacing:-.02em}
+
+/* findings */
+.finding{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:36px;padding:34px 0;border-top:1px solid var(--line);align-items:center}
+.finding:first-of-type{border-top:0}
+.finding h3{font-size:24px;margin-bottom:10px;max-width:24ch}
+.finding p{color:var(--ink-2);max-width:56ch}
+.chartbox{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:16px}
+svg text{font-family:"Public Sans",sans-serif;font-size:12px;fill:var(--ink-2)}
+svg .gl{stroke:var(--line);stroke-width:1}
+.legend{display:flex;gap:14px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-2);margin-top:8px}
+.legend i{display:inline-block;width:11px;height:11px;border-radius:3px;margin-right:5px;vertical-align:-1px}
+
+/* area table */
+.tbl{width:100%;border-collapse:collapse;font-size:14px;font-variant-numeric:tabular-nums}
+.tbl th,.tbl td{padding:9px 10px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+.tbl th{font-weight:600;color:var(--ink-3);font-size:12.5px}
+.tbl th:first-child,.tbl td:first-child{text-align:left}
+.tbl tr.ref td{color:var(--ink-3);font-style:italic}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+/* finder */
+.finder{display:grid;grid-template-columns:250px minmax(0,1fr);gap:28px;padding:28px 0 60px}
+.rail{position:sticky;top:76px;align-self:start}
+.rail h3{font-size:15px;margin:18px 0 8px}
+.rail h3:first-child{margin-top:0}
+.checks label{display:flex;align-items:center;gap:8px;font-size:14.5px;padding:4px 0;cursor:pointer}
+.checks input{accent-color:var(--forest);width:16px;height:16px}
+.checks .ct{margin-left:auto;color:var(--ink-3);font-size:12.5px}
+select,.field{font:inherit;font-size:14.5px;padding:8px 10px;border:1px solid var(--line-2);border-radius:8px;background:var(--surface);color:var(--ink);width:100%}
+.resulthead{display:flex;align-items:end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.seg{display:inline-flex;border:1px solid var(--line-2);border-radius:9px;overflow:hidden;background:var(--surface)}
+.seg button{font:inherit;font-size:13.5px;border:0;background:none;padding:7px 12px;color:var(--ink-2);cursor:pointer}
+.seg button.on{background:var(--forest);color:var(--on-forest)}
+.locbar{display:flex;gap:8px;align-items:center;flex-wrap:wrap;background:var(--forest-soft);border-radius:10px;padding:10px 12px;margin-bottom:14px;font-size:14px}
+.locbar b{font-weight:600}
+.res{display:grid;grid-template-columns:minmax(0,1fr) 230px;gap:16px;align-items:center;padding:16px 0;border-bottom:1px solid var(--line);cursor:pointer}
+.res:hover .rname{text-decoration:underline;text-underline-offset:3px}
+.rname{font:650 18px/1.2 "Bricolage Grotesque",sans-serif;letter-spacing:-.01em}
+.rmeta{color:var(--ink-3);font-size:13.5px;margin-top:3px}
+.rfacts{display:flex;gap:16px;margin-top:8px;font-size:13.5px;color:var(--ink-2);flex-wrap:wrap}
+.rfacts b{color:var(--ink);font-weight:600}
+.tag{display:inline-block;font-size:11.5px;font-weight:600;padding:1px 7px;border-radius:5px;background:var(--surface-2);color:var(--ink-2);margin-left:6px;vertical-align:2px}
+.dist{font-weight:700;color:var(--forest-ink)}
+.scores{display:grid;gap:5px}
+.sc{display:grid;grid-template-columns:74px 1fr 26px;gap:8px;align-items:center;font-size:12.5px;color:var(--ink-2)}
+.sc .trk{height:7px;border-radius:4px;background:var(--surface-2);overflow:hidden}
+.sc .fill{height:100%;border-radius:4px}
+.sc b{text-align:right;color:var(--ink);font-variant-numeric:tabular-nums}
+.addbtn{font:inherit;font-size:12.5px;font-weight:600;border:1px solid var(--line-2);background:var(--surface);color:var(--ink-2);border-radius:7px;padding:4px 9px;cursor:pointer;margin-top:8px}
+.addbtn.on{border-color:var(--forest);color:var(--forest-ink);background:var(--forest-soft)}
+.more{width:100%;margin-top:16px}
+.empty{padding:40px 0;color:var(--ink-2)}
+
+/* profile */
+.phead{padding:34px 0 26px;border-bottom:1px solid var(--line)}
+.crumbs{font-size:13.5px;margin-bottom:14px}
+.phead h1{font-size:clamp(30px,4.6vw,48px);max-width:22ch}
+.phead .meta{color:var(--ink-2);margin-top:8px}
+.phead .acts{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;align-items:center}
+.phead .acts .addbtn{margin-top:0}
+.phead .acts .btn{display:inline-flex;align-items:center;height:36px}
+.pgrid{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);gap:40px;padding:32px 0 60px}
+.scorepanel{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:30px}
+.bigscore{border-top:3px solid var(--line-2);padding-top:10px}
+.bigscore .v{font:750 40px/1 "Bricolage Grotesque",sans-serif;letter-spacing:-.03em}
+.bigscore .k{font-weight:600;margin-top:4px}
+.bigscore .d{font-size:12.5px;color:var(--ink-3);margin-top:2px}
+.reading{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:30px}
+.reading h3{margin-bottom:10px}
+.reading ul{margin:0;padding-left:0;list-style:none}
+.reading li{padding:9px 0 9px 22px;border-top:1px solid var(--line);position:relative;font-size:15px}
+.reading li:first-child{border-top:0}
+.reading li::before{content:"";position:absolute;left:2px;top:17px;width:9px;height:9px;border-radius:50%;background:var(--mute)}
+.reading li.pos::before{background:var(--d1)}
+.reading li.neg::before{background:var(--hl)}
+.kgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border-top:1px solid var(--line);margin-bottom:28px}
+.kv{padding:12px 12px 12px 0;border-bottom:1px solid var(--line)}
+.kv .k{font-size:13px;color:var(--ink-3)}
+.kv .v{font:650 22px "Bricolage Grotesque",sans-serif;letter-spacing:-.01em}
+.kv .c{font-size:12px;color:var(--ink-3)}
+.sup{color:var(--ink-3)}
+.side .box{border:1px solid var(--line);border-radius:12px;padding:16px 18px;background:var(--surface);margin-bottom:16px}
+.side h3{font-size:16px;margin-bottom:8px}
+.side ol{padding-left:18px;margin:0;font-size:14.5px}
+.side ol li{margin:6px 0}
+.near a{display:flex;justify-content:space-between;gap:8px;padding:7px 0;border-bottom:1px solid var(--line);text-decoration:none;color:var(--ink);font-size:14.5px}
+.near a:last-child{border-bottom:0}
+.near span{color:var(--ink-3);font-size:13px;white-space:nowrap}
+h2.sec{font-size:22px;margin:6px 0 12px}
+
+/* compare */
+.cmp{width:100%;border-collapse:collapse;font-variant-numeric:tabular-nums;font-size:14.5px;min-width:560px}
+.cmp th,.cmp td{padding:10px 12px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+.cmp thead th{vertical-align:bottom}
+.cmp thead th .rname{font-size:17px}
+.cmp td.best{font-weight:700}
+.cmp td.best::after{content:" ●";color:var(--d1);font-size:10px;vertical-align:2px}
+.cmp tr.grp td{background:var(--surface-2);font-weight:600;font-size:13px;color:var(--ink-2)}
+.cmp td:first-child{color:var(--ink-2);width:220px}
+.rm{font:inherit;font-size:12.5px;border:0;background:none;color:var(--ink-3);text-decoration:underline;cursor:pointer;padding:0;margin-top:4px}
+
+/* explore & misc */
+.note{background:var(--note-bg);border:1px solid var(--note-line);border-radius:10px;padding:12px 14px;font-size:14.5px;margin:14px 0}
+.chips{display:flex;gap:8px;flex-wrap:wrap}
+.chip{font:inherit;font-size:13.5px;border:1px solid var(--line-2);background:var(--surface);color:var(--ink-2);border-radius:999px;padding:6px 12px;cursor:pointer}
+.chip.on{border-color:var(--forest);background:var(--forest-soft);color:var(--ink)}
+.timeline{list-style:none;padding:0;margin:0}
+.timeline li{padding:0 0 18px 18px;border-left:2px solid var(--line-2);position:relative}
+.timeline li::before{content:"";position:absolute;left:-6px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--paper);border:2px solid var(--ink-3)}
+.timeline .d{font-weight:600;font-size:13.5px}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:28px}
+textarea{width:100%;min-height:230px;font:13px/1.5 ui-monospace,Menlo,monospace;border:1px solid var(--line-2);border-radius:10px;padding:12px;background:var(--surface);color:var(--ink)}
+.prose{max-width:70ch}
+.prose h3{margin:26px 0 8px}
+.prose ul{padding-left:20px}
+.prose li{margin:5px 0}
+.tip{position:fixed;pointer-events:none;background:var(--surface);color:var(--ink);border:1px solid var(--line-2);border-radius:9px;padding:8px 11px;font-size:13px;box-shadow:0 8px 24px rgba(0,0,0,.16);z-index:80;max-width:270px;display:none}
+.tip b{display:block}
+footer{border-top:1px solid var(--line);padding:26px 0 40px;color:var(--ink-3);font-size:13px}
+.mapwrap{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:8px}
+.ramp{display:inline-flex;gap:3px;align-items:center;font-size:12.5px;color:var(--ink-2)}
+.ramp i{width:20px;height:9px;border-radius:2px;display:inline-block}
+.filterToggle{display:none}
+
+@media(max-width:900px){
+  .hero .wrap{grid-template-columns:minmax(0,1fr);min-height:0;padding-top:28px}
+  .heromap svg{height:calc(100% - 22px)}
+  .heromap{order:-1;min-height:220px;height:220px;margin:0 -20px}
+  .finding{grid-template-columns:1fr;gap:16px}
+  .finder{grid-template-columns:minmax(0,1fr);gap:12px;padding-top:16px}
+  .rail{position:static;display:none;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:14px}
+  .rail.open{display:block}
+  .filterToggle{display:inline-block}
+  .pgrid{grid-template-columns:minmax(0,1fr);gap:10px}
+  .two{grid-template-columns:1fr}
+}
+@media(max-width:640px){
+  body{font-size:15.5px}
+  .wrap{padding:0 16px}
+  .bar .wrap{height:auto;flex-wrap:wrap;gap:6px;padding-top:8px;padding-bottom:6px}
+  .nav{width:100%;margin-left:0;order:3;margin:0 -16px;padding:0 12px;mask-image:linear-gradient(to right,#000 85%,transparent)}
+  .iconbtn{margin-left:auto}
+  .res{grid-template-columns:1fr;gap:10px}
+  .scorepanel{grid-template-columns:repeat(2,1fr)}
+  .kgrid{grid-template-columns:repeat(2,1fr)}
+  .search input{font-size:16px}
+  .cmp{min-width:calc(112px + var(--n,4)*138px)}
+  .cmp td:first-child,.cmp th:first-child{position:sticky;left:0;background:var(--paper);width:112px;font-size:13px;z-index:1}
+  .cmp tr.grp td{position:static}
+  .herostats b{font-size:22px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
 </style>
 </head>
 <body>
-<header class="top"><div class="wrap">
-  <div class="brand"><h1>South King School Lens</h1><span class="tag">Public data on schools in Renton, Kent, Issaquah, Bellevue, West Seattle and South Seattle</span></div>
-  <div class="areas-line">Mostly 2024-25 OSPI Report Card data · 177 public & charter schools · An independent parent tool, not affiliated with OSPI or any district</div>
-</div></header>
-<nav class="tabs"><div class="wrap" id="tabs">
-  <a href="#overview">Overview</a><a href="#schools">Schools</a><a href="#map">Map</a><a href="#equity">Equity</a><a href="#safety">Safety</a><a href="#wellbeing">Wellbeing</a><a href="#policies">Policies</a><a href="#about">Data &amp; methods</a>
-  <button class="themebtn" id="themeBtn" type="button">Theme</button>
-</div></nav>
-<main><div class="wrap">
+<div class="bar"><div class="wrap">
+  <a class="mark" href="#home" aria-label="South King Schools home">
+    <svg width="22" height="22" viewBox="0 0 22 22" aria-hidden="true"><circle cx="6" cy="7" r="3" fill="var(--forest)"/><circle cx="15" cy="5" r="2.2" fill="var(--d1)"/><circle cx="12" cy="14" r="4" fill="var(--forest)" opacity=".55"/><circle cx="4.5" cy="16" r="1.8" fill="var(--d1)" opacity=".7"/></svg>
+    South King Schools</a>
+  <nav class="nav" id="nav">
+    <a href="#find">Find schools</a><a href="#compare">Compare<span class="cmpcount" id="cmpCount" hidden>0</span></a><a href="#findings">Findings</a><a href="#safety">Safety &amp; wellbeing</a><a href="#method">How it works</a>
+  </nav>
+  <button class="iconbtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+</div></div>
 
-<section class="view" id="v-overview">
-  <h2>How the six areas compare</h2>
-  <p class="lede">Renton, Kent, Issaquah and Bellevue use OSPI's district totals. West and South Seattle aren't districts, so their numbers are estimates built from their schools, weighted by enrollment. Tap a bar for details.</p>
-  <div class="grid g-areas" id="areaCards"></div>
-  <h3>Compare one measure</h3>
-  <div class="controls"><label class="lbl" for="ovMetric">Measure</label><select id="ovMetric"></select></div>
-  <div class="card"><div id="ovChart"></div><div class="small muted" id="ovNote"></div></div>
-  <div class="note"><b>How to read this.</b> Test scores follow family income closely. Before you treat a gap between areas as a school-quality gap, open the <a href="#equity">Equity</a> tab. It shows which schools do better or worse than their low-income share would predict.</div>
-</section>
+<main>
+<!-- HOME -->
+<div class="view" id="v-home">
+  <div class="hero"><div class="wrap">
+    <div>
+      <h1>See what the public record says about your school.</h1>
+      <p class="lede">177 public and charter schools across Renton, Kent, Issaquah, Bellevue, West Seattle and South Seattle. Test results, growth, discipline, safety incidents and student wellbeing, read with a psychologist's eye.</p>
+      <form class="search" id="heroForm" role="search" autocomplete="off">
+        <input id="heroQ" type="search" placeholder="School name, address or ZIP" aria-label="Search by school name, address or ZIP" aria-autocomplete="list" aria-controls="heroSuggest">
+        <button class="btn" type="submit">Search</button>
+      </form>
+      <div class="suggest" id="heroSuggest" role="listbox"></div>
+      <div class="searchrow"><button class="linkbtn" id="heroLoc" type="button">Use my location</button><span class="xs muted" id="heroMsg"></span></div>
+      <div class="herostats" id="heroStats"></div>
+    </div>
+    <div class="heromap" id="heroMap" aria-hidden="true"></div>
+  </div></div>
 
-<section class="view" id="v-schools">
-  <h2>School-by-school table</h2>
-  <p class="lede">Sort with the column headers (on a phone, use "Sort by"). Tap any school for its full profile. Gray values starting with "&lt;" or "&gt;" are privacy-suppressed bounds from OSPI. "n&lt;10" means too few students to report.</p>
-  <div class="controls" id="filt1"></div>
-  <div class="subtabs" id="colGroups"></div>
-  <div class="controls mobsort"><label class="lbl" for="mSort">Sort by</label><select id="mSort"></select><button class="chip" id="mDir" type="button">High → low</button></div><div class="tblwrap big"><table class="t" id="tbl"></table></div><div class="cards" id="cards"></div>
-  <p class="small muted" id="tblCount"></p>
-</section>
+  <section class="block"><div class="wrap">
+    <h2>What the data shows</h2>
+    <p class="lede" style="margin-top:8px">Four patterns worth knowing before you compare any two schools.</p>
+    <div id="findingsHome"></div>
+  </div></section>
 
-<section class="view" id="v-map">
-  <h2>Where the schools are</h2>
-  <p class="lede">Each dot is a school, sized by enrollment and shaded by the measure you choose. Darker means a higher value. Gray means the value is suppressed or doesn't apply. Tap a dot for details.</p>
-  <div class="controls"><label class="lbl" for="mapMetric">Shade by</label><select id="mapMetric"></select><span id="mapLegend" class="ramp"></span></div>
-  <div class="card" style="padding:6px"><div id="mapSvg"></div></div>
-  <p class="small muted">Positions use the King County school-site layer (SCHSITE_POINT_107), with a few charters placed by street address. There's no basemap: the page can't load map tiles, so this is a plot of each school's coordinates.</p>
-</section>
+  <section class="block"><div class="wrap">
+    <h2>The six areas side by side</h2>
+    <p class="lede" style="margin-top:8px">District totals from OSPI for the four districts. West and South Seattle are estimated from their schools, weighted by enrollment.</p>
+    <div class="scroll" style="margin-top:14px"><table class="tbl" id="areaTbl"></table></div>
+  </div></section>
+</div>
 
-<section class="view" id="v-equity">
-  <h2>Beating the odds: results vs. low-income share</h2>
-  <p class="lede">Each dot is a school. Low-income share runs left to right, and the measure you choose runs bottom to top. The dashed line is the trend across all schools shown. Dots above the line do better than schools with similar poverty levels. For discipline, below the line is better.</p>
-  <div class="controls"><label class="lbl" for="eqMetric">Measure</label><select id="eqMetric"></select><label class="lbl" for="eqArea">Highlight</label><select id="eqArea"></select></div>
-  <div class="card"><div id="eqSvg"></div><div class="legend" id="eqLegend"></div></div>
-  <div class="cols2" style="margin-top:12px">
-    <div class="card"><h3 style="margin-top:0">Furthest above the trend</h3><div id="eqTop"></div></div>
-    <div class="card"><h3 style="margin-top:0">Furthest below the trend</h3><div id="eqBot"></div></div>
+<!-- FIND -->
+<div class="view" id="v-find"><div class="wrap finder">
+  <aside class="rail" id="rail">
+    <h3>Area</h3><div class="checks" id="fArea"></div>
+    <h3>Level</h3><div class="checks" id="fLevel"></div>
+    <h3>Include</h3><div class="checks" id="fInc"></div>
+    <h3>Sort by</h3><select id="fSort" aria-label="Sort schools"></select>
+  </aside>
+  <div>
+    <div class="resulthead">
+      <div><h2 id="findTitle">All schools</h2><div class="small muted" id="findCount"></div></div>
+      <div style="display:flex;gap:8px;align-items:center;flex-wrap:wrap">
+        <button class="btn ghost sm filterToggle" id="filterToggle" type="button" aria-expanded="false" aria-controls="rail">Filters</button>
+        <div class="seg" role="tablist" id="viewSeg"><button data-v="list" class="on" type="button">List</button><button data-v="map" type="button">Map</button><button data-v="table" type="button">Table</button></div>
+      </div>
+    </div>
+    <form class="search" id="findForm" style="max-width:none;margin:0 0 12px;box-shadow:none;border-width:1px" role="search" autocomplete="off">
+      <input id="findQ" type="search" placeholder="Name, address or ZIP" aria-label="Filter schools or enter an address">
+      <button class="btn sm" type="submit">Go</button>
+    </form>
+    <div class="locbar" id="locBar" hidden></div>
+    <div id="findOut"></div>
   </div>
-</section>
+</div></div>
 
-<section class="view" id="v-safety">
-  <h2>Safety: discipline, violent incidents and weapons</h2>
-  <p class="lede">No public dataset counts "shootings" or "bombings" by school. What does exist: federal Civil Rights Data Collection (CRDC) incident counts, OSPI's exclusionary-discipline rates, and news reports. All three are below, each with its limits stated.</p>
+<!-- PROFILE -->
+<div class="view" id="v-school"></div>
 
-  <h3>1. Exclusionary discipline by student group, 2024-25</h3>
-  <p class="small muted">Share of students suspended or expelled at least once. The gray bar is all students; the blue bar is the group you pick. A large gap means students in that group are removed from class far more often than average.</p>
-  <div class="controls"><label class="lbl" for="dgGroup">Group</label><select id="dgGroup"></select></div>
-  <div class="card"><div id="dgSvg"></div><div class="legend"><span><i style="background:var(--muted-mark)"></i>All students</span><span><i style="background:var(--s1)"></i><span id="dgName">Group</span></span></div></div>
-  <div class="note"><b>Bellevue's near-zero discipline rate (&lt;0.015% in 2024-25, down from 0.65% in 2022-23) is unusual.</b> It may reflect a real policy shift away from exclusion, a change in how removals are coded, or under-reporting. It doesn't by itself mean Bellevue schools have fewer behavior incidents. Ask the district how it records emergency expulsions and short removals.</div>
+<!-- COMPARE -->
+<div class="view" id="v-compare"><div class="wrap" style="padding:30px 20px 60px">
+  <h2>Compare schools</h2>
+  <p class="lede" style="margin-top:8px">Add up to four schools from search results or any school page. A dot marks the strongest value in each row.</p>
+  <div id="cmpOut"></div>
+</div></div>
 
-  <h3>2. Discipline trend by district</h3>
-  <div class="tblwrap" style="max-height:none"><table class="t" id="trendTbl"></table></div>
-
-  <h3>3. Reported incidents by school (CRDC 2017-18)</h3>
-  <p class="small muted">Each school reports these counts to the U.S. Dept. of Education. 2017-18 is the most recent pre-pandemic year on data.wa.gov. The 2020-21 file is almost all zeros because of remote learning: across these schools it shows 0 firearm incidents and 9 threats. Counts depend heavily on how each school codes incidents. For example, Bryn Mawr Elementary reported 251 "attacks without a weapon," which almost certainly counts routine physical aggression among young children.</p>
-  <div class="controls" id="filt3"></div>
-  <div class="tblwrap"><table class="t" id="crdcTbl"></table></div>
-  <p class="small muted" id="crdcSum"></p>
-
-  <h3>4. Shootings, threats and lockdowns in the news (2023–2026)</h3>
-  <p class="small muted">Recent incidents at or near schools in these areas, from local news. Most of the shootings happened off campus, at bus stops, parks or community centers near schools. The list isn't complete; it shows the kinds of events families have dealt with.</p>
-  <div class="card"><ul class="timeline" id="newsList"></ul></div>
-
-  <h3>5. Get the records yourself</h3>
-  <p class="small">Washington's Public Records Act (RCW 42.56) lets anyone request district records. The request below asks for the data that isn't published: weapons incidents, threat assessments, lockdowns, bomb threats and harassment/bullying (HIB) reports. Send one to each district's public records officer.</p>
-  <textarea id="prr" readonly></textarea>
-  <div style="margin-top:6px"><button class="btn" id="copyPrr" type="button">Copy request</button> <span class="small muted" id="copyMsg"></span></div>
-</section>
-
-<section class="view" id="v-wellbeing">
-  <h2>Student wellbeing: Healthy Youth Survey 2025</h2>
-  <p class="lede">The Healthy Youth Survey (HYS) is an anonymous survey of 6th, 8th, 10th and 12th graders, given every two years. It's the best source on bullying, feeling safe, and suicidal thoughts. But the state releases district and school results only with the superintendent's permission. Results that identify a school or district can be published only with the superintendent's written OK; otherwise data from at least 3 schools and 3 districts must be combined (HYS 2025 Data Analysis Manual, pp. 24–25, 121–122). Seattle Public Schools posts its district report publicly, so Seattle's numbers appear below.</p>
-  <div class="cols2">
-    <div class="card"><h3 style="margin-top:0">Washington State, 2025</h3><div id="hysState"></div></div>
-    <div class="card"><h3 style="margin-top:0">Seattle Public Schools, 2025 (district-published)</h3><div id="hysSea"></div>
-      <p class="small muted">Checked against the response tables in SPS's <a href="https://www.seattleschools.org/wp-content/uploads/sites/106/2026/06/Seattle-Public-Schools-HYS-2025-MultiGrade.pdf">published multi-grade report</a> (questions 120, 133–135, 141, 150, 157, 232). "Bullied" = bullied at least once in 30 days; "felt safe" = "always" or "sometimes true"; "carried a weapon" and "skipped school" = 1 or more days. Participation was 83% (gr 8), 69% (gr 10) and 46% (gr 12), so the 12th-grade numbers are the least representative.</p></div>
+<!-- FINDINGS -->
+<div class="view" id="v-findings"><div class="wrap" style="padding:30px 20px 60px">
+  <h2>Findings</h2>
+  <p class="lede" style="margin-top:8px">The deeper analysis behind the home page: how each school performs relative to its students' circumstances, and who gets removed from class.</p>
+  <h3 style="margin:28px 0 8px">Results vs. low-income share</h3>
+  <div class="chips" id="eqChips" style="margin-bottom:10px"></div>
+  <div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-bottom:10px"><label class="small muted" for="eqArea">Highlight</label><select id="eqArea" style="width:auto"></select></div>
+  <div class="chartbox"><div id="eqSvg"></div><div class="legend" id="eqLegend"></div></div>
+  <div class="two" style="margin-top:20px">
+    <div><h3 style="margin-bottom:6px">Furthest above the trend</h3><div id="eqTop" class="near"></div></div>
+    <div><h3 style="margin-bottom:6px">Furthest below the trend</h3><div id="eqBot" class="near"></div></div>
   </div>
-  <h3>Getting HYS results for Renton, Kent, Issaquah and Bellevue</h3>
-  <div class="card small">
-    <ul style="margin:0;padding-left:18px">
-      <li>County, ESD and state fact sheets are public at <a href="https://www.askhys.net/SurveyResults/FactSheets">AskHYS.net → Fact Sheets</a>. Choose 2025 → King County → "Bullying and Harassment", "Violent Behaviors & School Safety", "Depressive Feelings, Anxiety and Suicide".</li>
-      <li>Districts own their district and building reports. Ask each district for its 2025 HYS district report (the PDF that Looking Glass Analytics produces). Some districts, like Seattle and Enumclaw, have released theirs publicly.</li>
-      <li>The interactive statewide dashboard is at <a href="https://www.askhys.net/SurveyResults/DataDashboard">AskHYS Data Dashboard</a>.</li>
-    </ul>
+  <h3 style="margin:36px 0 8px">Who gets suspended or expelled, 2024-25</h3>
+  <div class="chips" id="dgChips" style="margin-bottom:10px"></div>
+  <div class="chartbox"><div id="dgSvg"></div><div class="legend"><span><i style="background:var(--mute)"></i>All students</span><span><i style="background:var(--d1)"></i><span id="dgName"></span></span></div></div>
+  <div class="note"><b>Bellevue's discipline rate fell to under 0.015% in 2024-25</b>, from 0.65% in 2022-23. That could be a real shift away from suspensions, a change in how removals are recorded, or under-reporting. On its own it doesn't mean fewer behavior problems.</div>
+  <h3 style="margin:28px 0 8px">Discipline rate by year</h3>
+  <div class="scroll"><table class="tbl" id="trendTbl"></table></div>
+</div></div>
+
+<!-- SAFETY -->
+<div class="view" id="v-safety"><div class="wrap" style="padding:30px 20px 60px">
+  <h2>Safety &amp; wellbeing</h2>
+  <p class="lede" style="margin-top:8px">No public dataset counts shootings or bomb threats by school. Here is what does exist, with its limits stated plainly.</p>
+
+  <h3 style="margin:30px 0 8px">Shootings, threats and lockdowns near these schools, 2023–2026</h3>
+  <p class="small muted">From local news. Most shootings happened off campus, at bus stops, parks or community centers near schools. Not a complete list.</p>
+  <ul class="timeline" id="newsList" style="margin-top:14px"></ul>
+
+  <h3 style="margin:30px 0 8px">Incidents each school reported to the federal government, 2017-18</h3>
+  <p class="small muted">From the Civil Rights Data Collection, the latest pre-pandemic year on data.wa.gov. The 2020-21 file is nearly all zeros because of remote learning. Schools apply the definitions differently: Bryn Mawr Elementary's 251 "attacks without a weapon" almost certainly counts routine physical aggression among young children.</p>
+  <div class="scroll" style="margin-top:10px"><table class="tbl" id="crdcTbl"></table></div>
+  <p class="small muted" id="crdcSum" style="margin-top:8px"></p>
+
+  <h3 style="margin:34px 0 8px">Healthy Youth Survey 2025</h3>
+  <p class="small">The state releases district and school results only with the superintendent's permission (HYS 2025 Data Analysis Manual, pp. 24–25). Seattle Public Schools publishes its own, so Seattle is shown next to the state.</p>
+  <div class="scroll"><table class="tbl" id="hysTbl"></table></div>
+  <p class="xs muted" style="margin-top:6px">Seattle values were checked against questions 120, 133–135, 141, 150, 157 and 232 in the <a href="https://www.seattleschools.org/wp-content/uploads/sites/106/2026/06/Seattle-Public-Schools-HYS-2025-MultiGrade.pdf">SPS district report</a>. Participation was 83% in grade 8, 69% in grade 10 and 46% in grade 12. State figures are from the HYS manual, the HCA results presentation and the DOH release.</p>
+
+  <h3 style="margin:34px 0 8px">Youth suicide</h3>
+  <div class="prose small">
+    <p>No agency publishes student suicide deaths by school or district. Small counts could identify a child, and publicity around clusters can raise risk for other students. In Washington, the suicide death rate for ages 10–17 rose from 4.7 per 100,000 in 2024 to 7.7 in 2025, mostly among boys (WA DOH, via <a href="https://komonews.com/news/local/washington-suicide-rate-rises-in-2025-deaths-climb-among-youth-seniors-and-rural-areas-signs-resources-help-mental-health-support-childreen-teenagers-agriculture-farmers-elderly-program-prevention">KOMO</a>). In King County, a University of Washington review found three-quarters of suicide deaths among children 10–14 involved a firearm, usually a family member's (<a href="https://www.bothell-reporter.com/2020/02/10/king-county-studies-youth-gun-violence-amid-rising-suicides/">coverage</a>). Locked storage is the most protective step a household can take.</p>
+    <p><b>If someone is struggling, call or text 988</b> (Suicide &amp; Crisis Lifeline, 24/7). Teens can reach Crisis Connections' Teen Link at 866-833-6546.</p>
   </div>
-  <h3>Youth suicide deaths</h3>
-  <div class="card small">
-    <p style="margin-top:0">No agency reports student suicide deaths by school or district, and that's deliberate: small counts could identify a child, and publicizing clusters can raise risk for other students. The closest public figures:</p>
-    <ul style="padding-left:18px">
-      <li><b>Washington State:</b> the suicide death rate for ages 10–17 rose from 4.7 per 100,000 in 2024 to 7.7 in 2025, mostly among boys (WA DOH, via <a href="https://komonews.com/news/local/washington-suicide-rate-rises-in-2025-deaths-climb-among-youth-seniors-and-rural-areas-signs-resources-help-mental-health-support-childreen-teenagers-agriculture-farmers-elderly-program-prevention">KOMO</a>).</li>
-      <li><b>King County:</b> in a University of Washington review, three-quarters of suicide deaths among children ages 10–14 involved firearms, usually a family member's gun (<a href="https://www.bothell-reporter.com/2020/02/10/king-county-studies-youth-gun-violence-amid-rising-suicides/">report coverage</a>). Locked storage is the single most protective step at home. King County's LOK-IT-UP program offers discounted lock boxes.</li>
-      <li>County-level data: <a href="https://kingcounty.gov/en/dept/dph/about-king-county/about-public-health/data-reports/population-health-data/suicide">Public Health – Seattle & King County suicide data</a>.</li>
-    </ul>
-    <p style="margin-bottom:0"><b>If a student or family member is struggling:</b> call or text <b>988</b> (Suicide &amp; Crisis Lifeline, 24/7). For teens, Crisis Connections' <b>Teen Link</b> is 866-833-6546.</p>
-  </div>
-  <div class="note"><b>A psychologist's reading of HYS numbers.</b> These are self-reports from the students who took part, and participation drops sharply by 12th grade. Differences of a few points between places are often within the margin of error. The protective factors are the most useful to track: having an adult to turn to, feeling safe at school, and hope. They respond to school climate in ways that suicide rates, which are rare events, can't show year to year.</div>
-</section>
 
-<section class="view" id="v-policies">
-  <h2>Safety policies and approaches</h2>
-  <p class="lede">State law requires every district to have certain policies, and districts differ most in how they staff security. Use this as a starting point and confirm current practice with each district.</p>
-  <div class="card small"><b>Required in every Washington district:</b> a harassment, intimidation and bullying (HIB) policy with a named compliance officer (RCW 28A.600.477, model policy 3207). A behavioral threat-assessment program (RCW 28A.320.123). Discipline rules that limit exclusion and require re-engagement meetings (WAC 392-400). A ban on firearms and dangerous weapons on school grounds (RCW 9.41.280). If a district has school resource officers, it must meet RCW 28A.320.124's training and agreement rules.</div>
-  <div class="cols2" style="margin-top:12px" id="polCards"></div>
-</section>
+  <h3 style="margin:34px 0 8px">How each district handles security</h3>
+  <div class="two" id="polList"></div>
 
-<section class="view" id="v-about">
-  <h2>Data and methods</h2>
-  <div class="card small" id="aboutBody"></div>
-</section>
+  <h3 style="margin:34px 0 8px">Request the records that aren't published</h3>
+  <p class="small">Washington's Public Records Act (RCW 42.56) lets anyone request district records. Send this to each district's public records officer.</p>
+  <textarea id="prr" readonly aria-label="Public records request text"></textarea>
+  <div style="margin-top:8px;display:flex;gap:10px;align-items:center"><button class="btn sm" id="copyPrr" type="button">Copy request</button><span class="small muted" id="copyMsg" role="status"></span></div>
+</div></div>
 
-</div></main>
-<footer><div class="wrap">Built from public data: OSPI Report Card files on data.wa.gov, the King County school-site layer, U.S. Dept. of Education CRDC, the Washington Healthy Youth Survey, and local news. Not affiliated with OSPI, King County, or any school district. Suppressed values follow OSPI's N&lt;10 and top/bottom-range rules.</div></footer>
+<!-- METHOD -->
+<div class="view" id="v-method"><div class="wrap prose" style="padding:30px 20px 60px" id="methodBody"></div></div>
+</main>
 
-<div class="tip" id="tip"></div>
-<div class="modal" id="modal"><div class="sheet" id="sheet"><button class="close" id="closeBtn" aria-label="Close">×</button><div id="sheetBody"></div></div></div>
+<footer><div class="wrap">An independent project built from public data: OSPI Report Card files on data.wa.gov, King County school sites, the U.S. Department of Education's Civil Rights Data Collection, the Washington Healthy Youth Survey, and local news. Not affiliated with OSPI, King County or any school district. Data pulled November 2026.</div></footer>
+<div class="tip" id="tip" role="tooltip"></div>
 
 <script>
 // Columns: 0 code,1 name,2 dist,3 area,4 type,5 grades,6 lat,7 lon,8 addr,9 zip,10 enroll,11 lowInc%,12 ELL%,13 SWD%,14 HiCap%,15 Asian%,16 Black%,17 Hisp%,18 White%,19 TwoPlus%,20 NHPI%,21 Homeless%,
@@ -298,360 +403,448 @@ const ROWS=[["2118","Emerson Elementary","S","South Seattle","P","PK-5",47.5148,
 <script>
 (function(){
 "use strict";
-// ---------- theme ----------
+/* ============ theme ============ */
 const root=document.documentElement;
-try{const t=localStorage.getItem('skl-theme');if(t)root.setAttribute('data-theme',t);}catch(e){}
-document.getElementById('themeBtn').onclick=()=>{
-  const cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
-  const nx=cur==='dark'?'light':'dark';root.setAttribute('data-theme',nx);try{localStorage.setItem('skl-theme',nx)}catch(e){}; rerenderCharts();
-};
+try{const t=localStorage.getItem('sks-theme');if(t)root.setAttribute('data-theme',t);}catch(e){}
+document.getElementById('themeBtn').onclick=()=>{const cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');const nx=cur==='dark'?'light':'dark';root.setAttribute('data-theme',nx);try{localStorage.setItem('sks-theme',nx)}catch(e){};route();};
 
-// ---------- data model ----------
-const F=['code','name','dist','area','type','grades','lat','lon','addr','zip','enr','li','ell','swd','hc','asian','black','hisp','white','two','nhpi','homeless',
- 'ela','math','sci','elaLI','mathLI','disc','discN','dSWD','dBlack','dHisp','dWhite','dAsian','dLI','grad','att','ninth','dual','sgpE','sgpM','ratio','kready',
- 'har','sex','atk','atkW','thr','thrF','gun','arr','ref'];
+/* ============ data ============ */
+const F=['code','name','dist','area','type','grades','lat','lon','addr','zip','enr','li','ell','swd','hc','asian','black','hisp','white','two','nhpi','homeless','ela','math','sci','elaLI','mathLI','disc','discN','dSWD','dBlack','dHisp','dWhite','dAsian','dLI','grad','att','ninth','dual','sgpE','sgpM','ratio','kready','har','sex','atk','atkW','thr','thrF','gun','arr','ref'];
 const DN={R:'Renton School District',K:'Kent School District',I:'Issaquah School District',B:'Bellevue School District',S:'Seattle Public Schools',C:'Charter school'};
 const AREAS=['Renton','Kent','Issaquah','Bellevue','West Seattle','South Seattle'];
-const all=ROWS.map(r=>{const o={};F.forEach((k,i)=>o[k]=r[i]);return o;});
-const schools=all.filter(o=>o.code!=='D');
-const districts=all.filter(o=>o.code==='D');
+const all=ROWS.map(r=>{const o={};F.forEach((k,i)=>o[k]=r[i]===undefined?null:r[i]);return o;});
+const schools=all.filter(o=>o.code!=='D');const districts=all.filter(o=>o.code==='D');
+const byCode={};schools.forEach(o=>byCode[o.code]=o);
 const STATE={ela:50.9,math:40.7,sci:43.3,disc:3.72,grad:82.6,att:72.7,ninth:72.0,dual:70.4,li:49.8};
 const TREND={"2022-23":{R:"4.03",K:"3.88",I:"0.87",B:"0.65",S:"2.00",ST:"3.52"},"2023-24":{R:"4.80",K:"4.55",I:"0.76",B:"0.15",S:"2.01",ST:"3.69"},"2024-25":{R:"3.76",K:"3.61",I:"0.79",B:"<0.0146",S:"1.90",ST:"3.72"}};
+function num(v){if(v==null||v==='')return null;if(typeof v==='number')return v;const s=String(v);if(/^n</i.test(s)||s==='NULL')return null;if(s[0]==='<')return parseFloat(s.slice(1))/2;if(s[0]==='>')return parseFloat(s.slice(1));const f=parseFloat(s);return isNaN(f)?null:f;}
+function exact(v){return typeof v==='number'?v:null;}
+const esc=s=>String(s==null?'':s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function fmt(v,u){u=u||'';if(v==null||v==='')return'<span class="sup">—</span>';if(typeof v==='string'){if(/^n</i.test(v))return'<span class="sup" title="Fewer than 10 students">n&lt;10</span>';return'<span class="sup" title="Suppressed for privacy; the true value is in this range">'+esc(v)+u+'</span>';}return(Math.round(v*10)/10).toLocaleString()+u;}
+function plain(v,u){u=u||'';if(v==null||v==='')return'—';if(typeof v==='string')return/^n</i.test(v)?'n<10':v+u;return(Math.round(v*10)/10).toLocaleString()+u;}
+function level(o){const g=(o.grades||'').split('-');if(g.length<2)return'Other';const n=x=>x==='PK'?-2:x==='TK'?-1:x==='K'?0:+x;const a=n(g[0]),b=n(g[1]);if(b<=0)return'Preschool';if(a>=9)return'High';if(a>=6&&b<=8)return'Middle';if(b<=6)return'Elementary';return'K-8 / 6-12';}
+schools.forEach(o=>{o.level=level(o);o.tags=[];if(o.dist==='C')o.tags.push('Charter');if(o.type==='A')o.tags.push('Alternative');if(o.type==='R')o.tags.push('Re-engagement');if(o.type==='S')o.tags.push('Special ed');if(o.type==='I')o.tags.push('Institution');
+  o.program=['S','I','R'].includes(o.type)||o.level==='Preschool'||/Virtual|Digital|H\.O\.M\.E/.test(o.name);if(/Virtual|Digital/.test(o.name))o.tags.push('Online');
+  o.hasCRDC=['har','sex','atk','atkW','thr','thrF','gun','arr','ref'].some(k=>o[k]!=null);o.lat=+o.lat||null;o.lon=+o.lon||null;});
 
-function level(o){const g=(o.grades||'').split('-');if(g.length<2)return'Other';
-  const n=x=>x==='PK'?-2:x==='TK'?-1:x==='K'?0:+x;const a=n(g[0]),b=n(g[1]);
-  if(b<=0)return'Preschool';if(a>=9)return'High';if(a>=6&&b<=8)return'Middle';if(b<=6)return'Elementary';return'Combined';}
-schools.forEach(o=>{o.level=level(o);o.badges=[];
-  if(o.dist==='C')o.badges.push('Charter');
-  if(o.type==='A')o.badges.push('Alternative');if(o.type==='R')o.badges.push('Re-engage');if(o.type==='S')o.badges.push('Special ed');if(o.type==='I')o.badges.push('Institution');
-  if(o.enr<100)o.badges.push('Small');
-  o.lat=+o.lat||null;o.lon=+o.lon||null;
-  const crdc=['har','sex','atk','atkW','thr','thrF','gun','arr','ref'];o.hasCRDC=crdc.some(k=>o[k]!=null&&o[k]!=='');
-});
-// numeric reading of a value: number, "<x" -> x/2 (midpoint), ">x" -> x, else null
-function num(v){if(v==null||v==='')return null;if(typeof v==='number')return v;const s=String(v);
-  if(/^n</i.test(s)||s==='N<10')return null;if(s[0]==='<')return parseFloat(s.slice(1))/2;if(s[0]==='>')return parseFloat(s.slice(1));const f=parseFloat(s);return isNaN(f)?null:f;}
-function isSup(v){return typeof v==='string'&&/^[<>]|N</.test(v);}
-function fmt(v,suf){if(v==null||v==='')return'<span class="sup">—</span>';if(typeof v==='string'){if(v==='N<10')return'<span class="sup">n&lt;10</span>';return'<span class="sup">'+v.replace('<','&lt;').replace('>','&gt;')+(suf||'')+'</span>';}
-  return (Math.round(v*10)/10).toLocaleString()+(suf||'');}
-function fmtPlain(v,suf){if(v==null||v==='')return'—';if(typeof v==='string')return v==='N<10'?'n<10':v+(suf||'');return(Math.round(v*10)/10).toLocaleString()+(suf||'');}
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+/* ============ composite scores ============ */
+// percentile rank within comparison group (same level among scored schools)
+const scored=schools.filter(o=>!o.program&&o.enr>=60);
+function regress(list,yk){const p=list.map(o=>({o,x:num(o.li),y:yk(o)})).filter(p=>p.x!=null&&p.y!=null);const n=p.length,mx=p.reduce((s,q)=>s+q.x,0)/n,my=p.reduce((s,q)=>s+q.y,0)/n;const b=p.reduce((s,q)=>s+(q.x-mx)*(q.y-my),0)/p.reduce((s,q)=>s+(q.x-mx)**2,0);return{a:my-b*mx,b,r2:1-p.reduce((s,q)=>s+(q.y-(my-b*mx+b*q.x))**2,0)/p.reduce((s,q)=>s+(q.y-my)**2,0)};}
+const avgEM=o=>{const e=num(o.ela),m=num(o.math);return e!=null&&m!=null?(e+m)/2:(e!=null?e:m);};
+const REG=regress(scored,avgEM);
+scored.forEach(o=>{const y=avgEM(o),x=num(o.li);o.resid=(y!=null&&x!=null)?y-(REG.a+REG.b*x):null;
+  const a=exact(o.dSWD),b=num(o.disc);o.swdRatio=(a!=null&&b&&exact(o.disc)!=null&&b>0)?a/b:null;
+  const lie=num(o.elaLI),lim=num(o.mathLI);o.liProf=lie!=null&&lim!=null?(lie+lim)/2:(lie!=null?lie:lim);});
+const groupOf=o=>o.level==='Elementary'||o.level==='Middle'||o.level==='High'?o.level:'Mixed';
+function pctRank(o,k,hiGood){const peers=scored.filter(p=>groupOf(p)===groupOf(o)||groupOf(o)==='Mixed');const v=typeof k==='function'?k(o):num(o[k]);if(v==null)return null;
+  const vals=peers.map(p=>typeof k==='function'?k(p):num(p[k])).filter(x=>x!=null);if(vals.length<8)return null;let below=0,eq=0;vals.forEach(x=>{if(hiGood?x<v:x>v)below++;else if(x===v)eq++;});return 100*(below+eq/2)/vals.length;}
+const mean=a=>{const b=a.filter(x=>x!=null);return b.length?b.reduce((s,x)=>s+x,0)/b.length:null;};
+scored.forEach(o=>{o.S={
+  acad:mean([pctRank(o,'ela',1),pctRank(o,'math',1),pctRank(o,'sci',1)]),
+  growth:mean([pctRank(o,'sgpE',1),pctRank(o,'sgpM',1)]),
+  equity:mean([pctRank(o,p=>p.resid,1),pctRank(o,p=>p.liProf,1),o.swdRatio!=null?pctRank(o,p=>p.swdRatio,0):null]),
+  climate:mean([pctRank(o,'att',1),pctRank(o,'disc',0),o.level==='High'?pctRank(o,'ninth',1):null])};
+  for(const k in o.S)if(o.S[k]!=null)o.S[k]=Math.round(o.S[k]);});
+const SCORE_L={acad:'Academics',growth:'Growth',equity:'Equity',climate:'Climate'};
+const SCORE_D={acad:'Share of students meeting state standards in reading, math and science',growth:'How fast students improve compared with similar students statewide (grades 4–8)',equity:'Results relative to the school\'s low-income share, low-income students\' own scores, and whether students with disabilities are suspended disproportionately',climate:'Regular attendance, low suspension rates and (high schools) 9th graders on track'};
+const scoreFill=v=>v==null?'var(--mute)':v>=80?'var(--q5)':v>=60?'var(--q4)':v>=40?'var(--q3)':v>=20?'var(--q2)':'var(--q1)';
+function scoreBars(o){if(!o.S)return'<div class="xs muted">Not scored: special program or too few students.</div>';
+  return'<div class="scores">'+Object.keys(SCORE_L).map(k=>{const v=o.S[k];return`<div class="sc"><span>${SCORE_L[k]}</span><div class="trk"><div class="fill" style="width:${v==null?0:Math.max(3,v)}%;background:${scoreFill(v)}"></div></div><b>${v==null?'<span class="sup">—</span>':v}</b></div>`;}).join('')+'</div>';}
 
-// ---------- metrics ----------
-const M={
- ela:{l:'ELA proficiency',u:'%',hi:true,g:'acad'},math:{l:'Math proficiency',u:'%',hi:true,g:'acad'},sci:{l:'Science proficiency',u:'%',hi:true,g:'acad'},
- elaLI:{l:'ELA, low-income students',u:'%',hi:true},mathLI:{l:'Math, low-income students',u:'%',hi:true},
- sgpE:{l:'ELA growth (median SGP)',u:'',hi:true},sgpM:{l:'Math growth (median SGP)',u:'',hi:true},
- grad:{l:'4-yr graduation',u:'%',hi:true},att:{l:'Regular attendance',u:'%',hi:true},ninth:{l:'9th grade on track',u:'%',hi:true},dual:{l:'Dual credit',u:'%',hi:true},kready:{l:'Kindergarten ready (all 6 areas)',u:'%',hi:true},
- disc:{l:'Exclusionary discipline',u:'%',hi:false},dSWD:{l:'Discipline: students w/ disabilities',u:'%',hi:false},dBlack:{l:'Discipline: Black students',u:'%',hi:false},dHisp:{l:'Discipline: Hispanic students',u:'%',hi:false},dWhite:{l:'Discipline: White students',u:'%',hi:false},dAsian:{l:'Discipline: Asian students',u:'%',hi:false},dLI:{l:'Discipline: low-income students',u:'%',hi:false},discN:{l:'Students disciplined (count)',u:'',hi:false},
- enr:{l:'Enrollment',u:''},li:{l:'Low-income',u:'%'},ell:{l:'English learners',u:'%'},swd:{l:'Students w/ disabilities',u:'%'},hc:{l:'Highly capable',u:'%'},asian:{l:'Asian',u:'%'},black:{l:'Black',u:'%'},hisp:{l:'Hispanic',u:'%'},white:{l:'White',u:'%'},two:{l:'Two or more races',u:'%'},nhpi:{l:'Pacific Islander',u:'%'},homeless:{l:'Homeless',u:'%'},ratio:{l:'Students per teacher',u:''},
- har:{l:'Harassment allegations',u:''},sex:{l:'Rape / sexual assault',u:''},atk:{l:'Physical attacks',u:''},atkW:{l:'Attacks w/ weapon',u:''},thr:{l:'Threats of attack',u:''},thrF:{l:'Threats w/ firearm/explosive',u:''},gun:{l:'Firearm/explosive possession',u:''},arr:{l:'School-related arrests',u:''},ref:{l:'Referrals to police',u:''}
-};
-
-// ---------- area aggregates ----------
+/* ============ area stats ============ */
 const AREA_DIST={Renton:'R',Kent:'K',Issaquah:'I',Bellevue:'B'};
 function weighted(list,k){let s=0,w=0;list.forEach(o=>{const v=num(o[k]);if(v!=null&&o.enr){s+=v*o.enr;w+=o.enr}});return w?s/w:null;}
-const AREA_STATS={};
-AREAS.forEach(a=>{const list=schools.filter(o=>o.area===a);const st={schools:list.length,enr:list.reduce((s,o)=>s+(o.enr||0),0),est:!AREA_DIST[a]};
-  const d=districts.find(x=>x.dist===AREA_DIST[a]);
-  ['li','ela','math','sci','disc','grad','att','ninth','dual','ell','swd','hc','elaLI','mathLI','sgpE','sgpM','kready'].forEach(k=>{st[k]=d?num(d[k]):weighted(list,k);});
-  // HS-only metrics for Seattle estimates come from high schools only (others blank)
-  AREA_STATS[a]=st;});
+const AS={};AREAS.forEach(a=>{const L=schools.filter(o=>o.area===a);const d=districts.find(x=>x.dist===AREA_DIST[a]);const st={n:L.length,enr:L.reduce((s,o)=>s+(o.enr||0),0),est:!d};
+  ['li','ela','math','sci','disc','grad','att','sgpE','sgpM','ell','hc','dSWD','dBlack'].forEach(k=>st[k]=d?num(d[k]):weighted(L,k));AS[a]=st;});
 
-// ---------- tooltip ----------
+/* ============ geo ============ */
+function km(a,b){const R=6371,t=x=>x*Math.PI/180;const dLa=t(b.lat-a.lat),dLo=t(b.lon-a.lon);const h=Math.sin(dLa/2)**2+Math.cos(t(a.lat))*Math.cos(t(b.lat))*Math.sin(dLo/2)**2;return 2*R*Math.asin(Math.sqrt(h));}
+const mi=k=>k*0.621371;
+const ZIPC={};schools.forEach(o=>{if(o.zip&&o.lat){(ZIPC[o.zip]=ZIPC[o.zip]||[]).push(o);}});
+function zipCenter(z){const L=ZIPC[z];if(!L)return null;return{lat:L.reduce((s,o)=>s+o.lat,0)/L.length,lon:L.reduce((s,o)=>s+o.lon,0)/L.length};}
+let LOC=null;try{const s=sessionStorage.getItem('sks-loc');if(s)LOC=JSON.parse(s);}catch(e){}
+function setLoc(l){LOC=l;try{l?sessionStorage.setItem('sks-loc',JSON.stringify(l)):sessionStorage.removeItem('sks-loc')}catch(e){}}
+async function geocode(q){
+  const z=q.trim().match(/^\d{5}$/);if(z){const c=zipCenter(z[0]);if(c)return{...c,label:'ZIP '+z[0],approx:true};}
+  const url='https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=us&viewbox=-122.55,47.72,-121.85,47.28&bounded=1&q='+encodeURIComponent(q+(/wa|washington/i.test(q)?'':', WA'));
+  const r=await fetch(url,{headers:{'Accept':'application/json'}});if(!r.ok)throw new Error('lookup failed');const j=await r.json();
+  if(!j.length)return null;return{lat:+j[0].lat,lon:+j[0].lon,label:j[0].display_name.split(',').slice(0,3).join(',')};}
+function myLocation(){return new Promise((res,rej)=>{if(!navigator.geolocation)return rej(new Error('Location isn\'t available in this browser.'));navigator.geolocation.getCurrentPosition(p=>res({lat:p.coords.latitude,lon:p.coords.longitude,label:'your location'}),e=>rej(new Error('Location permission was declined or unavailable.')),{timeout:10000});});}
+
+/* ============ compare list ============ */
+let CMP=[];try{CMP=JSON.parse(localStorage.getItem('sks-cmp')||'[]').filter(c=>byCode[c]);}catch(e){}
+function saveCmp(){try{localStorage.setItem('sks-cmp',JSON.stringify(CMP))}catch(e){};const c=document.getElementById('cmpCount');c.textContent=CMP.length;c.hidden=!CMP.length;}
+function toggleCmp(code){const i=CMP.indexOf(code);if(i>=0)CMP.splice(i,1);else{if(CMP.length>=4){flash('Compare holds four schools. Remove one first.');return false;}CMP.push(code);}saveCmp();return true;}
+function cmpBtn(code){const on=CMP.includes(code);return`<button class="addbtn${on?' on':''}" data-cmp="${code}" type="button" aria-pressed="${on}">${on?'Added to compare':'Add to compare'}</button>`;}
+function wireCmp(scope){scope.querySelectorAll('[data-cmp]').forEach(b=>b.onclick=e=>{e.stopPropagation();if(toggleCmp(b.dataset.cmp)){const on=CMP.includes(b.dataset.cmp);b.classList.toggle('on',on);b.setAttribute('aria-pressed',on);b.textContent=on?'Added to compare':'Add to compare';}});}
+function flash(msg){const t=tip;t.innerHTML=esc(msg);t.style.display='block';t.style.left='50%';t.style.top='70px';t.style.transform='translateX(-50%)';setTimeout(()=>{t.style.display='none';t.style.transform='';},2200);}
+saveCmp();
+
+/* ============ tooltip ============ */
 const tip=document.getElementById('tip');
-function showTip(html,ev){tip.innerHTML=html;tip.style.display='block';const x=(ev.touches?ev.touches[0].clientX:ev.clientX),y=(ev.touches?ev.touches[0].clientY:ev.clientY);
-  const w=tip.offsetWidth,h=tip.offsetHeight;let L=x+14,T=y+14;if(L+w>innerWidth-6)L=x-w-14;if(T+h>innerHeight-6)T=y-h-14;tip.style.left=Math.max(6,L)+'px';tip.style.top=Math.max(6,T)+'px';}
+function showTip(h,ev){tip.innerHTML=h;tip.style.display='block';tip.style.transform='';const x=ev.clientX,y=ev.clientY,w=tip.offsetWidth,hh=tip.offsetHeight;let L=x+14,T=y+14;if(L+w>innerWidth-8)L=x-w-14;if(T+hh>innerHeight-8)T=y-hh-14;tip.style.left=Math.max(8,L)+'px';tip.style.top=Math.max(8,T)+'px';}
 function hideTip(){tip.style.display='none';}
-document.addEventListener('scroll',hideTip,{passive:true});
+addEventListener('scroll',hideTip,{passive:true});
 
-// ---------- router ----------
-const views=['overview','schools','map','equity','safety','wellbeing','policies','about'];
-function route(){const h=(location.hash||'#overview').slice(1);const v=views.includes(h)?h:'overview';
-  views.forEach(x=>document.getElementById('v-'+x).classList.toggle('on',x===v));
-  document.querySelectorAll('#tabs a').forEach(a=>{const on=a.getAttribute('href')==='#'+v;a.classList.toggle('on',on);if(on&&a.scrollIntoView)try{a.scrollIntoView({block:'nearest',inline:'center'})}catch(e){}});
-  hideTip();const md=document.getElementById('modal');if(md)md.classList.remove('on');render(v);}
-addEventListener('hashchange',route);
-const rendered={};
-function render(v){({overview:renderOverview,schools:renderSchools,map:renderMap,equity:renderEquity,safety:renderSafety,wellbeing:renderWellbeing,policies:renderPolicies,about:renderAbout})[v]();}
-function rerenderCharts(){const h=(location.hash||'#overview').slice(1);render(views.includes(h)?h:'overview');}
+/* ============ router ============ */
+const VIEWS=['home','find','compare','findings','safety','method'];
+function route(){const h=(location.hash||'#home').slice(1);hideTip();
+  let v=VIEWS.includes(h)?h:'home';let code=null;const m=h.match(/^s-(\d+)$/);if(m&&byCode[m[1]]){v='school';code=m[1];}
+  document.querySelectorAll('.view').forEach(el=>el.classList.toggle('on',el.id==='v-'+v));
+  document.querySelectorAll('#nav a').forEach(a=>{const on=a.getAttribute('href')==='#'+v;a.classList.toggle('on',on);if(on&&a.scrollIntoView)try{a.scrollIntoView({block:'nearest',inline:'nearest'})}catch(e){}});
+  ({home:renderHome,find:renderFind,compare:renderCompare,findings:renderFindings,safety:renderSafety,method:renderMethod,school:()=>renderSchool(code)})[v]();
+  document.title=(v==='school'?byCode[code].name+' · ':v==='home'?'':document.querySelector('#nav a.on')?.textContent.replace(/\d+$/,'')+' · ')+'South King Schools';}
+let lastHash=location.hash;
+addEventListener('hashchange',()=>{const prev=lastHash;lastHash=location.hash;route();if(!(prev||'').startsWith('#find')||!location.hash.startsWith('#find'))scrollTo(0,0);});
 
-// ---------- shared filters ----------
-const S={areas:new Set(AREAS),level:'All',q:'',group:'acad',sort:{k:'ela',d:-1},showSmall:true};
-function filterBar(el,opts){
-  el.innerHTML='';
-  AREAS.forEach(a=>{const b=document.createElement('button');b.type='button';b.className='chip'+(S.areas.has(a)?' on':'');b.textContent=a;
-    b.onclick=()=>{if(S.areas.has(a)&&S.areas.size===AREAS.length){S.areas=new Set([a]);}else if(S.areas.has(a)){S.areas.delete(a);if(!S.areas.size)S.areas=new Set(AREAS);}else S.areas.add(a);opts.on();};el.appendChild(b);});
-  const sel=document.createElement('select');sel.setAttribute('aria-label','School level');['All','Elementary','Middle','High','Combined','Preschool','Other'].forEach(l=>{const o=document.createElement('option');o.value=l;o.textContent=l==='All'?'All levels':l;if(S.level===l)o.selected=true;sel.appendChild(o)});
-  sel.onchange=()=>{S.level=sel.value;opts.on();};el.appendChild(sel);
-  if(opts.search){const s=document.createElement('input');s.type='search';s.placeholder='Find a school…';s.value=S.q;s.oninput=()=>{S.q=s.value;opts.on(true);};el.appendChild(s);}
+/* ============ HOME ============ */
+let homeDone=false;
+function renderHome(){
+  document.getElementById('heroStats').innerHTML=`<div><b class="num">177</b>schools</div><div><b class="num">${(schools.reduce((s,o)=>s+(o.enr||0),0)/1000).toFixed(0)}k</b>students</div><div><b class="num">40+</b>measures each</div>`;
+  drawHeroMap();
+  if(!homeDone){wireHeroSearch();homeDone=true;}
+  renderHomeFindings();
+  const cols=[['li','Low-income','%'],['ela','Reading','%'],['math','Math','%'],['sgpE','Growth (reading)',''],['disc','Suspended/expelled','%'],['att','Regular attendance','%'],['grad','4-yr graduation','%']];
+  document.getElementById('areaTbl').innerHTML='<thead><tr><th>Area</th><th>Schools</th>'+cols.map(c=>`<th>${c[1]}</th>`).join('')+'</tr></thead><tbody>'+
+    AREAS.map(a=>`<tr><td><a href="#find" data-area="${a}">${a}</a>${AS[a].est?' <span class="xs muted">est.</span>':''}</td><td>${AS[a].n}</td>`+cols.map(c=>{const v=AS[a][c[0]];return`<td>${v==null?'—':(c[0]==='disc'&&v<0.05?'&lt;0.05':(Math.round(v*10)/10))+c[2]}</td>`;}).join('')+'</tr>').join('')+
+    `<tr class="ref"><td>Washington State</td><td></td>`+cols.map(c=>`<td>${STATE[c[0]]!=null?STATE[c[0]]+c[2]:''}</td>`).join('')+'</tr></tbody>';
+  document.querySelectorAll('#areaTbl [data-area]').forEach(a=>a.onclick=()=>{FS.areas=new Set([a.dataset.area]);});
 }
-function filtered(){const q=S.q.trim().toLowerCase();return schools.filter(o=>S.areas.has(o.area)&&(S.level==='All'||o.level===S.level)&&(!q||o.name.toLowerCase().includes(q)||(o.zip||'').includes(q)));}
+function proj(W,H,pad,pts){const kx=Math.cos(47.47*Math.PI/180);const xs=pts.map(o=>o.lon*kx),ys=pts.map(o=>o.lat);const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
+  const s=Math.min((W-2*pad)/(maxX-minX),(H-2*pad)/(maxY-minY));const ox=(W-(maxX-minX)*s)/2,oy=(H-(maxY-minY)*s)/2;return{x:o=>ox+(o.lon*kx-minX)*s,y:o=>oy+(maxY-o.lat)*s,s};}
+function drawHeroMap(){const el=document.getElementById('heroMap');const W=el.clientWidth||500,H=(el.clientHeight||440)-(innerWidth<=900?22:0);const pts=schools.filter(o=>o.lat);
+  const P=proj(W,H,W<500?18:30,pts);
+  let s=`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">`;
+  pts.slice().sort((a,b)=>b.enr-a.enr).forEach(o=>{const r=Math.max(2.5,Math.sqrt(o.enr||100)/(W<500?6:4.4));const sc=o.S?o.S.acad:null;
+    s+=`<circle cx="${P.x(o).toFixed(1)}" cy="${P.y(o).toFixed(1)}" r="${r.toFixed(1)}" fill="${sc==null?'var(--mute)':scoreFill(sc)}" fill-opacity=".9" stroke="var(--paper)" stroke-width="1.5"/>`;});
+  const off={'West Seattle':[-6,-26],'South Seattle':[0,-34],'Renton':[34,-6],'Kent':[0,44],'Issaquah':[0,-40],'Bellevue':[0,-36]};
+  AREAS.forEach(a=>{const L=pts.filter(o=>o.area===a);const cx=L.reduce((t,o)=>t+P.x(o),0)/L.length,cy=L.reduce((t,o)=>t+P.y(o),0)/L.length;const hw=a.length*3.6+6;
+    s+=`<text class="lbl" x="${Math.min(W-hw,Math.max(hw,cx+off[a][0]))}" y="${Math.max(14,Math.min(H-6,cy+off[a][1]))}" text-anchor="middle">${a}</text>`;});
+  s+=`</svg>`;el.innerHTML=s+`<div class="xs muted" style="position:absolute;right:${W<500?16:6}px;bottom:6px;display:flex;gap:6px;align-items:center">Academics score <span class="ramp">${['q1','q2','q3','q4','q5'].map(q=>`<i style="background:var(--${q})"></i>`).join('')}</span></div>`;}
+function wireHeroSearch(){
+  const q=document.getElementById('heroQ'),sg=document.getElementById('heroSuggest'),msg=document.getElementById('heroMsg');let act=-1,items=[];
+  const close=()=>{sg.classList.remove('on');act=-1;};
+  q.addEventListener('input',()=>{const t=q.value.trim().toLowerCase();if(t.length<2||/^\d/.test(t)){close();return;}
+    items=schools.filter(o=>o.name.toLowerCase().includes(t)).slice(0,6);
+    sg.innerHTML=items.map((o,i)=>`<button type="button" role="option" data-i="${i}">${esc(o.name)}<span>${o.area}, ${o.grades}</span></button>`).join('');sg.classList.toggle('on',items.length>0);
+    sg.querySelectorAll('button').forEach(b=>b.onclick=()=>{location.hash='s-'+items[+b.dataset.i].code;});});
+  q.addEventListener('keydown',e=>{const bs=[...sg.querySelectorAll('button')];if(!bs.length)return;if(e.key==='ArrowDown'){act=Math.min(bs.length-1,act+1);e.preventDefault();}else if(e.key==='ArrowUp'){act=Math.max(0,act-1);e.preventDefault();}else if(e.key==='Escape'){close();return;}else return;bs.forEach((b,i)=>b.classList.toggle('act',i===act));});
+  document.getElementById('heroForm').onsubmit=async e=>{e.preventDefault();const t=q.value.trim();if(!t)return;
+    const bs=[...sg.querySelectorAll('button')];if(act>=0&&bs[act]){bs[act].click();return;}
+    const hit=schools.filter(o=>o.name.toLowerCase().includes(t.toLowerCase()));
+    if(hit.length===1){location.hash='s-'+hit[0].code;return;}
+    if(hit.length>1&&!/\d/.test(t)){FS.q=t;setLoc(null);location.hash='find';return;}
+    msg.textContent='Looking up that address…';
+    try{const l=await geocode(t);if(!l){msg.textContent='No match in this area. Try a street address with a city, or a ZIP code.';return;}setLoc(l);FS.q='';FS.sort='dist';msg.textContent='';location.hash='find';}
+    catch(err){msg.textContent='Address lookup isn\'t reachable from this page. Try a ZIP code, or open the public site.';}};
+  document.getElementById('heroLoc').onclick=async()=>{msg.textContent='Finding you…';try{const l=await myLocation();setLoc(l);FS.sort='dist';msg.textContent='';location.hash='find';}catch(err){msg.textContent=err.message+' You can type a ZIP code instead.';}};
+  document.addEventListener('click',e=>{if(!e.target.closest('#heroSuggest')&&e.target!==q)close();});
+}
+function renderHomeFindings(){
+  const el=document.getElementById('findingsHome');
+  const swd=['R','K','I','S'].map(c=>{const d=districts.find(x=>x.dist===c);return{l:{R:'Renton',K:'Kent',I:'Issaquah',S:'Seattle'}[c],a:num(d.disc),g:num(d.dSWD)};});
+  const top=scored.filter(o=>o.resid!=null&&o.level!=='High').sort((a,b)=>b.resid-a.resid).slice(0,3);
+  el.innerHTML=`
+  <div class="finding"><div><h3>Family income predicts most of a school's test scores.</h3><p>Across these schools, the share of low-income students explains about ${Math.round(REG.r2*100)}% of the variation in reading and math proficiency. Each 10-point rise in low-income share comes with about ${Math.abs(REG.b*10).toFixed(0)} fewer points of proficiency. Ranking schools on raw scores mostly ranks neighborhoods.</p><p><a href="#findings">See every school against the trend</a></p></div><div class="chartbox" id="fScatter"></div></div>
+  <div class="finding"><div><h3>Some schools beat their odds by 20 points or more.</h3><p>${top.map(o=>`<a href="#s-${o.code}">${esc(o.name)}</a>`).join(', ')} score far above what their low-income share predicts. That gap is where instruction shows up. The Equity score on each school page is built from it.</p></div><div class="chartbox" id="fBeat"></div></div>
+  <div class="finding"><div><h3>Students with disabilities are suspended at two to four times the average rate.</h3><p>In every district here, students with disabilities lose more days to suspension and expulsion than their classmates. A high ratio usually means behavior support plans aren't working, and those students fall further behind with each removal.</p><p><a href="#findings">See other student groups</a></p></div><div class="chartbox" id="fSwd"></div></div>
+  <div class="finding"><div><h3>Most serious violence happens near schools, not inside them.</h3><p>The fatal shootings of students since 2024 happened at bus stops, parks and community centers next to Rainier Beach, Chief Sealth and Kent-Meridian. The schools themselves reported few weapons incidents. For families, the commute and after-school hours matter as much as the building.</p><p><a href="#safety">See the incident timeline and records</a></p></div><div class="chartbox"><ul class="timeline" id="fNews"></ul></div></div>`;
+  miniScatter(document.getElementById('fScatter'));
+  // beat-the-odds bars
+  const b=document.getElementById('fBeat');const W=Math.min(b.clientWidth-32||520,620),rh=40,H=top.length*rh*2+20,padL=0;
+  const mx=100;let s=`<svg width="${W}" height="${H}">`;top.forEach((o,i)=>{const y=i*rh*2+8;const exp=REG.a+REG.b*num(o.li),act=avgEM(o);const X=v=>v/mx*(W-60);
+    s+=`<text x="0" y="${y+12}" style="fill:var(--ink);font-weight:600">${esc(o.name)}</text><text x="${W}" y="${y+12}" text-anchor="end">${num(o.li)}% low-income</text>`;
+    s+=`<rect x="0" y="${y+20}" width="${X(exp)}" height="10" rx="4" fill="var(--mute)"/><text x="${X(exp)+6}" y="${y+29}" class="num">${exp.toFixed(0)}% expected</text>`;
+    s+=`<rect x="0" y="${y+34}" width="${X(act)}" height="10" rx="4" fill="var(--d1)"/><text x="${X(act)+6}" y="${y+43}" class="num" style="fill:var(--ink);font-weight:600">${act.toFixed(0)}% actual</text>`;});
+  b.innerHTML=s+'</svg><div class="legend"><span><i style="background:var(--mute)"></i>Expected from low-income share</span><span><i style="background:var(--d1)"></i>Actual reading + math average</span></div>';
+  // swd bars
+  pairBars(document.getElementById('fSwd'),swd,'Students with disabilities');
+  document.getElementById('fNews').innerHTML=NEWS.slice(0,4).map(n=>`<li><div class="d">${n.d}, ${n.a}</div><div class="small">${esc(n.t.split('. ')[0].replace(/\.$/,''))}.</div></li>`).join('');
+}
+function pairBars(el,rows,label){const W=Math.min((el.clientWidth||520)-32,620),rh=46,padL=78,H=rows.length*rh+8;const max=Math.max(...rows.map(r=>Math.max(r.a||0,r.g||0)))*1.15||1;const x=v=>padL+(W-padL-70)*(v||0)/max;
+  let s=`<svg width="${W}" height="${H}">`;rows.forEach((r,i)=>{const y=i*rh+4;s+=`<text x="0" y="${y+21}" style="fill:var(--ink)">${r.l}</text>`;
+    s+=`<rect x="${padL}" y="${y+4}" width="${Math.max(2,x(r.a)-padL)}" height="13" rx="4" fill="var(--mute)"/><text x="${x(r.a)+5}" y="${y+15}" class="num">${r.raw?esc(plain(r.rawA,'%')):(r.a!=null?r.a.toFixed(2)+'%':'—')}</text>`;
+    s+=`<rect x="${padL}" y="${y+20}" width="${Math.max(2,x(r.g)-padL)}" height="13" rx="4" fill="var(--d1)"/><text x="${x(r.g)+5}" y="${y+31}" class="num" style="fill:var(--ink);font-weight:600">${r.raw?esc(plain(r.rawG,'%')):(r.g!=null?r.g.toFixed(2)+'%':'—')}${r.a&&r.g&&!r.raw?'  '+(r.g/r.a).toFixed(1)+'×':''}</text>`;});
+  el.innerHTML=s+`</svg><div class="legend"><span><i style="background:var(--mute)"></i>All students</span><span><i style="background:var(--d1)"></i>${label}</span></div>`;}
 
-// ---------- overview ----------
-const OV_METRICS=['ela','math','sci','elaLI','mathLI','sgpE','sgpM','disc','grad','att','ninth','dual','kready','li','ell','hc'];
-function renderOverview(){
-  const cards=document.getElementById('areaCards');
-  cards.innerHTML=AREAS.map(a=>{const s=AREA_STATS[a];return`<div class="card area-card"><h4>${a}</h4><div class="sub">${s.schools} schools · ${s.enr.toLocaleString()} students${s.est?' · estimate':''}</div>
-   <div class="kv"><span>Low-income</span><b>${fmtPlain(s.li,'%')}</b><span>ELA proficient</span><b>${fmtPlain(s.ela,'%')}</b><span>Math proficient</span><b>${fmtPlain(s.math,'%')}</b><span>Discipline rate</span><b>${s.disc!=null&&s.disc<0.05?'&lt;0.05%':fmtPlain(s.disc,'%')}</b><span>4-yr graduation</span><b>${fmtPlain(s.grad,'%')}</b><span>Attendance</span><b>${fmtPlain(s.att,'%')}</b></div></div>`;}).join('')+
-   `<div class="card area-card"><h4>Washington State</h4><div class="sub">Benchmark</div><div class="kv"><span>Low-income</span><b>${STATE.li}%</b><span>ELA proficient</span><b>${STATE.ela}%</b><span>Math proficient</span><b>${STATE.math}%</b><span>Discipline rate</span><b>${STATE.disc}%</b><span>4-yr graduation</span><b>${STATE.grad}%</b><span>Attendance</span><b>${STATE.att}%</b></div></div>`;
-  const sel=document.getElementById('ovMetric');if(!sel.options.length){OV_METRICS.forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=M[k].l;sel.appendChild(o)});sel.onchange=renderOverview;}
-  const k=sel.value||'ela';
-  const data=AREAS.map(a=>({a,v:AREA_STATS[a][k],est:AREA_STATS[a].est}));
-  hbar(document.getElementById('ovChart'),data,{unit:M[k].u,ref:STATE[k],refLabel:'WA State',hi:M[k].hi,onTip:d=>`<b>${d.a}</b>${M[k].l}: ${fmtPlain(d.v==null?null:Math.round(d.v*10)/10,M[k].u)}${d.est?'<br><span class="muted">Estimated from schools</span>':''}`});
-  document.getElementById('ovNote').textContent=(['grad','ninth','dual'].includes(k)?'High-school measure. ':'')+(k==='disc'?'Lower is better. Bellevue reported almost no exclusions in 2024-25 (see Safety). ':'')+'West/South Seattle values are enrollment-weighted from their schools; suppressed "<x" values are counted at x/2.';
+/* ============ scatter ============ */
+function scatter(el,opts){const k=opts.k,hl=opts.hl||'None';const pts=scored.filter(o=>o.level!=='Preschool').map(o=>({o,x:num(o.li),y:k==='avg'?avgEM(o):num(o[k])})).filter(p=>p.x!=null&&p.y!=null);
+  const R=regress(pts.map(p=>p.o),o=>k==='avg'?avgEM(o):num(o[k]));pts.forEach(p=>p.res=p.y-(R.a+R.b*p.x));
+  const W=Math.max(280,(el.clientWidth||600)-(opts.pad||0)),H=opts.h||Math.min(420,Math.max(260,W*.58)),pl=38,pr=10,pt=10,pb=36;const maxY=Math.max(...pts.map(p=>p.y))*1.05;
+  const X=v=>pl+(W-pl-pr)*v/100,Y=v=>H-pb-(H-pt-pb)*v/maxY;
+  let s=`<svg width="${W}" height="${H}" role="img" aria-label="Scatter of schools by low-income share">`;
+  for(let i=0;i<=4;i++){const v=maxY/4*i;s+=`<line class="gl" x1="${pl}" x2="${W-pr}" y1="${Y(v)}" y2="${Y(v)}"/><text x="${pl-6}" y="${Y(v)+4}" text-anchor="end" class="num">${Math.round(v)}</text>`;}
+  for(let v=0;v<=100;v+=25)s+=`<text x="${X(v)}" y="${H-pb+15}" text-anchor="middle" class="num">${v}%</text>`;
+  s+=`<text x="${(W+pl)/2}" y="${H-3}" text-anchor="middle" style="fill:var(--ink-2)">Low-income students</text>`;
+  s+=`<line x1="${X(0)}" y1="${Y(Math.max(0,R.a))}" x2="${X(100)}" y2="${Y(Math.max(0,R.a+R.b*100))}" stroke="var(--ink-2)" stroke-width="2" stroke-dasharray="6 4"/>`;
+  pts.slice().sort((a,b)=>(a.o.area===hl)-(b.o.area===hl)).forEach(p=>{const on=p.o.area===hl;s+=`<circle data-c="${p.o.code}" cx="${X(p.x).toFixed(1)}" cy="${Y(p.y).toFixed(1)}" r="${on?6:4.6}" fill="${on?'var(--hl)':'var(--d1)'}" fill-opacity="${hl==='None'?.7:on?.95:.25}" stroke="var(--surface)" stroke-width="1.5" style="cursor:pointer"/>`;});
+  el.innerHTML=s+'</svg>'+(opts.legend||'');
+  el.querySelectorAll('circle').forEach(c=>{const p=pts.find(q=>q.o.code===c.dataset.c);const f=ev=>showTip(`<b>${esc(p.o.name)}</b>${p.o.area}<br>${p.x}% low-income<br>${opts.lbl}: ${p.y.toFixed(1)}${opts.u||''} (${p.res>=0?'+':''}${p.res.toFixed(1)} vs trend)`,ev);
+    c.addEventListener('mousemove',f);c.addEventListener('mouseleave',hideTip);c.addEventListener('click',()=>{location.hash='s-'+p.o.code;});});
+  return{pts,R};}
+function miniScatter(el){scatter(el,{k:'avg',lbl:'Reading + math',u:'%',pad:32,h:300,legend:'<div class="legend"><span><i style="background:var(--d1)"></i>Each dot is a school</span><span>Dashed line: the trend</span></div>'});}
+
+/* ============ FIND ============ */
+const FS={areas:new Set(AREAS),levels:new Set(['Elementary','Middle','High','K-8 / 6-12']),inc:new Set(['charter','alt']),sort:'acad',q:'',view:'list',limit:30};
+const SORTS={acad:'Academics score',growth:'Growth score',equity:'Equity score',climate:'Climate score',dist:'Distance',name:'Name',enr:'Enrollment',li:'Low-income share'};
+let findWired=false;
+function renderFind(){
+  if(!findWired){findWired=true;
+    document.getElementById('filterToggle').onclick=e=>{const r=document.getElementById('rail');const o=r.classList.toggle('open');e.target.setAttribute('aria-expanded',o);};
+    document.getElementById('viewSeg').querySelectorAll('button').forEach(b=>b.onclick=()=>{FS.view=b.dataset.v;renderFind();});
+    const fq=document.getElementById('findQ');
+    fq.addEventListener('input',()=>{if(!/\d/.test(fq.value)){FS.q=fq.value;FS.limit=30;drawResults();}});
+    document.getElementById('findForm').onsubmit=async e=>{e.preventDefault();const t=fq.value.trim();if(!/\d/.test(t)){FS.q=t;drawResults();return;}
+      const lb=document.getElementById('locBar');lb.hidden=false;lb.textContent='Looking up that address…';
+      try{const l=await geocode(t);if(!l){lb.textContent='No match in this area. Try a street address with a city, or a ZIP code.';return;}setLoc(l);FS.q='';fq.value='';FS.sort='dist';renderFind();}
+      catch(err){lb.textContent='Address lookup isn\'t reachable from this page. A ZIP code works anywhere.';}};
+  }
+  document.getElementById('findQ').value=FS.q;
+  const cnt=(fn)=>schools.filter(fn).length;
+  document.getElementById('fArea').innerHTML=AREAS.map(a=>`<label><input type="checkbox" data-a="${a}"${FS.areas.has(a)?' checked':''}>${a}<span class="ct">${cnt(o=>o.area===a)}</span></label>`).join('');
+  document.getElementById('fLevel').innerHTML=['Elementary','Middle','High','K-8 / 6-12'].map(l=>`<label><input type="checkbox" data-l="${l}"${FS.levels.has(l)?' checked':''}>${l}<span class="ct">${cnt(o=>o.level===l)}</span></label>`).join('');
+  document.getElementById('fInc').innerHTML=[['charter','Charter schools'],['alt','Alternative schools'],['prog','Special programs & online']].map(([k,l])=>`<label><input type="checkbox" data-i="${k}"${FS.inc.has(k)?' checked':''}>${l}</label>`).join('');
+  document.querySelectorAll('#fArea input').forEach(i=>i.onchange=()=>{i.checked?FS.areas.add(i.dataset.a):FS.areas.delete(i.dataset.a);FS.limit=30;drawResults();});
+  document.querySelectorAll('#fLevel input').forEach(i=>i.onchange=()=>{i.checked?FS.levels.add(i.dataset.l):FS.levels.delete(i.dataset.l);FS.limit=30;drawResults();});
+  document.querySelectorAll('#fInc input').forEach(i=>i.onchange=()=>{i.checked?FS.inc.add(i.dataset.i):FS.inc.delete(i.dataset.i);FS.limit=30;drawResults();});
+  const ss=document.getElementById('fSort');ss.innerHTML=Object.entries(SORTS).filter(([k])=>k!=='dist'||LOC).map(([k,l])=>`<option value="${k}"${FS.sort===k?' selected':''}>${l}</option>`).join('');
+  if(FS.sort==='dist'&&!LOC)FS.sort='acad';ss.value=FS.sort;ss.onchange=()=>{FS.sort=ss.value;drawResults();};
+  document.querySelectorAll('#viewSeg button').forEach(b=>b.classList.toggle('on',b.dataset.v===FS.view));
+  const lb=document.getElementById('locBar');
+  if(LOC){lb.hidden=false;lb.innerHTML=`Sorted by distance from <b>${esc(LOC.label)}</b>${LOC.approx?' (ZIP center)':''}. Nearest isn't always the assigned school; check your district's boundary map. <button class="linkbtn" id="clearLoc" type="button">Clear</button>`;document.getElementById('clearLoc').onclick=()=>{setLoc(null);if(FS.sort==='dist')FS.sort='acad';renderFind();};}
+  else lb.hidden=true;
+  drawResults();
 }
-function hbar(el,data,o){
-  const W=Math.min(el.clientWidth||640,900),rowH=34,padL=Math.min(120,W*.3),padR=70,H=data.length*rowH+44;
-  const max=Math.max(o.ref||0,...data.map(d=>d.v||0))*1.08||1;const x=v=>padL+(W-padL-padR)*v/max;
-  let s=`<svg width="${W}" height="${H}" role="img" aria-label="Bar chart">`;
-  const ticks=4;for(let i=0;i<=ticks;i++){const v=max/ticks*i;s+=`<line class="grid" x1="${x(v)}" x2="${x(v)}" y1="6" y2="${H-24}"/><text x="${x(v)}" y="${H-8}" text-anchor="middle" class="small">${Math.round(v)}</text>`;}
-  data.forEach((d,i)=>{const y=18+i*rowH;s+=`<text x="${padL-8}" y="${y+15}" text-anchor="end" style="fill:var(--ink)">${esc(d.a)}</text>`;
-    if(d.v!=null){const w=Math.max(2,x(d.v)-padL);s+=`<rect data-i="${i}" x="${padL}" y="${y+3}" width="${w}" height="18" rx="4" fill="var(--s1)" ${d.est?'fill-opacity=".7"':''}/><text class="barlbl" x="${padL+w+6}" y="${y+16}" style="fill:var(--ink)">${(Math.round(d.v*10)/10)}${o.unit||''}</text>`;}
-    else s+=`<text x="${padL+6}" y="${y+16}" class="muted">no data</text>`;
-    s+=`<rect data-i="${i}" x="0" y="${y}" width="${W}" height="${rowH}" fill="transparent"/>`;});
-  if(o.ref!=null){s+=`<line x1="${x(o.ref)}" x2="${x(o.ref)}" y1="4" y2="${H-24}" stroke="var(--ink)" stroke-width="2" stroke-dasharray="4 3"/><text x="${Math.min(x(o.ref)+4,W-90)}" y="9" style="fill:var(--ink);font-weight:600;font-size:11px">${o.refLabel} ${o.ref}${o.unit||''}</text>`;}
-  s+='</svg>';el.innerHTML=s;
-  el.querySelectorAll('rect[data-i]').forEach(r=>{const d=data[+r.dataset.i];const f=ev=>showTip(o.onTip(d),ev);r.addEventListener('mousemove',f);r.addEventListener('click',f);r.addEventListener('mouseleave',hideTip);});
+function findList(){const q=FS.q.trim().toLowerCase();return schools.filter(o=>FS.areas.has(o.area)&&(FS.levels.has(o.level)||(o.level==='Preschool'||o.level==='Other')&&FS.inc.has('prog'))
+  &&(o.dist!=='C'||FS.inc.has('charter'))&&(o.type!=='A'||FS.inc.has('alt'))&&(!o.program||FS.inc.has('prog'))&&(!q||o.name.toLowerCase().includes(q)||String(o.zip).includes(q)));}
+function sortList(L){const k=FS.sort;if(LOC)L.forEach(o=>o._d=o.lat?mi(km(LOC,o)):null);
+  const val=o=>k==='dist'?o._d:k==='name'?null:k in SCORE_L?(o.S?o.S[k]:null):num(o[k]);
+  L.sort((a,b)=>{if(k==='name')return a.name.localeCompare(b.name);const va=val(a),vb=val(b);if(va==null&&vb==null)return a.name.localeCompare(b.name);if(va==null)return 1;if(vb==null)return-1;return k==='dist'?va-vb:vb-va;});return L;}
+function drawResults(){const L=sortList(findList());const out=document.getElementById('findOut');
+  document.getElementById('findTitle').textContent=FS.areas.size===AREAS.length?'All schools':[...FS.areas].join(', ');
+  document.getElementById('findCount').textContent=`${L.length} schools, sorted by ${SORTS[FS.sort].toLowerCase()}`;
+  if(!L.length){out.innerHTML='<div class="empty">No schools match. Turn on more areas or levels in the filters.</div>';return;}
+  if(FS.view==='map')return drawFindMap(out,L);
+  if(FS.view==='table')return drawFindTable(out,L);
+  out.innerHTML=L.slice(0,FS.limit).map(o=>`<div class="res" data-c="${o.code}" tabindex="0" role="link" aria-label="${esc(o.name)}">
+    <div><div class="rname">${esc(o.name)}${o.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+    <div class="rmeta">${o._d!=null&&LOC?`<span class="dist">${o._d.toFixed(1)} mi</span> · `:''}${o.area} · grades ${o.grades} · ${o.enr.toLocaleString()} students</div>
+    <div class="rfacts"><span>Reading <b>${plain(o.ela,'%')}</b></span><span>Math <b>${plain(o.math,'%')}</b></span><span>Low-income <b>${plain(o.li,'%')}</b></span>${o.att!=null?`<span>Attendance <b>${plain(o.att,'%')}</b></span>`:''}</div>
+    ${cmpBtn(o.code)}</div><div>${scoreBars(o)}</div></div>`).join('')+(L.length>FS.limit?`<button class="btn ghost more" id="moreBtn" type="button">Show ${Math.min(30,L.length-FS.limit)} more of ${L.length-FS.limit}</button>`:'');
+  out.querySelectorAll('.res').forEach(r=>{r.onclick=()=>{location.hash='s-'+r.dataset.c;};r.onkeydown=e=>{if(e.key==='Enter')location.hash='s-'+r.dataset.c;};});
+  wireCmp(out);const mb=document.getElementById('moreBtn');if(mb)mb.onclick=()=>{FS.limit+=30;drawResults();};}
+const MAPM={acad:'Academics score',growth:'Growth score',equity:'Equity score',climate:'Climate score',li:'Low-income share',disc:'Suspension rate'};
+let mapK='acad';
+function drawFindMap(out,L){out.innerHTML=`<div style="display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-bottom:10px"><label class="small muted" for="mapK">Shade by</label><select id="mapK" style="width:auto">${Object.entries(MAPM).map(([k,l])=>`<option value="${k}"${k===mapK?' selected':''}>${l}</option>`).join('')}</select><span class="ramp" id="mapRamp"></span></div><div class="mapwrap"><div id="fm"></div></div><p class="xs muted" style="margin-top:6px">School coordinates from King County's school-site layer, drawn without a basemap. Tap a dot to open the school.</p>`;
+  document.getElementById('mapK').onchange=e=>{mapK=e.target.value;drawFindMap(out,L);};
+  const el=document.getElementById('fm');const pts=L.filter(o=>o.lat);const W=el.clientWidth||700,H=Math.min(640,Math.max(360,W*.95));const P=proj(W,H,W<500?14:26,schools.filter(o=>o.lat));
+  const val=o=>mapK in SCORE_L?(o.S?o.S[mapK]:null):num(o[mapK]);const vals=pts.map(val).filter(v=>v!=null).sort((a,b)=>a-b);
+  const qs=mapK in SCORE_L?[20,40,60,80]:[.2,.4,.6,.8].map(p=>vals[Math.floor(p*(vals.length-1))]);const fills=['var(--q1)','var(--q2)','var(--q3)','var(--q4)','var(--q5)'];const bin=v=>v==null?-1:qs.filter(q=>v>=q).length;
+  let s=`<svg width="${W}" height="${H}">`;
+  if(LOC){s+=`<circle cx="${P.x(LOC)}" cy="${P.y(LOC)}" r="7" fill="none" stroke="var(--hl)" stroke-width="3"/>`;}
+  pts.slice().sort((a,b)=>b.enr-a.enr).forEach(o=>{const b=bin(val(o));const r=Math.max(3.5,Math.sqrt(o.enr||100)/4.2*Math.max(.6,Math.min(1,W/900)));s+=`<circle data-c="${o.code}" cx="${P.x(o).toFixed(1)}" cy="${P.y(o).toFixed(1)}" r="${r.toFixed(1)}" fill="${b<0?'var(--mute)':fills[b]}" stroke="var(--surface)" stroke-width="1.5" style="cursor:pointer"/>`;});
+  el.innerHTML=s+'</svg>';
+  document.getElementById('mapRamp').innerHTML=fills.map(c=>`<i style="background:${c}"></i>`).join('')+` <span>${mapK in SCORE_L?'0 → 100':(Math.round(vals[0]*10)/10)+' → '+(Math.round(vals[vals.length-1]*10)/10)+'%'}</span>`+(LOC?' <span style="margin-left:8px"><i style="background:none;border:2px solid var(--hl);border-radius:50%;width:10px;height:10px"></i> you</span>':'');
+  el.querySelectorAll('circle[data-c]').forEach(c=>{const o=byCode[c.dataset.c];c.addEventListener('mousemove',ev=>showTip(`<b>${esc(o.name)}</b>${o.area}, grades ${o.grades}<br>${MAPM[mapK]}: ${val(o)==null?'—':(Math.round(val(o)*10)/10)+(mapK in SCORE_L?'':'%')}`,ev));c.addEventListener('mouseleave',hideTip);c.addEventListener('click',()=>{location.hash='s-'+o.code;});});}
+function drawFindTable(out,L){const cols=[['S.acad','Acad.'],['S.growth','Growth'],['S.equity','Equity'],['S.climate','Climate'],['enr','Students'],['li','Low-inc %'],['ela','Reading %'],['math','Math %'],['sci','Science %'],['sgpE','Growth rdg'],['att','Attend. %'],['disc','Suspend. %'],['dSWD','Disab. susp. %'],['grad','Grad %']];
+  const g=(o,k)=>k.startsWith('S.')?(o.S?o.S[k.slice(2)]:null):o[k];
+  out.innerHTML='<div class="scroll" style="border:1px solid var(--line);border-radius:12px;background:var(--surface)"><table class="tbl"><thead><tr><th>School</th>'+(LOC?'<th>Miles</th>':'')+cols.map(c=>`<th>${c[1]}</th>`).join('')+'</tr></thead><tbody>'+
+   L.map(o=>`<tr><td><a href="#s-${o.code}">${esc(o.name)}</a><div class="xs muted">${o.area}, ${o.grades}</div></td>${LOC?`<td>${o._d!=null?o._d.toFixed(1):'—'}</td>`:''}`+cols.map(c=>`<td>${fmt(g(o,c[0]),'')}</td>`).join('')+'</tr>').join('')+'</tbody></table></div><p class="xs muted" style="margin-top:6px">Gray values are privacy-suppressed ranges from OSPI. Use the Sort menu to reorder.</p>';}
+
+/* ============ PROFILE ============ */
+function insights(o){const out=[];const d=districts.find(x=>x.dist===o.dist);
+  if(o.program){out.push(['neu',`This is a ${o.tags.join(', ').toLowerCase()||'special'} program, so it serves students with different needs than a neighborhood school. Comparing its scores with regular schools isn't fair to it.`]);}
+  if(o.resid!=null){const r=o.resid;if(r>=8)out.push(['pos',`Reading and math results are <b>${r.toFixed(0)} points higher</b> than schools with a similar share of low-income students. That gap usually reflects teaching and school culture, not just who enrolls.`]);
+    else if(r<=-8)out.push(['neg',`Reading and math results are <b>${Math.abs(r).toFixed(0)} points lower</b> than schools with a similar share of low-income students. Ask what the school is changing and how it measures progress during the year.`]);
+    else out.push(['neu',`Reading and math results are about what you'd expect for a school with ${num(o.li)}% low-income students (within ${Math.abs(r).toFixed(0)} points of the trend).`]);}
+  const ge=num(o.sgpE),gm=num(o.sgpM);if(ge!=null&&gm!=null){const g=(ge+gm)/2;if(g>=56)out.push(['pos',`Students are improving faster than similar students statewide (median growth ${g.toFixed(0)}; 50 is typical). Strong growth means students are learning here, wherever they started.`]);else if(g<=44)out.push(['neg',`Students are improving more slowly than similar students statewide (median growth ${g.toFixed(0)}; 50 is typical). Slow growth is more telling than a low score, because it tracks this school's own effect.`]);}
+  const e=exact(o.ela),el=exact(o.elaLI);if(e!=null&&el!=null&&e-el>=22)out.push(['neg',`Low-income students trail the school overall by ${(e-el).toFixed(0)} points in reading (${el}% vs ${e}%). A wide internal gap means the school serves some students much better than others.`]);
+  if(e!=null&&el!=null&&e-el<=6&&num(o.li)>=20)out.push(['pos',`Low-income students read at nearly the same level as the school overall (${el}% vs ${e}%). That's uncommon, and a good sign the school serves all its students.`]);
+  if(o.swdRatio!=null&&o.swdRatio>=2.5)out.push(['neg',`Students with disabilities are suspended or expelled at <b>${o.swdRatio.toFixed(1)}×</b> the school's overall rate. In psychological terms, repeated removal usually means a behavior plan isn't working, and it compounds learning loss and disengagement.`]);
+  const db=exact(o.dBlack),da=exact(o.disc);if(db!=null&&da&&db/da>=2)out.push(['neg',`Black students are suspended at ${(db/da).toFixed(1)}× the school's overall rate. Ask how the school reviews discipline decisions for bias and what it uses instead of removal.`]);
+  const ds=num(o.disc);if(ds!=null&&exact(o.disc)!=null&&ds>=STATE.disc*2)out.push(['neg',`${ds}% of students were suspended or expelled at least once last year, about ${(ds/STATE.disc).toFixed(1)}× the state rate. High exclusion is linked to lower attendance and a weaker sense of belonging for everyone, not just the students removed.`]);
+  else if(ds!=null&&ds<1&&!o.program&&o.dist!=='B')out.push(['pos',`Fewer than 1% of students were suspended or expelled. Pair that with attendance and the school's reputation: low exclusion is good when it comes from prevention, not from under-reporting.`]);
+  const at=num(o.att);if(at!=null){if(at<65)out.push(['neg',`Only ${at}% of students attend regularly, so roughly ${Math.round(100-at)}% miss 10% or more of school days. Chronic absence is one of the earliest signals of disengagement, anxiety, unstable housing or a climate where students don't feel they belong.`]);else if(at>=88)out.push(['pos',`${at}% of students attend regularly, well above the state's ${STATE.att}%. Steady attendance tracks closely with students feeling safe and connected.`]);}
+  if(num(o.ell)>=35)out.push(['neu',`${num(o.ell)}% of students are learning English. Proficiency tests are in English, so growth scores are a fairer measure here than proficiency.`]);
+  if(num(o.hc)>=25)out.push(['neu',`${num(o.hc)}% of students are in the highly capable program. Scores partly reflect that selection, so look at growth and the low-income students' results to judge the teaching.`]);
+  const serious=(num(o.gun)||0)+(num(o.thrF)||0)+(num(o.atkW)||0);if(serious>0)out.push(['neg',`In 2017-18 the school reported ${[o.gun?o.gun+' firearm possession':'',o.thrF?o.thrF+' firearm threat':'',o.atkW?o.atkW+' attack(s) with a weapon':''].filter(Boolean).join(', ')} to the federal government. That data is old. Ask for the current weapons and threat-assessment counts.`]);
+  if(o.code==='3385')out.push(['neu',`The 10.7% science result is likely a test-participation issue (many students not tested), not achievement. The school's reading and math scores are high.`]);
+  if(o.enr<150&&!o.program)out.push(['neu',`With ${o.enr} students, results can swing a lot from year to year. Read single-year numbers loosely.`]);
+  return out;}
+function questions(o){const q=[];
+  if(o.swdRatio!=null&&o.swdRatio>=2)q.push('How do you support students with IEPs or 504 plans before suspension becomes an option?');
+  if(num(o.att)!=null&&num(o.att)<75)q.push('What do you do when a student starts missing school? Who calls home, and when?');
+  if(o.resid!=null&&o.resid<=-8)q.push('What changed in instruction this year, and how do you measure progress before the state test?');
+  if(exact(o.ela)!=null&&exact(o.elaLI)!=null&&exact(o.ela)-exact(o.elaLI)>=20)q.push('What extra support do low-income students get in reading and math?');
+  if(o.level==='High'||o.level==='Middle')q.push('How many threat assessments were opened last year, and how are families told about threats?');
+  q.push('How many bullying (HIB) complaints were filed last year, and how many were substantiated?');
+  q.push('How many counselors, psychologists or social workers are on site, and how many students does each serve?');
+  if(o.level==='Elementary')q.push('How do teachers handle conflict and big emotions in class without sending kids out?');
+  return q.slice(0,6);}
+function renderSchool(code){const o=byCode[code];const el=document.getElementById('v-school');const d=districts.find(x=>x.dist===o.dist);
+  const k=(key,u,lab)=>{const v=o[key];const dv=d?d[key]:null;const sv=STATE[key];if((v==null||v==='')&&!lab)return'';return`<div class="kv"><div class="k">${lab||key}</div><div class="v num">${fmt(v,u)}</div><div class="c">${dv!=null&&dv!==''?'District '+plain(dv,u):''}${sv!=null?(dv!=null&&dv!==''?', ':'')+'state '+sv+u:''}</div></div>`;};
+  const near=o.lat?schools.filter(x=>x!==o&&x.lat&&x.level===o.level&&!x.program).map(x=>({x,d:mi(km(o,x))})).sort((a,b)=>a.d-b.d).slice(0,5):[];
+  const ins=insights(o);
+  el.innerHTML=`<div class="wrap">
+  <div class="phead"><div class="crumbs"><a href="#find">Find schools</a> / ${o.area}</div>
+    <h1>${esc(o.name)}</h1>
+    <div class="meta">${DN[o.dist]}, grades ${o.grades}, ${o.enr.toLocaleString()} students${o.addr?`. ${esc(o.addr)}, ${o.zip}`:''}${o.tags.map(t=>`<span class="tag">${t}</span>`).join('')}</div>
+    <div class="acts">${cmpBtn(o.code).replace('addbtn','btn ghost sm addbtn')}<a class="btn ghost sm" style="text-decoration:none" href="https://washingtonstatereportcard.ospi.k12.wa.us/" rel="noopener">OSPI Report Card</a></div></div>
+  <div class="pgrid"><div>
+    <div class="scorepanel">${o.S?Object.keys(SCORE_L).map(s=>`<div class="bigscore" style="border-top-color:${scoreFill(o.S[s])}"><div class="v num">${o.S[s]==null?'—':o.S[s]}</div><div class="k">${SCORE_L[s]}</div><div class="d">${o.S[s]==null?(s==='growth'&&o.level==='High'?'Not measured in high school':'Not enough data'):'Better than '+o.S[s]+'% of '+(groupOf(o)==='Mixed'?'schools':groupOf(o).toLowerCase()+' schools')+' here'}</div></div>`).join(''):'<div class="small muted" style="grid-column:1/-1">Not scored. Special programs and very small schools aren\'t comparable to neighborhood schools.</div>'}</div>
+    <div class="reading"><h3>Reading this school</h3><ul>${ins.map(([c,t])=>`<li class="${c}">${t}</li>`).join('')||'<li>Not enough reported data for an interpretation.</li>'}</ul>
+    <p class="xs muted" style="margin:10px 0 0">Generated from the numbers below using fixed rules (see <a href="#method">How it works</a>). It's an interpretation of public data, not an inspection of the school.</p></div>
+    <h2 class="sec">Learning</h2>
+    <div class="kgrid">${k('ela','%','Reading proficiency')}${k('math','%','Math proficiency')}${k('sci','%','Science proficiency')}${k('elaLI','%','Reading, low-income students')}${k('mathLI','%','Math, low-income students')}${o.sgpE!=null?k('sgpE','','Reading growth (50 = typical)'):''}${o.sgpM!=null?k('sgpM','','Math growth (50 = typical)'):''}${k('att','%','Regular attendance')}${o.grad!=null?k('grad','%','4-year graduation'):''}${o.ninth!=null?k('ninth','%','9th graders on track'):''}${o.dual!=null?k('dual','%','Earned dual credit'):''}</div>
+    <h2 class="sec">Discipline, 2024-25</h2>
+    <p class="small muted">Share of each group suspended or expelled at least once.</p>
+    <div class="chartbox" id="pDisc" style="margin-bottom:28px"></div>
+    <h2 class="sec">Who attends</h2>
+    <div class="kgrid">${k('li','%','Low-income')}${k('ell','%','English learners')}${k('swd','%','Students with disabilities')}${k('hc','%','Highly capable')}${k('homeless','%','Experiencing homelessness')}${k('ratio','','Students per teacher')}</div>
+    <div id="pDemo" style="margin-bottom:28px"></div>
+    <h2 class="sec">Incidents reported, 2017-18</h2>
+    ${o.hasCRDC?`<div class="kgrid">${[['gun','Firearm or explosive possession'],['thrF','Threats with a firearm or explosive'],['atkW','Attacks with a weapon'],['thr','Threats of physical attack'],['atk','Physical attacks'],['sex','Rape or sexual assault'],['har','Harassment allegations'],['arr','School-related arrests'],['ref','Referrals to police']].map(([kk,l])=>`<div class="kv"><div class="k">${l}</div><div class="v num">${fmt(o[kk],'')}</div></div>`).join('')}</div><p class="xs muted">Federal Civil Rights Data Collection. Counts are self-reported and schools code incidents differently. The data predates the pandemic.</p>`:'<p class="small muted">No 2017-18 federal record for this school (it may have opened later or reported under another name).</p>'}
+  </div>
+  <aside class="side">
+    <div class="box"><h3>Questions to ask on a tour</h3><ol>${questions(o).map(q=>`<li>${q}</li>`).join('')}</ol></div>
+    ${near.length?`<div class="box near"><h3>Nearby ${o.level.toLowerCase()} schools</h3>${near.map(n=>`<a href="#s-${n.x.code}">${esc(n.x.name)}<span>${n.d.toFixed(1)} mi${n.x.S&&n.x.S.acad!=null?' · Acad. '+n.x.S.acad:''}</span></a>`).join('')}</div>`:''}
+    <div class="box small"><h3>Boundaries</h3>The nearest school isn't always the assigned one. Check the <a href="https://www.greatschools.org/school-district-boundaries-map/">boundary map</a> or the district's school locator.</div>
+  </aside></div></div>`;
+  wireCmp(el);
+  // discipline bars
+  const groups=[['disc','All students'],['dSWD','Students with disabilities'],['dLI','Low-income'],['dBlack','Black'],['dHisp','Hispanic'],['dWhite','White'],['dAsian','Asian']];
+  const pd=document.getElementById('pDisc');const W=Math.min((pd.clientWidth||600)-32,640),rh=26,padL=Math.min(170,W*.42),H=groups.length*rh+6;const vals=groups.map(g=>num(o[g[0]]));const max=Math.max(1,...vals.filter(v=>v!=null))*1.15;const X=v=>padL+(W-padL-60)*v/max;
+  let s=`<svg width="${W}" height="${H}">`;groups.forEach((g,i)=>{const y=i*rh+3,v=num(o[g[0]]),raw=o[g[0]];s+=`<text x="${padL-8}" y="${y+14}" text-anchor="end" style="fill:${i?'var(--ink-2)':'var(--ink)'}">${g[1]}</text>`;
+    if(v==null){s+=`<text x="${padL}" y="${y+14}" class="num" style="fill:var(--ink-3)">${raw&&/^n</i.test(raw)?'fewer than 10 students':'—'}</text>`;return;}
+    const sup=typeof raw==='string';s+=`<rect x="${padL}" y="${y+4}" width="${Math.max(2,X(sup?parseFloat(raw.slice(1)):v)-padL)}" height="13" rx="4" fill="${i?'var(--d1)':'var(--mute)'}" ${sup?'fill-opacity=".25" stroke="var(--d1)" stroke-dasharray="3 2"':''}/><text x="${X(sup?parseFloat(raw.slice(1)):v)+5}" y="${y+15}" class="num" style="fill:var(--ink)">${esc(plain(raw,'%'))}</text>`;});
+  pd.innerHTML=s+'</svg><div class="legend"><span><i style="background:var(--d1);opacity:.3;border:1px dashed var(--d1)"></i>Outlined bars are suppressed: the true rate is somewhere below the value shown</span></div>';
+  // demographics bar
+  const parts=[['asian','Asian'],['black','Black'],['hisp','Hispanic'],['white','White'],['two','Two or more'],['nhpi','Pacific Islander']];const sh=['var(--q5)','var(--q4)','var(--q3)','var(--q2)','var(--q1)','var(--mute)'];
+  document.getElementById('pDemo').innerHTML=`<div style="display:flex;height:16px;border-radius:5px;overflow:hidden">${parts.map(([kk,l],i)=>{const v=num(o[kk])||0;return v>0?`<div title="${l} ${v}%" style="flex:${v} 0 0;background:${sh[i]};border-right:2px solid var(--paper)"></div>`:'';}).join('')}</div><div class="legend">${parts.map(([kk,l],i)=>num(o[kk])?`<span><i style="background:${sh[i]}"></i>${l} ${num(o[kk])}%</span>`:'').join('')}</div>`;
 }
 
-// ---------- schools table ----------
-const GROUPS={
- acad:{l:'Academics',cols:['enr','li','ela','math','sci','elaLI','mathLI','sgpE','sgpM','att','grad','ninth','dual','kready']},
- disc:{l:'Discipline & equity',cols:['enr','disc','discN','dSWD','dBlack','dHisp','dWhite','dAsian','dLI']},
- safe:{l:'Incidents (CRDC 2017-18)',cols:['enr','har','sex','atk','atkW','thr','thrF','gun','arr','ref']},
- demo:{l:'Demographics',cols:['enr','li','ell','swd','hc','asian','black','hisp','white','two','nhpi','homeless','ratio']}
-};
-const SHORT={enr:'Students',li:'Low-inc',ela:'ELA',math:'Math',sci:'Sci',elaLI:'ELA (LI)',mathLI:'Math (LI)',sgpE:'Growth ELA',sgpM:'Growth Math',att:'Attend',grad:'Grad 4yr',ninth:'9th on trk',dual:'Dual cr',kready:'K-ready',
- disc:'All',discN:'#',dSWD:'Disab.',dBlack:'Black',dHisp:'Hisp.',dWhite:'White',dAsian:'Asian',dLI:'Low-inc',har:'Harass.',sex:'Sex asslt',atk:'Attacks',atkW:'w/ weapon',thr:'Threats',thrF:'Firearm thr.',gun:'Firearm poss.',arr:'Arrests',ref:'Police ref.',
- ell:'ELL',swd:'Disab.',hc:'HiCap',asian:'Asian',black:'Black',hisp:'Hisp.',white:'White',two:'2+',nhpi:'Pac. Isl.',homeless:'Homeless',ratio:'Stu/teacher'};
-function renderSchools(){
-  filterBar(document.getElementById('filt1'),{search:true,on:(keepFocus)=>{if(keepFocus)drawTable();else renderSchools();}});
-  const cg=document.getElementById('colGroups');cg.innerHTML='';
-  Object.entries(GROUPS).forEach(([k,g])=>{const b=document.createElement('button');b.type='button';b.className='chip'+(S.group===k?' on':'');b.textContent=g.l;b.onclick=()=>{S.group=k;if(!GROUPS[k].cols.includes(S.sort.k))S.sort={k:GROUPS[k].cols[1],d:k==='acad'?-1:-1};renderSchools();};cg.appendChild(b);});
-  drawTable();
-}
-function drawTable(){
-  const cols=GROUPS[S.group].cols;const list=filtered();
-  const sk=S.sort.k,sd=S.sort.d;
-  list.sort((a,b)=>{if(sk==='name')return sd*a.name.localeCompare(b.name);const va=num(a[sk]),vb=num(b[sk]);if(va==null&&vb==null)return a.name.localeCompare(b.name);if(va==null)return 1;if(vb==null)return -1;return sd*(va-vb);});
-  let h='<thead><tr><th data-k="name"'+(sk==='name'?' class="sorted"':'')+'>School'+(sk==='name'?(sd>0?' ↑':' ↓'):'')+'</th>'+cols.map(k=>`<th data-k="${k}" title="${esc(M[k].l)}"${sk===k?' class="sorted"':''}>${SHORT[k]}${sk===k?(sd>0?' ↑':' ↓'):''}</th>`).join('')+'</tr></thead><tbody>';
-  if(S.group==='acad'||S.group==='disc'){h+='<tr class="ref"><td>WA State</td>'+cols.map(k=>`<td>${STATE[k]!=null?STATE[k]+'%':''}</td>`).join('')+'</tr>';}
-  h+=list.map(o=>`<tr class="row" data-c="${o.code}"><td><div class="nm">${esc(o.name)}${o.badges.map(b=>`<span class="badge">${b}</span>`).join('')}<small>${o.area} · ${o.grades||''}</small></div></td>`+cols.map(k=>`<td>${fmt(o[k],k==='enr'||k==='discN'||k==='ratio'||k.startsWith('sgp')||GROUPS.safe.cols.includes(k)?'':'%')}</td>`).join('')+'</tr>').join('');
-  h+='</tbody>';
-  const t=document.getElementById('tbl');t.innerHTML=h;
-  t.querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;if(S.sort.k===k)S.sort.d*=-1;else S.sort={k,d:k==='name'?1:-1};drawTable();});
-  t.querySelectorAll('tr.row').forEach(tr=>tr.onclick=()=>openSchool(tr.dataset.c));
-  // phone cards
-  const ms=document.getElementById('mSort');ms.innerHTML=['name',...cols].map(k=>`<option value="${k}"${k===sk?' selected':''}>${k==='name'?'School name':M[k].l}</option>`).join('');
-  ms.onchange=()=>{S.sort={k:ms.value,d:ms.value==='name'?1:-1};drawTable();};
-  const md=document.getElementById('mDir');md.textContent=sk==='name'?(sd>0?'A → Z':'Z → A'):(sd<0?'High → low':'Low → high');md.onclick=()=>{S.sort.d*=-1;drawTable();};
-  const show=cols.filter(k=>k!=='enr').slice(0,6);if(sk!=='name'&&sk!=='enr'&&!show.includes(sk)){show.pop();show.unshift(sk);}
-  const unit=k=>(k==='enr'||k==='discN'||k==='ratio'||k.startsWith('sgp')||GROUPS.safe.cols.includes(k))?'':'%';
-  const cardsEl=document.getElementById('cards');
-  cardsEl.innerHTML=list.slice(0,S.cardLimit||40).map(o=>`<div class="scard" data-c="${o.code}"><div class="nm">${esc(o.name)}${o.badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div><div class="sub">${o.area} · ${o.grades||''} · ${o.enr} students</div><div class="st">${show.map(k=>`<div class="${k===sk?'on':''}"><b>${fmt(o[k],unit(k))}</b>${SHORT[k]}${S.group==='disc'&&k!=='discN'?' disc.':''}</div>`).join('')}</div></div>`).join('')+(list.length>(S.cardLimit||40)?`<button class="chip" id="moreCards" type="button" style="width:100%">Show all ${list.length} schools</button>`:'');
-  cardsEl.querySelectorAll('.scard').forEach(c=>c.onclick=()=>openSchool(c.dataset.c));
-  const mc=document.getElementById('moreCards');if(mc)mc.onclick=()=>{S.cardLimit=9999;drawTable();};
-  document.getElementById('tblCount').textContent=`${list.length} schools shown. "LI" = low-income students. Growth is the median student growth percentile (50 = typical). `+(S.group==='safe'?'Blank = school not in the 2017-18 CRDC (opened later or not reported).':'');
-}
+/* ============ COMPARE ============ */
+function renderCompare(){const el=document.getElementById('cmpOut');const L=CMP.map(c=>byCode[c]).filter(Boolean);
+  if(!L.length){el.innerHTML=`<div class="empty"><p>No schools added yet. Use "Add to compare" in <a href="#find">Find schools</a> or on any school page.</p>${['3586','3485','3440','3740'].every(c=>byCode[c])?'<button class="btn sm" id="cmpDemo" type="button">Try an example: four Renton-area elementary schools</button>':''}</div>`;const b=document.getElementById('cmpDemo');if(b)b.onclick=()=>{CMP=['3586','3485','3440','3740'];saveCmp();renderCompare();};return;}
+  const rows=[['Scores',null],['S.acad','Academics',1],['S.growth','Growth',1],['S.equity','Equity',1],['S.climate','Climate',1],
+    ['Learning',null],['ela','Reading proficiency %',1],['math','Math proficiency %',1],['sci','Science proficiency %',1],['elaLI','Reading, low-income %',1],['sgpE','Reading growth',1],['sgpM','Math growth',1],['att','Regular attendance %',1],['grad','4-year graduation %',1],
+    ['Discipline',null],['disc','Suspended or expelled %',0],['dSWD','Students with disabilities %',0],['dBlack','Black students %',0],['dLI','Low-income students %',0],
+    ['Students',null],['enr','Enrollment',null],['li','Low-income %',null],['ell','English learners %',null],['swd','Students with disabilities %',null],['hc','Highly capable %',null],['ratio','Students per teacher',null],
+    ['Incidents, 2017-18',null],['thr','Threats of attack',0],['atk','Physical attacks',0],['gun','Firearm possession',0],['har','Harassment allegations',0]];
+  const g=(o,k)=>k.startsWith('S.')?(o.S?o.S[k.slice(2)]:null):o[k];
+  let h='<div class="scroll" style="margin-top:16px"><table class="cmp" style="--n:${L.length}"><thead><tr><th></th>'+L.map(o=>`<th><a href="#s-${o.code}" class="rname" style="color:var(--ink);text-decoration:none">${esc(o.name)}</a><div class="xs muted" style="font-weight:400">${o.area}, ${o.grades}</div><button class="rm" data-rm="${o.code}" type="button">Remove</button></th>`).join('')+'</tr></thead><tbody>';
+  rows.forEach(r=>{if(r[1]===null){h+=`<tr class="grp"><td colspan="${L.length+1}">${r[0]}</td></tr>`;return;}
+    const vs=L.map(o=>{const v=g(o,r[0]);return typeof v==='number'?v:null;});const cand=vs.filter(v=>v!=null);let best=null;if(r[2]!=null&&cand.length>1){best=r[2]?Math.max(...cand):Math.min(...cand);if(cand.every(v=>v===best))best=null;}
+    h+=`<tr><td>${r[1]}</td>`+L.map((o,i)=>`<td class="${best!=null&&vs[i]===best?'best':''}">${fmt(g(o,r[0]),'')}</td>`).join('')+'</tr>';});
+  el.innerHTML=h+'</tbody></table></div><p class="xs muted" style="margin-top:8px">Gray values are privacy-suppressed ranges and aren\'t marked as best. Remember that raw scores follow family income; the Equity score adjusts for it.</p>';
+  el.querySelectorAll('[data-rm]').forEach(b=>b.onclick=()=>{toggleCmp(b.dataset.rm);renderCompare();});}
 
-// ---------- school detail ----------
-const modal=document.getElementById('modal');
-document.getElementById('closeBtn').onclick=()=>modal.classList.remove('on');
-modal.onclick=e=>{if(e.target===modal)modal.classList.remove('on')};
-document.addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('on')});
-function openSchool(code){const o=schools.find(x=>x.code===code);if(!o)return;hideTip();
-  const d=districts.find(x=>x.dist===o.dist);
-  const box=(k,unit)=>{const v=o[k];const dv=d?d[k]:null;const sv=STATE[k];
-    return`<div class="m"><div class="k">${M[k].l}</div><div class="v">${fmt(v,unit)}</div><div class="c">${dv!=null&&dv!==''?'District '+fmtPlain(dv,unit):''}${sv!=null?' · State '+sv+unit:''}</div></div>`;};
-  let h=`<h2 style="margin-right:40px">${esc(o.name)}</h2><div class="small muted">${DN[o.dist]} · ${o.area} · Grades ${o.grades||'—'} · ${o.addr?esc(o.addr)+', '+o.zip:'no street address on file'} ${o.badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div>`;
-  if(o.code==='3385')h+='<div class="note small">Issaquah High\'s 10.7% science result is far below its other scores and below Skyline and Liberty. It most likely reflects low test participation or opt-outs, not achievement. Check the OSPI Report Card before relying on it.</div>';
-  h+=`<h3>Academics</h3><div class="mgrid">${['ela','math','sci','elaLI','mathLI'].map(k=>box(k,'%')).join('')}${box('sgpE','')}${box('sgpM','')}${['att','grad','ninth','dual','kready'].filter(k=>o[k]!=null&&o[k]!=='').map(k=>box(k,'%')).join('')}</div>`;
-  h+=`<h3>Discipline (2024-25)</h3><div class="mgrid">${box('disc','%')}<div class="m"><div class="k">Students disciplined</div><div class="v">${fmt(o.discN,'')}</div><div class="c">suspended or expelled 1+ times</div></div>${['dSWD','dBlack','dHisp','dWhite','dAsian','dLI'].map(k=>box(k,'%')).join('')}</div>`;
-  if(o.hasCRDC){const per=o.enr?(x)=>x!=null&&x!==''?` · ${(x/o.enr*100).toFixed(1)} per 100 students`:'':()=>'';
-    h+=`<h3>Reported incidents, CRDC 2017-18</h3><div class="mgrid">${['har','sex','atk','atkW','thr','thrF','gun','arr','ref'].map(k=>`<div class="m"><div class="k">${M[k].l}</div><div class="v">${fmt(o[k],'')}</div><div class="c">${['atk','thr','har'].includes(k)?per(o[k]):''}</div></div>`).join('')}</div><p class="small muted">Per-100 rates use 2024-25 enrollment. Enrollment in 2017-18 was different, and coding practices vary by school.</p>`;}
-  else h+=`<p class="small muted">No 2017-18 CRDC record (the school may have opened later or reported under another name).</p>`;
-  h+=`<h3>Who attends</h3><div class="mgrid">${['enr','li','ell','swd','hc','homeless','ratio'].map(k=>`<div class="m"><div class="k">${M[k].l}</div><div class="v">${fmt(o[k],M[k].u)}</div></div>`).join('')}</div>`;
-  h+=`<div style="margin-top:8px">${stackBar(o)}</div>`;
-  h+=`<p class="small" style="margin-top:14px"><a href="https://washingtonstatereportcard.ospi.k12.wa.us/" >Open the OSPI Report Card</a> and search "${esc(o.name)}" for trends and subgroup detail.</p>`;
-  document.getElementById('sheetBody').innerHTML=h;modal.classList.add('on');document.getElementById('sheet').scrollTop=0;
-}
-function stackBar(o){const parts=[['asian','Asian'],['black','Black'],['hisp','Hispanic'],['white','White'],['two','Two+'],['nhpi','Pac. Isl.']];
-  // neutral, single-hue segments with labels (identity carried by text, not color)
-  const shades=['var(--q5)','var(--q4)','var(--q3)','var(--q2)','var(--q1)','var(--muted-mark)'];
-  let x=0;let segs='';let lab='';parts.forEach(([k,l],i)=>{const v=num(o[k])||0;if(v<=0)return;segs+=`<div title="${l} ${v}%" style="flex:${v} 0 0;background:${shades[i]};height:16px;border-right:2px solid var(--surface)"></div>`;lab+=`<span><i style="background:${shades[i]}"></i>${l} ${v}%</span>`;});
-  return`<div style="display:flex;border-radius:4px;overflow:hidden">${segs}</div><div class="legend">${lab}</div>`;}
+/* ============ FINDINGS ============ */
+const EQK={avg:['Reading + math','%'],ela:['Reading','%'],math:['Math','%'],sgpE:['Reading growth',''],att:['Attendance','%'],disc:['Suspension rate','%']};
+let eqK='avg';
+const DG={dSWD:'Students with disabilities',dBlack:'Black students',dHisp:'Hispanic students',dLI:'Low-income students',dWhite:'White students',dAsian:'Asian students'};let dgK='dSWD';
+function renderFindings(){
+  document.getElementById('eqChips').innerHTML=Object.entries(EQK).map(([k,v])=>`<button class="chip${k===eqK?' on':''}" data-k="${k}" type="button" aria-pressed="${k===eqK}">${v[0]}</button>`).join('');
+  document.querySelectorAll('#eqChips .chip').forEach(b=>b.onclick=()=>{eqK=b.dataset.k;renderFindings();});
+  const sa=document.getElementById('eqArea');if(!sa.options.length){['None',...AREAS].forEach(a=>sa.add(new Option(a==='None'?'No area':a,a)));sa.value='Renton';sa.onchange=renderFindings;}
+  const el=document.getElementById('eqSvg');const r=scatter(el,{k:eqK,hl:sa.value,lbl:EQK[eqK][0],u:EQK[eqK][1],pad:32});
+  document.getElementById('eqLegend').innerHTML=(sa.value!=='None'?`<span><i style="background:var(--hl)"></i>${sa.value}</span><span><i style="background:var(--d1);opacity:.4"></i>Other areas</span>`:'<span><i style="background:var(--d1)"></i>All schools</span>')+`<span>Dashed line: trend (R² ${r.R.r2.toFixed(2)}). ${eqK==='disc'?'Below the line is better.':'Above the line beats expectations.'}</span>`;
+  const good=eqK==='disc'?-1:1;const ranked=r.pts.slice().sort((p,q)=>good*(q.res-p.res));
+  const li=p=>`<a href="#s-${p.o.code}">${esc(p.o.name)}<span>${p.o.area}, ${p.x}% low-inc · ${p.res>=0?'+':''}${p.res.toFixed(1)}</span></a>`;
+  document.getElementById('eqTop').innerHTML=ranked.slice(0,10).map(li).join('');document.getElementById('eqBot').innerHTML=ranked.slice(-10).reverse().map(li).join('');
+  document.getElementById('dgChips').innerHTML=Object.entries(DG).map(([k,v])=>`<button class="chip${k===dgK?' on':''}" data-k="${k}" type="button" aria-pressed="${k===dgK}">${v}</button>`).join('');
+  document.querySelectorAll('#dgChips .chip').forEach(b=>b.onclick=()=>{dgK=b.dataset.k;renderFindings();});
+  document.getElementById('dgName').textContent=DG[dgK];
+  const rows=[['Renton','R'],['Kent','K'],['Seattle','S'],['Issaquah','I'],['Bellevue','B']].map(([l,c])=>{const d=districts.find(x=>x.dist===c);return{l,a:num(d.disc),g:num(d[dgK]),raw:typeof d.disc==='string'||typeof d[dgK]==='string',rawA:d.disc,rawG:d[dgK]};});
+  pairBars(document.getElementById('dgSvg'),rows,DG[dgK]);
+  const D=[['Renton','R'],['Kent','K'],['Seattle','S'],['Issaquah','I'],['Bellevue','B'],['Washington State','ST']];
+  document.getElementById('trendTbl').innerHTML='<thead><tr><th>District</th>'+Object.keys(TREND).map(y=>`<th>${y}</th>`).join('')+'</tr></thead><tbody>'+D.map(([l,c])=>`<tr${c==='ST'?' class="ref"':''}><td>${l}</td>`+Object.keys(TREND).map(y=>`<td>${esc(TREND[y][c])}%</td>`).join('')+'</tr>').join('')+'</tbody>';}
 
-// ---------- map ----------
-const MAP_METRICS=['ela','math','li','disc','att','grad','elaLI','sgpE','black','hisp','asian','ell'];
-function renderMap(){
-  const sel=document.getElementById('mapMetric');if(!sel.options.length){MAP_METRICS.forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=M[k].l;sel.appendChild(o)});sel.onchange=renderMap;}
-  const k=sel.value||'ela';const el=document.getElementById('mapSvg');
-  const pts=schools.filter(o=>o.lat&&o.lon);
-  const lat0=47.47,kx=Math.cos(lat0*Math.PI/180);
-  const xs=pts.map(o=>o.lon*kx),ys=pts.map(o=>o.lat);
-  const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
-  const W=Math.min(el.clientWidth||700,1000);const pad=W<500?14:26;const scale=(W-2*pad)/(maxX-minX);const H=Math.round((maxY-minY)*scale+2*pad);
-  const px=o=>pad+(o.lon*kx-minX)*scale,py=o=>pad+(maxY-o.lat)*scale;
-  const vals=pts.map(o=>num(o[k])).filter(v=>v!=null).sort((a,b)=>a-b);
-  const qs=[.2,.4,.6,.8].map(p=>vals[Math.floor(p*(vals.length-1))]);
-  const bin=v=>v==null?-1:qs.filter(q=>v>q).length;
-  const fills=['var(--q1)','var(--q2)','var(--q3)','var(--q4)','var(--q5)'];
-  let s=`<svg width="${W}" height="${H}" role="img" aria-label="School locations">`;
-  pts.slice().sort((a,b)=>b.enr-a.enr).forEach(o=>{const v=num(o[k]);const b=bin(v);const sc=Math.max(.6,Math.min(1,W/900));const r=Math.max(3.5,Math.sqrt(o.enr||100)/4.2*sc);
-    s+=`<circle data-c="${o.code}" cx="${px(o).toFixed(1)}" cy="${py(o).toFixed(1)}" r="${r.toFixed(1)}" fill="${b<0?'var(--muted-mark)':fills[b]}" fill-opacity="${b<0?.5:.95}" stroke="var(--surface)" stroke-width="2"/>`;});
-  // area labels at centroids
-  AREAS.forEach(a=>{const L=pts.filter(o=>o.area===a);if(!L.length)return;const cx=L.reduce((s,o)=>s+px(o),0)/L.length,cy=L.reduce((s,o)=>s+py(o),0)/L.length;
-    const off={'West Seattle':[-30,-6],'South Seattle':[30,-40],'Renton':[0,-38],'Kent':[0,48],'Issaquah':[10,-46],'Bellevue':[0,-44]}[a]||[0,0];
-    const hw=a.length*4.8+6;const tx=Math.min(W-hw,Math.max(hw,cx+off[0]));s+=`<text x="${tx}" y="${Math.max(14,cy+off[1])}" text-anchor="middle" style="font-weight:700;font-size:13px;fill:var(--ink-2);letter-spacing:.04em;paint-order:stroke;stroke:var(--surface);stroke-width:4px">${a.toUpperCase()}</text>`;});
-  s+='</svg>';el.innerHTML=s;
-  const lg=document.getElementById('mapLegend');const f=v=>Math.round(v*10)/10;
-  lg.innerHTML=fills.map((c,i)=>`<i style="background:${c}" title="${i===0?'≤'+f(qs[0]):i===4?'>'+f(qs[3]):f(qs[i-1])+'–'+f(qs[i])}"></i>`).join('')+` <span>${f(vals[0])} → ${f(vals[vals.length-1])}${M[k].u} (quintiles)</span>`;
-  el.querySelectorAll('circle').forEach(c=>{const o=schools.find(x=>x.code===c.dataset.c);
-    const t=ev=>showTip(`<b>${esc(o.name)}</b>${o.area} · ${o.grades}<br>${M[k].l}: ${fmtPlain(o[k],M[k].u)}<br>Enrollment ${o.enr}<br><span class="muted">Tap again for profile</span>`,ev);
-    c.addEventListener('mousemove',t);c.addEventListener('mouseleave',hideTip);
-    c.addEventListener('click',ev=>{if(c.dataset.t==='1'||matchMedia('(hover:hover)').matches){openSchool(o.code);}else{document.querySelectorAll('#mapSvg circle').forEach(x=>x.dataset.t='');c.dataset.t='1';t(ev);}});});
-}
-
-// ---------- equity scatter ----------
-const EQ_METRICS=['ela','math','sci','disc','att','sgpE','sgpM','grad'];
-function renderEquity(){
-  const sel=document.getElementById('eqMetric');if(!sel.options.length){EQ_METRICS.forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=M[k].l;sel.appendChild(o)});sel.onchange=renderEquity;
-    const sa=document.getElementById('eqArea');['None',...AREAS].forEach(a=>{const o=document.createElement('option');o.value=a;o.textContent=a;sa.appendChild(o)});sa.value='Renton';sa.onchange=renderEquity;}
-  const k=sel.value||'ela',hl=document.getElementById('eqArea').value;
-  const pts=schools.filter(o=>o.enr>=100&&!['I','S','R','A'].includes(o.type)&&!/Virtual|Digital|H\.O\.M\.E/.test(o.name)).map(o=>({o,x:num(o.li),y:num(o[k]),sup:isSup(o[k])})).filter(p=>p.x!=null&&p.y!=null);
-  const n=pts.length,mx=pts.reduce((s,p)=>s+p.x,0)/n,my=pts.reduce((s,p)=>s+p.y,0)/n;
-  const b=pts.reduce((s,p)=>s+(p.x-mx)*(p.y-my),0)/pts.reduce((s,p)=>s+(p.x-mx)**2,0),a=my-b*mx;
-  const r2=1-pts.reduce((s,p)=>s+(p.y-(a+b*p.x))**2,0)/pts.reduce((s,p)=>s+(p.y-my)**2,0);
-  pts.forEach(p=>p.res=p.y-(a+b*p.x));
-  const el=document.getElementById('eqSvg');const W=Math.min(el.clientWidth||700,1000),H=Math.min(420,Math.max(300,W*.6)),pl=44,pr=14,pt=12,pb=40;
-  const maxY=Math.max(...pts.map(p=>p.y))*1.05;const X=v=>pl+(W-pl-pr)*v/100,Y=v=>H-pb-(H-pt-pb)*v/maxY;
-  let s=`<svg width="${W}" height="${H}" role="img" aria-label="Scatter plot">`;
-  for(let i=0;i<=5;i++){const v=maxY/5*i;s+=`<line class="grid" x1="${pl}" x2="${W-pr}" y1="${Y(v)}" y2="${Y(v)}"/><text x="${pl-6}" y="${Y(v)+4}" text-anchor="end">${Math.round(v)}</text>`;}
-  for(let v=0;v<=100;v+=20)s+=`<text x="${X(v)}" y="${H-pb+16}" text-anchor="middle">${v}%</text>`;
-  s+=`<text x="${(W+pl)/2}" y="${H-6}" text-anchor="middle" style="fill:var(--ink)">Low-income students (%)</text>`;
-  s+=`<line x1="${X(0)}" y1="${Y(Math.max(0,a))}" x2="${X(100)}" y2="${Y(Math.max(0,a+b*100))}" stroke="var(--ink-2)" stroke-width="2" stroke-dasharray="6 4"/>`;
-  const order=pts.slice().sort((p,q)=>(p.o.area===hl)-(q.o.area===hl));
-  order.forEach((p,i)=>{const on=p.o.area===hl;s+=`<circle data-i="${pts.indexOf(p)}" cx="${X(p.x).toFixed(1)}" cy="${Y(p.y).toFixed(1)}" r="${on?6:5}" fill="${on?'var(--s2)':'var(--s1)'}" fill-opacity="${hl==='None'?.75:on?.95:.28}" stroke="var(--surface)" stroke-width="2"/>`;});
-  s+='</svg>';el.innerHTML=s;
-  el.querySelectorAll('circle').forEach(c=>{const p=pts[+c.dataset.i];const t=ev=>showTip(`<b>${esc(p.o.name)}</b>${p.o.area}<br>Low-income ${p.x}% · ${M[k].l} ${fmtPlain(p.o[k],M[k].u)}<br>${p.res>=0?'+':''}${p.res.toFixed(1)} vs. trend`,ev);
-    c.addEventListener('mousemove',t);c.addEventListener('mouseleave',hideTip);c.addEventListener('click',()=>openSchool(p.o.code));});
-  document.getElementById('eqLegend').innerHTML=(hl!=='None'?`<span><i style="background:var(--s2)"></i>${hl}</span><span><i style="background:var(--s1);opacity:.4"></i>Other areas</span>`:`<span><i style="background:var(--s1)"></i>All schools</span>`)+`<span>— — Trend: each +10 pts low-income ≈ ${(b*10).toFixed(1)} ${M[k].u==='%'?'pts':''} (R² ${r2.toFixed(2)})</span><span class="muted">Excludes schools under 100 students, alternative, online and special programs. Suppressed values plotted at their midpoint.</span>`;
-  const good=M[k].hi===false?-1:1;const ranked=pts.slice().sort((p,q)=>good*(q.res-p.res));
-  const li=(p)=>`<div class="small" style="display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px solid var(--line);cursor:pointer" data-c="${p.o.code}"><span><b style="font-weight:500">${esc(p.o.name)}</b> <span class="muted">${p.o.area} · ${p.x}% low-inc</span></span><span style="font-variant-numeric:tabular-nums">${fmtPlain(p.o[k],M[k].u)} <span class="muted">(${p.res>=0?'+':''}${p.res.toFixed(1)})</span></span></div>`;
-  document.getElementById('eqTop').innerHTML=ranked.slice(0,10).map(li).join('');
-  document.getElementById('eqBot').innerHTML=ranked.slice(-10).reverse().map(li).join('');
-  document.querySelectorAll('#eqTop [data-c],#eqBot [data-c]').forEach(e=>e.onclick=()=>openSchool(e.dataset.c));
-}
-
-// ---------- safety ----------
-const DG={dSWD:'Students with disabilities',dBlack:'Black students',dHisp:'Hispanic students',dLI:'Low-income students',dWhite:'White students',dAsian:'Asian students'};
+/* ============ SAFETY ============ */
 const NEWS=[
- {d:'Jan 30, 2026',t:'Two Rainier Beach High students shot and killed at a bus stop at Rainier Ave S & S Henderson St, around the corner from the school, shortly after dismissal. SPS canceled activities at Rainier Beach, Sugiyama and South Shore PK-8.',a:'South Seattle',u:'https://www.kiro7.com/news/local/2-shot-killed-seattles-rainier-beach-neighborhood/3JDMJUUXZNBBHEIKZDILOVEJHI/?outputType=amp',s:'KIRO 7'},
- {d:'Mar 2026',t:'A Hazen High School student was charged with a double murder in Seattle. Police say he rode a bus from Renton before the shooting (off campus).',a:'Renton',u:'https://www.kentreporter.com/2026/03/27/hazen-high-school-student-charged-with-double-murder/',s:'Kent Reporter'},
- {d:'Apr 25, 2025',t:'A 15-year-old was shot at a gas station near Franklin High School (2800 block of Rainier Ave S). The school sheltered in place.',a:'South Seattle',u:'https://www.yahoo.com/news/one-person-injured-shooting-gas-211732067.html',s:'KIRO 7 / Yahoo'},
- {d:'Dec 2024',t:'A 15-year-old Chief Sealth International High student was shot and later died.',a:'West Seattle',u:'https://www.fox13seattle.com/news/deadly-teen-shootings-school-safety',s:'FOX 13'},
- {d:'Jun 3–12, 2024',t:'An 18-year-old Kent-Meridian student was fatally shot in the Campus Park lot next to the school. Two days later, a 17-year-old Kent-Meridian student was fatally shot in Renton. On June 12 a weapon was found at Kentridge High, and a 17-year-old was arrested with a handgun on campus.',a:'Kent',u:'https://www.kentreporter.com/news/weapon-found-wednesday-june-12-at-kentridge-high-school',s:'Kent Reporter'},
- {d:'Jun 2024',t:'Bellevue Police arrested two juveniles who threatened online to shoot students at Newport, Sammamish and Bellevue high schools.',a:'Bellevue',u:'https://downtownbellevue.com/2024/06/11/bellevue-police-arrest-suspects-death-threats-social-media/',s:'Downtown Bellevue'},
- {d:'Jan 23, 2024',t:'A Chief Sealth student was killed in a shooting at the Southwest Athletic Complex next to the Chief Sealth and Denny campuses.',a:'West Seattle',u:'https://chiefsealthhs.seattleschools.org/?p=4750',s:'Seattle Public Schools'},
- {d:'Jan 11, 2024',t:'Kentwood High (Covington) briefly locked down after a student brought a pellet gun. The student was arrested.',a:'Kent',u:'https://www.kentreporter.com/news/student-with-pellet-gun-leads-to-brief-lockdown-at-kentwood-high-school',s:'Kent Reporter'},
- {d:'Dec 14–15, 2023',t:'A prank call claiming a firearm threat at Nelsen Middle, plus online threats, closed Nelsen, Renton High and Renton Academy for a day. A teen was arrested.',a:'Renton',u:'https://kentreporter.com/northwest/renton-police-arrest-teen-after-prank-leads-to-school-shutdowns',s:'Kent Reporter'},
- {d:'Recurring',t:'Social-media threat lists have named 20+ King and Pierce County schools at once, including Renton High, Kent-Meridian and Springbrook Elementary. Police have found most not credible, but they still cause lockdowns and absences.',a:'Renton / Kent',u:'https://kentreporter.com/news/threats-to-renton-auburn-and-kent-school-districts-under-investigation',s:'Kent Reporter'}
-];
-function renderSafety(){
-  const sel=document.getElementById('dgGroup');if(!sel.options.length){Object.entries(DG).forEach(([k,l])=>{const o=document.createElement('option');o.value=k;o.textContent=l;sel.appendChild(o)});sel.onchange=renderSafety;}
-  const g=sel.value||'dSWD';document.getElementById('dgName').textContent=DG[g];
-  const rows=[['Renton','R'],['Kent','K'],['Seattle (all)','S'],['Issaquah','I'],['Bellevue','B']].map(([l,c])=>{const d=districts.find(x=>x.dist===c);return{l,all:num(d.disc),grp:num(d[g]),rawA:d.disc,rawG:d[g]};});
-  const el=document.getElementById('dgSvg');const W=Math.min(el.clientWidth||640,900),rowH=48,padL=Math.min(110,W*.28),padR=64,H=rows.length*rowH+30;
-  const max=Math.max(...rows.map(r=>Math.max(r.all||0,r.grp||0)))*1.1||1;const x=v=>padL+(W-padL-padR)*v/max;
-  let s=`<svg width="${W}" height="${H}" role="img" aria-label="Discipline by group">`;
-  rows.forEach((r,i)=>{const y=8+i*rowH;s+=`<text x="${padL-8}" y="${y+20}" text-anchor="end" style="fill:var(--ink)">${r.l}</text>`;
-    s+=`<rect x="${padL}" y="${y+4}" width="${Math.max(2,x(r.all||0)-padL)}" height="14" rx="4" fill="var(--muted-mark)"/><text x="${x(r.all||0)+5}" y="${y+15}" class="barlbl">${esc(fmtPlain(r.rawA,'%'))}</text>`;
-    s+=`<rect x="${padL}" y="${y+20}" width="${Math.max(2,x(r.grp||0)-padL)}" height="14" rx="4" fill="var(--s1)"/><text x="${x(r.grp||0)+5}" y="${y+31}" class="barlbl" style="fill:var(--ink)">${esc(fmtPlain(r.rawG,'%'))}${r.all&&r.grp?' ('+(r.grp/r.all).toFixed(1)+'×)':''}</text>`;});
-  s+=`<line x1="${x(STATE.disc)}" x2="${x(STATE.disc)}" y1="2" y2="${H-20}" stroke="var(--ink)" stroke-width="2" stroke-dasharray="4 3"/><text x="${x(STATE.disc)+4}" y="${H-6}" style="fill:var(--ink);font-weight:600">State, all students ${STATE.disc}%</text></svg>`;
-  el.innerHTML=s;
-  // trend
-  const tt=document.getElementById('trendTbl');const D=[['Renton','R'],['Kent','K'],['Seattle','S'],['Issaquah','I'],['Bellevue','B'],['WA State','ST']];
-  tt.innerHTML='<thead><tr><th>District</th>'+Object.keys(TREND).map(y=>`<th>${y}</th>`).join('')+'</tr></thead><tbody>'+D.map(([l,c])=>`<tr><td>${l}</td>`+Object.keys(TREND).map(y=>`<td>${esc(TREND[y][c])}%</td>`).join('')+'</tr>').join('')+'</tbody>';
-  // CRDC table
-  filterBar(document.getElementById('filt3'),{on:renderSafety});
-  const list=filtered().filter(o=>o.hasCRDC);
-  list.forEach(o=>{o._inc=(num(o.atk)||0)+(num(o.thr)||0)+(num(o.sex)||0);o._rate=o.enr?o._inc/o.enr*100:0;});
-  list.sort((a,b)=>(num(b.gun)||0)+(num(b.thrF)||0)+(num(b.atkW)||0)-((num(a.gun)||0)+(num(a.thrF)||0)+(num(a.atkW)||0))||b._rate-a._rate);
-  const cols=['gun','thrF','atkW','thr','atk','sex','har','arr','ref'];
-  document.getElementById('crdcTbl').innerHTML='<thead><tr><th>School</th>'+cols.map(k=>`<th title="${M[k].l}">${SHORT[k]}</th>`).join('')+'<th title="Attacks + threats + sexual assault per 100 students (2024-25 enrollment)">Per 100</th></tr></thead><tbody>'+
-    list.map(o=>`<tr class="row" data-c="${o.code}"><td><div class="nm">${esc(o.name)}<small>${o.area} · ${o.grades}</small></div></td>`+cols.map(k=>`<td>${(num(o[k])||0)>0?'<b>'+o[k]+'</b>':'<span class="sup">0</span>'}</td>`).join('')+`<td>${o._rate.toFixed(1)}</td></tr>`).join('')+'</tbody>';
-  document.querySelectorAll('#crdcTbl tr.row').forEach(tr=>tr.onclick=()=>openSchool(tr.dataset.c));
-  const tot=k=>list.reduce((s,o)=>s+(num(o[k])||0),0);
-  document.getElementById('crdcSum').textContent=`Totals for the schools shown, 2017-18: ${tot('gun')} firearm/explosive possession incidents, ${tot('thrF')} threats with a firearm or explosive, ${tot('atkW')} attacks with a weapon, ${tot('thr')} threats of any kind, ${tot('sex')} rapes or sexual assaults, ${tot('har')} harassment allegations, ${tot('arr')} school-related arrests. Sorted by the most serious categories first.`;
-  document.getElementById('newsList').innerHTML=NEWS.filter(n=>[...S.areas].some(a=>n.a.includes(a))).map(n=>`<li><div class="d">${n.d} · ${n.a}</div><div class="small">${esc(n.t)} <a href="${n.u}">${n.s}</a></div></li>`).join('')||'<li class="small muted">No listed incidents for the selected areas.</li>';
+ {d:'Jan 30, 2026',a:'South Seattle',t:'Two Rainier Beach High students were shot and killed at a bus stop at Rainier Ave S and S Henderson St, around the corner from the school, shortly after dismissal. SPS canceled activities at Rainier Beach, Sugiyama and South Shore PK-8.',u:'https://www.kiro7.com/news/local/2-shot-killed-seattles-rainier-beach-neighborhood/3JDMJUUXZNBBHEIKZDILOVEJHI/?outputType=amp',s:'KIRO 7'},
+ {d:'Mar 2026',a:'Renton',t:'A Hazen High student was charged with a double murder in Seattle. Police say he rode a bus from Renton before the shooting, which happened off campus.',u:'https://www.kentreporter.com/2026/03/27/hazen-high-school-student-charged-with-double-murder/',s:'Kent Reporter'},
+ {d:'Apr 25, 2025',a:'South Seattle',t:'A 15-year-old was shot at a gas station near Franklin High (2800 block of Rainier Ave S). The school sheltered in place.',u:'https://www.yahoo.com/news/one-person-injured-shooting-gas-211732067.html',s:'KIRO 7'},
+ {d:'Dec 2024',a:'West Seattle',t:'A 15-year-old Chief Sealth International High student was shot and later died.',u:'https://www.fox13seattle.com/news/deadly-teen-shootings-school-safety',s:'FOX 13'},
+ {d:'Jun 3–12, 2024',a:'Kent',t:'An 18-year-old Kent-Meridian student was fatally shot in the Campus Park lot next to the school. Two days later a 17-year-old Kent-Meridian student was fatally shot in Renton. On June 12 a student was arrested with a handgun at Kentridge High.',u:'https://www.kentreporter.com/news/weapon-found-wednesday-june-12-at-kentridge-high-school',s:'Kent Reporter'},
+ {d:'Jun 2024',a:'Bellevue',t:'Police arrested two juveniles who threatened online to shoot students at Newport, Sammamish and Bellevue high schools.',u:'https://downtownbellevue.com/2024/06/11/bellevue-police-arrest-suspects-death-threats-social-media/',s:'Downtown Bellevue'},
+ {d:'Jan 23, 2024',a:'West Seattle',t:'A Chief Sealth student was killed in a shooting at the Southwest Athletic Complex next to the Chief Sealth and Denny campuses.',u:'https://chiefsealthhs.seattleschools.org/?p=4750',s:'Seattle Public Schools'},
+ {d:'Jan 11, 2024',a:'Kent',t:'Kentwood High in Covington locked down briefly after a student brought a pellet gun. The student was arrested.',u:'https://www.kentreporter.com/news/student-with-pellet-gun-leads-to-brief-lockdown-at-kentwood-high-school',s:'Kent Reporter'},
+ {d:'Dec 14–15, 2023',a:'Renton',t:'A prank call claiming a gun at Nelsen Middle, plus online threats, closed Nelsen, Renton High and Renton Academy for a day. A teen was arrested.',u:'https://kentreporter.com/northwest/renton-police-arrest-teen-after-prank-leads-to-school-shutdowns',s:'Kent Reporter'},
+ {d:'Recurring',a:'Renton and Kent',t:'Social-media threat lists have named 20+ King and Pierce County schools at once, including Renton High, Kent-Meridian and Springbrook Elementary. Police have found most not credible, but they still cause lockdowns and absences.',u:'https://kentreporter.com/news/threats-to-renton-auburn-and-kent-school-districts-under-investigation',s:'Kent Reporter'}];
+const POL=[
+ {n:'Seattle Public Schools',o:'No police on campus since 2020. In 2025 the board weighed a one-year "School Engagement Officer" pilot at Garfield High and voted it down 5–2 in October. Security staff are district employees under Policy 4311.',l:[['Garfield officer debate','https://garfieldptsa.org/?p=20142']]},
+ {n:'Renton School District',o:'Renton Police and the district planned one school resource officer at each comprehensive high school (Renton, Hazen, Lindbergh) starting in 2024-25.',l:[['Kent Reporter','https://kentreporter.com/news/threats-to-renton-auburn-and-kent-school-districts-under-investigation']]},
+ {n:'Kent School District',o:'Contracts with Kent Police for two school resource officers and a commander who serves as safety liaison, alongside district Safety Services staff.',l:[['Kent Reporter','https://www.kentreporter.com/news/two-student-arrests-social-media-threats-disrupt-kent-high-schools']]},
+ {n:'Bellevue School District',o:'Removed campus officers in 2021. Since fall 2022, sworn Bellevue Police "Community Engagement Officers" work from the central office and cover groups of schools.',l:[['District FAQ','https://bsd405.org/departments/security/community-engagement-officer-program/faq/'],['Weapons policy','https://www.bsd405.org/about-us/official-notices/weapons-policy']]},
+ {n:'Issaquah School District',o:'Doesn\'t use school resource officers. A district Safety and Security Department runs safety under Regulation 4312, including threat assessment.',l:[['Regulation 4312','https://www.isd411.org/about-us/regulations/4000-series/4312-school-safety-and-security-services-program']]},
+ {n:'Every Washington district',o:'Must have a bullying (HIB) policy with a compliance officer (RCW 28A.600.477), a behavioral threat-assessment program (RCW 28A.320.123), discipline rules that limit exclusion (WAC 392-400), and a weapons ban on school grounds (RCW 9.41.280).',l:[]}];
+let safeDone=false;
+function renderSafety(){if(safeDone)return;safeDone=true;
+  document.getElementById('newsList').innerHTML=NEWS.map(n=>`<li><div class="d">${n.d}, ${n.a}</div><div class="small">${esc(n.t)} <a href="${n.u}" rel="noopener">${n.s}</a></div></li>`).join('');
+  const L=schools.filter(o=>o.hasCRDC).sort((a,b)=>((num(b.gun)||0)+(num(b.thrF)||0)+(num(b.atkW)||0))-((num(a.gun)||0)+(num(a.thrF)||0)+(num(a.atkW)||0))||((num(b.thr)||0)+(num(b.atk)||0))/b.enr-((num(a.thr)||0)+(num(a.atk)||0))/a.enr).slice(0,25);
+  const cols=[['gun','Firearm poss.'],['thrF','Firearm threats'],['atkW','Weapon attacks'],['thr','Threats'],['atk','Attacks'],['sex','Sexual assault'],['har','Harassment'],['arr','Arrests']];
+  document.getElementById('crdcTbl').innerHTML='<thead><tr><th>School</th>'+cols.map(c=>`<th>${c[1]}</th>`).join('')+'</tr></thead><tbody>'+L.map(o=>`<tr><td><a href="#s-${o.code}">${esc(o.name)}</a><div class="xs muted">${o.area}</div></td>`+cols.map(c=>`<td>${(num(o[c[0]])||0)>0?'<b>'+o[c[0]]+'</b>':'<span class="sup">0</span>'}</td>`).join('')+'</tr>').join('')+'</tbody>';
+  const all=schools.filter(o=>o.hasCRDC);const t=k=>all.reduce((s,o)=>s+(num(o[k])||0),0);
+  document.getElementById('crdcSum').textContent=`The 25 schools with the most serious reports are shown. Across all ${all.length} schools with records: ${t('gun')} firearm possession incidents, ${t('thrF')} firearm threats, ${t('atkW')} attacks with a weapon, ${t('thr')} threats, ${t('sex')} sexual assaults and ${t('arr')} arrests. Every school's counts are on its own page.`;
+  const H=[['Seriously considered suicide','8.5','7.1','9.1','13.9','12.1','11.6'],['Made a suicide plan','6.2','6.6','6.0','','10',''],['Attempted suicide','4.2','2.9','3.9','','5.5',''],['Bullied in the past month','17.6','7.9','6.2','','15',''],['Feels safe during school','87.2','90.5','88.3','','',''],['Carried a weapon to school','1.0','1.1','1.3','','',''],['Skipped school because it felt unsafe','4.9','3.9','4.1','','',''],['Has an adult to turn to when sad','61.8','63.7','68.0','','61','']];
+  document.getElementById('hysTbl').innerHTML='<thead><tr><th>% of students</th><th>Seattle gr 8</th><th>Seattle gr 10</th><th>Seattle gr 12</th><th>State gr 8</th><th>State gr 10</th><th>State gr 12</th></tr></thead><tbody>'+H.map(r=>`<tr><td>${r[0]}</td>`+r.slice(1).map(v=>`<td>${v||'<span class="sup">—</span>'}</td>`).join('')+'</tr>').join('')+'</tbody>';
+  document.getElementById('polList').innerHTML=POL.map(p=>`<div><h3 style="font-size:17px;margin-bottom:4px">${p.n}</h3><p class="small" style="color:var(--ink-2)">${p.o}${p.l.length?' '+p.l.map(l=>`<a href="${l[1]}" rel="noopener">${l[0]}</a>`).join(', ')+'.':''}</p></div>`).join('');
   const prr=document.getElementById('prr');prr.value=`To: Public Records Officer, [District name]
 Re: Public records request under RCW 42.56
 
-Please provide the following records for school years 2022-23 through 2025-26, by school building, in electronic format (spreadsheet preferred):
+Please provide the following records for school years 2022-23 through 2025-26, by school, in electronic format (a spreadsheet is ideal):
 
-1. The number of incidents involving firearms, other weapons, or explosive devices on school property or at school events (the data the district reports to OSPI for the annual Weapons in Schools report), by weapon type.
-2. The number of bomb threats and threats of violence received, and the number of lockdowns, shelter-in-place events, evacuations, and closures, with dates and the school affected.
-3. The number of behavioral threat assessments opened under RCW 28A.320.123 and Policy 3225, by level of concern (no names or student identifiers).
-4. The number of harassment, intimidation, and bullying (HIB) complaints received under Policy 3207, and how many were substantiated.
-5. The district's current HIB, weapons, threat-assessment, and safety/security-staffing policies and procedures, and any agreement with a law enforcement agency for school resource or engagement officers.
+1. The number of incidents involving firearms, other weapons or explosive devices on school property or at school events, by weapon type (the data the district reports to OSPI for the Weapons in Schools report).
+2. The number of bomb threats and threats of violence received, and the number of lockdowns, shelter-in-place events, evacuations and closures, with dates and the school affected.
+3. The number of behavioral threat assessments opened under RCW 28A.320.123, by level of concern (no names or student identifiers).
+4. The number of harassment, intimidation and bullying (HIB) complaints received under Policy 3207, and how many were substantiated.
+5. The district's current HIB, weapons, threat-assessment and safety-staffing policies, and any agreement with a law enforcement agency for school resource or engagement officers.
 6. The district's 2025 Healthy Youth Survey district report (aggregate results only), if the district will release it.
 
 I'm not requesting any personally identifiable student information. Aggregate counts with small-number suppression are fine.
 
 Thank you,
 [Name, email]`;
-  document.getElementById('copyPrr').onclick=async()=>{try{await navigator.clipboard.writeText(prr.value);document.getElementById('copyMsg').textContent='Copied.';}catch(e){prr.select();document.getElementById('copyMsg').textContent='Copy blocked; the text is selected, so press Ctrl/⌘+C.';}};
-}
+  document.getElementById('copyPrr').onclick=async()=>{try{await navigator.clipboard.writeText(prr.value);document.getElementById('copyMsg').textContent='Copied.';}catch(e){prr.focus();prr.select();document.getElementById('copyMsg').textContent='Copy was blocked. The text is selected, so press Ctrl+C or Cmd+C.';}};}
 
-// ---------- wellbeing ----------
-function renderWellbeing(){
-  const st=[['Seriously considered suicide','13.9%','12.1% (±1.6)','11.6%'],['Made a suicide plan','','10%',''],['Attempted suicide','','5.5%',''],['Depressive feelings','','26%',''],['Anxious feelings','','29%',''],['Bullied in past month','','15%',''],['Has an adult to turn to when sad','','61%',''],['Highly hopeful','','51%','']];
-  document.getElementById('hysState').innerHTML=`<div class="tblwrap" style="max-height:none"><table class="t"><thead><tr><th>Measure</th><th>Gr 8</th><th>Gr 10</th><th>Gr 12</th></tr></thead><tbody>${st.map(r=>`<tr><td>${r[0]}</td><td>${r[1]||'<span class="sup">—</span>'}</td><td>${r[2]}</td><td>${r[3]||'<span class="sup">—</span>'}</td></tr>`).join('')}</tbody></table></div>
-   <p class="small muted">10th-grade girls were nearly twice as likely as boys to have seriously considered suicide (15.4% vs 8.4%). LGBTQ+ students reported being bullied about twice as often as their peers. Sources: <a href="https://www.askhys.net/Resources/Data">HYS 2025 Data Analysis Manual</a> pp. 126–128, the HCA 2025 results presentation, the <a href="https://doh.wa.gov/newsroom/2025-healthy-youth-survey-results-point-steady-course-washington-youth-well-being">DOH release</a>, and <a href="https://www.seattleschild.com/?p=116463">Cascade PBS</a>.</p>`;
-  const sea=[['Bullied in past 30 days','17.6','7.9','6.2'],['Felt safe during school','87.2','90.5','88.3'],['Carried a weapon at school (30 days)','1.0','1.1','1.3'],['Skipped school because felt unsafe','4.9','3.9','4.1'],['Seriously considered suicide','8.5','7.1','9.1'],['Made a suicide plan','6.2','6.6','6.0'],['Attempted suicide','4.2','2.9','3.9'],['Has an adult to turn to when sad','61.8','63.7','68.0']];
-  document.getElementById('hysSea').innerHTML=`<div class="tblwrap" style="max-height:none"><table class="t"><thead><tr><th>Measure (%)</th><th>Gr 8</th><th>Gr 10</th><th>Gr 12</th></tr></thead><tbody>${sea.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join('')}</tbody></table></div>`;
-}
-
-// ---------- policies ----------
-const POL=[
- {n:'Seattle Public Schools (West & South Seattle)',o:'No police officers on campus since 2020. In 2025 the board considered a one-year "School Engagement Officer" pilot at Garfield High and voted it down 5–2 in October. Security relies on district-employed safety staff under Policy 4311.',l:[['Seattle Public Schools','https://www.seattleschools.org/'],['Garfield SEO debate (PTSA summary)','https://garfieldptsa.org/?p=20142']]},
- {n:'Renton School District',o:'Renton Police and the district planned one school resource officer at each of the three comprehensive high schools (Renton, Hazen, Lindbergh) starting in 2024-25.',l:[['Renton School District','https://www.rentonschools.us/'],['Kent Reporter: SRO plan','https://kentreporter.com/news/threats-to-renton-auburn-and-kent-school-districts-under-investigation']]},
- {n:'Kent School District',o:'Contracts with Kent Police for two school resource officers plus a commander who serves as school-safety liaison, along with district Safety Services staff.',l:[['Kent School District','https://www.kent.k12.wa.us/'],['Kent Reporter: threats and SRO program','https://www.kentreporter.com/news/two-student-arrests-social-media-threats-disrupt-kent-high-schools']]},
- {n:'Bellevue School District',o:'Pulled SROs from campuses in 2021. Since fall 2022 it has used "Community Engagement Officers": sworn Bellevue PD officers based at the central office who cover groups of schools, not assigned to single buildings.',l:[['BSD Community Engagement Officer FAQ','https://bsd405.org/departments/security/community-engagement-officer-program/faq/'],['BSD weapons policy notice','https://www.bsd405.org/about-us/official-notices/weapons-policy']]},
- {n:'Issaquah School District',o:'Does not use SROs on its campuses. Safety comes from a district Safety and Security Department under Regulation 4312, which cites the state threat-assessment law.',l:[['ISD Regulation 4312','https://www.isd411.org/about-us/regulations/4000-series/4312-school-safety-and-security-services-program'],['ISD Healthy Youth Survey page','https://www.isd411.org/about-us/reports-and-surveys/hys']]},
- {n:'Charter schools in these areas',o:'Summit Atlas (West Seattle), Rainier Valley Leadership Academy and Impact Salish Sea (South Seattle), and Impact Black River (Renton) are overseen by the Washington State Charter School Commission and set their own discipline and safety policies within state law.',l:[['WA Charter School Commission','https://charterschool.wa.gov/']]}
-];
-function renderPolicies(){document.getElementById('polCards').innerHTML=POL.map(p=>`<div class="card pol"><h4>${p.n}</h4><div class="small">${p.o}</div><ul>${p.l.map(l=>`<li><a href="${l[1]}">${l[0]}</a></li>`).join('')}</ul></div>`).join('')+
- `<div class="card pol"><h4>What to ask at a school tour</h4><ul><li>Who runs threat assessments here, and how fast does a concern get reviewed?</li><li>How many HIB (bullying) complaints were filed last year, and how many were substantiated?</li><li>What does the school use instead of suspension, and how is re-entry handled?</li><li>Is there a counselor or social worker, and how many students does each serve?</li><li>How does the school communicate during a lockdown or threat?</li></ul></div>`;}
-
-// ---------- about ----------
-function renderAbout(){document.getElementById('aboutBody').innerHTML=`
-<h3 style="margin-top:0">Coverage</h3>
-<p>This covers 177 public schools in the Renton, Kent, Issaquah and Bellevue school districts, plus Seattle Public Schools buildings in West and South Seattle and four charter schools located in those areas. Seattle areas are defined by ZIP code: <b>West Seattle</b> is 98106, 98116, 98126, 98136 and 98146; <b>South Seattle</b> is 98108, 98118, 98144 and 98178. 98144 includes Mount Baker and Judkins Park, which some people count as Central Seattle. Not included: Summit Sierra (International District), Impact Puget Sound (Tukwila), and every other city.</p>
+/* ============ METHOD ============ */
+function renderMethod(){document.getElementById('methodBody').innerHTML=`
+<h2>How it works</h2>
+<p class="lede" style="margin-top:8px">Every number here comes from a public source, and every judgment comes from a rule you can read below.</p>
+<h3>Which schools are included</h3>
+<p>177 public and charter schools: all of the Renton, Kent, Issaquah and Bellevue school districts, plus Seattle Public Schools buildings in West Seattle (ZIPs 98106, 98116, 98126, 98136, 98146) and South Seattle (98108, 98118, 98144, 98178), plus four charters in those areas (Summit Atlas, Rainier Valley Leadership Academy, Impact Salish Sea and Impact Black River).</p>
+<h3>The four scores</h3>
+<p>Each score is a percentile from 0 to 100 that compares a school only with schools at the same level here (elementary with elementary, and so on). A 70 means the school did better than 70% of its peers in these six areas. It is not a grade and not a comparison with the whole state.</p>
+<ul>
+<li><b>Academics:</b> the average percentile of reading, math and science proficiency.</li>
+<li><b>Growth:</b> the average percentile of median student growth in reading and math. The state only measures growth in grades 4–8, so high schools have no Growth score.</li>
+<li><b>Equity:</b> the average percentile of three things: how far reading and math results sit above or below what the school's low-income share predicts, low-income students' own proficiency, and (where reported) how much more often students with disabilities are suspended than the school average, with lower being better.</li>
+<li><b>Climate:</b> the average percentile of regular attendance and a low suspension rate, plus the share of 9th graders on track for high schools.</li>
+</ul>
+<p>Not scored: special-education, re-engagement, institutional, online and preschool programs, and schools with fewer than 60 students. A score is blank when its inputs are missing.</p>
+<h3>The "Reading this school" notes</h3>
+<p>These come from fixed rules, not from editing by hand. Examples: results 8+ points above or below the income trend, median growth of 56+ or 44 and under, a 22-point reading gap between low-income students and the school, students with disabilities suspended at 2.5× the school rate or more, attendance under 65% or over 88%. The wording draws on research about school climate, belonging and exclusionary discipline. These are interpretations to start a conversation, not findings about a school.</p>
 <h3>Sources</h3>
 <ul>
-<li>OSPI Report Card on data.wa.gov, 2024-25: <a href="https://data.wa.gov/d/2rwv-gs2e">Enrollment</a>, <a href="https://data.wa.gov/d/h5d9-vgwi">Assessment</a> (Smarter Balanced and WCAS; WA-AIM excluded), <a href="https://data.wa.gov/d/c9tq-ntbq">Discipline</a>, <a href="https://data.wa.gov/d/isxb-523t">Graduation</a> (four-year cohort), <a href="https://data.wa.gov/d/f7j6-nk2h">SQSS</a> (attendance, 9th grade on track, dual credit), <a href="https://data.wa.gov/d/hv7j-ib7g">Growth</a>, <a href="https://data.wa.gov/d/35cj-2iym">WaKIDS</a>, and <a href="https://data.wa.gov/d/gks4-v7ka">Student–teacher ratio</a>. Discipline trend: the <a href="https://data.wa.gov/d/ixvm-ww8s">2022-23</a> and <a href="https://data.wa.gov/d/sm68-769y">2023-24</a> files.</li>
-<li>Civil Rights Data Collection, 2017-18, from data.wa.gov: <a href="https://data.wa.gov/d/u9in-9mwd">Harassment &amp; Violence</a> and <a href="https://data.wa.gov/d/r3cb-bb5k">School Behavior &amp; Climate</a>. The 2020-21 versions (<a href="https://data.wa.gov/d/248u-c6b9">248u-c6b9</a>, <a href="https://data.wa.gov/d/ipiq-6a85">ipiq-6a85</a>) were checked and are nearly empty because of remote learning. The federal 2021-22 CRDC is at <a href="https://civilrightsdata.ed.gov/">civilrightsdata.ed.gov</a> and is the best next addition.</li>
-<li>Locations: King County <a href="https://services.arcgis.com/Ej0PsM5Aw677QF1W/arcgis/rest/services/SCHSITE_POINT_107/FeatureServer/0">School Sites (SCHSITE_POINT_107)</a>, matched by OSPI code or school name. Charter school addresses come from OSPI and charter directories.</li>
-<li>Healthy Youth Survey 2025: AskHYS.net, the HYS 2025 Data Analysis Manual (July 2026), and Seattle Public Schools' published district report.</li>
-<li>Boundaries: to find which school serves an address, use <a href="https://www.greatschools.org/school-district-boundaries-map/">GreatSchools' boundary map</a> or each district's school locator. Attendance boundaries change, and this site doesn't redraw them.</li>
+<li>OSPI Report Card files on data.wa.gov, 2024-25: <a href="https://data.wa.gov/d/2rwv-gs2e">enrollment</a>, <a href="https://data.wa.gov/d/h5d9-vgwi">assessment</a> (Smarter Balanced and WCAS; WA-AIM excluded), <a href="https://data.wa.gov/d/c9tq-ntbq">discipline</a>, <a href="https://data.wa.gov/d/isxb-523t">graduation</a>, <a href="https://data.wa.gov/d/f7j6-nk2h">attendance, 9th grade on track and dual credit</a>, <a href="https://data.wa.gov/d/hv7j-ib7g">growth</a>, <a href="https://data.wa.gov/d/35cj-2iym">kindergarten readiness</a>, <a href="https://data.wa.gov/d/gks4-v7ka">student–teacher ratio</a>. Discipline trend from the <a href="https://data.wa.gov/d/ixvm-ww8s">2022-23</a> and <a href="https://data.wa.gov/d/sm68-769y">2023-24</a> files.</li>
+<li>Federal Civil Rights Data Collection, 2017-18: <a href="https://data.wa.gov/d/u9in-9mwd">harassment and violence</a> and <a href="https://data.wa.gov/d/r3cb-bb5k">behavior and climate</a>. The 2020-21 files were checked and are nearly empty because of remote learning.</li>
+<li>School locations: King County's <a href="https://services.arcgis.com/Ej0PsM5Aw677QF1W/arcgis/rest/services/SCHSITE_POINT_107/FeatureServer/0">school-site layer</a>. Address search uses OpenStreetMap's Nominatim service; ZIP codes are matched to the center of that ZIP's schools.</li>
+<li>Healthy Youth Survey 2025: AskHYS.net, the HYS 2025 Data Analysis Manual and Seattle Public Schools' published district report.</li>
 </ul>
-<h3>How to read the numbers</h3>
+<h3>Reading the numbers</h3>
 <ul>
-<li><b>Suppression.</b> OSPI hides small counts. "&lt;3.7" means the true rate is between 0 and 3.7%. For sorting, charts and area estimates, these values are placed at the midpoint (1.85). "n&lt;10" means fewer than 10 students, so it's left out.</li>
-<li><b>Proficiency</b> is the share meeting standard on state tests, grades 3–8 and 10 for ELA and Math, and grades 5, 8 and 11 for Science. Low participation can pull a school's score down, as with Issaquah High's science result.</li>
-<li><b>Growth (SGP)</b> compares each student's progress with students who started at the same score. 50 is typical, above 55 is strong, and below 45 is weak. Growth depends much less on family income than proficiency does.</li>
-<li><b>Exclusionary discipline</b> is the share of students suspended or expelled at least once. A low rate can mean a calm school, a restorative approach, or under-reporting. The ratio between groups (for example, students with disabilities vs. all students) often tells you more about school climate than the overall rate.</li>
-<li><b>CRDC incident counts</b> are self-reported by schools under federal definitions that schools apply differently. Use them to spot outliers and ask questions, not to rank safety.</li>
-<li><b>Area estimates</b> for West and South Seattle are enrollment-weighted averages of school values, which approximate a true student-level rate.</li>
+<li><b>Suppression:</b> OSPI hides small counts. "&lt;3.7%" means somewhere between 0 and 3.7%. For scores and charts these are placed at the midpoint. "n&lt;10" means too few students to report.</li>
+<li><b>Discipline</b> is the share of students suspended or expelled at least once. Low can mean calm, restorative or under-reported, so read it next to attendance.</li>
+<li><b>Federal incident counts</b> are self-reported and old. Use them to raise questions, not to rank safety.</li>
+<li><b>Healthy Youth Survey</b> results are self-reports. Differences of a few points are often within the margin of error.</li>
 </ul>
 <h3>Not available publicly</h3>
-<p>Student suicide deaths by school, school-level HYS results (they need superintendent approval), and building-level counts of bomb threats, lockdowns and weapons incidents. The <a href="#safety">Safety tab</a> has a public-records request you can send to get the last of these.</p>
-<p class="muted">Data pulled November 2026. Built with OSPI's files as published, so errors in the source files carry through.</p>`;}
+<p>Student suicide deaths by school, school-level Healthy Youth Survey results, and building-level counts of bomb threats, lockdowns and weapons incidents. The <a href="#safety">Safety page</a> has a records request you can send to get the last of these.</p>`;}
 
 route();
-addEventListener('resize',()=>{clearTimeout(window.__rz);window.__rz=setTimeout(rerenderCharts,200);});
+let rz;addEventListener('resize',()=>{clearTimeout(rz);rz=setTimeout(()=>{const h=location.hash;if(!h||h==='#home')drawHeroMap();else route();},250);});
 })();
 </script>
 </body>
