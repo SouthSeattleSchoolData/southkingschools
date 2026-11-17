@@ -1,0 +1,616 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>South King School Lens</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  color-scheme:light;
+  --bg:#f6f5f1;--surface:#fcfcfb;--surface-2:#efeee9;--line:#dedcd4;--line-2:#c9c7bd;
+  --ink:#0b0b0b;--ink-2:#52514e;--ink-3:#7a7974;
+  --accent:#2a78d6;--accent-ink:#1c5cab;--accent-soft:#e3eefc;
+  --s1:#2a78d6;--s2:#eb6834;--muted-mark:#b9b7ae;
+  --q1:#cde2fb;--q2:#86b6ef;--q3:#3987e5;--q4:#1c5cab;--q5:#0d366b;
+  --warn-bg:#fff6df;--warn-line:#f0d58a;
+  --shadow:0 1px 2px rgba(0,0,0,.05),0 4px 16px rgba(0,0,0,.05);
+}
+@media (prefers-color-scheme:dark){
+  :root:where(:not([data-theme="light"])){
+    color-scheme:dark;
+    --bg:#121211;--surface:#1a1a19;--surface-2:#242422;--line:#33332f;--line-2:#47473f;
+    --ink:#f0efec;--ink-2:#c3c2b7;--ink-3:#97968c;
+    --accent:#3987e5;--accent-ink:#86b6ef;--accent-soft:#1b2a3d;
+    --s1:#3987e5;--s2:#d95926;--muted-mark:#5c5b55;
+    --q1:#184f95;--q2:#256abf;--q3:#3987e5;--q4:#6da7ec;--q5:#b7d3f6;
+    --warn-bg:#2d2615;--warn-line:#6b5521;
+    --shadow:none;
+  }
+}
+:root[data-theme="dark"]{
+  color-scheme:dark;
+  --bg:#121211;--surface:#1a1a19;--surface-2:#242422;--line:#33332f;--line-2:#47473f;
+  --ink:#f0efec;--ink-2:#c3c2b7;--ink-3:#97968c;
+  --accent:#3987e5;--accent-ink:#86b6ef;--accent-soft:#1b2a3d;
+  --s1:#3987e5;--s2:#d95926;--muted-mark:#5c5b55;
+  --q1:#184f95;--q2:#256abf;--q3:#3987e5;--q4:#6da7ec;--q5:#b7d3f6;
+  --warn-bg:#2d2615;--warn-line:#6b5521;--shadow:none;
+}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "IBM Plex Sans",system-ui,sans-serif;-webkit-text-size-adjust:100%}
+a{color:var(--accent-ink)}
+.wrap{max-width:1180px;margin:0 auto;padding:0 16px}
+header.top{padding:22px 0 10px}
+.brand{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.brand h1{font:600 26px/1.1 "IBM Plex Sans Condensed","IBM Plex Sans",sans-serif;margin:0;letter-spacing:-.01em}
+.brand .tag{color:var(--ink-2);font-size:14px}
+.areas-line{color:var(--ink-3);font-size:13px;margin-top:4px}
+nav.tabs{position:sticky;top:0;z-index:20;background:var(--bg);border-bottom:1px solid var(--line);margin-top:8px}
+nav.tabs .wrap{display:flex;gap:2px;overflow-x:auto;scrollbar-width:none}
+nav.tabs .wrap::-webkit-scrollbar{display:none}
+nav.tabs a{flex:0 0 auto;padding:11px 12px 10px;text-decoration:none;color:var(--ink-2);font-weight:500;font-size:14px;border-bottom:2px solid transparent;white-space:nowrap}
+nav.tabs a.on{color:var(--ink);border-bottom-color:var(--accent)}
+.themebtn{margin-left:auto;flex:0 0 auto;align-self:center;background:none;border:1px solid var(--line);color:var(--ink-2);border-radius:6px;font:inherit;font-size:12px;padding:4px 8px;cursor:pointer}
+main{padding:18px 0 60px}
+section.view{display:none}
+section.view.on{display:block}
+h2{font:600 20px/1.25 "IBM Plex Sans Condensed","IBM Plex Sans",sans-serif;margin:6px 0 4px}
+h3{font-size:15px;margin:18px 0 6px}
+.lede{color:var(--ink-2);margin:0 0 14px;max-width:760px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:14px;box-shadow:var(--shadow)}
+.grid{display:grid;gap:12px}
+.g-areas{grid-template-columns:repeat(auto-fill,minmax(170px,1fr))}
+.area-card h4{margin:0 0 2px;font-size:15px}
+.area-card .sub{color:var(--ink-3);font-size:12px}
+.kv{display:grid;grid-template-columns:1fr auto;gap:2px 8px;margin-top:8px;font-size:13px}
+.kv span:nth-child(odd){color:var(--ink-2)}
+.kv b{font-weight:600;font-variant-numeric:tabular-nums;text-align:right}
+.controls{display:flex;flex-wrap:wrap;gap:8px;align-items:center;margin:0 0 12px}
+.chip{border:1px solid var(--line-2);background:var(--surface);color:var(--ink-2);border-radius:999px;padding:5px 11px;font:inherit;font-size:13px;cursor:pointer;min-height:32px}
+.chip.on{background:var(--accent-soft);border-color:var(--accent);color:var(--ink)}
+select,input[type=search]{font:inherit;font-size:14px;padding:6px 9px;border:1px solid var(--line-2);border-radius:7px;background:var(--surface);color:var(--ink);min-height:34px}
+input[type=search]{min-width:180px;flex:1 1 180px;max-width:280px}
+label.lbl{font-size:12px;color:var(--ink-3);margin-right:-4px}
+.note{background:var(--warn-bg);border:1px solid var(--warn-line);border-radius:8px;padding:10px 12px;font-size:13.5px;color:var(--ink);margin:10px 0}
+.muted{color:var(--ink-3)}
+.small{font-size:12.5px}
+/* table */
+.tblwrap{overflow:auto;border:1px solid var(--line);border-radius:10px;background:var(--surface);max-height:70vh}
+table.t{border-collapse:separate;border-spacing:0;width:100%;font-size:13px;font-variant-numeric:tabular-nums}
+table.t th,table.t td{padding:7px 9px;border-bottom:1px solid var(--line);text-align:right;white-space:nowrap}
+table.t th{position:sticky;top:0;background:var(--surface-2);font-weight:600;color:var(--ink-2);cursor:pointer;user-select:none;z-index:2;font-size:12px}
+table.t th:first-child,table.t td:first-child{position:sticky;left:0;text-align:left;background:var(--surface);z-index:1;max-width:210px;overflow:hidden;text-overflow:ellipsis}
+table.t th:first-child{z-index:3;background:var(--surface-2)}
+table.t th.sorted{color:var(--ink)}
+table.t tr.ref td{background:var(--surface-2);color:var(--ink-2);font-style:italic}
+table.t tr.ref td:first-child{background:var(--surface-2)}
+table.t tbody tr.row{cursor:pointer}
+table.t tbody tr.row:hover td{background:var(--accent-soft)}
+table.t tr.hl td{background:var(--accent-soft)!important;font-weight:600}
+td .sup{color:var(--ink-3)}
+td .nm{font-weight:500}
+td .nm small{display:block;color:var(--ink-3);font-weight:400;font-size:11px}
+.badge{display:inline-block;font-size:10.5px;padding:0 5px;border-radius:4px;border:1px solid var(--line-2);color:var(--ink-2);margin-left:4px;vertical-align:1px}
+.subtabs{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+/* charts */
+svg text{fill:var(--ink-2);font:12px "IBM Plex Sans",sans-serif}
+svg .axis{stroke:var(--line-2);stroke-width:1}
+svg .grid{stroke:var(--line);stroke-width:1}
+.tip{position:fixed;pointer-events:none;background:var(--surface);color:var(--ink);border:1px solid var(--line-2);border-radius:8px;padding:8px 10px;font-size:12.5px;box-shadow:0 4px 18px rgba(0,0,0,.15);z-index:60;max-width:260px;display:none}
+.tip b{display:block;margin-bottom:2px}
+.legend{display:flex;gap:12px;flex-wrap:wrap;font-size:12.5px;color:var(--ink-2);margin:6px 0}
+.legend i{display:inline-block;width:12px;height:12px;border-radius:3px;margin-right:5px;vertical-align:-2px}
+.ramp{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--ink-2)}
+.ramp i{width:22px;height:10px;display:inline-block;border-radius:2px}
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:50;display:none;align-items:flex-end;justify-content:center}
+.modal.on{display:flex}
+.sheet{background:var(--surface);width:100%;max-width:760px;max-height:88vh;overflow:auto;border-radius:14px 14px 0 0;padding:18px 16px 28px;position:relative}
+@media(min-width:800px){.modal{align-items:center}.sheet{border-radius:14px}}
+.close{position:absolute;right:10px;top:10px;border:1px solid var(--line);background:var(--surface-2);color:var(--ink);border-radius:8px;width:34px;height:34px;font-size:18px;cursor:pointer}
+.mgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px;margin-top:8px}
+.m{border:1px solid var(--line);border-radius:8px;padding:8px 10px}
+.m .k{font-size:11.5px;color:var(--ink-3)}
+.m .v{font-size:18px;font-weight:600;font-variant-numeric:tabular-nums}
+.m .c{font-size:11.5px;color:var(--ink-2)}
+.timeline{list-style:none;padding:0;margin:0}
+.timeline li{border-left:2px solid var(--line-2);padding:0 0 14px 14px;position:relative}
+.timeline li::before{content:"";position:absolute;left:-6px;top:5px;width:10px;height:10px;border-radius:50%;background:var(--surface);border:2px solid var(--ink-3)}
+.timeline .d{font-size:12px;color:var(--ink-3);font-weight:600}
+.cols2{display:grid;grid-template-columns:1fr;gap:12px}
+@media(min-width:860px){.cols2{grid-template-columns:1fr 1fr}}
+.pol h4{margin:0 0 4px}
+.pol ul{margin:6px 0 0;padding-left:18px;font-size:13.5px}
+.btn{font:inherit;font-size:13px;border:1px solid var(--accent);background:var(--accent);color:#fff;border-radius:7px;padding:6px 12px;cursor:pointer}
+textarea{width:100%;min-height:210px;font:12.5px/1.45 ui-monospace,Menlo,monospace;border:1px solid var(--line-2);border-radius:8px;padding:10px;background:var(--surface-2);color:var(--ink)}
+.help{position:fixed;right:14px;bottom:14px;z-index:30;background:var(--surface);border:1px solid var(--line-2);border-radius:10px;padding:8px 12px;font-size:12.5px;box-shadow:var(--shadow);max-width:280px}
+.help a{font-weight:600}
+footer{color:var(--ink-3);font-size:12px;border-top:1px solid var(--line);padding:16px 0 80px}
+.barlbl{font-variant-numeric:tabular-nums}
+</style>
+</head>
+<body>
+<header class="top"><div class="wrap">
+  <div class="brand"><h1>South King School Lens</h1><span class="tag">Public data on schools in Renton, Kent, Issaquah, Bellevue, West Seattle and South Seattle</span></div>
+  <div class="areas-line">Mostly 2024-25 OSPI Report Card data · 177 public & charter schools · An independent parent tool, not affiliated with OSPI or any district</div>
+</div></header>
+<nav class="tabs"><div class="wrap" id="tabs">
+  <a href="#overview">Overview</a><a href="#schools">Schools</a><a href="#map">Map</a><a href="#equity">Equity</a><a href="#safety">Safety</a><a href="#wellbeing">Wellbeing</a><a href="#policies">Policies</a><a href="#about">Data &amp; methods</a>
+  <button class="themebtn" id="themeBtn" type="button">Theme</button>
+</div></nav>
+<main><div class="wrap">
+
+<section class="view" id="v-overview">
+  <h2>How the six areas compare</h2>
+  <p class="lede">Renton, Kent, Issaquah and Bellevue use OSPI's district totals. West and South Seattle aren't districts, so their numbers are estimates built from their schools, weighted by enrollment. Tap a bar for details.</p>
+  <div class="grid g-areas" id="areaCards"></div>
+  <h3>Compare one measure</h3>
+  <div class="controls"><label class="lbl" for="ovMetric">Measure</label><select id="ovMetric"></select></div>
+  <div class="card"><div id="ovChart"></div><div class="small muted" id="ovNote"></div></div>
+  <div class="note"><b>How to read this.</b> Test scores follow family income closely. Before you treat a gap between areas as a school-quality gap, open the <a href="#equity">Equity</a> tab. It shows which schools do better or worse than their low-income share would predict.</div>
+</section>
+
+<section class="view" id="v-schools">
+  <h2>School-by-school table</h2>
+  <p class="lede">Tap any column to sort and any school for its full profile. Gray values starting with "&lt;" or "&gt;" are privacy-suppressed bounds from OSPI. "n&lt;10" means too few students to report.</p>
+  <div class="controls" id="filt1"></div>
+  <div class="subtabs" id="colGroups"></div>
+  <div class="tblwrap"><table class="t" id="tbl"></table></div>
+  <p class="small muted" id="tblCount"></p>
+</section>
+
+<section class="view" id="v-map">
+  <h2>Where the schools are</h2>
+  <p class="lede">Each dot is a school, sized by enrollment and shaded by the measure you choose. Darker means a higher value. Gray means the value is suppressed or doesn't apply. Tap a dot for details.</p>
+  <div class="controls"><label class="lbl" for="mapMetric">Shade by</label><select id="mapMetric"></select><span id="mapLegend" class="ramp"></span></div>
+  <div class="card" style="padding:6px"><div id="mapSvg"></div></div>
+  <p class="small muted">Positions use the King County school-site layer (SCHSITE_POINT_107), with a few charters placed by street address. There's no basemap: the page can't load map tiles, so this is a plot of each school's coordinates.</p>
+</section>
+
+<section class="view" id="v-equity">
+  <h2>Beating the odds: results vs. low-income share</h2>
+  <p class="lede">Each dot is a school. Low-income share runs left to right, and the measure you choose runs bottom to top. The dashed line is the trend across all schools shown. Dots above the line do better than schools with similar poverty levels. For discipline, below the line is better.</p>
+  <div class="controls"><label class="lbl" for="eqMetric">Measure</label><select id="eqMetric"></select><label class="lbl" for="eqArea">Highlight</label><select id="eqArea"></select></div>
+  <div class="card"><div id="eqSvg"></div><div class="legend" id="eqLegend"></div></div>
+  <div class="cols2" style="margin-top:12px">
+    <div class="card"><h3 style="margin-top:0">Furthest above the trend</h3><div id="eqTop"></div></div>
+    <div class="card"><h3 style="margin-top:0">Furthest below the trend</h3><div id="eqBot"></div></div>
+  </div>
+</section>
+
+<section class="view" id="v-safety">
+  <h2>Safety: discipline, violent incidents and weapons</h2>
+  <p class="lede">No public dataset counts "shootings" or "bombings" by school. What does exist: federal Civil Rights Data Collection (CRDC) incident counts, OSPI's exclusionary-discipline rates, and news reports. All three are below, each with its limits stated.</p>
+
+  <h3>1. Exclusionary discipline by student group, 2024-25</h3>
+  <p class="small muted">Share of students suspended or expelled at least once. The gray bar is all students; the blue bar is the group you pick. A large gap means students in that group are removed from class far more often than average.</p>
+  <div class="controls"><label class="lbl" for="dgGroup">Group</label><select id="dgGroup"></select></div>
+  <div class="card"><div id="dgSvg"></div><div class="legend"><span><i style="background:var(--muted-mark)"></i>All students</span><span><i style="background:var(--s1)"></i><span id="dgName">Group</span></span></div></div>
+  <div class="note"><b>Bellevue's near-zero discipline rate (&lt;0.015% in 2024-25, down from 0.65% in 2022-23) is unusual.</b> It may reflect a real policy shift away from exclusion, a change in how removals are coded, or under-reporting. It doesn't by itself mean Bellevue schools have fewer behavior incidents. Ask the district how it records emergency expulsions and short removals.</div>
+
+  <h3>2. Discipline trend by district</h3>
+  <div class="tblwrap" style="max-height:none"><table class="t" id="trendTbl"></table></div>
+
+  <h3>3. Reported incidents by school (CRDC 2017-18)</h3>
+  <p class="small muted">Each school reports these counts to the U.S. Dept. of Education. 2017-18 is the most recent pre-pandemic year on data.wa.gov. The 2020-21 file is almost all zeros because of remote learning: across these schools it shows 0 firearm incidents and 9 threats. Counts depend heavily on how each school codes incidents. For example, Bryn Mawr Elementary reported 251 "attacks without a weapon," which almost certainly counts routine physical aggression among young children.</p>
+  <div class="controls" id="filt3"></div>
+  <div class="tblwrap"><table class="t" id="crdcTbl"></table></div>
+  <p class="small muted" id="crdcSum"></p>
+
+  <h3>4. Shootings, threats and lockdowns in the news (2023–2026)</h3>
+  <p class="small muted">Recent incidents at or near schools in these areas, from local news. Most of the shootings happened off campus, at bus stops, parks or community centers near schools. The list isn't complete; it shows the kinds of events families have dealt with.</p>
+  <div class="card"><ul class="timeline" id="newsList"></ul></div>
+
+  <h3>5. Get the records yourself</h3>
+  <p class="small">Washington's Public Records Act (RCW 42.56) lets anyone request district records. The request below asks for the data that isn't published: weapons incidents, threat assessments, lockdowns, bomb threats and harassment/bullying (HIB) reports. Send one to each district's public records officer.</p>
+  <textarea id="prr" readonly></textarea>
+  <div style="margin-top:6px"><button class="btn" id="copyPrr" type="button">Copy request</button> <span class="small muted" id="copyMsg"></span></div>
+</section>
+
+<section class="view" id="v-wellbeing">
+  <h2>Student wellbeing: Healthy Youth Survey 2025</h2>
+  <p class="lede">The Healthy Youth Survey (HYS) is an anonymous survey of 6th, 8th, 10th and 12th graders, given every two years. It's the best source on bullying, feeling safe, and suicidal thoughts. But the state releases district and school results only with the superintendent's permission. Results that identify a school or district can be published only with the superintendent's written OK; otherwise data from at least 3 schools and 3 districts must be combined (HYS 2025 Data Analysis Manual, pp. 24–25, 121–122). Seattle Public Schools posts its district report publicly, so Seattle's numbers appear below.</p>
+  <div class="cols2">
+    <div class="card"><h3 style="margin-top:0">Washington State, 2025</h3><div id="hysState"></div></div>
+    <div class="card"><h3 style="margin-top:0">Seattle Public Schools, 2025 (district-published)</h3><div id="hysSea"></div>
+      <p class="small muted">Checked against the response tables in SPS's <a href="https://www.seattleschools.org/wp-content/uploads/sites/106/2026/06/Seattle-Public-Schools-HYS-2025-MultiGrade.pdf">published multi-grade report</a> (questions 120, 133–135, 141, 150, 157, 232). "Bullied" = bullied at least once in 30 days; "felt safe" = "always" or "sometimes true"; "carried a weapon" and "skipped school" = 1 or more days. Participation was 83% (gr 8), 69% (gr 10) and 46% (gr 12), so the 12th-grade numbers are the least representative.</p></div>
+  </div>
+  <h3>Getting HYS results for Renton, Kent, Issaquah and Bellevue</h3>
+  <div class="card small">
+    <ul style="margin:0;padding-left:18px">
+      <li>County, ESD and state fact sheets are public at <a href="https://www.askhys.net/SurveyResults/FactSheets">AskHYS.net → Fact Sheets</a>. Choose 2025 → King County → "Bullying and Harassment", "Violent Behaviors & School Safety", "Depressive Feelings, Anxiety and Suicide".</li>
+      <li>Districts own their district and building reports. Ask each district for its 2025 HYS district report (the PDF that Looking Glass Analytics produces). Some districts, like Seattle and Enumclaw, have released theirs publicly.</li>
+      <li>The interactive statewide dashboard is at <a href="https://www.askhys.net/SurveyResults/DataDashboard">AskHYS Data Dashboard</a>.</li>
+    </ul>
+  </div>
+  <h3>Youth suicide deaths</h3>
+  <div class="card small">
+    <p style="margin-top:0">No agency reports student suicide deaths by school or district, and that's deliberate: small counts could identify a child, and publicizing clusters can raise risk for other students. The closest public figures:</p>
+    <ul style="padding-left:18px">
+      <li><b>Washington State:</b> the suicide death rate for ages 10–17 rose from 4.7 per 100,000 in 2024 to 7.7 in 2025, mostly among boys (WA DOH, via <a href="https://komonews.com/news/local/washington-suicide-rate-rises-in-2025-deaths-climb-among-youth-seniors-and-rural-areas-signs-resources-help-mental-health-support-childreen-teenagers-agriculture-farmers-elderly-program-prevention">KOMO</a>).</li>
+      <li><b>King County:</b> in a University of Washington review, three-quarters of suicide deaths among children ages 10–14 involved firearms, usually a family member's gun (<a href="https://www.bothell-reporter.com/2020/02/10/king-county-studies-youth-gun-violence-amid-rising-suicides/">report coverage</a>). Locked storage is the single most protective step at home. King County's LOK-IT-UP program offers discounted lock boxes.</li>
+      <li>County-level data: <a href="https://kingcounty.gov/en/dept/dph/about-king-county/about-public-health/data-reports/population-health-data/suicide">Public Health – Seattle & King County suicide data</a>.</li>
+    </ul>
+    <p style="margin-bottom:0"><b>If a student or family member is struggling:</b> call or text <b>988</b> (Suicide &amp; Crisis Lifeline, 24/7). For teens, Crisis Connections' <b>Teen Link</b> is 866-833-6546.</p>
+  </div>
+  <div class="note"><b>A psychologist's reading of HYS numbers.</b> These are self-reports from the students who took part, and participation drops sharply by 12th grade. Differences of a few points between places are often within the margin of error. The protective factors are the most useful to track: having an adult to turn to, feeling safe at school, and hope. They respond to school climate in ways that suicide rates, which are rare events, can't show year to year.</div>
+</section>
+
+<section class="view" id="v-policies">
+  <h2>Safety policies and approaches</h2>
+  <p class="lede">State law requires every district to have certain policies, and districts differ most in how they staff security. Use this as a starting point and confirm current practice with each district.</p>
+  <div class="card small"><b>Required in every Washington district:</b> a harassment, intimidation and bullying (HIB) policy with a named compliance officer (RCW 28A.600.477, model policy 3207). A behavioral threat-assessment program (RCW 28A.320.123). Discipline rules that limit exclusion and require re-engagement meetings (WAC 392-400). A ban on firearms and dangerous weapons on school grounds (RCW 9.41.280). If a district has school resource officers, it must meet RCW 28A.320.124's training and agreement rules.</div>
+  <div class="cols2" style="margin-top:12px" id="polCards"></div>
+</section>
+
+<section class="view" id="v-about">
+  <h2>Data and methods</h2>
+  <div class="card small" id="aboutBody"></div>
+</section>
+
+</div></main>
+<footer><div class="wrap">Built from public data: OSPI Report Card files on data.wa.gov, the King County school-site layer, U.S. Dept. of Education CRDC, the Washington Healthy Youth Survey, and local news. Not affiliated with OSPI, King County, or any school district. Suppressed values follow OSPI's N&lt;10 and top/bottom-range rules.</div></footer>
+
+<div class="tip" id="tip"></div>
+<div class="modal" id="modal"><div class="sheet" id="sheet"><button class="close" id="closeBtn" aria-label="Close">×</button><div id="sheetBody"></div></div></div>
+
+<script>
+// Columns: 0 code,1 name,2 dist,3 area,4 type,5 grades,6 lat,7 lon,8 addr,9 zip,10 enroll,11 lowInc%,12 ELL%,13 SWD%,14 HiCap%,15 Asian%,16 Black%,17 Hisp%,18 White%,19 TwoPlus%,20 NHPI%,21 Homeless%,
+// 22 ELA%,23 Math%,24 Sci%,25 ELA_LI%,26 Math_LI%,27 disc%,28 discN,29 dSWD,30 dBlack,31 dHisp,32 dWhite,33 dAsian,34 dLI,35 grad4%,36 attend%,37 ninthOT%,38 dual%,39 sgpELA,40 sgpMath,41 stuTeach,42 kReady%,
+// CRDC 2017-18: 43 harassAlleg,44 rape/sexAssault,45 attacks,46 attacksWeapon,47 threats,48 threatsFirearm,49 firearmPossession,50 arrests,51 lawRefer
+const ROWS=[["2118","Emerson Elementary","S","South Seattle","P","PK-5",47.5148,-122.2586,"9709 60th Ave S","98118",398,75.4,39.4,16.6,1,8.8,45,24.4,10.8,9.3,1.3,11.8,23.1,20.9,18.3,17.2,18.4,0.93,4,"<3.7","<1.53","<2.83","<6.3","<8.3",1.25,,69.8,,,42,49,11.4,,0,0,0,0,0,0,0,0,0],["2120","Rising Star Elementary","S","South Seattle","P","PK-5",47.5291,-122.2889,"8311 Beacon Ave S","98118",324,70.1,39.5,25.3,1.5,35.5,27.5,15.1,13.6,8.3,0,7.7,57.1,42,44,47.3,32.1,"<0.94",,"<3.7","<3.1","<5.9","<6.8","<2.86","<1.29",,74.9,,,39,55,8.1,,0,0,0,0,0,0,0,0,0],["2139","Gatewood Elementary","S","West Seattle","P","K-5",47.5403,-122.3885,"4320 SW Myrtle St","98136",400,13,5,15.5,3.5,3,3,11.8,68.3,13.5,0,1,64.4,66.5,61.5,11.1,29.6,"<0.73",,"<4.5","N<10","<6.1","<1.09","<15.0","<5.4",,90.4,,,48,57,14.8,,0,0,1,0,0,0,0,0,0],["2141","Thurgood Marshall Elementary","S","South Seattle","P","PK-5",47.591,-122.2998,"2401 S Irving St","98144",501,39.3,17,19.4,42.5,17.8,22.2,14.8,29.5,15.6,0.2,6.4,73,80.4,80.2,37.9,56.8,0.57,3,"<3.3","<2.52","<3.8","<1.97","<2.91","<1.38",,75.3,,,61,67,11.4,,4,0,0,0,0,0,0,0,0],["2143","John Muir Elementary","S","South Seattle","P","PK-5",47.5732,-122.2906,"3301 S Horton St","98144",327,58.1,30.9,18.7,3.7,6.4,42.5,16.5,23.9,9.8,0.9,5.5,42.6,33.6,26.7,24.7,13.8,2.68,9,7.46,2.17,5.17,"<3.6","<14.3",3.52,,81.4,,,41.5,35,11.6,,0,0,0,0,0,0,0,0,0],["2181","Alki Elementary","S","West Seattle","P","K-5",47.5774,-122.4077,"3010 59th Ave SW","98116",269,14.5,3,17.5,8.2,3.7,2.2,11.5,65.8,16.7,0,0.7,77.9,68.8,72.3,74.1,37.9,"<1.08",,"<5.7","N<10","<8.8","<1.66","<27.3","<6.7",,85.3,,,47.5,56.5,15.8,,0,0,0,0,0,0,0,0,0],["2182","Franklin High","S","South Seattle","P","9-12",47.5764,-122.293,"3013 S Mount Baker Blvd","98144",1280,57.3,29.4,15.2,4.5,24.2,26.4,24.2,16.6,7.6,0.7,7.3,61.5,25.4,26.1,50.3,13.6,2.84,40,5.85,6.63,1.16,1.29,1.2,4.57,84.1,60.6,71.3,60.3,,,15.4,,0,3,25,1,17,0,1,4,5],["2199","Concord International","S","South Seattle","P","PK-5",47.5236,-122.3247,"723 S Concord St","98108",268,52.6,48.9,14.9,1.1,7.5,10.4,60.4,13.8,7.8,0,8.2,17.6,10.4,16.7,10.9,4.7,"<1.09",,"<7.1","<11.1","<1.86","<6.8","<15.0","<2.22",,72.3,,,47,33,9.2,,0,0,0,0,0,0,0,0,0],["2234","West Seattle High","S","West Seattle","P","9-12",47.577,-122.3853,"3000 California Ave SW","98116",1486,18.5,3.2,14.5,18.1,4.2,4.6,12.3,65.1,12.9,0.3,1.3,80.8,51.5,46.2,54.6,26,1.95,30,7.05,"<3.8",2.59,1.7,"<4.4",3.83,93,69.3,89.4,61.4,,,20.1,,0,1,0,0,1,0,0,1,2],["2269","Highland Park Elementary","S","West Seattle","P","PK-5",47.5253,-122.3485,"1012 SW Trenton St","98106",301,50.5,26.9,17.3,2,9.6,13,35.2,30.2,11.3,0,5.6,41.3,45.2,28.6,21.5,27.7,1.03,3,5.5,"<7.3","<2.88","<3.5","<10.3",1.99,,70.9,,,46.5,53.5,12,,0,0,0,0,1,0,0,0,0],["2321","Dunlap Elementary","S","South Seattle","P","PK-5",47.525,-122.2748,"4525 S Cloverdale St","98118",261,78.5,41,30.7,2.3,27.2,28.7,19.5,12.6,11.1,0.8,15.3,45.2,26.1,30,40,23.3,1.15,3,"<6.7","<3.8","<5.8","<11.5","<4.2",1.47,,71.4,,,48,42.5,10.4,,0,0,0,0,0,0,0,0,0],["2353","Maple Elementary","S","South Seattle","P","K-5",47.5581,-122.3189,"4925 Corson Ave S","98108",403,51.1,36,19.9,7.2,44.4,6.2,19.1,18.9,10.4,0.5,1.5,65.6,68.5,72.8,50,58.1,"<0.71",,"<3.4","<9.1","<3.6","<3.9","<1.64","<1.41",,83.9,,,64,63,9.8,,0,0,0,0,0,0,0,0,0],["2392","Cleveland High School STEM","S","South Seattle","P","9-12",47.5523,-122.3139,"5511 15th Ave S","98108",877,49.9,11.9,10.6,12.2,48.2,16.6,11.5,14,9.5,0.1,2.3,66.2,45.3,24.8,51.3,32.7,0.79,7,3.19,2.72,"<3.0","<2.38",0.71,1.59,97.7,78.3,94.9,74.4,,,16.9,,0,0,17,0,6,0,0,0,2],["D","District Total","I","Issaquah","","",,,"","",19258,15.7,7.9,11.2,6.7,36.6,2.8,11,39.3,10,0.2,1,77.5,73.4,62.4,47.2,38.6,0.79,156,3.27,5.25,1.4,0.74,0.22,2.7,96.3,82.7,85.1,82.8,58,60,,76.1,,,,,,,,,],["D","District Total","K","Kent","","",,,"","",25455,56.3,31.1,14.8,11.5,23.6,12.7,24,26.5,9.3,3.5,2.5,42.6,32.9,36.8,31,21.9,3.61,986,7.15,6.2,3.94,3.01,2.09,4.9,86.6,67.1,62,80.2,46,48,,45,,,,,,,,,],["5468","Rainier Valley Leadership Academy","C","South Seattle","P","K-12",47.5503,-122.2766,"6020 Rainier Ave S","98118",120,62.5,3.3,15,0,0.8,70.8,19.2,0.8,8.3,0,10.8,22.2,9.5,"<9",17.5,15,17.81,26,40.74,17.48,17.24,"N<10","N<10",17.65,">72.7",59.3,"N<10","<7.1",62,51,7.7,,37,0,47,0,29,0,0,0,0],["5608","Impact | Salish Sea Elementary","C","South Seattle","P","K-5",47.54,-122.2817,"3900 Holly Park Dr S","98118",396,69.9,23,8.8,0,9.8,53,19.4,7.1,10.4,0,2.3,41.5,40.4,53.6,33.3,27.7,"<0.72",,"<6.5","<1.36","<3.7","<9.7","<7.5","<1.04",,74.4,,,48,45.5,15.8,,,,,,,,,,],["5736","Impact | Black River Elementary","C","Renton","P","K-3",47.4528,-122.1866,"16950 116th Ave SE","98058",214,71.5,24.3,13.1,7.5,9.8,29.9,29,12.6,17.3,1.4,0.9,29,25.8,,23.8,14.3,1.27,3,"<8.6","<4.1","<4.3","<10.0","<13.0",1.86,,59.4,,,,,15.3,,,,,,,,,,],["5308","Jing Mei Elementary","B","Bellevue","P","PK-5",47.6108,-122.1763,"12300 Main St","98005",577,9.9,20.6,5,15.3,70.9,0.5,3.3,4.5,20.8,0,0,78.5,92.7,85.9,76,">88","<0.59",,"<9.4","N<10","<20.0","<12.5","<0.84","<5.4",,96.6,,,69,64,17.5,,0,0,0,0,0,0,0,0,0],["5325","Bellevue Open Doors Reengagement","B","Bellevue","R","11-12",,,"","",24,12.5,12.5,12.5,0,0,4.2,45.8,29.2,20.8,0,4.2,,,"N<10",,,"<6.0",,"N<10","N<10","<13.0","<20.0","N<10","N<10","<23.1",">90.3",,,,,,,,,,,,,,,],["5714","Bellevue Digital Discovery","B","Bellevue","P","K-12",,,"","",239,6.7,14.6,19.2,7.9,20.1,7.1,17.6,35.1,19.7,0,2.9,32.4,23.5,20.4,12.5,12.5,"<0.42",,"<2.54","<4.6","<2.29","<1.35","<1.55","<4.5",64,49.4,40,44.8,59,47.5,2.6,,,,,,,,,,],["2565","Meridian Elementary","K","Kent","P","PK-5",47.3718,-122.1558,"25621 140th Ave SE","98042",391,41.2,21.5,18.2,6.9,18.4,9.5,20.7,38.1,11,2.3,0.8,56.6,50.5,55.1,40.5,28,1.05,4,5.2,"<7.1","<4.0","<2.01","<4.5","<1.82",,70.1,,,39,38,12.4,,3,0,14,0,5,0,0,0,0],["2797","Kent-Meridian High","K","Kent","P","9-12",47.3734,-122.2076,"10020 SE 256th St","98030",1639,70,40.1,9.2,6,18.6,14.6,40.3,13.8,6,6.5,4.1,35.7,11.9,21.8,30.9,8.3,6.83,126,11.52,7.38,8.37,6.27,4.14,7.72,79.4,52.4,59,84.9,,,18,,17,0,63,7,15,1,1,0,0],["2851","East Hill Elementary","K","Kent","P","PK-5",47.386,-122.2083,"9825 S 240th St","98031",383,72.1,42.6,24,3.9,24.8,13.1,30.3,12.3,10.2,9.4,5.2,18.9,15.3,13,15.4,11.7,2.15,9,7.58,7.02,"<2.44","<5.7","<2.86",2.27,,63.6,,,41,35,13.6,,53,0,32,3,3,0,0,0,0],["3233","Meridian Middle","K","Kent","P","6-8",47.3912,-122.1803,"23480 120th Ave SE","98031",650,56.9,24,11.4,20.9,30.8,16.9,22.6,18.6,8.5,2.6,2,55.1,38.8,53.6,46.8,31,7.33,51,13.41,11.02,8.64,4.69,6.1,6.9,,75.9,,,51,49.5,16.7,,9,0,47,6,11,0,0,0,0],["3388","Covington Elementary","K","Kent","P","PK-5",47.3708,-122.1351,"25811 156th Ave SE","98042",457,51.9,34.8,21.7,4.4,22.3,10.9,23.4,35.9,6.3,0.7,0.9,43.2,52.4,39.1,37.4,45.8,"<0.67",,"<3.9","<5.2","<2.73","<1.85","<3.4","<1.28",,82,,,49,62,15.5,,11,0,50,3,3,0,0,0,0],["3389","Scenic Hill Elementary","K","Kent","P","PK-5",47.3681,-122.2114,"26025 Woodland Way S","98030",481,74.6,54.9,15,3.3,16.8,10.6,44.9,14.3,7.7,5.4,4,38.6,20.4,32.9,36,17.7,"<0.54",,"<3.5","<4.5","<1.22","<4.1","<2.94","<0.74",,76.2,,,61,47,12,,4,0,13,1,1,0,0,0,0],["3491","Park Orchard Elementary","K","Kent","P","PK-5",47.3953,-122.1935,"11010 SE 232nd St","98031",473,71.9,46.3,13.1,4,26,15,35.1,12.5,6.3,4.9,6.8,27.9,28.2,35.7,24.4,20.6,"<0.59",,"<4.2","<4.1","<1.66","<4.3","<2.31","<0.81",,65.9,,,53,66,12.4,,5,0,29,1,2,0,0,0,0],["3550","Lake Youngs Elementary","K","Kent","P","PK-5",47.4257,-122.1522,"19660 142nd Ave SE","98042",417,34.3,24.7,17,22.1,28.5,4.3,18.2,33.6,13.2,1.9,0.7,66.3,64.7,60.2,46.1,47.7,"<0.67",,"<3.9","<11.5","<3.6","<2.03","<2.42","<1.88",,83.3,,,45,44,14.1,,3,0,2,1,2,0,0,0,0],["3593","Pine Tree Elementary","K","Kent","P","PK-5",47.352,-122.185,"27825 118th Ave SE","98030",305,73.1,36.4,24.9,4.6,20,19.3,21.6,22,12.5,4.3,3.9,25.3,23.9,29.6,23.4,19.4,2.07,7,7.3,4.84,"<4.1","<4.0","<4.1",2.03,,55.2,,,32,51,10.3,,5,0,6,0,1,0,0,0,0],["3640","Kentridge High","K","Kent","P","9-12",47.4167,-122.174,"12430 SE 208th St","98031",2195,42,17.8,9.1,18.9,32.7,13.6,15.7,26.5,10.1,1.3,1.5,64,44,39.1,48.6,27.9,2.92,67,5.26,6.25,4.9,1.83,1.48,4.62,87.9,56.2,65.1,80.5,,,21.7,,3,0,41,5,13,0,0,0,0],["3676","Cedar Valley Elementary","K","Kent","P","PK-5",47.3648,-122.0857,"26500 Timberlane Way SE","98042",318,43.1,19.8,34,5,12.9,6.9,24.8,43.7,10.7,0.3,1.6,33.6,32.8,38.9,22.5,18.4,1.03,3,3.8,"<12.5","<4.1","<2.34","<8.3","<2.31",,69.5,,,34,41,14,,2,0,8,5,5,0,0,0,0],["3677","Springbrook Elementary","K","Kent","P","PK-5",47.4211,-122.2085,"20035 100th Ave SE","98031",350,68.9,48.6,18.3,3.1,35.4,17.4,18.6,16,7.1,5.4,6.6,29.1,38.2,35.9,20.6,30.2,"<0.75",,"<4.3","<4.0","<4.2","<4.5","<2.17","<1.10",,72.5,,,59,58,14.1,,2,0,16,0,2,0,0,0,0],["3678","Fairwood Elementary","K","Kent","P","PK-5",47.4534,-122.1416,"16600 148th Ave SE","98058",355,41.4,17.5,20.3,7,13.5,17.5,23.4,31.8,12.1,1.4,6.8,36.9,40.9,44.7,18.6,23.9,1.96,7,"<6.4",7.94,"<3.1","<2.68","<7.9",2.99,,74.2,,,38.5,41,15.1,,12,0,15,2,2,0,0,0,0],["3707","Soos Creek Elementary","K","Kent","P","PK-5",47.4061,-122.1719,"12651 SE 218th Pl","98031",292,43.2,26.4,30.5,7.9,28.4,13,20.9,25.7,9.6,2.4,0.3,42.1,45.1,59,39.1,43.5,"<1.10",,"<3.8","<8.6","<4.8","<4.4","<4.0","<2.40",,82.4,,,62,62.5,12,,5,0,8,0,0,0,0,0,0],["3708","Grass Lake Elementary","K","Kent","P","K-5",47.3446,-122.0866,"28700 191st Pl SE","98042",338,36.4,24.6,16.6,22.8,11.5,4.4,18.9,55.6,8.6,0.6,0.6,60.5,64.2,57.4,39.5,39.5,3.37,13,17.1,23,"<4.0",2.43,"<7.0",5.41,,67.6,,,42,49,10.5,,15,0,2,0,2,0,0,0,0],["3764","Meeker Middle","K","Kent","P","6-8",47.431,-122.1725,"12600 SE 192nd St","98058",783,59.5,31.2,11.4,20.6,33.7,13.4,21.1,17.6,9.6,4.5,3.2,40,31.7,31.5,31.4,22.5,8.12,71,18,16.53,8.56,7.59,3.11,9.85,,72.2,,,45,45,19.1,,3,0,60,1,2,0,0,0,0],["4126","Crestwood Elementary","K","Kent","P","PK-5",47.3759,-122.1036,"25225 180th Ave SE","98042",386,38.6,20.5,18.1,8.3,14.2,10.4,13.2,45.9,13.5,1.8,0.3,54.2,57,46.9,44.3,45.6,1.24,5,6.3,"<6.5","<5.6","<1.65","<5.1",2.53,,80.1,,,40,43,12.5,,6,0,12,2,2,0,0,0,0],["4127","Mattson Middle","K","Kent","P","6-8",47.3783,-122.1202,"16400 SE 251st St","98042",719,45.8,18.2,17.5,23.2,19.1,6.4,22.9,37.6,11.3,1.5,1.3,47.2,33.3,35.2,29.4,18.2,2.73,21,9.85,"<5.5",1.69,4.12,"<2.10",3.38,,73.8,,,46,45,16.7,,6,0,52,4,12,0,0,0,0],["4128","Kentwood High","K","Kent","P","9-12",47.37,-122.1193,"25800 164th Ave SE","98042",1999,49.2,18.3,10,13.2,26.8,12.4,21.6,27.6,9.4,2.2,2,58.4,22.4,32,47,13.6,3.94,86,10.22,7.91,4.79,3.02,1.75,5.34,88.9,47.8,62.9,78.2,,,21,,25,0,21,4,16,1,1,0,0],["4293","Ridgewood Elementary","K","Kent","P","K-5",47.4404,-122.1222,"18030 162nd Pl SE","98058",412,21.4,17.5,11.7,18.7,35.9,5.1,8,38.6,11.9,0.2,0.2,67,67.9,72.5,53.2,55.3,0.7,3,"<5.9","<11.5","<8.6","<1.82","<1.97","<3.1",,88.8,,,50.5,57.5,15.3,,4,0,1,0,7,0,0,0,0],["4294","Martin Sortun Elementary","K","Kent","P","PK-5",47.3787,-122.1718,"12711 SE 248th St","98030",450,53.3,36,14.2,5.6,36,9.6,18.7,22.4,10.4,2.7,1.3,51.7,48.7,54.7,46.7,43.4,1.45,7,5.71,"<5.9","<3.3",2.73,"<1.75",1.89,,75.5,,,47,55,12.7,,1,0,13,2,5,1,1,0,0],["2435","Madison Middle","S","West Seattle","P","6-8",47.573,-122.3903,"3429 45th Ave SW","98116",1019,17.1,3.7,16.6,14.9,5.2,4.3,10.8,63.1,15.9,0.2,1.3,75,67.5,59.9,41.1,33.9,2.08,22,6.25,12,2.63,1.37,5.26,6.91,,78.9,,,57,58,19.6,,0,0,1,0,4,0,0,0,2],["2645","West Seattle Elementary","S","West Seattle","P","PK-5",47.5418,-122.3735,"6760 34th Ave SW","98126",377,82.2,24.7,21.5,2.7,5.3,64.5,8.2,11.7,9,1.1,5.8,46.9,36.9,23.9,45.5,35.9,1.33,5,"<3.9",2.07,"<10.0","<6.4","<15.0",1.29,,73.2,,,47.5,38,9.9,,0,0,1,0,0,0,0,0,0],["2730","Arbor Heights Elementary","S","West Seattle","P","PK-5",47.5097,-122.3776,"3701 SW 104th St","98146",504,24.4,4,20.6,5,3.6,5,18.7,60.5,11.5,0,1,60.8,59.2,65.2,38.2,29.1,"<0.62",,"<2.88","<13.6","<3.4","<1.00","<21.4","<2.63",,86,,,51,61.5,12.9,,0,0,0,0,0,0,0,0,0],["2733","Lafayette Elementary","S","West Seattle","P","PK-5",47.5799,-122.387,"2645 California Ave SW","98116",533,16.3,5.3,19.3,8.6,4.7,4.3,12.9,61.5,16.3,0.2,1.5,69.6,66,75.3,45.2,38.1,"<0.57",,"<3.1","<15.0","<4.5","<0.92","<11.1","<3.4",,85.5,,,53.5,53,14.8,,0,0,1,0,0,0,0,0,0],["2839","David T. Denny International Middle","S","West Seattle","P","6-8",47.5314,-122.3661,"2601 SW Kenyon St","98126",724,59.1,22.9,22.1,4.1,12.2,20.4,28.5,25,11.7,1.7,5,45,32.7,30.7,29.1,18,8.72,68,18.56,16.76,11.52,3.17,"<3.3",12.63,,68.7,,,57,57,13.7,,0,3,46,1,15,0,0,0,2],["3095","Mercer International Middle","S","South Seattle","P","6-8",47.5636,-122.312,"1600 S Columbian Way","98108",755,59.7,31,14,8.1,40,15.2,20.8,12.6,10.6,0.3,4.8,58.7,48,47.2,48.9,35.8,6.43,51,14.16,14.39,10.24,5,2.6,8.65,,78.6,,,70.5,54,15.1,,0,0,8,0,2,0,0,0,0],["3096","Chief Sealth International High","S","West Seattle","P","9-12",47.5289,-122.3662,"2600 SW Thistle St","98126",1187,52.5,21.5,17.4,5,13.4,23.1,25.3,26.2,9.7,1.8,2.8,53.7,21.6,29.8,35.9,10.8,3.07,39,4.13,7.21,2.82,1.8,"<1.83",5.34,85.5,58.1,72.5,61,,,15.6,,0,0,18,0,9,0,0,1,3],["3157","Roxhill Elementary","S","West Seattle","P","PK-5",47.5328,-122.3749,"7740 34th Ave SW","98126",291,61.9,21.3,21.6,0.7,5.8,31.6,24.4,24.7,11,1.7,5.8,35.5,31.8,30.3,25.9,19,1.03,3,"<4.7",3.49,"<3.9","<4.1","<18.8","<1.74",,64,,,55,59,12.1,,0,0,0,0,0,0,0,0,0],["3327","Rainier Beach High","S","South Seattle","P","9-12",47.5241,-122.2659,"8815 Seward Park Ave S","98118",855,68.3,29.5,15.3,2.3,23.2,41.3,19.6,4.3,8.2,3.3,6.7,33,14.7,9.8,32.2,13.1,6.65,63,16.22,9.16,4.97,7.69,2.74,7.32,83.8,49.5,75.4,72.4,,,14.2,,0,0,6,0,1,0,0,1,5],["3378","Graham Hill Elementary","S","South Seattle","P","PK-5",47.5458,-122.2686,"5149 S Graham St","98118",266,47.4,33.8,22.9,4.1,13.9,21.1,24.1,27.8,12.4,0.8,6.4,45.3,39.5,38.8,25.4,18.3,"<1.02",,"<4.5","<4.4","<4.2","<3.9","<6.3","<2.08",,70.1,,,62,49,9.2,,0,0,0,0,0,0,0,0,0],["3380","Rainier View Elementary","S","South Seattle","P","K-5",47.4989,-122.2632,"11650 Beacon Ave S","98178",168,56,36.3,10.1,7.1,31,29.8,19,11.9,8.3,0,8.9,32.1,26.9,33.3,33.3,26.2,2.75,5,"<13.6",5.56,"<8.6","<13.0","<5.7",3.92,,75.9,,,52,61,8.8,,0,0,0,0,3,0,0,0,1],["3429","Genesee Hill Elementary","S","West Seattle","P","K-5",47.5663,-122.3965,"5013 SW Dakota St","98116",456,11,4.4,21.9,2.6,3.9,1.5,9.9,68,16,0,0.2,73.9,73.4,74.2,25.8,25.8,"<0.64",,"<2.73","N<10","<6.5","<0.96","<13.0","<5.4",,87.9,,,59,56,11.4,,0,0,0,0,0,0,0,0,0],["3478","Kimball Elementary","S","South Seattle","P","PK-5",47.5746,-122.303,"3200 23rd Ave S","98144",420,48.6,24.3,24,5.5,16.2,25.2,20.5,24.5,12.6,0.7,6,41.7,38.9,40.8,24.5,24.7,3.64,15,4.44,8.04,"<3.8","<2.97","<4.4",4.17,,80.3,,,42,45,11.4,,0,0,0,0,0,0,0,0,0],["3518","Fairmount Park Elementary","S","West Seattle","P","PK-5",47.5526,-122.3802,"3800 SW Findlay St","98126",357,23,8.4,20.7,4.8,9.2,7.6,12.6,54.1,16,0,3.1,69.2,71.4,66.7,29.3,41.5,"<0.82",,"<4.5","<11.1","<6.1","<1.51","<8.6","<3.4",,83,,,38,39,15.5,,0,0,0,0,0,0,0,0,0],["3581","Wing Luke Elementary","S","South Seattle","P","PK-5",47.5307,-122.2849,"3701 S Kenyon St","98118",334,75.4,29.3,18.3,2.4,21,50.9,8.4,8.7,8.4,2.1,14.1,37.8,27.5,21.6,32.4,22.4,1.49,5,"<4.5","<1.84","<9.7","<8.6","<4.1",1.95,,68.3,,,33,29,9.5,,0,0,0,0,0,0,0,0,0],["3665","Sanislo Elementary","S","West Seattle","P","K-5",47.5396,-122.3587,"1812 SW Myrtle St","98106",146,67.1,34.9,18.5,2.7,11.6,27.4,21.9,21.9,17.1,0,4.8,42.9,31.4,43.3,27.1,14.6,"<1.74",,"<8.6","<6.3","<7.1","<8.6","<15.8","<2.56",,70.6,,,55,50,8.6,,3,0,1,0,0,0,0,0,1],["3774","Aki Kurose Middle","S","South Seattle","P","6-8",47.5381,-122.2959,"7201 Beacon Ave S","98108",818,58.3,30,14.9,7.3,23.5,29.3,18.3,19.3,7.7,1.5,5.7,46.8,35.5,37.9,30.3,20.7,2.92,26,4.38,5.88,2.99,"<1.84","<1.45",3.97,,69.4,,,58,52,15.7,,0,1,0,0,2,0,0,0,1],["3778","Alan T. Sugiyama High","S","South Seattle","A","9-12",47.5257,-122.2709,"8601 Rainier Ave S","98118",49,75.5,16.3,22.4,2,2,42.9,16.3,16.3,14.3,4.1,18.4,21.4,"<21","<17","<25","<25","<3.6",,"<15.0","<8.6","<17.6","<18.8","N<10","<4.6",71,11.7,"N<10",58,,,7,,0,0,2,0,0,0,0,0,0],["3803","Dearborn Park International","S","South Seattle","P","PK-5",47.5523,-122.2963,"2820 S Orcas St","98108",340,51.8,37.6,12.9,6.5,48.2,14.1,13.2,12.9,10.3,0.9,2.1,56.2,66.2,63.3,47.7,58.6,"<0.89",,"<6.1","<6.1","<6.3","<6.8","<1.88","<1.63",,81.5,,,37,55,11.7,,0,0,0,0,0,0,0,0,0],["4064","Washington Middle","S","South Seattle","P","6-8",47.598,-122.3042,"2101 S Jackson St","98144",567,58.9,24.2,17.5,19.2,11.5,37,14.6,21.9,13.4,1.2,8.6,50.1,42.6,41.3,30.8,22.7,13.99,88,21.82,24.48,9.68,4.55,3.7,19.51,,68.3,,,60,55,16.7,,0,0,8,0,1,0,0,0,1],["4065","Orca K-8","S","South Seattle","A","K-8",47.5548,-122.276,"5215 46th Ave S","98118",278,39.2,19.1,14.4,4.3,9,27.3,15.5,37.4,9.4,1.1,3.6,47.3,38.8,46.1,27.4,21.2,2.92,9,"<6.1",4.12,6.82,"<2.86","<11.1",3.97,,83.7,,,59,52,7.9,,0,0,0,0,0,0,0,0,0],["4218","South Shore PK-8","S","South Seattle","P","PK-8",47.5239,-122.272,"4800 S Henderson St","98118",546,64.7,21.8,21.1,3.8,15.8,44.9,11,18.7,9.7,0,7,42.1,30.2,31.4,32.5,19.9,4.05,21,5.83,5.13,"<5.1",4.1,"<3.6",5.59,,81,,,52,55,11.9,,0,0,0,0,0,0,0,0,0],["4248","Hawthorne Elementary","S","South Seattle","P","K-5",47.5659,-122.2834,"4100 39th Ave S","98118",394,26.1,14.5,17,12.4,7.6,13.2,14.7,50.3,14.2,0,5.1,67.4,66.3,54.2,31.7,31.7,"<0.71",,"<4.1","<4.8","<4.3","<1.49","<8.8","<2.36",,85,,,43,47,11.3,,0,0,0,0,0,0,0,0,0],["5276","Louisa Boren STEM K-8","S","West Seattle","P","PK-8",47.5486,-122.3621,"5950 Delridge Way SW","98106",438,37.2,12.6,21.9,6.2,7.3,21.5,10.5,45.7,14.4,0.2,0.9,48.9,41.3,43.2,29.5,30.2,2.23,10,"<3.0",4.12,5.26,"<1.51","<8.6",4.79,,88.8,,,47,53,8.4,,0,0,0,0,0,0,0,0,0],["1648","Out Of District Facility","R","Renton","S","PK-12",,,"","",10,30,0,0,0,10,40,10,30,10,0,0,"N<10","N<10","N<10","N<10","N<10","<27.3",,"<30.0","N<10","N<10","N<10","N<10","N<10","N<10","N<10",,,,,,,0,0,0,0,0,0,0,0,0],["1784","H.O.M.E. Program","R","Renton","A","K-10",,,"","",136,22.8,2.9,9.6,2.2,7.4,4.4,9.6,66.9,11,0,0,38.5,24,40.6,28,"<12","<2.10",,"<21.4","N<10","<23.1","<3.2","<23.1","<9.1","N<10",">97.79","N<10",61.9,56,59,17,,0,0,0,0,0,0,0,0,0],["2439","Bryn Mawr Elementary","R","Renton","P","TK-5",47.498,-122.2293,"8212 S 118th St","98178",415,64.1,32,20.7,1.7,19,18.6,34.2,12.3,11.3,3.6,5.1,33.3,34.4,27.8,27.1,27.9,1.26,6,"<3.5",4.71,"<1.75","<5.3","<3.3","<0.98",,70.8,,,55.5,60,13.4,,1,0,251,0,2,0,0,0,0],["2475","Renton Senior High","R","Renton","P","9-12",47.4817,-122.2119,"400 S 2nd St","98057",1209,65.2,32.6,12.9,6,25.2,22,34.9,8.7,7.5,1.5,7.1,36.1,16.1,22.7,32.2,10.7,2.25,32,3.31,4.82,1.75,"<2.59",0.91,2.61,75.8,54.8,58.8,90.4,,,18.6,,0,0,22,1,5,0,0,0,0],["2597","Kennydale Elementary","R","Renton","P","PK-5",47.5174,-122.1975,"1700 NE 28th St","98056",512,40,22.3,16.8,15.4,21.5,7,34,22.9,14.5,0.2,1.2,51.5,54.9,57,25.2,28,0.55,3,3.4,"<7.3","<1.62","<2.38","<2.54","<1.40",,75.1,,,49,51,14.6,,2,0,6,0,2,0,0,0,0],["2640","Highlands Elementary","R","Renton","P","PK-5",47.4955,-122.1823,"2720 NE 7th St","98056",389,71.7,48.6,21.9,1.8,11.3,11.1,58.1,8.5,10,0.8,3.9,24.8,26.8,20.7,21.2,20.6,2.09,9,10.2,"<6.1",2.01,"<7.7","<6.1",1.97,,70.3,,,34,51,12.5,,0,0,151,1,6,0,0,0,0],["2929","Lakeridge Elementary","R","Renton","P","TK-5",47.4998,-122.24,"7400 S 115th St","98178",287,65.5,39.4,22,3.5,20.6,33.8,20.9,16,7.7,0.7,9.4,33.6,28.1,41.7,15.6,15.4,0.88,3,4.4,"<2.68","<3.7","<5.6","<4.3","<1.32",,62.8,,,35,53,11,,0,0,71,0,1,0,0,0,0],["3034","Campbell Hill Elementary","R","Renton","P","PK-5",47.4925,-122.2533,"6418 S 124th St","98178",349,72.8,36.1,15.5,1.1,23.2,31.5,27.5,4.6,8.9,3.7,5.4,46.1,38.6,45.8,48.2,41.1,2.56,10,5,3.28,"<2.50","<20.0","<3.4",2.86,,62.9,,,63,62,12,,1,0,49,0,14,0,0,0,0],["3035","McKnight Middle","R","Renton","P","6-8",47.5057,-122.1837,"1200 Edmonds Ave NE","98056",811,49.8,27.6,14.1,7.6,24.9,9.2,36.7,19.4,9.2,0.5,3.5,45,40.3,36.9,28.2,22.7,9.97,87,14.05,25.58,14.81,2.41,2.79,14.97,,73.4,,,51,48,17.6,,12,0,37,0,11,0,0,0,0],["3280","Dimmitt Middle","R","Renton","P","6-8",47.4925,-122.2323,"12320 80th Ave S","98178",606,64.5,31.7,13.4,4.8,25.9,23.3,28.5,10.6,7.6,3.5,6.8,38.7,27.9,33.5,31,21.6,10.74,73,19.77,18.13,9.36,9.72,4.19,13.04,,66.6,,,57.5,60.5,16.2,,13,0,80,0,24,0,0,0,0],["3337","Cascade Elementary","R","Renton","P","PK-5",47.4586,-122.1852,"16022 116th Ave SE","98058",436,65.4,28,17.4,2.3,17.2,20.2,31.2,16.7,11.7,2.1,8.7,39.6,34,33.8,34.1,30.2,3.85,19,12.35,9,2.45,"<3.8","<3.6",3.99,,69.1,,,56.5,57,11.8,,0,0,11,0,3,0,0,0,0],["3434","Nelsen Middle","R","Renton","P","6-8",47.4655,-122.2206,"2403 Jones Ave S","98055",913,59.7,26.1,15.2,7.1,26.5,15.9,26.6,19.5,9.3,1.9,3.1,37.7,26.1,31.6,27.1,16.6,10.88,110,19.86,22.09,7.97,10.75,6.74,13.06,,68.2,,,50,46,18.2,,19,0,85,0,9,0,0,0,0],["3485","Hazelwood Elementary","R","Renton","P","PK-5",47.538,-122.1842,"7100 116th Ave SE","98056",479,20.3,15,13.2,5.6,29.2,3.8,10.2,41.8,14,0.4,2.9,66.1,68.2,74.7,32.5,35,"<0.59",,"<4.3","<12.5","<5.4","<1.44","<2.03","<2.78",,88.2,,,49.5,46,14.1,,0,0,13,0,5,0,0,0,0],["3521","Renton Park Elementary","R","Renton","P","PK-5",47.4515,-122.1686,"16828 128th Ave SE","98058",395,67.8,31.1,17,2,12.7,15.9,34.4,24.3,12.2,0.5,6.8,29.5,30.5,33.9,21.4,24.6,3.26,14,5.8,4.29,2.03,4.12,"<4.8",2.37,,72.8,,,39,41,14.1,,1,0,19,0,1,0,0,0,0],["3586","Maplewood Heights Elementary","R","Renton","P","PK-5",47.4824,-122.1471,"130 Jericho Ave SE","98059",399,19.8,12.8,14.3,4.5,29.6,4.3,14.5,37.6,14,0,1.3,67.9,70,71.9,46.5,46.5,"<0.72",,"<5.1","<16.7","<4.7","<1.96","<2.44","<3.7",,80,,,59.5,69,13.8,,6,0,37,0,4,0,0,0,0],["3587","Benson Hill Elementary","R","Renton","P","TK-5",47.4348,-122.1873,"18665 116th Ave SE","98058",477,52.2,28.1,14.9,0.8,34.4,15.1,23.7,12.8,12.6,1,5.9,39.8,39.8,34.4,26.1,27.7,0.97,5,6.7,"<3.5","<2.40","<4.8","<1.72",1.87,,70.9,,,37,26,13.2,,0,0,118,0,2,0,0,0,0],["3630","Hazen Senior High","R","Renton","P","9-12",47.5016,-122.1524,"1101 Hoquiam Ave NE","98059",1799,38.6,16.3,7.6,15.5,29.6,5.1,26.6,28.2,9.7,0.7,2.1,64.2,43.1,37.6,44.7,24,2.53,48,6.79,3.85,5.06,1.15,0.9,3.71,87.2,68.6,69.9,92.8,,,20.7,,2,0,9,0,2,0,0,0,0],["3668","Sierra Heights Elementary","R","Renton","P","PK-5",47.5143,-122.1659,"2501 Union Ave NE","98059",325,55.7,40.6,10.5,1.8,16.9,7.4,43.1,22.2,9.8,0.3,5.5,30.3,34.3,41.4,20.8,21.7,"<0.74",,"<7.3","<7.9","<1.73","<3.8","<3.9","<1.27",,78.7,,,55.5,46.5,12.5,,1,0,4,0,2,0,0,0,0],["3702","Tiffany Park Elementary","R","Renton","P","PK-5",47.4652,-122.1786,"1601 Lake Youngs Way SE","98058",380,63.2,34.5,18.2,2.6,28.4,10.8,25.5,25.3,9.7,0,0.8,41.3,43.4,31.6,28.6,31.6,1.44,6,6.7,"<5.8","<2.78","<2.94","<2.59",1.53,,75.6,,,41,40,12.3,,0,0,8,2,4,0,0,0,0],["3740","Talbot Hill Elementary","R","Renton","P","PK-5",47.4585,-122.211,"2300 Talbot Rd S","98055",448,49.6,26.1,15.2,16.7,24.8,12.5,29.2,17.6,12.5,3.3,4.7,50.7,53.1,41.2,34.8,38.8,1.18,6,5.1,"<4.1","<2.00","<3.4","<2.46",1.87,,71.6,,,46.5,49,13.6,,1,0,107,0,3,0,0,0,0],["3741","Lindbergh Senior High","R","Renton","P","9-12",47.4548,-122.1662,"16426 128th Ave SE","98058",1202,51.1,22,12.6,8.4,27.2,16,26.2,19.5,9.3,1.5,2.2,55.7,28.5,32.6,42.7,19.4,5.66,73,12.74,12.86,4.31,3.29,3.75,8.22,84.6,68.2,63.4,95.4,,,17.7,,3,0,15,0,4,0,0,0,0],["5070","Renton Academy","R","Renton","A","2-12",47.4564,-122.1974,"2607 Jones Ave S","98055",25,60,8,92,0,0,32,28,28,12,0,0,"<19","<19","N<10","<30","<30",16.28,7,9,20,"<21.4","<27.3",,19.05,"N<10",44,"N<10",40,,,2.5,,4,0,12,0,1,0,0,0,0],["5229","Honey Dew Elementary","R","Renton","P","TK-5",47.4964,-122.1633,"800 Union Ave NE","98059",276,72.5,50.7,25,4,10.9,9.8,57.2,11.2,9.4,1.4,6.5,26.6,25.9,33.3,20,21,1.53,5,4.1,"<9.4","<1.59","<8.3","<8.6",1.72,,68.9,,,49,51,11,,1,0,10,0,9,0,0,0,0],["5282","Talley High","R","Renton","A","9-12",47.4855,-122.2364,"7800 S 132nd St","98178",253,60.9,16.6,33.6,2.8,13,22.9,28.1,24.1,8.3,2,8.7,12.9,"<3",10.9,12.5,"<5",8.25,32,8.77,10.71,8.87,3.7,"<6.1",9.17,62.1,57.7,,">87.5",,,10.9,,0,0,21,1,10,0,0,0,0],["5313","Meadow Crest Early Childhood Education Center","R","Renton","P","PK-PK",,,"","",486,53.3,0,48.8,0,26.5,19.1,27.2,17.7,8.2,1.2,2.3,,,,,,,,,,,,,,,,,,,,493,,,0,0,0,0,0,0,,],["5335","Open Door Youth Reengagement","R","Renton","R","11-12",,,"","",50,58,14,4,0,12,22,34,26,2,4,0,,,"<30",,,"<3.4",,"N<10","<15.8","<8.8","<15.8","N<10","<5.3",14.7,">95.2",,"N<10",,,,,0,0,0,0,0,0,0,0,0],["5484","Vera Risdon Middle","R","Renton","P","6-8",47.5409,-122.1844,"6928 116th Ave SE","98056",751,40.3,19,13.7,13.3,27.8,6.5,27.3,25.6,11.9,0.7,3.7,57.1,46.9,47.9,38.5,25.6,3.77,30,7.48,7,4.41,2.01,"<1.38",6.91,,81.2,,,56.5,53,18.8,,15,0,97,0,11,0,0,0,0],["1624","Issaquah Special Services","I","Issaquah","S","PK-12",,,"","",72,12.5,2.8,66.7,0,20.8,6.9,15.3,47.2,9.7,0,0,"<20","<19","N<10","N<10","N<10","<4.4",,"<5.6","<27.3","<25.0","<8.1","N<10","<21.4","N<10",">90.0",,,,,,,0,0,0,0,0,0,0,0,0],["2738","Clark Elementary","I","Issaquah","P","TK-5",47.5263,-122.0348,"335 1st Ave SE","98027",588,28.7,15.6,16,3.4,35,4.4,11.2,37.8,10.9,0.2,2,71.5,68,79.4,36.8,36.1,"<0.49",,"<2.78","<9.4","<4.0","<1.33","<1.41","<1.61",,79.2,,,64,59,12,,0,0,0,0,0,0,0,0,0],["3038","Issaquah Middle","I","Issaquah","P","6-8",47.5245,-122.0288,"600 2nd Ave SE","98027",816,28.3,10.3,14.2,3.9,19.2,5.6,15.1,47.5,12.1,0.1,1,65.2,59.1,63.5,36.1,27.9,4.47,38,14.75,11,9.38,2.52,1.78,8.91,,82.4,,,53,58,15.1,,3,0,0,0,0,0,0,0,0],["3228","Sunset Elementary","I","Issaquah","P","K-5",47.5688,-122.1016,"4229 W Lake Sammamish Pkwy SE","98008",500,20.4,13.8,16,2.8,31.2,5.6,13.4,37,12.6,0,0.8,69,69.7,62.8,46.7,39,0.56,3,3.3,"<8.6","<3.9","<1.53","<1.82","<2.48",,85.8,,,65,67.5,11.1,,2,0,0,0,0,0,0,0,0],["3385","Issaquah High","I","Issaquah","P","9-12",47.5224,-122.0287,"700 2nd Ave SE","98027",2494,16.6,5.5,9.7,6.4,30,3.3,10.9,45.6,9.9,0,1.6,77.9,65.5,10.7,52.2,35.2,2.26,58,7.69,14,4.83,1.73,0.91,7.87,95,72.6,82.8,86.7,,,15.1,,7,0,0,0,0,0,0,0,0],["3386","Sunny Hills Elementary","I","Issaquah","P","K-5",47.5803,-122.0288,"3200 Issaquah-Pine Lake Rd SE","98075",574,11,12.4,8.5,7.7,50.3,1.2,9.2,28,10.8,0.2,0.3,79.6,81.4,77.4,51.4,54.3,"<0.50",,"<5.7","N<10","<5.7","<1.79","<1.00","<4.5",,89.5,,,61,62,14,,0,0,0,0,0,0,0,0,0],["3440","Briarwood Elementary","I","Issaquah","P","PK-5",47.4835,-122.1154,"17020 SE 134th St","98059",630,16.2,8.4,14.8,3.2,36.8,2.1,11,39.4,10.5,0,1,79.3,77.8,77.5,57.9,53.9,"<0.50",,"<4.1","<16.7","<5.1","<1.28","<1.32","<3.3",,88.8,,,52,42,13.7,,0,0,0,0,0,0,0,0,0],["3569","Echo Glen","I","Issaquah","I","6-12",47.518,-121.9014,"33010 SE 99th St","98065",107,0,12.1,36.4,0,0,21.5,32.7,30.8,10.3,1.9,0,"<6","<6",13.2,"<6","<6",30.8,73,32.94,24.44,42.11,19.75,"N<10",30.9,"N<10",2.4,65.6,"<1.44",,,4.9,,1,0,0,0,0,0,0,,],["3636","Maywood Middle","I","Issaquah","P","6-8",47.4714,-122.1149,"14490 168th Ave SE","98059",831,19.1,6.1,13.2,3.5,25.5,1.3,13.2,48.4,11.1,0.4,1.8,70.4,66.8,62.8,42.2,34.8,"<0.35",,"<2.61","<23.1","<2.61","<0.73","<1.38","<1.76",,88.5,,,51,57,15.1,,2,0,0,0,0,0,0,0,0],["3637","Maple Hills Elementary","I","Issaquah","P","K-5",47.4622,-122.0663,"15644 204th Ave SE","98059",460,13.5,4.6,15.7,0.7,5.2,0.4,11.1,67.4,15.9,0,3,73.4,72,80.9,48.4,33.3,"<0.64",,"<3.7","N<10","<5.7","<0.96","<10.3","<4.3",,88.6,,,55,53,13.9,,0,0,0,0,0,0,0,0,0],["3673","Issaquah Valley Elementary","I","Issaquah","P","K-5",47.5366,-122.0454,"555 NW Holly St","98027",646,26.6,18.6,11.9,2,18,1.9,25.4,43.2,10.4,0.9,2,65.9,63.2,74.3,30.5,22,0.74,5,5.9,"<16.7","<1.72","<1.04","<2.50",1.6,,84.6,,,74,76,12.4,,0,0,0,0,0,0,0,0,0],["3746","Apollo Elementary","I","Issaquah","P","TK-5",47.4973,-122.1389,"15025 SE 117th St","98059",497,17.7,15.7,11.9,15.5,38.4,1.6,14.9,33,11.7,0.2,0.6,76.5,72.8,77.4,44.7,34,"<0.58",,"<4.8","N<10","<3.5","<1.78","<1.54","<3.0",,85.6,,,76,72,12.4,,0,0,0,0,0,0,0,0,0],["3879","Pine Lake Middle","I","Issaquah","P","6-8",47.5801,-122.0321,"3095 Issaquah-Pine Lake Rd SE","98075",888,8.3,4.6,7.9,12,52.1,1.7,5.7,32.9,7.2,0.1,0.6,81.3,82.4,77.5,58.3,55.6,0.44,4,4.2,"<18.8","<5.8","<1.01","<0.63","<4.0",,90.2,,,56,61,15.9,,0,0,0,0,0,0,0,0,0],["3962","Liberty Sr High","I","Issaquah","P","9-12",47.4801,-122.1178,"16655 SE 136th St","98059",1502,18.8,5.3,9.5,4.7,28.2,2.5,12.8,45.9,10.1,0.2,1.3,82,60.2,48,59,32.8,0.7,11,2.42,"<6.5","<1.45",0.98,"<0.68",0.97,96.4,83.3,85.4,80.7,,,14.9,,2,0,0,0,0,0,0,0,0],["4300","Challenger Elementary","I","Issaquah","P","K-5",47.5774,-122.004,"25200 SE Klahanie Blvd","98029",350,17.7,14,13.7,3.4,41.4,4.3,12.9,31.1,10.3,0,0.9,69.7,71.4,79.4,34.5,27.6,"<0.79",,"<5.8","<16.7","<6.0","<2.56","<1.90","<4.0",,88.5,,,72.5,76,10.6,,0,0,0,0,0,0,0,0,0],["4375","Cougar Ridge Elementary","I","Issaquah","P","K-5",47.5619,-122.1174,"4630 167th Ave SE","98006",459,11.5,15.7,10.7,5.7,42.5,2.4,9.2,33.6,12,0.4,0,83.3,83,79.1,77.8,59.3,"<0.63",,"<5.7","<27.3","<6.5","<1.89","<1.47","<5.4",,92.8,,,62,60.5,11.2,,0,0,0,0,0,0,0,0,0],["4376","Discovery Elementary","I","Issaquah","P","PK-5",47.5892,-122.0339,"2300 228th Ave SE","98075",508,4.9,8.9,8.7,10,62.2,3.3,6.5,21.5,6.5,0,0.2,85.8,86.1,87.9,"N<10","N<10","<0.60",,"<10.7","<18.8","<9.7","<2.88","<0.95","<13.6",,92.5,,,55,62,15.4,,0,0,0,0,0,0,0,0,0],["4460","Beaver Lake Middle","I","Issaquah","P","6-8",47.5799,-122.0057,"25025 SE 32nd St","98029",705,9.6,2.6,7.9,9.4,44.5,1.8,8.2,36,9.1,0,0.9,84.3,80.5,79.4,55.1,48.6,0.7,5,5,"<21.4","<4.9","<1.15","<0.94","<4.1",,86.2,,,55,60,13.6,,2,0,0,0,0,0,0,0,0],["4493","Endeavour Elementary","I","Issaquah","P","K-5",47.5704,-121.9883,"26205 SE Issaquah Fall City Rd","98029",473,10.1,11.6,11.8,20.7,46.5,0.6,8,36.6,8.2,0,0.8,88.4,88.7,89,62.1,55.2,"<0.61",,"<4.8","N<10","<7.7","<1.69","<1.30","<5.8",,86.7,,,73.5,69,13.1,,0,0,0,0,0,0,0,0,0],["4495","Skyline High","I","Issaquah","P","9-12",47.6,-122.0314,"1122 228th Ave SE","98075",2265,8.9,2.7,7.6,9.7,43.6,2.2,8.1,37.1,8.5,0.4,0.7,85,72.4,60.7,55.8,34.9,0.17,4,"<1.52","<5.7","<1.58",0.35,"<0.297","<1.38",97.9,74.4,88.4,87.4,,,15.5,,7,0,0,0,0,0,0,0,0],["4565","Cascade Ridge Elementary","I","Issaquah","P","K-5",47.5912,-121.9732,"2020 Trossachs Blvd SE","98075",391,4.1,8.4,9,8.4,57.3,0.5,7.9,24,10.2,0,0,93.1,92.2,93.4,"N<10","N<10","<0.75",,"<8.3","N<10","<9.4","<3.1","<1.31","<17.6",,93.1,,,67.5,57,14,,0,0,0,0,0,0,0,0,0],["4592","Newcastle Elementary","I","Issaquah","P","TK-5",47.5259,-122.1601,"8400 136th Ave SE","98059",452,21.7,16.4,10.2,3.1,40.9,4.9,16.6,25.9,11.5,0,1.8,79.2,77,79.2,64.6,58.3,0.85,4,"<6.1","<11.1","<3.8","<2.48","<1.55",2.83,,87.8,,,61,65,11.3,,0,0,0,0,0,0,0,0,0],["5056","Grand Ridge Elementary","I","Issaquah","P","K-5",47.5468,-122.0048,"1739 NE Park Dr","98029",558,8.6,9.1,10,6.5,47.8,3.4,11.3,28,9.5,0,0.2,78,83.3,82.8,54.6,45.5,"<0.52",,"<5.2","<15.8","<4.7","<1.85","<1.06","<5.7",,84.9,,,64,65,15.5,,0,0,0,0,0,0,0,0,0],["5062","Issaquah Preschool Academy","I","Issaquah","P","PK-PK",,,"","",43,0,0,2.3,0,39.5,0,14,44.2,2.3,0,0,,,,,,,,,,,,,,,,,,,,,,,0,0,0,0,0,0,,],["5200","Pacific Cascade Middle","I","Issaquah","P","6-8",47.5595,-122.0106,"24635 SE Issaquah-Fall City Rd","98029",607,11.2,4.3,8.1,8.6,44.8,1.8,6.4,39.4,7.6,0,0.7,77.7,74.1,75.8,47.8,45.7,"<0.48",,"<5.6","<23.1","<6.7","<1.20","<1.08","<3.9",,89.3,,,50,55,12.4,,6,0,0,0,0,0,0,0,0],["5201","Creekside Elementary","I","Issaquah","P","K-5",47.5947,-122.0638,"20777 SE 16th St","98075",558,5.7,6.3,10.2,4.8,44.8,1.3,5.4,37.5,11.1,0,0.7,80.3,77.6,82.2,68.4,73.7,"<0.52",,"<4.7","N<10","<9.4","<1.41","<1.15","<8.6",,87.5,,,65.5,67,14.3,,3,0,0,0,0,0,0,0,0],["5437","Gibson Ek High","I","Issaquah","P","9-12",47.5266,-122.0342,"379 1st Pl SE","98027",205,14.6,1,23.9,2,7.3,2.9,10.7,69.3,9.8,0,1.5,68.8,43.8,60,"N<10","N<10","<1.44",,"<5.5","N<10","<13.6","<2.08","<18.8","<9.4",">94.4",52.7,,,,,10.3,,,0,0,0,0,0,0,,],["5577","Holly Street Early Learning Center","I","Issaquah","P","PK-PK",,,"","",89,65.2,0,44.9,0,15.7,12.4,31.5,30.3,9,0,2.2,,,,,,,,,,,,,,,,,,,,89,,,,,,,,,,],["4301","Jenkins Creek Elementary","K","Kent","P","PK-5",47.3604,-122.0945,"26915 186th Ave SE","98042",341,57.2,38.7,23.2,4.4,12.6,6.5,25.2,41.6,12.9,0.6,1.8,31.7,30.2,43.4,21.5,17.2,2.3,9,"<3.2","<11.1","<3.1","<1.89",5.17,2.16,,64.9,,,47,45,10.3,,1,0,27,0,0,0,0,0,0],["4345","Horizon Elementary","K","Kent","P","PK-5",47.3538,-122.1519,"27641 144th Ave SE","98042",408,58.3,37.3,15.4,3.4,21.8,15.2,19.4,33.1,6.1,3.4,2.7,38.4,37.9,41.8,26.5,29.9,1.14,5,4.9,"<4.5","<3.5",2.16,"<3.0",1.15,,77.1,,,51.5,53,13.1,,9,0,23,6,7,0,0,0,0],["4353","Carriage Crest Elementary","K","Kent","P","PK-5",47.438,-122.1571,"18235 140th Ave SE","98058",325,33.8,27.4,20.3,8,30.2,7.1,19.7,29.8,12.3,0.9,0.3,47.2,46.9,57.8,36.2,44.1,"<0.87",,"<4.3","<10.0","<4.5","<3.0","<2.94","<2.46",,82.7,,,56,56,13.3,,0,0,1,0,0,0,0,0,0],["4356","Neely O Brien Elementary","K","Kent","P","PK-5",47.3916,-122.2563,"6300 S 236th St","98032",475,68.8,47.2,13.7,11.2,10.1,19.2,38.3,10.7,9.9,11.4,3.8,49.8,36.6,30.4,43.8,30.3,2.6,15,7.89,4.5,1.4,"<5.0","<4.2",3.27,,63.9,,,60,51,11.5,,35,0,85,2,6,0,0,0,0],["4413","George T. Daniel Elementary","K","Kent","P","PK-5",47.3801,-122.1899,"11310 SE 248th St","98030",292,70.2,53.1,19.2,3.1,25.3,17.1,22.6,21.9,9.6,2.7,4.5,21.5,22.1,21.7,20.6,20.4,3.73,12,12,7.14,"<4.1",4.05,"<3.6",5.19,,69.2,,,47,61.5,9.1,,7,0,8,0,0,0,0,0,0],["4420","Sunrise Elementary","K","Kent","P","PK-5",47.4026,-122.1645,"22300 132nd Ave SE","98042",513,44.2,28.8,17,15.4,34.7,10.1,14,25.1,14.8,1.2,0,62.3,64.3,70.3,55.2,55.6,1.08,6,3.61,"<4.9","<3.7",2.21,1.6,1.57,,73.5,,,55,62,14.3,,1,0,16,0,0,0,0,0,0],["4440","Cedar Heights Middle","K","Kent","P","6-8",47.3592,-122.0792,"19640 SE 272nd St","98042",877,50.5,17.8,14,18.1,12.5,11.7,19.2,43.3,10.3,2.1,1.5,43.3,24.5,40.5,30.1,13.9,6.32,60,14.5,14.02,4.86,4.23,5.08,9.9,,69,,,46,39,18.4,,18,0,36,0,7,0,0,0,0],["4465","Meadow Ridge Elementary","K","Kent","P","PK-5",47.3534,-122.1958,"27710 108th Ave SE","98030",423,70.4,57.2,20.1,3.1,33.1,14.4,17.7,22.5,8,4.3,2.1,15.3,12.9,20.3,11.5,10.3,4.43,21,16.44,7.04,"<3.6",4.5,3.42,5.72,,79.2,,,47,45,14.1,,4,0,62,0,0,0,0,0,0],["4466","Sawyer Woods Elementary","K","Kent","P","PK-5",47.3235,-122.0402,"31135 228th Ave SE","98010",303,30,16.5,17.8,8.3,14.5,6.6,14.9,52.8,9.9,1.3,0,58.7,66.7,50.9,53.1,59.2,"<0.93",,"<5.6","<15.8","<6.4","<1.83","<6.3","<2.94",,79.1,,,56.5,59.5,14.9,,0,0,0,0,0,0,0,0,0],["4485","Northwood Middle","K","Kent","P","6-8",47.4365,-122.1141,"17007 SE 184th St","98058",912,35.5,13.2,15.8,32.5,25.2,10.5,16.2,34.5,11.5,1.3,2.1,52.4,42.9,49.8,36.1,27.2,6.09,58,11.33,11.54,10.63,5.23,3.39,11.75,,78.1,,,44,43,19.4,,8,0,30,0,6,0,0,0,0],["4489","Glenridge Elementary","K","Kent","P","PK-5",47.4283,-122.1828,"19405 120th Ave SE","98031",298,52,36.2,19.8,10.7,43,12.1,14.8,18.5,10.1,1.3,1,50,41.5,46.9,41.8,26.4,0.9,3,"<4.5","<5.8","<6.4","<5.0","<2.16","<1.68",,78.3,,,54,48,12.8,,7,0,11,3,12,0,0,0,0],["4492","Kentlake High","K","Kent","P","9-12",47.3313,-122.0573,"21401 SE Falcon Way","98042",1563,48.4,18.1,12.3,12.2,14.7,9.1,24.4,40.9,8.6,1.7,2,55.2,21.2,38.7,43,10.5,5.49,93,8.65,8.67,4.83,5.31,2.86,8.16,88.7,58.8,61.1,89.1,,,19.5,,11,0,31,7,22,2,2,0,0],["4520","Kent Elementary","K","Kent","P","K-5",47.3803,-122.2519,"24700 64th Ave S","98032",438,83.1,59.8,13,3,9.6,15.5,48.6,9.6,6.6,9.8,3.4,34.1,27.3,27.4,31.6,26.5,0.99,5,"<4.8","<3.7","<1.25","<5.9","<6.0",1.21,,78.7,,,55,52,11.9,,2,0,36,4,10,0,0,0,0],["4545","Emerald Park Elementary","K","Kent","P","PK-5",47.4098,-122.1831,"11800 SE 216th St","98031",319,58.3,43.6,19.4,5.3,30.4,12.9,20.1,18.2,11.9,5.6,5.6,43.7,40.4,38.9,33.7,31.5,2.01,7,"<4.3","<6.3","<4.1","<4.5","<2.94",2.93,,61.2,,,55,52,10.9,,7,0,22,1,7,0,0,0,0],["4581","Millennium Elementary","K","Kent","P","PK-5",47.3589,-122.181,"11919 SE 270th St","98030",482,67.4,59.8,14.5,3.9,27.8,11.8,29.7,23.9,3.5,3.3,2.3,24,24,25.6,19.8,17.3,4.64,25,13.33,10.2,2.35,4.76,4.79,5.14,,81.7,,,41,45,14.1,,3,0,3,0,0,0,0,0,0],["5016","Mill Creek Middle","K","Kent","P","6-8",47.3857,-122.2297,"620 Central Ave N","98032",868,74.8,49.4,12.4,4.8,17.7,16.7,42.5,9.8,3.9,9,4.8,14.7,8.6,11.9,11.2,7,9.34,95,9.68,12.64,7.75,8.6,8.47,10.81,,56.9,,,31,40,15.4,,0,0,71,3,10,0,0,0,0],["5178","Panther Lake Elementary","K","Kent","P","PK-5",47.4096,-122.2046,"10200 SE 216th St","98031",396,64.6,51.8,14.1,4.5,31.8,13.6,17.2,19.7,12.9,4.8,1.5,31.2,28.8,27,26.9,23.1,2.51,12,6.25,4.5,"<3.5","<3.3",1.92,3.28,,69,,,60,60,10.8,,0,0,22,2,2,0,0,0,0],["5275","Individualized Graduation & Degree Program","K","Kent","R","10-12",,,"","",372,62.1,27.7,10.2,0.3,11.8,15.9,34.1,22.3,9.1,6.2,3.8,"N<10","N<10","<6","N<10","N<10","<0.51",,"<4.5","<3.4","<1.46","<2.38","<4.8","<0.81","<1.51",">99.29",,6.6,,,14.4,,0,0,16,0,0,0,0,0,0],["5440","The Outreach Program","K","Kent","S","12-12",,,"","",62,83.9,32.3,93.5,0,19.4,17.7,11.3,35.5,12.9,3.2,4.8,,,,,,"<4.3",,"<4.6","<21.4","N<10","<13.0","<23.1","<5.3",,62.3,,"<5.0",,,10.2,,0,0,2,2,2,0,0,0,0],["5676","Kent Laboratory Academy","K","Kent","A","3-12",47.4154,-122.1985,"10515 SE 208th St","98031",292,40.8,13.4,13.7,20.2,31.8,17.5,13.4,24,9.9,3.1,1.4,59.2,40.3,60.8,54.6,37.7,1.19,4,"<7.3","<5.1","<6.5",3.8,"<2.73","<2.01",">95.0",70.4,82.5,91.7,54,57,11.2,,,,,,,,,,],["5677","River Ridge Elementary","K","Kent","P","PK-5",47.4001,-122.2877,"22420 Military Rd S","98198",698,76.4,55.6,17.9,2.4,25.2,21.6,25.1,13.6,6.6,7.6,2.6,15.2,16.1,19.8,11.6,11.9,2.27,18,4.71,4.82,2.05,2.8,"<1.46",2.77,,63.6,,,36,50,16,,,,,,,,,,],["5729","Kent Virtual Academy","K","Kent","A","6-12",,,"","",130,46.2,18.5,12.3,3.1,12.3,20.8,20,29.2,15.4,2.3,1.5,18.6,8.1,29.1,10,"<6","<1.14",,"<11.5","<6.0","<4.7","<3.6","<10.3","<2.34",78,">97.64",18.2,56.7,32.5,28,7.3,,,,,,,,,,],["5738","Canyon Ridge Middle","K","Kent","P","6-8",47.3665,-122.1932,"11000 SE 264th St","98030",821,74.2,38.4,12.7,7.6,22.5,13.6,23.3,25.2,10.2,4.6,3.5,29.1,17.1,23,23.6,14.6,5.88,55,10.62,4.55,7.17,6.93,4.78,6.75,,64.2,,,49,50,17.6,,,,,,,,,,],["1620","Pathfinder K-8","S","West Seattle","A","K-8",47.5627,-122.3579,"1901 SW Genesee St","98106",403,16.6,3.2,29.5,7.4,5.2,6,15.1,59.8,13.4,0.5,0.5,65.3,57,57.1,43.2,29.6,1.92,8,2.31,"<12.0","<4.8","<1.22","<12.0",5.63,,87.5,,,48.5,59.5,10.9,,0,0,0,0,0,0,0,0,0],["2070","Beacon Hill International","S","South Seattle","P","K-5",47.5855,-122.3151,"2025 14th Ave S","98144",350,50.6,44,13.1,7.1,27.4,6.3,34.3,19.1,12.9,0,6.9,48.6,61.9,60.7,24.7,45.2,"<0.79",,"<5.7","<9.7","<2.22","<4.4","<3.1","<1.54",,82.9,,,54,58.5,10.3,,0,0,0,0,1,0,0,0,1],["2089","Martin Luther King Jr. Elementary","S","South Seattle","P","PK-5",47.5417,-122.2769,"6725 45th Ave S","98118",289,73.4,38.4,18.3,3.8,17.6,49.5,15.6,6.2,9,0.7,12.8,27.4,29.1,39.5,22.5,24.7,"<1.09",,"<7.1","<2.21","<6.5","<17.6","<6.5","<1.51",,96.1,,,47,55,9.3,,0,0,0,0,0,0,0,0,0],["5673","Cedar Trails Elementary","I","Issaquah","P","K-5",47.567,-122.0269,"4399 Issaquah-Pine Lake Rd SE","98075",374,16.6,15,15,5.6,48.1,3.5,6.1,33.4,8.8,0,1.1,75.7,78.3,78.7,45.5,38.2,0.97,4,6.6,18.8,"<10.0","<2.24","<1.50",4.9,,85.9,,,66,71,10.1,,,,,,,,,,],["5674","Cougar Mountain Middle","I","Issaquah","P","6-8",47.5319,-122.0646,"1929 NW Talus Dr","98027",617,12.6,5.5,8.6,5,33.7,3.7,9.4,41.7,11,0.2,0.6,78.8,71.4,67,44.7,32.9,1.4,9,8.2,11,"<4.8",1.13,"<1.38",7.6,,89,,,52,53,13.1,,,,,,,,,,],["D","District Total","S","Seattle (all)","","",,,"","",51200,34.3,14.7,18.2,11.7,12.1,14.3,15.3,44.6,12.8,0.6,3.9,64.5,56,54.4,35.8,26.9,1.9,1000,3.98,5.66,2.26,0.89,0.74,3.99,86.1,76.6,84.4,64.6,56,56,,67.9,,,,,,,,,],["D","District Total","R","Renton","","",,,"","",14950,52.5,25.2,16,7,24.6,13.4,29.4,20.5,10.4,1.3,4,45.6,38.9,38,31.1,24.5,3.76,588,8.04,8.4,3.84,2.34,1.69,5.19,81.8,70.8,64.6,91.8,52,52,,58.5,,,,,,,,,],["D","District Total","B","Bellevue","","",,,"","",20454,25.4,19.8,11.8,19.9,45.3,4.3,15.3,24.2,10.6,0.3,2.5,70.9,65.9,61.3,37.4,30.3,"<0.0146",,"<0.132","<0.33","<0.095","<0.060","<0.032","<0.057",87.7,84.4,82.8,90.9,55,57,,65.4,,,,,,,,,],["5469","Summit Public School: Atlas","C","West Seattle","P","6-12",47.5165,-122.377,"9601 35th Ave SW","98126",568,44.7,17.1,19.2,0,6.2,22.4,19.9,39.4,11.4,0.2,2.1,51.5,41.2,50,40.6,29.2,7.46,46,13.91,8.9,7.5,7.11,"<7.9",8.74,94,51.4,95.7,41.2,52,47,16.3,,1,0,0,0,0,0,0,0,0],["5519","Sartori Elementary","R","Renton","P","K-5",47.4876,-122.2018,"332 Park Ave N","98057",510,28.8,12.4,18.2,5.3,29.6,11.4,16.3,25.3,17.1,0.4,0.6,69.1,73.4,67.5,56.6,57.8,0.58,3,3.1,"<5.1","<3.5","<2.26","<1.94","<1.97",,88.3,,,58,58,13.4,,,,,,,,,,],["5741","Hilltop Heritage Elementary","R","Renton","P","PK-5",47.5012,-122.1574,"1075 Duvall Ave NE","98059",580,49.1,32.6,16.4,3.3,26,6,35.5,20.3,11.2,0.9,2.8,50.8,54.9,53.9,39.4,43.7,0.65,4,3.2,"<8.3","<1.35","<2.38","<1.92","<0.97",,72.2,,,62,58,15.7,,,,,,,,,,],["2701","Bellevue High","B","Bellevue","P","9-12",47.6044,-122.1977,"10416 SE Wolverine Way","98004",1714,18.7,10.4,9.1,12.6,40.5,4,9.5,32.5,12.8,0.6,2.7,84.5,66.4,49.5,63.3,30.8,"<0.162",,"<1.92","<3.8","<1.64","<0.50","<0.41","<0.87",89,75.6,85.8,91.6,,,17.9,,12,0,3,0,0,0,0,0,4],["2846","Enatai Elementary","B","Bellevue","P","PK-5",47.5889,-122.198,"10700 SE 25th St","98004",518,21.8,21.2,15.1,4.4,35.3,4.6,11.2,32.8,16,0,1.4,63.4,63.3,58.3,37.1,38.1,"<0.59",,"<3.7","<11.5","<4.5","<1.80","<1.72","<2.40",,84.3,,,56,54,17.3,,0,0,4,0,1,0,0,0,0],["2847","Clyde Hill Elementary","B","Bellevue","P","PK-5",47.6313,-122.2118,"9601 NE 24th St","98004",594,21.9,27.8,12.3,6.6,46.6,8.2,11.6,22.6,9.8,1.2,6.2,69.9,69.5,64.8,41.9,36.5,"<0.52",,"<4.8","<5.7","<4.1","<2.50","<1.11","<2.21",,85.3,,,62,64,15.6,,3,0,2,0,0,0,0,0,0],["3100","Stevenson Elementary","B","Bellevue","P","PK-5",47.618,-122.1501,"14220 NE 8th St","98007",581,56.6,54.4,18.9,1,35.5,8.4,45.4,7.4,2.8,0.3,10.2,27.8,29.4,27.8,14.9,16.5,"<0.53",,"<2.97","<7.0","<1.20","<6.8","<1.42","<0.97",,70.9,,,45.5,62,12.1,,2,0,1,0,0,0,0,0,0],["3166","Highland Middle","B","Bellevue","P","6-8",47.6259,-122.1408,"15027 Bel Red Rd","98007",590,59.8,43.9,17.5,7.6,15.6,5.3,49.7,20.2,8.3,1,6.8,33.6,23.5,24.5,18.9,11.9,"<0.47",,"<2.83","<8.3","<0.98","<2.27","<2.88","<0.78",,79.4,,,44.5,42,12.6,,2,0,28,1,4,0,0,0,5],["3167","Woodridge Elementary","B","Bellevue","P","PK-5",47.592,-122.1729,"12619 SE 20th Pl","98005",556,23.7,17.1,12.1,36,51.4,3.8,6.5,25.5,11.9,0.7,2.9,80.3,79.7,82,37.5,39.6,"<0.55",,"<4.0","<20.0","<8.3","<2.16","<1.05","<2.46",,93.4,,,59,60,15,,3,0,1,0,0,0,0,0,0],["3168","Phantom Lake Elementary","B","Bellevue","P","PK-5",47.6005,-122.1254,"1050 160th Ave SE","98008",430,34.2,23,23.3,4,31.9,4.7,19.3,33,10.9,0,1.4,66.7,58.5,71.9,46,36.5,"<0.84",,"<5.4","<25.0","<4.8","<2.27","<2.78","<2.50",,87,,,54.5,54,12.6,,0,0,11,1,1,0,0,0,0],["3224","Puesta del Sol Elementary","B","Bellevue","P","PK-5",47.6121,-122.1391,"301 151st Pl NE","98007",494,23.7,15.8,13,6.7,15.6,1.4,38.5,33.4,10.9,0,1,62.9,62.4,81.2,21.1,26.3,"<0.64",,"<4.8","N<10","<1.69","<1.89","<4.2","<2.83",,89.3,,,52.5,50.5,15,,0,0,6,1,0,0,0,0,0],["3225","Lake Hills Elementary","B","Bellevue","P","PK-5",47.6012,-122.149,"14310 SE 12th St","98007",501,66.9,41.9,15.8,1.2,14.8,16.8,39.5,17.8,10.8,0.4,6.2,36.8,38.5,33.3,20.8,29.4,"<0.60",,"<4.3","<3.6","<1.59","<3.2","<3.5","<0.90",,77.1,,,43,59,11.9,,1,0,35,1,3,0,0,0,2],["3282","Sammamish Senior High","B","Bellevue","P","9-12",47.6085,-122.1523,"100 140th Ave SE","98005",1384,42.5,24.3,13.4,2.9,19.4,6.6,30.7,31.6,11.3,0.1,3.8,59.9,33.2,16.1,38.7,14.8,"<0.199",,"<1.55","<2.86","<0.65","<0.64","<1.01","<0.48",86.4,66.6,74.2,90.8,,,17.3,,4,0,21,0,1,0,0,0,30],["3283","Tyee Middle","B","Bellevue","P","6-8",47.5735,-122.1583,"13630 SE Allen Rd","98006",1012,19.1,13.6,7.8,37.5,67,1.4,5.3,16.9,9.1,0.2,0.5,83,82.3,78.2,58,54.8,"<0.287",,"<4.1","<20.0","<5.5","<1.68","<0.43","<1.49",,94.4,,,58,63,14.9,,4,0,3,0,0,0,0,0,4],["3338","Chinook Middle","B","Bellevue","P","6-8",47.6281,-122.2111,"2001 98th Ave NE","98004",755,24,16.4,9.9,12.7,35,4.5,12.8,34.8,12.2,0.5,4.1,65.8,59,66.7,42.5,30.9,"<0.37",,"<3.9","<7.7","<2.88","<1.10","<1.04","<1.53",,87.7,,,52,53,15.7,,5,0,11,1,4,0,0,0,4],["3339","Sherwood Forest Elementary","B","Bellevue","P","PK-5",47.6306,-122.1208,"16411 NE 24th St","98008",415,53,41.4,24.8,2.7,18.3,8.2,41.9,23.4,8,0.2,8.7,42.2,34.9,50,21.2,14.1,"<0.76",,"<2.88","<9.1","<1.94","<3.0","<4.1","<1.49",,87.7,,,49.5,45,10.9,,1,0,16,2,0,0,0,0,3],["3435","Tillicum Middle","B","Bellevue","P","6-8",47.599,-122.125,"1280 160th Ave SE","98008",676,19.8,10.9,12.7,15.7,31.4,4,15.7,32.5,16.3,0,1.2,69.7,64,71.6,44.3,31.4,"<0.43",,"<3.6","<10.3","<2.68","<1.34","<1.38","<2.07",,89.3,,,52,56,14.7,,0,0,4,0,3,0,0,0,4],["3436","Medina Elementary","B","Bellevue","P","PK-5",47.6169,-122.2339,"8001 NE 8th St","98039",592,5.7,17.6,5.7,46.3,70.8,0.3,3.2,17.9,7.8,0,0.3,92.2,93.5,91.4,87.5,79.2,"<0.51",,"<8.8","N<10","<17.6","<3.0","<0.72","<9.4",,95.4,,,68,65,16.9,,0,0,16,0,0,0,0,0,0],["3437","Newport Heights Elementary","B","Bellevue","P","PK-5",47.5558,-122.1803,"5225 119th Ave SE","98006",550,26.2,22.5,14.4,4.4,51.1,2.9,9.1,24.9,11.3,0.5,0.9,72.6,75.1,80.3,46.2,51.6,"<0.60",,"<5.5","<18.8","<7.1","<2.46","<1.13","<2.34",,91.2,,,54.5,64,17.2,,4,0,7,1,0,0,0,0,1],["3486","Newport Senior High","B","Bellevue","P","9-12",47.5677,-122.1718,"4333 Factoria Blvd SE","98006",1861,15.9,9.5,6.4,18.3,60.8,2.6,6.3,19.6,10.5,0.2,0.6,87,73.3,77,69.9,50.6,"<0.154",,"<2.40","<5.7","<2.19","<0.77","<0.257","<0.97",95.5,87.8,88.1,94.6,,,17.6,,5,0,2,0,0,0,0,0,6],["3522","International","B","Bellevue","A","6-12",47.604,-122.1706,"445 128th Ave SE","98005",600,8,2.5,4.8,31.8,60.2,1.7,5.5,23.2,9.3,0.2,0,89.5,84,91.2,74.2,71,"<0.50",,"<11.1","<27.3","<8.8","<2.13","<0.83","<6.1",">95.3",93.7,91.3,93.1,59,61,13,,2,0,1,0,1,0,0,0,4],["3588","Interlake Senior High","B","Bellevue","P","9-12",47.6294,-122.1241,"16245 NE 24th St","98008",1636,26.8,16,7.7,38.6,49.4,4,17.1,22.6,6.6,0.2,2.9,78.7,64.8,46.1,43,24.8,"<0.172",,"<2.36","<4.3","<0.93","<0.74","<0.36","<0.62",79.6,78.9,83.2,94.7,,,16.4,,7,0,8,0,2,0,0,0,15],["3631","Odle Middle","B","Bellevue","P","6-8",47.6148,-122.1492,"502 143rd Ave NE","98007",979,19.9,13.5,6.5,64.4,65.1,3,9,15,7.3,0.5,2.1,78.8,75.9,73.1,28.6,19.7,"<0.294",,"<5.0","<8.3","<2.86","<1.99","<0.46","<1.37",,92.4,,,55,55,15.5,,5,0,15,0,0,0,0,0,11],["3633","Ardmore Elementary","B","Bellevue","P","PK-5",47.6395,-122.1179,"16616 NE 32nd St","98008",415,54,42.4,17.8,0.7,29.6,11.3,19,30.6,8.7,0.5,5.1,42.7,43.2,42.4,23.1,25.6,"<0.74",,"<5.2","<6.7","<4.1","<2.38","<2.44","<1.42",,85.8,,,67,67,11.2,,5,0,4,2,2,0,0,0,1],["3634","Spiritridge Elementary","B","Bellevue","P","PK-5",47.5878,-122.1201,"16401 SE 24th St","98008",551,20.3,24.9,17.6,6.7,38.1,4.5,11.6,30.9,14.5,0.4,0.4,65.3,66.4,74,35.9,32.8,"<0.51",,"<2.94","<10.3","<3.8","<1.74","<1.28","<2.33",,89.3,,,53,59,14.9,,0,0,11,0,4,0,0,0,0],["3705","Bennett Elementary","B","Bellevue","P","PK-5",47.6247,-122.102,"17900 NE 16th St","98008",514,8,21,16,8.6,48.1,2.7,6.6,30.9,11.3,0,0.4,73.2,73,81.2,45.5,52.2,"<0.62",,"<3.7","<21.4","<9.7","<1.97","<1.32","<6.5",,90,,,57,53,13.2,,0,0,0,0,1,0,0,0,0],["3742","Cherry Crest Elementary","B","Bellevue","P","K-5",47.6404,-122.1737,"12400 NE 32nd St","98005",553,4.5,17.5,6.5,41.4,71.8,1.1,1.6,18.8,6.7,0,0,88.4,89,82.2,75,75,"<0.53",,"<7.9","N<10","<30.0","<2.86","<0.74","<12.0",,94.2,,,60,68.5,15.4,,1,0,11,0,3,0,0,0,1],["3789","Somerset Elementary","B","Bellevue","P","K-5",47.5629,-122.1518,"14100 Somerset Blvd SE","98006",741,7.7,19.3,11.6,39.8,74.5,1.1,3.8,11.1,9.6,0,0.1,91.8,91.9,88.9,76.7,80,"<0.39",,"<3.3","N<10","<9.1","<3.6","<0.52","<4.8",,95.3,,,72,64,15.1,,0,0,1,0,0,0,0,0,0],["5240","Bellevue Big Picture","B","Bellevue","A","6-12",47.5702,-122.1379,"4255 153rd Ave SE","98006",347,23.9,9.8,24.5,12.7,28.2,6.6,13.3,41.5,10.4,0,0.6,59.1,43.1,54.6,40.3,18.2,"<0.82",,"<3.7","<11.5","<6.1","<2.00","<2.94","<3.3",89,83.3,88.6,57.3,47.5,53,10.8,,0,0,14,2,1,0,0,0,0],["5281","Central Educational Services","B","Bellevue","P","10-12",,,"","",67,43.3,26.9,0,1.5,25.4,3,20.9,41.8,9,0,4.5,"N<10","N<10",,"N<10","N<10","<4.2",,"<4.3","N<10","<21.4","<10.0","<15.8","<10.7",,82.8,,"<4.8",,,4.8,,,,,,,,,,]];
+
+</script>
+<script>
+(function(){
+"use strict";
+// ---------- theme ----------
+const root=document.documentElement;
+try{const t=localStorage.getItem('skl-theme');if(t)root.setAttribute('data-theme',t);}catch(e){}
+document.getElementById('themeBtn').onclick=()=>{
+  const cur=root.getAttribute('data-theme')||(matchMedia('(prefers-color-scheme: dark)').matches?'dark':'light');
+  const nx=cur==='dark'?'light':'dark';root.setAttribute('data-theme',nx);try{localStorage.setItem('skl-theme',nx)}catch(e){}; rerenderCharts();
+};
+
+// ---------- data model ----------
+const F=['code','name','dist','area','type','grades','lat','lon','addr','zip','enr','li','ell','swd','hc','asian','black','hisp','white','two','nhpi','homeless',
+ 'ela','math','sci','elaLI','mathLI','disc','discN','dSWD','dBlack','dHisp','dWhite','dAsian','dLI','grad','att','ninth','dual','sgpE','sgpM','ratio','kready',
+ 'har','sex','atk','atkW','thr','thrF','gun','arr','ref'];
+const DN={R:'Renton School District',K:'Kent School District',I:'Issaquah School District',B:'Bellevue School District',S:'Seattle Public Schools',C:'Charter school'};
+const AREAS=['Renton','Kent','Issaquah','Bellevue','West Seattle','South Seattle'];
+const all=ROWS.map(r=>{const o={};F.forEach((k,i)=>o[k]=r[i]);return o;});
+const schools=all.filter(o=>o.code!=='D');
+const districts=all.filter(o=>o.code==='D');
+const STATE={ela:50.9,math:40.7,sci:43.3,disc:3.72,grad:82.6,att:72.7,ninth:72.0,dual:70.4,li:49.8};
+const TREND={"2022-23":{R:"4.03",K:"3.88",I:"0.87",B:"0.65",S:"2.00",ST:"3.52"},"2023-24":{R:"4.80",K:"4.55",I:"0.76",B:"0.15",S:"2.01",ST:"3.69"},"2024-25":{R:"3.76",K:"3.61",I:"0.79",B:"<0.0146",S:"1.90",ST:"3.72"}};
+
+function level(o){const g=(o.grades||'').split('-');if(g.length<2)return'Other';
+  const n=x=>x==='PK'?-2:x==='TK'?-1:x==='K'?0:+x;const a=n(g[0]),b=n(g[1]);
+  if(b<=0)return'Preschool';if(a>=9)return'High';if(a>=6&&b<=8)return'Middle';if(b<=6)return'Elementary';return'Combined';}
+schools.forEach(o=>{o.level=level(o);o.badges=[];
+  if(o.dist==='C')o.badges.push('Charter');
+  if(o.type==='A')o.badges.push('Alternative');if(o.type==='R')o.badges.push('Re-engage');if(o.type==='S')o.badges.push('Special ed');if(o.type==='I')o.badges.push('Institution');
+  if(o.enr<100)o.badges.push('Small');
+  o.lat=+o.lat||null;o.lon=+o.lon||null;
+  const crdc=['har','sex','atk','atkW','thr','thrF','gun','arr','ref'];o.hasCRDC=crdc.some(k=>o[k]!=null&&o[k]!=='');
+});
+// numeric reading of a value: number, "<x" -> x/2 (midpoint), ">x" -> x, else null
+function num(v){if(v==null||v==='')return null;if(typeof v==='number')return v;const s=String(v);
+  if(/^n</i.test(s)||s==='N<10')return null;if(s[0]==='<')return parseFloat(s.slice(1))/2;if(s[0]==='>')return parseFloat(s.slice(1));const f=parseFloat(s);return isNaN(f)?null:f;}
+function isSup(v){return typeof v==='string'&&/^[<>]|N</.test(v);}
+function fmt(v,suf){if(v==null||v==='')return'<span class="sup">—</span>';if(typeof v==='string'){if(v==='N<10')return'<span class="sup">n&lt;10</span>';return'<span class="sup">'+v.replace('<','&lt;').replace('>','&gt;')+(suf||'')+'</span>';}
+  return (Math.round(v*10)/10).toLocaleString()+(suf||'');}
+function fmtPlain(v,suf){if(v==null||v==='')return'—';if(typeof v==='string')return v==='N<10'?'n<10':v+(suf||'');return(Math.round(v*10)/10).toLocaleString()+(suf||'');}
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+
+// ---------- metrics ----------
+const M={
+ ela:{l:'ELA proficiency',u:'%',hi:true,g:'acad'},math:{l:'Math proficiency',u:'%',hi:true,g:'acad'},sci:{l:'Science proficiency',u:'%',hi:true,g:'acad'},
+ elaLI:{l:'ELA, low-income students',u:'%',hi:true},mathLI:{l:'Math, low-income students',u:'%',hi:true},
+ sgpE:{l:'ELA growth (median SGP)',u:'',hi:true},sgpM:{l:'Math growth (median SGP)',u:'',hi:true},
+ grad:{l:'4-yr graduation',u:'%',hi:true},att:{l:'Regular attendance',u:'%',hi:true},ninth:{l:'9th grade on track',u:'%',hi:true},dual:{l:'Dual credit',u:'%',hi:true},kready:{l:'Kindergarten ready (all 6 areas)',u:'%',hi:true},
+ disc:{l:'Exclusionary discipline',u:'%',hi:false},dSWD:{l:'Discipline: students w/ disabilities',u:'%',hi:false},dBlack:{l:'Discipline: Black students',u:'%',hi:false},dHisp:{l:'Discipline: Hispanic students',u:'%',hi:false},dWhite:{l:'Discipline: White students',u:'%',hi:false},dAsian:{l:'Discipline: Asian students',u:'%',hi:false},dLI:{l:'Discipline: low-income students',u:'%',hi:false},discN:{l:'Students disciplined (count)',u:'',hi:false},
+ enr:{l:'Enrollment',u:''},li:{l:'Low-income',u:'%'},ell:{l:'English learners',u:'%'},swd:{l:'Students w/ disabilities',u:'%'},hc:{l:'Highly capable',u:'%'},asian:{l:'Asian',u:'%'},black:{l:'Black',u:'%'},hisp:{l:'Hispanic',u:'%'},white:{l:'White',u:'%'},two:{l:'Two or more races',u:'%'},nhpi:{l:'Pacific Islander',u:'%'},homeless:{l:'Homeless',u:'%'},ratio:{l:'Students per teacher',u:''},
+ har:{l:'Harassment allegations',u:''},sex:{l:'Rape / sexual assault',u:''},atk:{l:'Physical attacks',u:''},atkW:{l:'Attacks w/ weapon',u:''},thr:{l:'Threats of attack',u:''},thrF:{l:'Threats w/ firearm/explosive',u:''},gun:{l:'Firearm/explosive possession',u:''},arr:{l:'School-related arrests',u:''},ref:{l:'Referrals to police',u:''}
+};
+
+// ---------- area aggregates ----------
+const AREA_DIST={Renton:'R',Kent:'K',Issaquah:'I',Bellevue:'B'};
+function weighted(list,k){let s=0,w=0;list.forEach(o=>{const v=num(o[k]);if(v!=null&&o.enr){s+=v*o.enr;w+=o.enr}});return w?s/w:null;}
+const AREA_STATS={};
+AREAS.forEach(a=>{const list=schools.filter(o=>o.area===a);const st={schools:list.length,enr:list.reduce((s,o)=>s+(o.enr||0),0),est:!AREA_DIST[a]};
+  const d=districts.find(x=>x.dist===AREA_DIST[a]);
+  ['li','ela','math','sci','disc','grad','att','ninth','dual','ell','swd','hc','elaLI','mathLI','sgpE','sgpM','kready'].forEach(k=>{st[k]=d?num(d[k]):weighted(list,k);});
+  // HS-only metrics for Seattle estimates come from high schools only (others blank)
+  AREA_STATS[a]=st;});
+
+// ---------- tooltip ----------
+const tip=document.getElementById('tip');
+function showTip(html,ev){tip.innerHTML=html;tip.style.display='block';const x=(ev.touches?ev.touches[0].clientX:ev.clientX),y=(ev.touches?ev.touches[0].clientY:ev.clientY);
+  const w=tip.offsetWidth,h=tip.offsetHeight;let L=x+14,T=y+14;if(L+w>innerWidth-6)L=x-w-14;if(T+h>innerHeight-6)T=y-h-14;tip.style.left=Math.max(6,L)+'px';tip.style.top=Math.max(6,T)+'px';}
+function hideTip(){tip.style.display='none';}
+document.addEventListener('scroll',hideTip,{passive:true});
+
+// ---------- router ----------
+const views=['overview','schools','map','equity','safety','wellbeing','policies','about'];
+function route(){const h=(location.hash||'#overview').slice(1);const v=views.includes(h)?h:'overview';
+  views.forEach(x=>document.getElementById('v-'+x).classList.toggle('on',x===v));
+  document.querySelectorAll('#tabs a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+v));
+  hideTip();render(v);}
+addEventListener('hashchange',route);
+const rendered={};
+function render(v){({overview:renderOverview,schools:renderSchools,map:renderMap,equity:renderEquity,safety:renderSafety,wellbeing:renderWellbeing,policies:renderPolicies,about:renderAbout})[v]();}
+function rerenderCharts(){const h=(location.hash||'#overview').slice(1);render(views.includes(h)?h:'overview');}
+
+// ---------- shared filters ----------
+const S={areas:new Set(AREAS),level:'All',q:'',group:'acad',sort:{k:'ela',d:-1},showSmall:true};
+function filterBar(el,opts){
+  el.innerHTML='';
+  AREAS.forEach(a=>{const b=document.createElement('button');b.type='button';b.className='chip'+(S.areas.has(a)?' on':'');b.textContent=a;
+    b.onclick=()=>{if(S.areas.has(a)&&S.areas.size===AREAS.length){S.areas=new Set([a]);}else if(S.areas.has(a)){S.areas.delete(a);if(!S.areas.size)S.areas=new Set(AREAS);}else S.areas.add(a);opts.on();};el.appendChild(b);});
+  const sel=document.createElement('select');sel.setAttribute('aria-label','School level');['All','Elementary','Middle','High','Combined','Preschool','Other'].forEach(l=>{const o=document.createElement('option');o.value=l;o.textContent=l==='All'?'All levels':l;if(S.level===l)o.selected=true;sel.appendChild(o)});
+  sel.onchange=()=>{S.level=sel.value;opts.on();};el.appendChild(sel);
+  if(opts.search){const s=document.createElement('input');s.type='search';s.placeholder='Find a school…';s.value=S.q;s.oninput=()=>{S.q=s.value;opts.on(true);};el.appendChild(s);}
+}
+function filtered(){const q=S.q.trim().toLowerCase();return schools.filter(o=>S.areas.has(o.area)&&(S.level==='All'||o.level===S.level)&&(!q||o.name.toLowerCase().includes(q)||(o.zip||'').includes(q)));}
+
+// ---------- overview ----------
+const OV_METRICS=['ela','math','sci','elaLI','mathLI','sgpE','sgpM','disc','grad','att','ninth','dual','kready','li','ell','hc'];
+function renderOverview(){
+  const cards=document.getElementById('areaCards');
+  cards.innerHTML=AREAS.map(a=>{const s=AREA_STATS[a];return`<div class="card area-card"><h4>${a}</h4><div class="sub">${s.schools} schools · ${s.enr.toLocaleString()} students${s.est?' · estimate':''}</div>
+   <div class="kv"><span>Low-income</span><b>${fmtPlain(s.li,'%')}</b><span>ELA proficient</span><b>${fmtPlain(s.ela,'%')}</b><span>Math proficient</span><b>${fmtPlain(s.math,'%')}</b><span>Discipline rate</span><b>${s.disc!=null&&s.disc<0.05?'&lt;0.05%':fmtPlain(s.disc,'%')}</b><span>4-yr graduation</span><b>${fmtPlain(s.grad,'%')}</b><span>Attendance</span><b>${fmtPlain(s.att,'%')}</b></div></div>`;}).join('')+
+   `<div class="card area-card"><h4>Washington State</h4><div class="sub">Benchmark</div><div class="kv"><span>Low-income</span><b>${STATE.li}%</b><span>ELA proficient</span><b>${STATE.ela}%</b><span>Math proficient</span><b>${STATE.math}%</b><span>Discipline rate</span><b>${STATE.disc}%</b><span>4-yr graduation</span><b>${STATE.grad}%</b><span>Attendance</span><b>${STATE.att}%</b></div></div>`;
+  const sel=document.getElementById('ovMetric');if(!sel.options.length){OV_METRICS.forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=M[k].l;sel.appendChild(o)});sel.onchange=renderOverview;}
+  const k=sel.value||'ela';
+  const data=AREAS.map(a=>({a,v:AREA_STATS[a][k],est:AREA_STATS[a].est}));
+  hbar(document.getElementById('ovChart'),data,{unit:M[k].u,ref:STATE[k],refLabel:'WA State',hi:M[k].hi,onTip:d=>`<b>${d.a}</b>${M[k].l}: ${fmtPlain(d.v==null?null:Math.round(d.v*10)/10,M[k].u)}${d.est?'<br><span class="muted">Estimated from schools</span>':''}`});
+  document.getElementById('ovNote').textContent=(['grad','ninth','dual'].includes(k)?'High-school measure. ':'')+(k==='disc'?'Lower is better. Bellevue reported almost no exclusions in 2024-25 (see Safety). ':'')+'West/South Seattle values are enrollment-weighted from their schools; suppressed "<x" values are counted at x/2.';
+}
+function hbar(el,data,o){
+  const W=Math.min(el.clientWidth||640,900),rowH=34,padL=Math.min(120,W*.3),padR=70,H=data.length*rowH+44;
+  const max=Math.max(o.ref||0,...data.map(d=>d.v||0))*1.08||1;const x=v=>padL+(W-padL-padR)*v/max;
+  let s=`<svg width="${W}" height="${H}" role="img" aria-label="Bar chart">`;
+  const ticks=4;for(let i=0;i<=ticks;i++){const v=max/ticks*i;s+=`<line class="grid" x1="${x(v)}" x2="${x(v)}" y1="6" y2="${H-24}"/><text x="${x(v)}" y="${H-8}" text-anchor="middle" class="small">${Math.round(v)}</text>`;}
+  data.forEach((d,i)=>{const y=18+i*rowH;s+=`<text x="${padL-8}" y="${y+15}" text-anchor="end" style="fill:var(--ink)">${esc(d.a)}</text>`;
+    if(d.v!=null){const w=Math.max(2,x(d.v)-padL);s+=`<rect data-i="${i}" x="${padL}" y="${y+3}" width="${w}" height="18" rx="4" fill="var(--s1)" ${d.est?'fill-opacity=".7"':''}/><text class="barlbl" x="${padL+w+6}" y="${y+16}" style="fill:var(--ink)">${(Math.round(d.v*10)/10)}${o.unit||''}</text>`;}
+    else s+=`<text x="${padL+6}" y="${y+16}" class="muted">no data</text>`;
+    s+=`<rect data-i="${i}" x="0" y="${y}" width="${W}" height="${rowH}" fill="transparent"/>`;});
+  if(o.ref!=null){s+=`<line x1="${x(o.ref)}" x2="${x(o.ref)}" y1="4" y2="${H-24}" stroke="var(--ink)" stroke-width="2" stroke-dasharray="4 3"/><text x="${Math.min(x(o.ref)+4,W-90)}" y="9" style="fill:var(--ink);font-weight:600;font-size:11px">${o.refLabel} ${o.ref}${o.unit||''}</text>`;}
+  s+='</svg>';el.innerHTML=s;
+  el.querySelectorAll('rect[data-i]').forEach(r=>{const d=data[+r.dataset.i];const f=ev=>showTip(o.onTip(d),ev);r.addEventListener('mousemove',f);r.addEventListener('click',f);r.addEventListener('mouseleave',hideTip);});
+}
+
+// ---------- schools table ----------
+const GROUPS={
+ acad:{l:'Academics',cols:['enr','li','ela','math','sci','elaLI','mathLI','sgpE','sgpM','att','grad','ninth','dual','kready']},
+ disc:{l:'Discipline & equity',cols:['enr','disc','discN','dSWD','dBlack','dHisp','dWhite','dAsian','dLI']},
+ safe:{l:'Incidents (CRDC 2017-18)',cols:['enr','har','sex','atk','atkW','thr','thrF','gun','arr','ref']},
+ demo:{l:'Demographics',cols:['enr','li','ell','swd','hc','asian','black','hisp','white','two','nhpi','homeless','ratio']}
+};
+const SHORT={enr:'Students',li:'Low-inc',ela:'ELA',math:'Math',sci:'Sci',elaLI:'ELA (LI)',mathLI:'Math (LI)',sgpE:'Growth ELA',sgpM:'Growth Math',att:'Attend',grad:'Grad 4yr',ninth:'9th on trk',dual:'Dual cr',kready:'K-ready',
+ disc:'All',discN:'#',dSWD:'Disab.',dBlack:'Black',dHisp:'Hisp.',dWhite:'White',dAsian:'Asian',dLI:'Low-inc',har:'Harass.',sex:'Sex asslt',atk:'Attacks',atkW:'w/ weapon',thr:'Threats',thrF:'Firearm thr.',gun:'Firearm poss.',arr:'Arrests',ref:'Police ref.',
+ ell:'ELL',swd:'Disab.',hc:'HiCap',asian:'Asian',black:'Black',hisp:'Hisp.',white:'White',two:'2+',nhpi:'Pac. Isl.',homeless:'Homeless',ratio:'Stu/teacher'};
+function renderSchools(){
+  filterBar(document.getElementById('filt1'),{search:true,on:(keepFocus)=>{if(keepFocus)drawTable();else renderSchools();}});
+  const cg=document.getElementById('colGroups');cg.innerHTML='';
+  Object.entries(GROUPS).forEach(([k,g])=>{const b=document.createElement('button');b.type='button';b.className='chip'+(S.group===k?' on':'');b.textContent=g.l;b.onclick=()=>{S.group=k;if(!GROUPS[k].cols.includes(S.sort.k))S.sort={k:GROUPS[k].cols[1],d:k==='acad'?-1:-1};renderSchools();};cg.appendChild(b);});
+  drawTable();
+}
+function drawTable(){
+  const cols=GROUPS[S.group].cols;const list=filtered();
+  const sk=S.sort.k,sd=S.sort.d;
+  list.sort((a,b)=>{if(sk==='name')return sd*a.name.localeCompare(b.name);const va=num(a[sk]),vb=num(b[sk]);if(va==null&&vb==null)return a.name.localeCompare(b.name);if(va==null)return 1;if(vb==null)return -1;return sd*(va-vb);});
+  let h='<thead><tr><th data-k="name"'+(sk==='name'?' class="sorted"':'')+'>School'+(sk==='name'?(sd>0?' ↑':' ↓'):'')+'</th>'+cols.map(k=>`<th data-k="${k}" title="${esc(M[k].l)}"${sk===k?' class="sorted"':''}>${SHORT[k]}${sk===k?(sd>0?' ↑':' ↓'):''}</th>`).join('')+'</tr></thead><tbody>';
+  if(S.group==='acad'||S.group==='disc'){h+='<tr class="ref"><td>WA State</td>'+cols.map(k=>`<td>${STATE[k]!=null?STATE[k]+'%':''}</td>`).join('')+'</tr>';}
+  h+=list.map(o=>`<tr class="row" data-c="${o.code}"><td><div class="nm">${esc(o.name)}${o.badges.map(b=>`<span class="badge">${b}</span>`).join('')}<small>${o.area} · ${o.grades||''}</small></div></td>`+cols.map(k=>`<td>${fmt(o[k],k==='enr'||k==='discN'||k==='ratio'||k.startsWith('sgp')||GROUPS.safe.cols.includes(k)?'':'%')}</td>`).join('')+'</tr>').join('');
+  h+='</tbody>';
+  const t=document.getElementById('tbl');t.innerHTML=h;
+  t.querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;if(S.sort.k===k)S.sort.d*=-1;else S.sort={k,d:k==='name'?1:-1};drawTable();});
+  t.querySelectorAll('tr.row').forEach(tr=>tr.onclick=()=>openSchool(tr.dataset.c));
+  document.getElementById('tblCount').textContent=`${list.length} schools shown. "LI" = low-income students. Growth is the median student growth percentile (50 = typical). `+(S.group==='safe'?'Blank = school not in the 2017-18 CRDC (opened later or not reported).':'');
+}
+
+// ---------- school detail ----------
+const modal=document.getElementById('modal');
+document.getElementById('closeBtn').onclick=()=>modal.classList.remove('on');
+modal.onclick=e=>{if(e.target===modal)modal.classList.remove('on')};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')modal.classList.remove('on')});
+function openSchool(code){const o=schools.find(x=>x.code===code);if(!o)return;hideTip();
+  const d=districts.find(x=>x.dist===o.dist);
+  const box=(k,unit)=>{const v=o[k];const dv=d?d[k]:null;const sv=STATE[k];
+    return`<div class="m"><div class="k">${M[k].l}</div><div class="v">${fmt(v,unit)}</div><div class="c">${dv!=null&&dv!==''?'District '+fmtPlain(dv,unit):''}${sv!=null?' · State '+sv+unit:''}</div></div>`;};
+  let h=`<h2 style="margin-right:40px">${esc(o.name)}</h2><div class="small muted">${DN[o.dist]} · ${o.area} · Grades ${o.grades||'—'} · ${o.addr?esc(o.addr)+', '+o.zip:'no street address on file'} ${o.badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div>`;
+  if(o.code==='3385')h+='<div class="note small">Issaquah High\'s 10.7% science result is far below its other scores and below Skyline and Liberty. It most likely reflects low test participation or opt-outs, not achievement. Check the OSPI Report Card before relying on it.</div>';
+  h+=`<h3>Academics</h3><div class="mgrid">${['ela','math','sci','elaLI','mathLI'].map(k=>box(k,'%')).join('')}${box('sgpE','')}${box('sgpM','')}${['att','grad','ninth','dual','kready'].filter(k=>o[k]!=null&&o[k]!=='').map(k=>box(k,'%')).join('')}</div>`;
+  h+=`<h3>Discipline (2024-25)</h3><div class="mgrid">${box('disc','%')}<div class="m"><div class="k">Students disciplined</div><div class="v">${fmt(o.discN,'')}</div><div class="c">suspended or expelled 1+ times</div></div>${['dSWD','dBlack','dHisp','dWhite','dAsian','dLI'].map(k=>box(k,'%')).join('')}</div>`;
+  if(o.hasCRDC){const per=o.enr?(x)=>x!=null&&x!==''?` · ${(x/o.enr*100).toFixed(1)} per 100 students`:'':()=>'';
+    h+=`<h3>Reported incidents, CRDC 2017-18</h3><div class="mgrid">${['har','sex','atk','atkW','thr','thrF','gun','arr','ref'].map(k=>`<div class="m"><div class="k">${M[k].l}</div><div class="v">${fmt(o[k],'')}</div><div class="c">${['atk','thr','har'].includes(k)?per(o[k]):''}</div></div>`).join('')}</div><p class="small muted">Per-100 rates use 2024-25 enrollment. Enrollment in 2017-18 was different, and coding practices vary by school.</p>`;}
+  else h+=`<p class="small muted">No 2017-18 CRDC record (the school may have opened later or reported under another name).</p>`;
+  h+=`<h3>Who attends</h3><div class="mgrid">${['enr','li','ell','swd','hc','homeless','ratio'].map(k=>`<div class="m"><div class="k">${M[k].l}</div><div class="v">${fmt(o[k],M[k].u)}</div></div>`).join('')}</div>`;
+  h+=`<div style="margin-top:8px">${stackBar(o)}</div>`;
+  h+=`<p class="small" style="margin-top:14px"><a href="https://washingtonstatereportcard.ospi.k12.wa.us/" >Open the OSPI Report Card</a> and search "${esc(o.name)}" for trends and subgroup detail.</p>`;
+  document.getElementById('sheetBody').innerHTML=h;modal.classList.add('on');document.getElementById('sheet').scrollTop=0;
+}
+function stackBar(o){const parts=[['asian','Asian'],['black','Black'],['hisp','Hispanic'],['white','White'],['two','Two+'],['nhpi','Pac. Isl.']];
+  // neutral, single-hue segments with labels (identity carried by text, not color)
+  const shades=['var(--q5)','var(--q4)','var(--q3)','var(--q2)','var(--q1)','var(--muted-mark)'];
+  let x=0;let segs='';let lab='';parts.forEach(([k,l],i)=>{const v=num(o[k])||0;if(v<=0)return;segs+=`<div title="${l} ${v}%" style="flex:${v} 0 0;background:${shades[i]};height:16px;border-right:2px solid var(--surface)"></div>`;lab+=`<span><i style="background:${shades[i]}"></i>${l} ${v}%</span>`;});
+  return`<div style="display:flex;border-radius:4px;overflow:hidden">${segs}</div><div class="legend">${lab}</div>`;}
+
+// ---------- map ----------
+const MAP_METRICS=['ela','math','li','disc','att','grad','elaLI','sgpE','black','hisp','asian','ell'];
+function renderMap(){
+  const sel=document.getElementById('mapMetric');if(!sel.options.length){MAP_METRICS.forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=M[k].l;sel.appendChild(o)});sel.onchange=renderMap;}
+  const k=sel.value||'ela';const el=document.getElementById('mapSvg');
+  const pts=schools.filter(o=>o.lat&&o.lon);
+  const lat0=47.47,kx=Math.cos(lat0*Math.PI/180);
+  const xs=pts.map(o=>o.lon*kx),ys=pts.map(o=>o.lat);
+  const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
+  const W=Math.min(el.clientWidth||700,1000);const pad=26;const scale=(W-2*pad)/(maxX-minX);const H=Math.round((maxY-minY)*scale+2*pad);
+  const px=o=>pad+(o.lon*kx-minX)*scale,py=o=>pad+(maxY-o.lat)*scale;
+  const vals=pts.map(o=>num(o[k])).filter(v=>v!=null).sort((a,b)=>a-b);
+  const qs=[.2,.4,.6,.8].map(p=>vals[Math.floor(p*(vals.length-1))]);
+  const bin=v=>v==null?-1:qs.filter(q=>v>q).length;
+  const fills=['var(--q1)','var(--q2)','var(--q3)','var(--q4)','var(--q5)'];
+  let s=`<svg width="${W}" height="${H}" role="img" aria-label="School locations">`;
+  pts.slice().sort((a,b)=>b.enr-a.enr).forEach(o=>{const v=num(o[k]);const b=bin(v);const r=Math.max(4.5,Math.sqrt(o.enr||100)/4.2);
+    s+=`<circle data-c="${o.code}" cx="${px(o).toFixed(1)}" cy="${py(o).toFixed(1)}" r="${r.toFixed(1)}" fill="${b<0?'var(--muted-mark)':fills[b]}" fill-opacity="${b<0?.5:.95}" stroke="var(--surface)" stroke-width="2"/>`;});
+  // area labels at centroids
+  AREAS.forEach(a=>{const L=pts.filter(o=>o.area===a);if(!L.length)return;const cx=L.reduce((s,o)=>s+px(o),0)/L.length,cy=L.reduce((s,o)=>s+py(o),0)/L.length;
+    const off={'West Seattle':[-30,-6],'South Seattle':[30,-40],'Renton':[0,-38],'Kent':[0,48],'Issaquah':[10,-46],'Bellevue':[0,-44]}[a]||[0,0];
+    s+=`<text x="${cx+off[0]}" y="${cy+off[1]}" text-anchor="middle" style="font-weight:700;font-size:13px;fill:var(--ink-2);letter-spacing:.04em;paint-order:stroke;stroke:var(--surface);stroke-width:4px">${a.toUpperCase()}</text>`;});
+  s+='</svg>';el.innerHTML=s;
+  const lg=document.getElementById('mapLegend');const f=v=>Math.round(v*10)/10;
+  lg.innerHTML=fills.map((c,i)=>`<i style="background:${c}" title="${i===0?'≤'+f(qs[0]):i===4?'>'+f(qs[3]):f(qs[i-1])+'–'+f(qs[i])}"></i>`).join('')+` <span>${f(vals[0])} → ${f(vals[vals.length-1])}${M[k].u} (quintiles)</span>`;
+  el.querySelectorAll('circle').forEach(c=>{const o=schools.find(x=>x.code===c.dataset.c);
+    const t=ev=>showTip(`<b>${esc(o.name)}</b>${o.area} · ${o.grades}<br>${M[k].l}: ${fmtPlain(o[k],M[k].u)}<br>Enrollment ${o.enr}<br><span class="muted">Tap again for profile</span>`,ev);
+    c.addEventListener('mousemove',t);c.addEventListener('mouseleave',hideTip);
+    c.addEventListener('click',ev=>{if(c.dataset.t==='1'||matchMedia('(hover:hover)').matches){openSchool(o.code);}else{document.querySelectorAll('#mapSvg circle').forEach(x=>x.dataset.t='');c.dataset.t='1';t(ev);}});});
+}
+
+// ---------- equity scatter ----------
+const EQ_METRICS=['ela','math','sci','disc','att','sgpE','sgpM','grad'];
+function renderEquity(){
+  const sel=document.getElementById('eqMetric');if(!sel.options.length){EQ_METRICS.forEach(k=>{const o=document.createElement('option');o.value=k;o.textContent=M[k].l;sel.appendChild(o)});sel.onchange=renderEquity;
+    const sa=document.getElementById('eqArea');['None',...AREAS].forEach(a=>{const o=document.createElement('option');o.value=a;o.textContent=a;sa.appendChild(o)});sa.value='Renton';sa.onchange=renderEquity;}
+  const k=sel.value||'ela',hl=document.getElementById('eqArea').value;
+  const pts=schools.filter(o=>o.enr>=100&&!['I','S','R','A'].includes(o.type)&&!/Virtual|Digital|H\.O\.M\.E/.test(o.name)).map(o=>({o,x:num(o.li),y:num(o[k]),sup:isSup(o[k])})).filter(p=>p.x!=null&&p.y!=null);
+  const n=pts.length,mx=pts.reduce((s,p)=>s+p.x,0)/n,my=pts.reduce((s,p)=>s+p.y,0)/n;
+  const b=pts.reduce((s,p)=>s+(p.x-mx)*(p.y-my),0)/pts.reduce((s,p)=>s+(p.x-mx)**2,0),a=my-b*mx;
+  const r2=1-pts.reduce((s,p)=>s+(p.y-(a+b*p.x))**2,0)/pts.reduce((s,p)=>s+(p.y-my)**2,0);
+  pts.forEach(p=>p.res=p.y-(a+b*p.x));
+  const el=document.getElementById('eqSvg');const W=Math.min(el.clientWidth||700,1000),H=Math.min(420,Math.max(300,W*.6)),pl=44,pr=14,pt=12,pb=40;
+  const maxY=Math.max(...pts.map(p=>p.y))*1.05;const X=v=>pl+(W-pl-pr)*v/100,Y=v=>H-pb-(H-pt-pb)*v/maxY;
+  let s=`<svg width="${W}" height="${H}" role="img" aria-label="Scatter plot">`;
+  for(let i=0;i<=5;i++){const v=maxY/5*i;s+=`<line class="grid" x1="${pl}" x2="${W-pr}" y1="${Y(v)}" y2="${Y(v)}"/><text x="${pl-6}" y="${Y(v)+4}" text-anchor="end">${Math.round(v)}</text>`;}
+  for(let v=0;v<=100;v+=20)s+=`<text x="${X(v)}" y="${H-pb+16}" text-anchor="middle">${v}%</text>`;
+  s+=`<text x="${(W+pl)/2}" y="${H-6}" text-anchor="middle" style="fill:var(--ink)">Low-income students (%)</text>`;
+  s+=`<line x1="${X(0)}" y1="${Y(Math.max(0,a))}" x2="${X(100)}" y2="${Y(Math.max(0,a+b*100))}" stroke="var(--ink-2)" stroke-width="2" stroke-dasharray="6 4"/>`;
+  const order=pts.slice().sort((p,q)=>(p.o.area===hl)-(q.o.area===hl));
+  order.forEach((p,i)=>{const on=p.o.area===hl;s+=`<circle data-i="${pts.indexOf(p)}" cx="${X(p.x).toFixed(1)}" cy="${Y(p.y).toFixed(1)}" r="${on?6:5}" fill="${on?'var(--s2)':'var(--s1)'}" fill-opacity="${hl==='None'?.75:on?.95:.28}" stroke="var(--surface)" stroke-width="2"/>`;});
+  s+='</svg>';el.innerHTML=s;
+  el.querySelectorAll('circle').forEach(c=>{const p=pts[+c.dataset.i];const t=ev=>showTip(`<b>${esc(p.o.name)}</b>${p.o.area}<br>Low-income ${p.x}% · ${M[k].l} ${fmtPlain(p.o[k],M[k].u)}<br>${p.res>=0?'+':''}${p.res.toFixed(1)} vs. trend`,ev);
+    c.addEventListener('mousemove',t);c.addEventListener('mouseleave',hideTip);c.addEventListener('click',()=>openSchool(p.o.code));});
+  document.getElementById('eqLegend').innerHTML=(hl!=='None'?`<span><i style="background:var(--s2)"></i>${hl}</span><span><i style="background:var(--s1);opacity:.4"></i>Other areas</span>`:`<span><i style="background:var(--s1)"></i>All schools</span>`)+`<span>— — Trend: each +10 pts low-income ≈ ${(b*10).toFixed(1)} ${M[k].u==='%'?'pts':''} (R² ${r2.toFixed(2)})</span><span class="muted">Excludes schools under 100 students, alternative, online and special programs. Suppressed values plotted at their midpoint.</span>`;
+  const good=M[k].hi===false?-1:1;const ranked=pts.slice().sort((p,q)=>good*(q.res-p.res));
+  const li=(p)=>`<div class="small" style="display:flex;justify-content:space-between;gap:8px;padding:5px 0;border-bottom:1px solid var(--line);cursor:pointer" data-c="${p.o.code}"><span><b style="font-weight:500">${esc(p.o.name)}</b> <span class="muted">${p.o.area} · ${p.x}% low-inc</span></span><span style="font-variant-numeric:tabular-nums">${fmtPlain(p.o[k],M[k].u)} <span class="muted">(${p.res>=0?'+':''}${p.res.toFixed(1)})</span></span></div>`;
+  document.getElementById('eqTop').innerHTML=ranked.slice(0,10).map(li).join('');
+  document.getElementById('eqBot').innerHTML=ranked.slice(-10).reverse().map(li).join('');
+  document.querySelectorAll('#eqTop [data-c],#eqBot [data-c]').forEach(e=>e.onclick=()=>openSchool(e.dataset.c));
+}
+
+// ---------- safety ----------
+const DG={dSWD:'Students with disabilities',dBlack:'Black students',dHisp:'Hispanic students',dLI:'Low-income students',dWhite:'White students',dAsian:'Asian students'};
+const NEWS=[
+ {d:'Jan 30, 2026',t:'Two Rainier Beach High students shot and killed at a bus stop at Rainier Ave S & S Henderson St, around the corner from the school, shortly after dismissal. SPS canceled activities at Rainier Beach, Sugiyama and South Shore PK-8.',a:'South Seattle',u:'https://www.kiro7.com/news/local/2-shot-killed-seattles-rainier-beach-neighborhood/3JDMJUUXZNBBHEIKZDILOVEJHI/?outputType=amp',s:'KIRO 7'},
+ {d:'Mar 2026',t:'A Hazen High School student was charged with a double murder in Seattle. Police say he rode a bus from Renton before the shooting (off campus).',a:'Renton',u:'https://www.kentreporter.com/2026/03/27/hazen-high-school-student-charged-with-double-murder/',s:'Kent Reporter'},
+ {d:'Apr 25, 2025',t:'A 15-year-old was shot at a gas station near Franklin High School (2800 block of Rainier Ave S). The school sheltered in place.',a:'South Seattle',u:'https://www.yahoo.com/news/one-person-injured-shooting-gas-211732067.html',s:'KIRO 7 / Yahoo'},
+ {d:'Dec 2024',t:'A 15-year-old Chief Sealth International High student was shot and later died.',a:'West Seattle',u:'https://www.fox13seattle.com/news/deadly-teen-shootings-school-safety',s:'FOX 13'},
+ {d:'Jun 3–12, 2024',t:'An 18-year-old Kent-Meridian student was fatally shot in the Campus Park lot next to the school. Two days later, a 17-year-old Kent-Meridian student was fatally shot in Renton. On June 12 a weapon was found at Kentridge High, and a 17-year-old was arrested with a handgun on campus.',a:'Kent',u:'https://www.kentreporter.com/news/weapon-found-wednesday-june-12-at-kentridge-high-school',s:'Kent Reporter'},
+ {d:'Jun 2024',t:'Bellevue Police arrested two juveniles who threatened online to shoot students at Newport, Sammamish and Bellevue high schools.',a:'Bellevue',u:'https://downtownbellevue.com/2024/06/11/bellevue-police-arrest-suspects-death-threats-social-media/',s:'Downtown Bellevue'},
+ {d:'Jan 23, 2024',t:'A Chief Sealth student was killed in a shooting at the Southwest Athletic Complex next to the Chief Sealth and Denny campuses.',a:'West Seattle',u:'https://chiefsealthhs.seattleschools.org/?p=4750',s:'Seattle Public Schools'},
+ {d:'Jan 11, 2024',t:'Kentwood High (Covington) briefly locked down after a student brought a pellet gun. The student was arrested.',a:'Kent',u:'https://www.kentreporter.com/news/student-with-pellet-gun-leads-to-brief-lockdown-at-kentwood-high-school',s:'Kent Reporter'},
+ {d:'Dec 14–15, 2023',t:'A prank call claiming a firearm threat at Nelsen Middle, plus online threats, closed Nelsen, Renton High and Renton Academy for a day. A teen was arrested.',a:'Renton',u:'https://kentreporter.com/northwest/renton-police-arrest-teen-after-prank-leads-to-school-shutdowns',s:'Kent Reporter'},
+ {d:'Recurring',t:'Social-media threat lists have named 20+ King and Pierce County schools at once, including Renton High, Kent-Meridian and Springbrook Elementary. Police have found most not credible, but they still cause lockdowns and absences.',a:'Renton / Kent',u:'https://kentreporter.com/news/threats-to-renton-auburn-and-kent-school-districts-under-investigation',s:'Kent Reporter'}
+];
+function renderSafety(){
+  const sel=document.getElementById('dgGroup');if(!sel.options.length){Object.entries(DG).forEach(([k,l])=>{const o=document.createElement('option');o.value=k;o.textContent=l;sel.appendChild(o)});sel.onchange=renderSafety;}
+  const g=sel.value||'dSWD';document.getElementById('dgName').textContent=DG[g];
+  const rows=[['Renton','R'],['Kent','K'],['Seattle (all)','S'],['Issaquah','I'],['Bellevue','B']].map(([l,c])=>{const d=districts.find(x=>x.dist===c);return{l,all:num(d.disc),grp:num(d[g]),rawA:d.disc,rawG:d[g]};});
+  const el=document.getElementById('dgSvg');const W=Math.min(el.clientWidth||640,900),rowH=48,padL=Math.min(110,W*.28),padR=64,H=rows.length*rowH+30;
+  const max=Math.max(...rows.map(r=>Math.max(r.all||0,r.grp||0)))*1.1||1;const x=v=>padL+(W-padL-padR)*v/max;
+  let s=`<svg width="${W}" height="${H}" role="img" aria-label="Discipline by group">`;
+  rows.forEach((r,i)=>{const y=8+i*rowH;s+=`<text x="${padL-8}" y="${y+20}" text-anchor="end" style="fill:var(--ink)">${r.l}</text>`;
+    s+=`<rect x="${padL}" y="${y+4}" width="${Math.max(2,x(r.all||0)-padL)}" height="14" rx="4" fill="var(--muted-mark)"/><text x="${x(r.all||0)+5}" y="${y+15}" class="barlbl">${esc(fmtPlain(r.rawA,'%'))}</text>`;
+    s+=`<rect x="${padL}" y="${y+20}" width="${Math.max(2,x(r.grp||0)-padL)}" height="14" rx="4" fill="var(--s1)"/><text x="${x(r.grp||0)+5}" y="${y+31}" class="barlbl" style="fill:var(--ink)">${esc(fmtPlain(r.rawG,'%'))}${r.all&&r.grp?' ('+(r.grp/r.all).toFixed(1)+'×)':''}</text>`;});
+  s+=`<line x1="${x(STATE.disc)}" x2="${x(STATE.disc)}" y1="2" y2="${H-20}" stroke="var(--ink)" stroke-width="2" stroke-dasharray="4 3"/><text x="${x(STATE.disc)+4}" y="${H-6}" style="fill:var(--ink);font-weight:600">State, all students ${STATE.disc}%</text></svg>`;
+  el.innerHTML=s;
+  // trend
+  const tt=document.getElementById('trendTbl');const D=[['Renton','R'],['Kent','K'],['Seattle','S'],['Issaquah','I'],['Bellevue','B'],['WA State','ST']];
+  tt.innerHTML='<thead><tr><th>District</th>'+Object.keys(TREND).map(y=>`<th>${y}</th>`).join('')+'</tr></thead><tbody>'+D.map(([l,c])=>`<tr><td>${l}</td>`+Object.keys(TREND).map(y=>`<td>${esc(TREND[y][c])}%</td>`).join('')+'</tr>').join('')+'</tbody>';
+  // CRDC table
+  filterBar(document.getElementById('filt3'),{on:renderSafety});
+  const list=filtered().filter(o=>o.hasCRDC);
+  list.forEach(o=>{o._inc=(num(o.atk)||0)+(num(o.thr)||0)+(num(o.sex)||0);o._rate=o.enr?o._inc/o.enr*100:0;});
+  list.sort((a,b)=>(num(b.gun)||0)+(num(b.thrF)||0)+(num(b.atkW)||0)-((num(a.gun)||0)+(num(a.thrF)||0)+(num(a.atkW)||0))||b._rate-a._rate);
+  const cols=['gun','thrF','atkW','thr','atk','sex','har','arr','ref'];
+  document.getElementById('crdcTbl').innerHTML='<thead><tr><th>School</th>'+cols.map(k=>`<th title="${M[k].l}">${SHORT[k]}</th>`).join('')+'<th title="Attacks + threats + sexual assault per 100 students (2024-25 enrollment)">Per 100</th></tr></thead><tbody>'+
+    list.map(o=>`<tr class="row" data-c="${o.code}"><td><div class="nm">${esc(o.name)}<small>${o.area} · ${o.grades}</small></div></td>`+cols.map(k=>`<td>${(num(o[k])||0)>0?'<b>'+o[k]+'</b>':'<span class="sup">0</span>'}</td>`).join('')+`<td>${o._rate.toFixed(1)}</td></tr>`).join('')+'</tbody>';
+  document.querySelectorAll('#crdcTbl tr.row').forEach(tr=>tr.onclick=()=>openSchool(tr.dataset.c));
+  const tot=k=>list.reduce((s,o)=>s+(num(o[k])||0),0);
+  document.getElementById('crdcSum').textContent=`Totals for the schools shown, 2017-18: ${tot('gun')} firearm/explosive possession incidents, ${tot('thrF')} threats with a firearm or explosive, ${tot('atkW')} attacks with a weapon, ${tot('thr')} threats of any kind, ${tot('sex')} rapes or sexual assaults, ${tot('har')} harassment allegations, ${tot('arr')} school-related arrests. Sorted by the most serious categories first.`;
+  document.getElementById('newsList').innerHTML=NEWS.filter(n=>[...S.areas].some(a=>n.a.includes(a))).map(n=>`<li><div class="d">${n.d} · ${n.a}</div><div class="small">${esc(n.t)} <a href="${n.u}">${n.s}</a></div></li>`).join('')||'<li class="small muted">No listed incidents for the selected areas.</li>';
+  const prr=document.getElementById('prr');prr.value=`To: Public Records Officer, [District name]
+Re: Public records request under RCW 42.56
+
+Please provide the following records for school years 2022-23 through 2025-26, by school building, in electronic format (spreadsheet preferred):
+
+1. The number of incidents involving firearms, other weapons, or explosive devices on school property or at school events (the data the district reports to OSPI for the annual Weapons in Schools report), by weapon type.
+2. The number of bomb threats and threats of violence received, and the number of lockdowns, shelter-in-place events, evacuations, and closures, with dates and the school affected.
+3. The number of behavioral threat assessments opened under RCW 28A.320.123 and Policy 3225, by level of concern (no names or student identifiers).
+4. The number of harassment, intimidation, and bullying (HIB) complaints received under Policy 3207, and how many were substantiated.
+5. The district's current HIB, weapons, threat-assessment, and safety/security-staffing policies and procedures, and any agreement with a law enforcement agency for school resource or engagement officers.
+6. The district's 2025 Healthy Youth Survey district report (aggregate results only), if the district will release it.
+
+I'm not requesting any personally identifiable student information. Aggregate counts with small-number suppression are fine.
+
+Thank you,
+[Name, email]`;
+  document.getElementById('copyPrr').onclick=async()=>{try{await navigator.clipboard.writeText(prr.value);document.getElementById('copyMsg').textContent='Copied.';}catch(e){prr.select();document.getElementById('copyMsg').textContent='Copy blocked; the text is selected, so press Ctrl/⌘+C.';}};
+}
+
+// ---------- wellbeing ----------
+function renderWellbeing(){
+  const st=[['Seriously considered suicide','13.9%','12.1% (±1.6)','11.6%'],['Made a suicide plan','','10%',''],['Attempted suicide','','5.5%',''],['Depressive feelings','','26%',''],['Anxious feelings','','29%',''],['Bullied in past month','','15%',''],['Has an adult to turn to when sad','','61%',''],['Highly hopeful','','51%','']];
+  document.getElementById('hysState').innerHTML=`<div class="tblwrap" style="max-height:none"><table class="t"><thead><tr><th>Measure</th><th>Gr 8</th><th>Gr 10</th><th>Gr 12</th></tr></thead><tbody>${st.map(r=>`<tr><td>${r[0]}</td><td>${r[1]||'<span class="sup">—</span>'}</td><td>${r[2]}</td><td>${r[3]||'<span class="sup">—</span>'}</td></tr>`).join('')}</tbody></table></div>
+   <p class="small muted">10th-grade girls were nearly twice as likely as boys to have seriously considered suicide (15.4% vs 8.4%). LGBTQ+ students reported being bullied about twice as often as their peers. Sources: <a href="https://www.askhys.net/Resources/Data">HYS 2025 Data Analysis Manual</a> pp. 126–128, the HCA 2025 results presentation, the <a href="https://doh.wa.gov/newsroom/2025-healthy-youth-survey-results-point-steady-course-washington-youth-well-being">DOH release</a>, and <a href="https://www.seattleschild.com/?p=116463">Cascade PBS</a>.</p>`;
+  const sea=[['Bullied in past 30 days','17.6','7.9','6.2'],['Felt safe during school','87.2','90.5','88.3'],['Carried a weapon at school (30 days)','1.0','1.1','1.3'],['Skipped school because felt unsafe','4.9','3.9','4.1'],['Seriously considered suicide','8.5','7.1','9.1'],['Made a suicide plan','6.2','6.6','6.0'],['Attempted suicide','4.2','2.9','3.9'],['Has an adult to turn to when sad','61.8','63.7','68.0']];
+  document.getElementById('hysSea').innerHTML=`<div class="tblwrap" style="max-height:none"><table class="t"><thead><tr><th>Measure (%)</th><th>Gr 8</th><th>Gr 10</th><th>Gr 12</th></tr></thead><tbody>${sea.map(r=>`<tr><td>${r[0]}</td><td>${r[1]}</td><td>${r[2]}</td><td>${r[3]}</td></tr>`).join('')}</tbody></table></div>`;
+}
+
+// ---------- policies ----------
+const POL=[
+ {n:'Seattle Public Schools (West & South Seattle)',o:'No police officers on campus since 2020. In 2025 the board considered a one-year "School Engagement Officer" pilot at Garfield High and voted it down 5–2 in October. Security relies on district-employed safety staff under Policy 4311.',l:[['Seattle Public Schools','https://www.seattleschools.org/'],['Garfield SEO debate (PTSA summary)','https://garfieldptsa.org/?p=20142']]},
+ {n:'Renton School District',o:'Renton Police and the district planned one school resource officer at each of the three comprehensive high schools (Renton, Hazen, Lindbergh) starting in 2024-25.',l:[['Renton School District','https://www.rentonschools.us/'],['Kent Reporter: SRO plan','https://kentreporter.com/news/threats-to-renton-auburn-and-kent-school-districts-under-investigation']]},
+ {n:'Kent School District',o:'Contracts with Kent Police for two school resource officers plus a commander who serves as school-safety liaison, along with district Safety Services staff.',l:[['Kent School District','https://www.kent.k12.wa.us/'],['Kent Reporter: threats and SRO program','https://www.kentreporter.com/news/two-student-arrests-social-media-threats-disrupt-kent-high-schools']]},
+ {n:'Bellevue School District',o:'Pulled SROs from campuses in 2021. Since fall 2022 it has used "Community Engagement Officers": sworn Bellevue PD officers based at the central office who cover groups of schools, not assigned to single buildings.',l:[['BSD Community Engagement Officer FAQ','https://bsd405.org/departments/security/community-engagement-officer-program/faq/'],['BSD weapons policy notice','https://www.bsd405.org/about-us/official-notices/weapons-policy']]},
+ {n:'Issaquah School District',o:'Does not use SROs on its campuses. Safety comes from a district Safety and Security Department under Regulation 4312, which cites the state threat-assessment law.',l:[['ISD Regulation 4312','https://www.isd411.org/about-us/regulations/4000-series/4312-school-safety-and-security-services-program'],['ISD Healthy Youth Survey page','https://www.isd411.org/about-us/reports-and-surveys/hys']]},
+ {n:'Charter schools in these areas',o:'Summit Atlas (West Seattle), Rainier Valley Leadership Academy and Impact Salish Sea (South Seattle), and Impact Black River (Renton) are overseen by the Washington State Charter School Commission and set their own discipline and safety policies within state law.',l:[['WA Charter School Commission','https://charterschool.wa.gov/']]}
+];
+function renderPolicies(){document.getElementById('polCards').innerHTML=POL.map(p=>`<div class="card pol"><h4>${p.n}</h4><div class="small">${p.o}</div><ul>${p.l.map(l=>`<li><a href="${l[1]}">${l[0]}</a></li>`).join('')}</ul></div>`).join('')+
+ `<div class="card pol"><h4>What to ask at a school tour</h4><ul><li>Who runs threat assessments here, and how fast does a concern get reviewed?</li><li>How many HIB (bullying) complaints were filed last year, and how many were substantiated?</li><li>What does the school use instead of suspension, and how is re-entry handled?</li><li>Is there a counselor or social worker, and how many students does each serve?</li><li>How does the school communicate during a lockdown or threat?</li></ul></div>`;}
+
+// ---------- about ----------
+function renderAbout(){document.getElementById('aboutBody').innerHTML=`
+<h3 style="margin-top:0">Coverage</h3>
+<p>This covers 177 public schools in the Renton, Kent, Issaquah and Bellevue school districts, plus Seattle Public Schools buildings in West and South Seattle and four charter schools located in those areas. Seattle areas are defined by ZIP code: <b>West Seattle</b> is 98106, 98116, 98126, 98136 and 98146; <b>South Seattle</b> is 98108, 98118, 98144 and 98178. 98144 includes Mount Baker and Judkins Park, which some people count as Central Seattle. Not included: Summit Sierra (International District), Impact Puget Sound (Tukwila), and every other city.</p>
+<h3>Sources</h3>
+<ul>
+<li>OSPI Report Card on data.wa.gov, 2024-25: <a href="https://data.wa.gov/d/2rwv-gs2e">Enrollment</a>, <a href="https://data.wa.gov/d/h5d9-vgwi">Assessment</a> (Smarter Balanced and WCAS; WA-AIM excluded), <a href="https://data.wa.gov/d/c9tq-ntbq">Discipline</a>, <a href="https://data.wa.gov/d/isxb-523t">Graduation</a> (four-year cohort), <a href="https://data.wa.gov/d/f7j6-nk2h">SQSS</a> (attendance, 9th grade on track, dual credit), <a href="https://data.wa.gov/d/hv7j-ib7g">Growth</a>, <a href="https://data.wa.gov/d/35cj-2iym">WaKIDS</a>, and <a href="https://data.wa.gov/d/gks4-v7ka">Student–teacher ratio</a>. Discipline trend: the <a href="https://data.wa.gov/d/ixvm-ww8s">2022-23</a> and <a href="https://data.wa.gov/d/sm68-769y">2023-24</a> files.</li>
+<li>Civil Rights Data Collection, 2017-18, from data.wa.gov: <a href="https://data.wa.gov/d/u9in-9mwd">Harassment &amp; Violence</a> and <a href="https://data.wa.gov/d/r3cb-bb5k">School Behavior &amp; Climate</a>. The 2020-21 versions (<a href="https://data.wa.gov/d/248u-c6b9">248u-c6b9</a>, <a href="https://data.wa.gov/d/ipiq-6a85">ipiq-6a85</a>) were checked and are nearly empty because of remote learning. The federal 2021-22 CRDC is at <a href="https://civilrightsdata.ed.gov/">civilrightsdata.ed.gov</a> and is the best next addition.</li>
+<li>Locations: King County <a href="https://services.arcgis.com/Ej0PsM5Aw677QF1W/arcgis/rest/services/SCHSITE_POINT_107/FeatureServer/0">School Sites (SCHSITE_POINT_107)</a>, matched by OSPI code or school name. Charter school addresses come from OSPI and charter directories.</li>
+<li>Healthy Youth Survey 2025: AskHYS.net, the HYS 2025 Data Analysis Manual (July 2026), and Seattle Public Schools' published district report.</li>
+<li>Boundaries: to find which school serves an address, use <a href="https://www.greatschools.org/school-district-boundaries-map/">GreatSchools' boundary map</a> or each district's school locator. Attendance boundaries change, and this site doesn't redraw them.</li>
+</ul>
+<h3>How to read the numbers</h3>
+<ul>
+<li><b>Suppression.</b> OSPI hides small counts. "&lt;3.7" means the true rate is between 0 and 3.7%. For sorting, charts and area estimates, these values are placed at the midpoint (1.85). "n&lt;10" means fewer than 10 students, so it's left out.</li>
+<li><b>Proficiency</b> is the share meeting standard on state tests, grades 3–8 and 10 for ELA and Math, and grades 5, 8 and 11 for Science. Low participation can pull a school's score down, as with Issaquah High's science result.</li>
+<li><b>Growth (SGP)</b> compares each student's progress with students who started at the same score. 50 is typical, above 55 is strong, and below 45 is weak. Growth depends much less on family income than proficiency does.</li>
+<li><b>Exclusionary discipline</b> is the share of students suspended or expelled at least once. A low rate can mean a calm school, a restorative approach, or under-reporting. The ratio between groups (for example, students with disabilities vs. all students) often tells you more about school climate than the overall rate.</li>
+<li><b>CRDC incident counts</b> are self-reported by schools under federal definitions that schools apply differently. Use them to spot outliers and ask questions, not to rank safety.</li>
+<li><b>Area estimates</b> for West and South Seattle are enrollment-weighted averages of school values, which approximate a true student-level rate.</li>
+</ul>
+<h3>Not available publicly</h3>
+<p>Student suicide deaths by school, school-level HYS results (they need superintendent approval), and building-level counts of bomb threats, lockdowns and weapons incidents. The <a href="#safety">Safety tab</a> has a public-records request you can send to get the last of these.</p>
+<p class="muted">Data pulled November 2026. Built with OSPI's files as published, so errors in the source files carry through.</p>`;}
+
+route();
+addEventListener('resize',()=>{clearTimeout(window.__rz);window.__rz=setTimeout(rerenderCharts,200);});
+})();
+</script>
+</body>
+</html>
