@@ -103,7 +103,8 @@ then open http://localhost:8000.
 ## Data sources
 
 - OSPI Report Card files on data.wa.gov: enrollment, assessment (Smarter Balanced and WCAS; WA-AIM excluded), discipline, graduation, SQSS (attendance, 9th grade on track, dual credit), growth, WaKIDS, student–teacher ratio.
-- U.S. Department of Education Civil Rights Data Collection 2021-22 and the NCES school directory, via the Urban Institute Education Data Portal API.
+- U.S. Department of Education Civil Rights Data Collection 2023-24 (from civilrightsdata.ed.gov) and 2021-22 for comparison, checked in as `tools/crdc-data.js`. The CRDC comes out every two years, so the automatic update doesn't fetch it; when 2025-26 is released, add its extract to `tools/raw/` and run `node tools/snapshot/build-crdc.mjs`.
+- NCES school directory, via the Urban Institute Education Data Portal API.
 - OSPI teacher experience and per-pupil expenditure; trends from OSPI files for 2018-19 and 2021-22 onward.
 - WA Department of Health lead-in-school-water results; WA DSHS Community Risk Profiles; Census SAIPE child poverty.
 - King County school sites layer (SCHSITE_POINT_107).

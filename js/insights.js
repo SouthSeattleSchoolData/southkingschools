@@ -3,7 +3,7 @@
 // Thresholds are named so they're easy to review and adjust.
 
 import { num, exact } from './util.js';
-import { perStaff, trendChange } from './metrics.js';
+import { perStaff, trendChange, CRDC_YEAR, CRDC_PREV_YEAR } from './metrics.js';
 import { volatility, SMALL } from './trends.js';
 
 const T = {
@@ -104,21 +104,30 @@ export function interpretSchool(s, state) {
     else if (Math.min(mathChange, elaChange) <= T.fellBy) add('neg', `${mathChange <= elaChange ? 'Math' : 'Reading'} is ${Math.abs(Math.min(mathChange, elaChange))} points below its 2018-19 level, a bigger drop than most schools here. Ask what the school is doing to catch students up.`);
   }
 
-  // Serious incidents and how the school responds to distress (2021-22 federal data)
+  // Serious incidents and how the school responds to distress (latest federal data)
   const c = s.crdc;
   if (c && (num(c.firearm_possession) || num(c.attacks_with_weapon))) {
     const parts = [
       c.firearm_possession ? `${c.firearm_possession} firearm possession incident${c.firearm_possession > 1 ? 's' : ''}` : '',
       c.attacks_with_weapon ? `${c.attacks_with_weapon} attack${c.attacks_with_weapon > 1 ? 's' : ''} with a weapon` : '',
     ].filter(Boolean);
-    add('neg', `In 2021-22 the school reported ${parts.join(' and ')} to the federal government. Ask for the current weapons and threat-assessment counts.`);
+    add('neg', `In ${CRDC_YEAR} the school reported ${parts.join(' and ')} to the federal government. Ask for the current weapons and threat-assessment counts.`);
+  }
+  const p = s.crdc_prev;
+  if (c && p && !s.isProgram) {
+    const th = !c.suspect?.includes('threats'); // threats copied from attacks don't count twice
+    const what = th ? 'attacks, fights and threats' : 'attacks and fights';
+    const now = (num(c.attacks) || 0) + (th ? num(c.threats) || 0 : 0);
+    const before = (num(p.attacks) || 0) + (th ? num(p.threats) || 0 : 0);
+    if (now >= 20 && now >= 2 * before + 10) add('neu', `Reported ${what} rose from ${before} in ${CRDC_PREV_YEAR} to ${now} in ${CRDC_YEAR}. That can mean more incidents or more thorough reporting; ask the school which, and what it changed.`);
+    else if (before >= 20 && now <= before / 2) add('neu', `Reported ${what} fell from ${before} in ${CRDC_PREV_YEAR} to ${now} in ${CRDC_YEAR}. Ask what the school changed, and whether the way it records incidents changed too.`);
   }
   if (c) {
     const uses = (c.restraint_physical || 0) + (c.restraint_mechanical || 0) + (c.seclusion || 0);
     const per100 = s.enrollment ? (100 * uses) / s.enrollment : 0;
-    if (uses >= 10 && per100 >= T.restraintPer100) add('neg', `Staff reported ${uses} uses of restraint or seclusion in 2021-22, about ${Math.round(per100)} per 100 students. Being held or isolated is frightening for children and rarely teaches calmer behavior; ask how often it happens now and what the school does instead.`);
+    if (uses >= 10 && per100 >= T.restraintPer100) add('neg', `Staff reported ${uses} uses of restraint or seclusion in ${CRDC_YEAR}, about ${Math.round(per100)} per 100 students. Being held or isolated is frightening for children and rarely teaches calmer behavior; ask how often it happens now and what the school does instead.`);
     const perCounselor = perStaff(s, 'counselors');
-    if (perCounselor === 'none' && s.enrollment >= 200 && !s.isProgram) add('neg', `The school reported no counselor in 2021-22. Ask who students talk to when they're struggling, and how quickly they can be seen.`);
+    if (perCounselor === 'none' && s.enrollment >= 200 && !s.isProgram) add('neg', `The school reported no counselor in ${CRDC_YEAR}. Ask who students talk to when they're struggling, and how quickly they can be seen.`);
     else if (typeof perCounselor === 'number' && perCounselor >= T.counselorLoad && !s.isProgram) add('neg', `One counselor per ${perCounselor} students, well past the recommended 250. Heavy caseloads leave little time for prevention, so problems tend to surface as discipline instead.`);
   }
   if (num(s.teachers_new_pct) >= T.newTeachersHigh && (s.teachers_total || 0) >= 10) add('neu', `${num(s.teachers_new_pct)}% of teachers are in their first five years. Ask how many teachers left last year and how new teachers are mentored; steady relationships with adults matter a lot to students.`);

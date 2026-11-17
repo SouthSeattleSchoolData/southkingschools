@@ -5,7 +5,7 @@
 //   node tools/snapshot/merge-raw.mjs
 //
 // Sources (pulled 17 Nov 2026, each checked against the live API by checksum):
-//   crdc_2021_22.csv       Urban Institute Education Data Portal, CRDC 2021-22 (school level)
+//   crdc_2023_24.csv, crdc_2021_22.csv  federal CRDC extracts (see build-crdc.mjs)
 //   nces_directory.txt     Urban Institute, NCES Common Core of Data directory 2022 (IDs, addresses)
 //   trends_2019_2025.txt   OSPI Report Card files on data.wa.gov, 2018-19 and 2021-22 to 2024-25
 //   teachers_2024_25.txt   OSPI Report Card Teacher Experience Distribution (bdjb-hg6t), 2024-25
@@ -16,21 +16,14 @@ import { readFileSync, writeFileSync, existsSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { formatJson } from '../build-data.js';
-import { TREND_YEARS, parseTrendValue, crdcRecord, leadMatchKey } from '../shared.js';
+import { TREND_YEARS, parseTrendValue, leadMatchKey } from '../shared.js';
+import { CRDC, CRDC_PREV, CRDC_YEAR, CRDC_PREV_YEAR } from '../crdc-data.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const raw = (f) => readFileSync(join(root, 'tools/raw', f), 'utf8').trim();
 const data = JSON.parse(readFileSync(join(root, 'data/schools.json'), 'utf8'));
 
-// ---- CRDC 2021-22 ----
-const [head, ...lines] = raw('crdc_2021_22.csv').split('\n');
-const cols = head.split(',');
-const crdc = {};
-for (const line of lines) {
-  const cells = line.split(',');
-  const row = Object.fromEntries(cols.map((c, i) => [c, cells[i] === '' ? null : Number(cells[i])]));
-  crdc[String(row.code)] = crdcRecord(row);
-}
+// ---- CRDC: built from tools/raw/crdc_*.csv by build-crdc.mjs ----
 
 // ---- NCES directory: IDs, virtual flag, addresses for schools the county layer lacks ----
 const nces = {};
@@ -96,7 +89,8 @@ for (const s of data.schools) {
     }
   }
   delete s.crdc_2017_18;
-  s.crdc = crdc[s.code] || null;
+  s.crdc = CRDC[s.code] || null;
+  s.crdc_prev = CRDC_PREV[s.code] || null;
   s.trend = trends[s.code] || null;
   const t = teachers[s.code];
   s.teachers_total = t ? t.total : null;
@@ -112,13 +106,14 @@ const ospi = Object.fromEntries(['enrollment', 'assessment', 'discipline', 'grad
 data.sources = {
   ...ospi,
   ...(data.sources || {}),
-  crdc: '2021-22',
+  crdc: CRDC_YEAR,
+  crdc_prev: CRDC_PREV_YEAR,
   teachers: '2024-25',
   per_pupil_spending: '2024-25',
   lead: 'WA Department of Health, tests since 2022',
 };
 writeFileSync(join(root, 'data/schools.json'), formatJson(data));
-console.log(`Merged: ${Object.keys(crdc).length} CRDC, ${Object.keys(trends).length} trends, ${filled} locations filled, ${leadHits} lead matches.`);
+console.log(`Merged: ${Object.keys(CRDC).length} CRDC, ${Object.keys(trends).length} trends, ${filled} locations filled, ${leadHits} lead matches.`);
 
 function titleCase(s) {
   return s ? s.toLowerCase().replace(/\b([a-z])/g, (m) => m.toUpperCase()).replace(/\b(Se|Sw|Ne|Nw|N|S|E|W)\b/gi, (m) => m.toUpperCase()) : s;

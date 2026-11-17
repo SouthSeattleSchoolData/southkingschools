@@ -88,7 +88,7 @@ function page(s) {
       <h2 class="sec">Key numbers, ${esc(data.school_year)}</h2>
       <table class="tbl"><tbody>${rows.map(([k, v]) => `<tr><td>${k}</td><td class="num">${esc(v)}</td></tr>`).join('')}</tbody></table>
       ${change ? `<p class="small" style="margin-top:14px">${esc(change)}.</p>` : ''}
-      ${s.crdc ? `<h2 class="sec">Safety and support, 2021-22</h2>
+      ${s.crdc ? `<h2 class="sec">Safety and support, ${s.crdc.year}</h2>
       <p class="small">Federal Civil Rights Data Collection: ${s.crdc.attacks ?? 0} physical attacks or fights, ${s.crdc.threats ?? 0} threats, ${s.crdc.firearm_possession ?? 0} firearm possession incidents, ${s.crdc.harassment_allegations ?? 0} bullying or harassment allegations. ${typeof counselor === 'number' ? `One counselor per ${counselor} students.` : counselor === 'none' ? 'No counselor reported.' : ''}</p>` : ''}
       ${s.lead ? `<h2 class="sec">Lead in drinking water</h2><p class="small">Department of Health sampled ${s.lead.tested} outlets (latest ${esc(s.lead.last)}); ${s.lead.over5} tested above 5 ppb.</p>` : ''}
       <p class="xs muted" style="margin-top:30px">Public data from OSPI, the U.S. Department of Education, NCES and the WA Department of Health. See <a href="../#method">how it works</a>.</p>

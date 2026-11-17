@@ -2,10 +2,11 @@
 // and in Node 18+ (tools/update-data.mjs, used by the GitHub Action).
 //
 // Sources: OSPI Report Card files on data.wa.gov (Socrata API), King County school sites (ArcGIS),
-// and the federal Civil Rights Data Collection 2021-22 and NCES school directory
-// (Urban Institute Education Data Portal API).
+// the NCES school directory (Urban Institute Education Data Portal API), and the federal
+// Civil Rights Data Collection (checked in as tools/crdc-data.js; see tools/snapshot/build-crdc.mjs).
 
-import { trendYears, parseTrendValue, crdcRecord } from './shared.js';
+import { trendYears, parseTrendValue } from './shared.js';
+import { CRDC, CRDC_PREV, CRDC_YEAR, CRDC_PREV_YEAR } from './crdc-data.js';
 
 const SOCRATA = 'https://data.wa.gov';
 const URBAN = 'https://educationdata.urban.org/api/v1';
@@ -233,16 +234,15 @@ export async function buildData(year, config, log = () => {}) {
   log('Matching school locations…');
   const locate = await loadLocations(config, schoolCodes, log);
 
-  log('Downloading the NCES school directory and federal civil rights data (CRDC 2021-22)…');
+  log('Downloading the NCES school directory…');
   let nces = {};
-  let crdc = {};
   try {
     nces = await loadNcesDirectory(schoolCodes);
-    crdc = await loadCrdc(nces);
   } catch (err) {
-    log(`Federal data unavailable (${err.message}); previous values will be kept.`);
+    log(`NCES directory unavailable (${err.message}); previous values will be kept.`);
   }
-  log(`Federal data: ${Object.keys(nces).length} schools matched, ${Object.keys(crdc).length} with CRDC records.`);
+  const crdc = CRDC;
+  log(`Federal data: ${Object.keys(nces).length} schools matched to NCES IDs, ${schoolCodes.filter((c) => crdc[c]).length} with CRDC ${CRDC_YEAR} records.`);
 
   log('Downloading trends, teacher experience and spending…');
   const years = trendYears(ids.years.assessment);
@@ -332,6 +332,7 @@ export async function buildData(year, config, log = () => {}) {
         nces_id: nces[r.schoolcode]?.id ?? null,
         ...withoutKeys(record, ['area', 'school_type', 'grades']),
         crdc: crdc[r.schoolcode] || null,
+        crdc_prev: CRDC_PREV[r.schoolcode] || null,
         trend: trends[r.schoolcode] || null,
         teachers_total: teachers[r.schoolcode]?.total ?? null,
         teachers_new_pct: teachers[r.schoolcode]?.newPct ?? null,
@@ -347,7 +348,7 @@ export async function buildData(year, config, log = () => {}) {
     generated: new Date().toISOString().slice(0, 10),
     school_year: year,
     notes: 'Percentages are 0-100. Strings like "<3.7" or ">95" are OSPI privacy-suppressed ranges; "N<10" means fewer than 10 students.',
-    sources: { ...ids.years, crdc: '2021-22', teachers: teachers.year, per_pupil_spending: spending.year },
+    sources: { ...ids.years, crdc: CRDC_YEAR, crdc_prev: CRDC_PREV_YEAR, teachers: teachers.year, per_pupil_spending: spending.year },
     trend_years: years,
     state,
     districts,
@@ -399,59 +400,6 @@ async function loadNcesDirectory(schoolCodes) {
     }
   }
   return out;
-}
-
-/** Federal Civil Rights Data Collection 2021-22, per OSPI school code. */
-async function loadCrdc(nces) {
-  const byNces = Object.fromEntries(Object.entries(nces).map(([code, n]) => [n.id, code]));
-  const leaids = [...new Set(Object.values(nces).map((n) => n.leaid))];
-  const raw = {};
-  const each = async (path, fn) => {
-    for (const leaid of leaids) {
-      (await urban(`schools/crdc/${path}?leaid=${leaid}`)).forEach((r) => {
-        const code = byNces[r.ncessch];
-        if (code) fn((raw[code] ??= {}), r);
-      });
-    }
-  };
-  const sum = (...xs) => {
-    const vals = xs.map(Number).filter((x) => !Number.isNaN(x) && x >= 0);
-    return vals.length ? vals.reduce((a, b) => a + b, 0) : null;
-  };
-  await each('offenses/2021/', (o, r) => Object.assign(o, {
-    firearm_incident: r.firearm_incident_ind,
-    homicide: r.homicide_ind,
-    sexual_assault: sum(r.rape_incidents, r.sexual_battery_incidents),
-    robbery: sum(r.robbery_w_weapon_incidents, r.robbery_w_firearm_incidents, r.robbery_no_weapon_incidents),
-    attacks: sum(r.attack_w_weapon_incidents, r.attack_w_firearm_incidents, r.attack_no_weapon_incidents),
-    attacks_with_weapon: sum(r.attack_w_weapon_incidents, r.attack_w_firearm_incidents),
-    threats: sum(r.threats_w_weapon_incidents, r.threats_w_firearm_incidents, r.threats_no_weapon_incidents),
-    firearm_possession: r.possession_firearm_incidents,
-  }));
-  await each('harassment-or-bullying/2021/allegations/', (o, r) => Object.assign(o, {
-    bully_sex: r.allegations_harass_sex,
-    bully_race: r.allegations_harass_race,
-    bully_disability: r.allegations_harass_disability,
-    bully_orientation: r.allegations_harass_orientation,
-    bully_religion: r.allegations_harass_religion,
-    harassment_allegations: sum(r.allegations_harass_sex, r.allegations_harass_race, r.allegations_harass_disability, r.allegations_harass_orientation, r.allegations_harass_religion),
-  }));
-  await each('teachers-staff/2021/', (o, r) => Object.assign(o, {
-    teachers_fte: r.teachers_fte_crdc,
-    counselors_fte: r.counselors_fte,
-    psychologists_fte: r.psychologists_fte,
-    social_workers_fte: r.social_workers_fte,
-    nurses_fte: r.nurses_fte,
-    security_guard_fte: r.security_guard_fte,
-    law_enforcement_fte: r.law_enforcement_fte,
-  }));
-  await each('restraint-and-seclusion/2021/instances/', (o, r) => {
-    if (r.disability === 99) Object.assign(o, { physical_restraint: r.instances_phys_restraint, mechanical_restraint: r.instances_mech_restraint, seclusion: r.instances_seclusion });
-  });
-  await each('discipline/2021/disability/sex/', (o, r) => {
-    if (r.disability === 99 && r.sex === 99) Object.assign(o, { arrests: r.students_arrested, police_referrals: r.students_referred_law_enforce });
-  });
-  return Object.fromEntries(Object.entries(raw).map(([code, r]) => [code, crdcRecord(r)]));
 }
 
 /** Reading, math, attendance, discipline and enrollment for each trend year (null where a file isn't out). */
@@ -587,7 +535,7 @@ export function checkData(data) {
 
 /**
  * Fills a new build with values it couldn't fetch this time, from the previous file:
- * federal records (2021-22, unchanging), NCES IDs and addresses, and lead testing.
+ * federal records, NCES IDs and addresses, and lead testing.
  * Returns how many schools needed each.
  */
 export function carryOver(data, old) {
@@ -596,7 +544,7 @@ export function carryOver(data, old) {
   for (const s of data.schools) {
     const prev = before[s.code];
     if (!prev) continue;
-    if (!s.crdc && prev.crdc) { s.crdc = prev.crdc; kept.crdc++; }
+    if (!s.crdc && prev.crdc && prev.crdc.year === data.sources?.crdc) { s.crdc = prev.crdc; kept.crdc++; }
     if (!s.nces_id && prev.nces_id) { s.nces_id = prev.nces_id; kept.nces_id++; }
     if (s.lat == null && prev.lat != null) {
       Object.assign(s, { lat: prev.lat, lon: prev.lon, address: prev.address, zip: prev.zip || s.zip, location_source: prev.location_source || 'previous' });

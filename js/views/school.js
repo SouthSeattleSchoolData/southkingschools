@@ -4,7 +4,7 @@
 import { store, districtFor, districtLabel } from '../data.js';
 import { num, fmt, plain, round1, escapeHtml, cssVar, $ } from '../util.js';
 import { SCORE_NAMES, scoreColorVar } from '../scores.js';
-import { METRICS, INCIDENTS, RESTRAINT, BULLYING_BASES, STAFF_ROLES, STAFF_GUIDES, CRDC_YEAR, DISCIPLINE_GROUPS, DEMOGRAPHICS, incident, perStaff } from '../metrics.js';
+import { METRICS, INCIDENTS, RESTRAINT, BULLYING_BASES, STAFF_ROLES, STAFF_GUIDES, CRDC_YEAR, CRDC_PREV_YEAR, incidentPrev, DISCIPLINE_GROUPS, DEMOGRAPHICS, incident, perStaff } from '../metrics.js';
 import { TREND_SERIES, peerSeries, smallSchoolCaution, changeSummary } from '../trends.js';
 import { interpretSchool, tourQuestions } from '../insights.js';
 import { compareButton, wireCompareButtons } from '../compare-list.js';
@@ -70,13 +70,15 @@ const LEAD_URL = 'https://doh.wa.gov/community-and-environment/drinking-water/co
 function safetySection(s) {
   const c = s.crdc;
   if (!c) return `<p class="small muted">No ${CRDC_YEAR} federal record for this school. It may have opened later or reported under another name.</p>`;
-  const cell = (label, v, key) => `<div class="kv"><div class="k">${label}${key ? info(`incident:${key}`) : ''}</div><div class="v num">${fmt(v)}</div></div>`;
+  const was = (k) => { const p = incidentPrev(s, k); return p == null ? '' : `<div class="c">${CRDC_PREV_YEAR}: ${p}</div>`; };
+  const cell = (label, v, key, k) => `<div class="kv"><div class="k">${label}${key ? info(`incident:${key}`) : ''}</div><div class="v num">${fmt(v)}</div>${was(k)}</div>`;
   const bases = BULLYING_BASES.filter(([k]) => (c.bullying?.[k] || 0) > 0).map(([k, label]) => `${c.bullying[k]} based on ${label}`);
-  const restraint = RESTRAINT.map(([k, label]) => [label, c[k]]).filter(([, v]) => v != null);
-  return `<div class="kgrid">${INCIDENTS.map(([key, label]) => cell(label, incident(s, key), key)).join('')}
-      ${restraint.map(([label, v], i) => cell(label, v, i === 0 ? 'restraint' : '')).join('')}</div>
+  const restraint = RESTRAINT.map(([k, label]) => [label, c[k], k]).filter(([, v]) => v != null);
+  return `<div class="kgrid">${INCIDENTS.map(([key, label]) => cell(label, incident(s, key), key, key)).join('')}
+      ${restraint.map(([label, v, k], i) => cell(label, v, i === 0 ? 'restraint' : '', k)).join('')}</div>
     <p class="small">${c.harassment_allegations ? `Bullying and harassment allegations: ${bases.join('; ') || c.harassment_allegations}.` : 'No bullying or harassment allegations on a protected basis were reported.'}</p>
-    <p class="xs muted">Federal Civil Rights Data Collection, ${CRDC_YEAR} (the latest released). Schools count and code incidents differently; a high count can mean careful reporting. Arrests and referrals count students, not incidents.</p>`;
+    ${c.suspect?.includes('threats') ? `<p class="small caution">${escapeHtml(s.district)} reported exactly as many threats as attacks at every one of its schools in ${CRDC_YEAR}, which looks like one figure entered twice. Treat the threat count as unreliable.</p>` : ''}
+    <p class="xs muted">Federal Civil Rights Data Collection, ${CRDC_YEAR} (released August 2026), with the ${CRDC_PREV_YEAR} count underneath for comparison. Schools count and code incidents differently, and a change can reflect new staff or reporting practices as much as student behavior; a high count can mean careful reporting. Arrests and referrals count students, not incidents.</p>`;
 }
 
 /** Counselors, psychologists and other support staff, with students per person. */

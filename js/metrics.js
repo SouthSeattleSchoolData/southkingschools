@@ -38,7 +38,7 @@ export const METRICS = {
   ela_change: { label: 'Reading change since 2018-19', short: 'Reading vs 2019', unit: ' pts', better: 'high', get: (s) => trendChange(s, 'ela') },
 };
 
-/** Students per full-time staff member (2021-22 staffing, current enrollment). Null when none on staff. */
+/** Students per full-time staff member (federal CRDC staffing, current enrollment). Null when none on staff. */
 export function perStaff(s, role) {
   const fte = s.crdc?.staff?.[role];
   if (fte == null || !s.enrollment) return null;
@@ -62,7 +62,7 @@ export const STAFF_GUIDES = {
   social_workers: { per: 250, by: 'School Social Work Association of America' },
 };
 
-/** Federal Civil Rights Data Collection counts (2021-22). */
+/** Federal Civil Rights Data Collection counts (latest collection, CRDC_YEAR). */
 export const INCIDENTS = [
   ['firearm_possession', 'Firearm or explosive possession', 'Firearm poss.'],
   ['attacks_with_weapon', 'Attacks with a weapon', 'Weapon attacks'],
@@ -75,7 +75,7 @@ export const INCIDENTS = [
   ['police_referrals', 'Students referred to police', 'Police ref.'],
 ];
 
-/** Restraint and seclusion instances (2021-22). */
+/** Restraint and seclusion instances (CRDC_YEAR). */
 export const RESTRAINT = [
   ['restraint_physical', 'Physical restraint'],
   ['restraint_mechanical', 'Mechanical restraint'],
@@ -101,8 +101,11 @@ export const STAFF_ROLES = [
   ['police', 'Police officers'],
 ];
 
-export const CRDC_YEAR = '2021-22';
+export const CRDC_YEAR = '2023-24';
+export const CRDC_PREV_YEAR = '2021-22';
 export const incident = (school, key) => school.crdc?.[key] ?? null;
+/** The same count from the previous federal collection, for showing change. */
+export const incidentPrev = (school, key) => school.crdc_prev?.[key] ?? null;
 
 /** Student groups shown in discipline breakdowns. */
 export const DISCIPLINE_GROUPS = [

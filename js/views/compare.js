@@ -2,7 +2,7 @@
 
 import { store } from '../data.js';
 import { fmt, escapeHtml, $, $$ } from '../util.js';
-import { METRICS, incident } from '../metrics.js';
+import { METRICS, incident, CRDC_YEAR } from '../metrics.js';
 import { compareCodes, setCompare, toggleCompare } from '../compare-list.js';
 import { info, glossaryKey } from '../glossary.js';
 
@@ -41,7 +41,7 @@ const ROWS = [
   ['students_per_psychologist', 'Students per psychologist', 'low'],
   ['teachers_new_pct', 'Teachers in first 5 years %', null],
   ['per_pupil_spending', 'Spending per student', null],
-  [null, 'Incidents, 2021-22'],
+  [null, `Incidents, ${CRDC_YEAR}`],
   ['incident:threats', 'Threats of attack', 'low'],
   ['incident:attacks', 'Physical attacks or fights', 'low'],
   ['incident:firearm_possession', 'Firearm possession', 'low'],

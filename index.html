@@ -190,22 +190,27 @@
         <p class="small muted">From local news. Most shootings happened off campus, at bus stops, parks or community centers near schools. Not a complete list.</p>
         <ul class="timeline" id="newsList" style="margin-top:14px"></ul>
 
-        <h3 style="margin:30px 0 8px">Incidents each school reported to the federal government, 2021-22</h3>
-        <p class="small muted">From the Civil Rights Data Collection, the latest year the U.S. Department of Education has released (January 2025). Schools apply the definitions differently: an elementary school with hundreds of "physical attacks or fights" is usually counting routine physical aggression among young children, and a school with none may simply record less.</p>
+        <h3 style="margin:30px 0 8px">Incidents each school reported to the federal government, 2023-24</h3>
+        <p class="small muted">From the Civil Rights Data Collection, the latest year the U.S. Department of Education has released (August 2026; the next, 2025-26, is still being collected). Schools apply the definitions differently: an elementary school with hundreds of "physical attacks or fights" is usually counting routine physical aggression among young children, and a school with none may simply record less.</p>
         <div class="scroll" style="margin-top:10px">
           <table class="tbl" id="crdcTbl"></table>
         </div>
         <p class="small muted" id="crdcSum" style="margin-top:8px"></p>
 
-        <h3 style="margin:34px 0 8px">Restraint and seclusion, 2021-22</h3>
+        <h3 style="margin:34px 0 8px">What changed since 2021-22</h3>
+        <p class="small">Each area's reported totals in the previous federal collection and the latest one. Each school's own before-and-after counts are on its page.</p>
+        <div class="scroll"><table class="tbl" id="changeTbl"></table></div>
+        <p class="small muted" id="changeSum" style="margin-top:8px"></p>
+
+        <h3 style="margin:34px 0 8px">Restraint and seclusion, 2023-24</h3>
         <p class="small">Restraint means physically holding a student; seclusion (called isolation in Washington law) means confining a student alone. State law allows them only when a student's behavior poses a likelihood of serious harm, and requires schools to notify parents and document each use. Most uses involve students with disabilities. The schools with the most reported uses:</p>
         <div class="scroll"><table class="tbl" id="restraintTbl"></table></div>
         <p class="small muted" id="restraintSum" style="margin-top:8px"></p>
 
         <h3 style="margin:34px 0 8px">Counselors, psychologists and police</h3>
-        <p class="small">Students per staff member by area, from the same 2021-22 federal collection. The American School Counselor Association recommends 1 counselor per 250 students; the National Association of School Psychologists recommends 1 psychologist per 500. Bold numbers are above those guidelines.</p>
+        <p class="small">Students per staff member by area, from the same 2023-24 federal collection. The American School Counselor Association recommends 1 counselor per 250 students; the National Association of School Psychologists recommends 1 psychologist per 500. Bold numbers are above those guidelines.</p>
         <div class="scroll"><table class="tbl" id="staffTbl"></table></div>
-        <p class="xs muted" style="margin-top:6px">"None reported" means no school in the area listed that role; some districts employ psychologists, nurses or social workers centrally and don't assign them to a school in this collection. No school here reported a sworn officer on site in 2021-22, after several districts ended or paused school resource officer programs; check the district policies below for what's in place now.</p>
+        <p class="xs muted" style="margin-top:6px">"None reported" means no school in the area listed that role; some districts employ psychologists, nurses or social workers centrally and don't assign them to a school in this collection. No school here reported a sworn officer on site in 2021-22 or 2023-24, after several districts ended or paused school resource officer programs; check the district policies below for what's in place now.</p>
 
         <h3 style="margin:34px 0 8px">Lead in school drinking water</h3>
         <p class="small">Washington requires schools built before 2016 to test every drinking and cooking outlet, fix any above 5 parts per billion (ppb), and shut off any above 15 ppb. These are the Department of Health's posted results since 2022 for schools here. Districts that hired their own lab post results on their own websites instead.</p>
@@ -272,7 +277,7 @@
         <ul>
           <li>OSPI Report Card files on data.wa.gov, 2024-25: <a href="https://data.wa.gov/d/2rwv-gs2e">enrollment</a>, <a href="https://data.wa.gov/d/h5d9-vgwi">assessment</a> (Smarter Balanced and WCAS; WA-AIM excluded), <a href="https://data.wa.gov/d/c9tq-ntbq">discipline</a>, <a href="https://data.wa.gov/d/isxb-523t">graduation</a>, <a href="https://data.wa.gov/d/f7j6-nk2h">attendance, 9th grade on track and dual credit</a>, <a href="https://data.wa.gov/d/hv7j-ib7g">growth</a>, <a href="https://data.wa.gov/d/35cj-2iym">kindergarten readiness</a>, <a href="https://data.wa.gov/d/gks4-v7ka">student–teacher ratio</a>. Discipline trend from the <a href="https://data.wa.gov/d/ixvm-ww8s">2022-23</a> and <a href="https://data.wa.gov/d/sm68-769y">2023-24</a> files.</li>
           <li>Trends: the same OSPI files for <a href="https://data.wa.gov/d/4h5k-di3v">2018-19</a> and 2021-22 through 2024-25 (assessment, discipline, attendance and enrollment for each year).</li>
-          <li>Federal Civil Rights Data Collection, 2021-22 (released January 2025): offenses, harassment and bullying allegations, restraint and seclusion, arrests and referrals, and support staff, through the <a href="https://educationdata.urban.org/documentation/">Urban Institute Education Data Portal</a> API. Schools are matched to federal IDs through the NCES Common Core of Data directory, which also supplies addresses for programs the county layer lacks.</li>
+          <li>Federal Civil Rights Data Collection, 2023-24 (released August 2026, downloaded from <a href="https://civilrightsdata.ed.gov/data">civilrightsdata.ed.gov</a>), with 2021-22 (released January 2025) for comparison: offenses, harassment and bullying allegations, restraint and seclusion, arrests and referrals, and support staff. 2021-22 came through the <a href="https://educationdata.urban.org/documentation/">Urban Institute Education Data Portal</a> API, which hasn't added 2023-24 yet. The 2023-24 release withheld its counts of nonbinary students and of harassment based on gender identity, so the arrest and referral counts here cover boys and girls only; the bullying totals use the same five bases in both years. Schools are matched to federal IDs through the NCES Common Core of Data directory, which also supplies addresses for programs the county layer lacks.</li>
           <li>Teachers and spending: OSPI <a href="https://data.wa.gov/d/bdjb-hg6t">teacher experience</a> and <a href="https://data.wa.gov/d/vnm3-j8pe">per-pupil expenditure</a>, 2024-25.</li>
           <li>Lead in school drinking water: <a href="https://doh.wa.gov/community-and-environment/drinking-water/contaminants/lead/lead-schools/test-results-2022">WA Department of Health</a> test results since 2022.</li>
           <li>District context: U.S. Census Small Area Income and Poverty Estimates (2023, via the Urban Institute) and the WA DSHS <a href="https://www.dshs.wa.gov/ffa/research-and-data-analysis/community-risk-profiles">Community Risk Profiles</a> (2024). Neighborhood links go to <a href="https://censusreporter.org/">Census Reporter</a>.</li>
@@ -283,9 +288,9 @@
         <ul>
           <li><b>Suppression:</b> OSPI hides small counts. "&lt;3.7%" means somewhere between 0 and 3.7%. For scores and charts these are placed at the midpoint. "n&lt;10" means too few students to report.</li>
           <li><b>Discipline</b> is the share of students suspended or expelled at least once. Low can mean calm, restorative or under-reported, so read it next to attendance.</li>
-          <li><b>Federal incident counts</b> are self-reported and from 2021-22, the first full year back in buildings. Use them to raise questions, not to rank safety.</li>
+          <li><b>Federal incident counts</b> are self-reported and from 2023-24, with 2021-22, the first full year back in buildings, for comparison. A change between the two can reflect reporting practices as much as behavior. Use them to raise questions, not to rank safety.</li>
           <li><b>Trends</b> start in 2018-19 because no state tests were given in 2019-20 or 2020-21. Small schools get a caution when they have under 150 students or their results move 8+ points a year on average.</li>
-          <li><b>Support staff ratios</b> divide this year's enrollment by the staff the school reported in 2021-22, so staffing may have changed since.</li>
+          <li><b>Support staff ratios</b> divide this year's enrollment by the staff the school reported in 2023-24, so staffing may have changed since.</li>
           <li><b>Healthy Youth Survey</b> results are self-reports. Differences of a few points are often within the margin of error.</li>
         </ul>
         <h3>Not available publicly</h3>

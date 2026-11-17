@@ -22,13 +22,13 @@ export function parseTrendValue(v) {
 }
 
 /**
- * Reduces one school's Civil Rights Data Collection row (Urban Institute field names,
+ * Reduces one school's Civil Rights Data Collection row (field names as in tools/raw/crdc_*.csv,
  * already summed across sub-types) to what the site shows. Negative/missing = null.
  */
-export function crdcRecord(r) {
-  const v = (x) => (x == null || Number.isNaN(Number(x)) || Number(x) < 0 ? null : Number(x));
+export function crdcRecord(r, year) {
+  const v = (x) => (x == null || x === '' || Number.isNaN(Number(x)) || Number(x) < 0 ? null : Number(x));
   return {
-    year: '2021-22',
+    year,
     firearm_incident: v(r.firearm_incident),
     firearm_possession: v(r.firearm_possession),
     homicide: v(r.homicide),
@@ -70,4 +70,11 @@ export function leadMatchKey(name, district) {
     .replace(/[^a-z0-9]+/g, '');
   const d = String(district || '').toLowerCase().replace(/[^a-z ]/g, ' ').trim().split(/\s+/)[0];
   return `${d}:${n}`;
+}
+
+/** Incident and restraint counts from an earlier collection, kept so pages can show the change. */
+export const CRDC_PREV_KEYS = ['firearm_possession', 'attacks_with_weapon', 'attacks', 'threats', 'robbery', 'sexual_assault',
+  'harassment_allegations', 'arrests', 'police_referrals', 'restraint_physical', 'restraint_mechanical', 'seclusion'];
+export function crdcPrevious(rec) {
+  return rec ? Object.fromEntries([['year', rec.year], ...CRDC_PREV_KEYS.map((k) => [k, rec[k]])]) : null;
 }

@@ -727,10 +727,10 @@
    "vi": "Tỷ lệ kỷ luật theo năm",
    "zh": "历年纪律处分率"
   },
-  "Restraint and seclusion, 2021-22": {
-   "es": "Restricción y aislamiento, 2021-22",
-   "vi": "Khống chế và cách ly, 2021-22",
-   "zh": "约束与隔离，2021-22"
+  "Restraint and seclusion, 2023-24": {
+   "es": "Restricción y aislamiento, 2023-24",
+   "vi": "Khống chế và cách ly, 2023-24",
+   "zh": "约束与隔离，2023-24"
   },
   "Counselors, psychologists and police": {
    "es": "Consejeros, psicólogos y policía",
@@ -916,6 +916,36 @@
    "es": "Filtrar escuelas o escribir una dirección",
    "vi": "Lọc trường hoặc nhập địa chỉ",
    "zh": "筛选学校或输入地址"
+  },
+  "What changed since 2021-22": {
+   "es": "Qué cambió desde 2021-22",
+   "vi": "Những gì đã thay đổi kể từ 2021-22",
+   "zh": "自2021-22年以来的变化"
+  },
+  "Attacks or fights": {
+   "es": "Agresiones o peleas",
+   "vi": "Tấn công hoặc đánh nhau",
+   "zh": "攻击或打架"
+  },
+  "Weapon incidents": {
+   "es": "Incidentes con armas",
+   "vi": "Sự cố liên quan đến vũ khí",
+   "zh": "涉及武器的事件"
+  },
+  "Bullying allegations": {
+   "es": "Denuncias de acoso",
+   "vi": "Cáo buộc bắt nạt",
+   "zh": "欺凌指控"
+  },
+  "Restraint and seclusion": {
+   "es": "Restricción y aislamiento",
+   "vi": "Khống chế và cách ly",
+   "zh": "约束与隔离"
+  },
+  "All six areas": {
+   "es": "Las seis zonas",
+   "vi": "Cả sáu khu vực",
+   "zh": "全部六个地区"
   }
  },
  "patterns": [

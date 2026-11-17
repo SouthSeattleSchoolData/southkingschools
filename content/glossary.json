@@ -179,8 +179,8 @@
       ]
     },
     {
-      "title": "Safety and support (federal data, 2021-22)",
-      "intro": "From the U.S. Department of Education's Civil Rights Data Collection, which every public school must complete. 2021-22 is the latest year released. Schools report their own counts and interpret the categories differently, so compare with care.",
+      "title": "Safety and support (federal data, 2023-24)",
+      "intro": "From the U.S. Department of Education's Civil Rights Data Collection, which every public school must complete. 2023-24 is the latest year released (August 2026); school pages also show 2021-22 counts for comparison. Schools report their own counts and interpret the categories differently, so compare with care.",
       "items": [
         {
           "key": "incident:firearm_possession",
@@ -258,7 +258,7 @@
           "key": "staff:police",
           "term": "Police officers on site",
           "what": "Sworn law enforcement officers, such as school resource officers, assigned to the school.",
-          "read": "Districts have changed officer programs since 2021-22. Check each district's current policy on this page."
+          "read": "Districts have changed officer programs since 2023-24. Check each district's current policy on this page."
         }
       ]
     },
@@ -305,13 +305,13 @@
         {
           "key": "students_per_counselor",
           "term": "Students per counselor",
-          "what": "This year's enrollment divided by the counselor FTE the school reported in 2021-22.",
+          "what": "This year's enrollment divided by the counselor FTE the school reported in 2023-24.",
           "read": "The recommended maximum is 250. \"None on staff\" means the school reported no counselor."
         },
         {
           "key": "students_per_psychologist",
           "term": "Students per psychologist",
-          "what": "This year's enrollment divided by the school psychologist FTE reported in 2021-22.",
+          "what": "This year's enrollment divided by the school psychologist FTE reported in 2023-24.",
           "read": "The National Association of School Psychologists recommends no more than 500 students per psychologist."
         },
         {

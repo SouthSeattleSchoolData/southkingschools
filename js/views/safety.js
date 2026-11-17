@@ -3,7 +3,7 @@
 
 import { store, AREAS } from '../data.js';
 import { num, escapeHtml, round1, $ } from '../util.js';
-import { INCIDENTS, incident } from '../metrics.js';
+import { INCIDENTS, incident, incidentPrev, CRDC_YEAR, CRDC_PREV_YEAR } from '../metrics.js';
 import { info } from '../glossary.js';
 
 let rendered = false;
@@ -13,6 +13,7 @@ export function renderSafety() {
   rendered = true;
   renderNews();
   renderIncidents();
+  renderChange();
   renderRestraint();
   renderStaff();
   renderLead();
@@ -33,7 +34,8 @@ function seriousCount(s) {
 }
 
 function threatRate(s) {
-  return ((num(incident(s, 'threats')) || 0) + (num(incident(s, 'attacks')) || 0)) / s.enrollment;
+  const threats = s.crdc?.suspect?.includes('threats') ? 0 : num(incident(s, 'threats')) || 0; // see renderChange
+  return (threats + (num(incident(s, 'attacks')) || 0)) / s.enrollment;
 }
 
 function renderIncidents() {
@@ -49,6 +51,33 @@ function renderIncidents() {
 
   const total = (k) => reported.reduce((t, s) => t + (num(incident(s, k)) || 0), 0);
   $('#crdcSum').textContent = `The 25 schools with the most serious reports are shown. Across all ${reported.length} schools with records: ${total('firearm_possession')} firearm possession incidents, ${total('attacks_with_weapon')} attacks with a weapon, ${total('threats')} threats, ${total('sexual_assault')} rapes or sexual assaults, ${total('harassment_allegations')} bullying or harassment allegations and ${total('arrests')} students arrested. Every school's counts are on its own page.`;
+}
+
+/** Area totals in the two latest federal collections, schools reporting in both. */
+function renderChange() {
+  const both = store.schools.filter((s) => s.crdc && s.crdc_prev);
+  const measures = [
+    ['Attacks or fights', ['attacks']],
+    ['Threats', ['threats']],
+    ['Weapon incidents', ['firearm_possession', 'attacks_with_weapon']],
+    ['Rape or sexual assault', ['sexual_assault']],
+    ['Bullying allegations', ['harassment_allegations']],
+    ['Restraint and seclusion', ['restraint_physical', 'restraint_mechanical', 'seclusion']],
+  ];
+  const sum = (list, keys, get) => list.reduce((t, s) => t + keys.reduce((u, k) => u + (num(get(s, k)) || 0), 0), 0);
+  const flagged = (list, keys) => keys.includes('threats') && list.some((s) => s.crdc.suspect?.includes('threats'));
+  const cell = (list, keys) => {
+    const a = sum(list, keys, incidentPrev), b = sum(list, keys, incident);
+    return `<td class="num"><span class="sup">${a.toLocaleString()} →</span> <b>${b.toLocaleString()}</b>${flagged(list, keys) ? '*' : ''}</td>`;
+  };
+  const row = (label, list) => `<tr><td>${label}</td>${measures.map(([, keys]) => cell(list, keys)).join('')}</tr>`;
+  $('#changeTbl').innerHTML = `<thead><tr><th>Area</th>${measures.map(([l]) => `<th>${l}</th>`).join('')}</tr></thead><tbody>`
+    + AREAS.map((area) => row(area, both.filter((s) => s.area === area))).join('')
+    + row('<b>All six areas</b>', both)
+    + '</tbody>';
+  const t = (keys) => [sum(both, keys, incidentPrev), sum(both, keys, incident)];
+  const [a0, a1] = t(['attacks']); const [h0, h1] = t(['threats']); const [r0, r1] = t(['restraint_physical', 'restraint_mechanical', 'seclusion']);
+  $('#changeSum').textContent = `Counts from the ${both.length} schools that reported in both ${CRDC_PREV_YEAR} and ${CRDC_YEAR}, with no adjustment for enrollment. Across them, reported attacks or fights went from ${a0.toLocaleString()} to ${a1.toLocaleString()}, threats from ${h0.toLocaleString()} to ${h1.toLocaleString()}, and restraint and seclusion from ${r0.toLocaleString()} to ${r1.toLocaleString()}. A rise can mean more careful reporting rather than more incidents, so read it alongside the school climate survey and district reports.${both.some((s) => s.crdc.suspect?.includes('threats')) ? ` *Kent reported exactly as many threats as attacks at every school in ${CRDC_YEAR}, which looks like one figure entered twice, so its threat count (and the six-area total) is unreliable.` : ''}`;
 }
 
 function renderRestraint() {
