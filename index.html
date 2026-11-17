@@ -129,6 +129,38 @@ textarea{width:100%;min-height:210px;font:12.5px/1.45 ui-monospace,Menlo,monospa
 .help a{font-weight:600}
 footer{color:var(--ink-3);font-size:12px;border-top:1px solid var(--line);padding:16px 0 80px}
 .barlbl{font-variant-numeric:tabular-nums}
+.cards{display:none}
+.scard{background:var(--surface);border:1px solid var(--line);border-radius:10px;padding:10px 12px;margin-bottom:8px;cursor:pointer}
+.scard .nm{font-weight:600;font-size:14.5px}
+.scard .sub{color:var(--ink-3);font-size:12px;margin-bottom:6px}
+.scard .st{display:grid;grid-template-columns:repeat(3,1fr);gap:6px 8px}
+.scard .st div{font-size:11px;color:var(--ink-3);line-height:1.25}
+.scard .st b{display:block;font-size:15px;color:var(--ink);font-weight:600;font-variant-numeric:tabular-nums}
+.scard.sorted-hl .st div.on b{color:var(--accent-ink)}
+.mobsort{display:none}
+.tabsfade{position:relative}
+@media(max-width:640px){
+  html,body{font-size:14.5px}
+  header.top{padding:14px 0 4px}
+  .brand h1{font-size:22px}
+  .brand .tag{font-size:13px}
+  .areas-line{display:none}
+  nav.tabs .wrap{padding-right:28px}
+  nav.tabs::after{content:"";position:absolute;right:0;top:0;bottom:1px;width:36px;pointer-events:none;background:linear-gradient(to right,transparent,var(--bg))}
+  nav.tabs a{padding:11px 10px 10px}
+  .themebtn{display:none}
+  main{padding-top:12px}
+  .lede{font-size:13.5px}
+  .tblwrap.big{display:none}
+  .cards{display:block}
+  .mobsort{display:flex}
+  .g-areas{grid-template-columns:1fr 1fr;gap:8px}
+  .card{padding:11px}
+  .controls select{max-width:100%}
+  input[type=search]{max-width:none}
+  .help{display:none}
+}
+
 </style>
 </head>
 <body>
@@ -154,10 +186,10 @@ footer{color:var(--ink-3);font-size:12px;border-top:1px solid var(--line);paddin
 
 <section class="view" id="v-schools">
   <h2>School-by-school table</h2>
-  <p class="lede">Tap any column to sort and any school for its full profile. Gray values starting with "&lt;" or "&gt;" are privacy-suppressed bounds from OSPI. "n&lt;10" means too few students to report.</p>
+  <p class="lede">Sort with the column headers (on a phone, use "Sort by"). Tap any school for its full profile. Gray values starting with "&lt;" or "&gt;" are privacy-suppressed bounds from OSPI. "n&lt;10" means too few students to report.</p>
   <div class="controls" id="filt1"></div>
   <div class="subtabs" id="colGroups"></div>
-  <div class="tblwrap"><table class="t" id="tbl"></table></div>
+  <div class="controls mobsort"><label class="lbl" for="mSort">Sort by</label><select id="mSort"></select><button class="chip" id="mDir" type="button">High → low</button></div><div class="tblwrap big"><table class="t" id="tbl"></table></div><div class="cards" id="cards"></div>
   <p class="small muted" id="tblCount"></p>
 </section>
 
@@ -337,8 +369,8 @@ document.addEventListener('scroll',hideTip,{passive:true});
 const views=['overview','schools','map','equity','safety','wellbeing','policies','about'];
 function route(){const h=(location.hash||'#overview').slice(1);const v=views.includes(h)?h:'overview';
   views.forEach(x=>document.getElementById('v-'+x).classList.toggle('on',x===v));
-  document.querySelectorAll('#tabs a').forEach(a=>a.classList.toggle('on',a.getAttribute('href')==='#'+v));
-  hideTip();render(v);}
+  document.querySelectorAll('#tabs a').forEach(a=>{const on=a.getAttribute('href')==='#'+v;a.classList.toggle('on',on);if(on&&a.scrollIntoView)try{a.scrollIntoView({block:'nearest',inline:'center'})}catch(e){}});
+  hideTip();const md=document.getElementById('modal');if(md)md.classList.remove('on');render(v);}
 addEventListener('hashchange',route);
 const rendered={};
 function render(v){({overview:renderOverview,schools:renderSchools,map:renderMap,equity:renderEquity,safety:renderSafety,wellbeing:renderWellbeing,policies:renderPolicies,about:renderAbout})[v]();}
@@ -410,6 +442,16 @@ function drawTable(){
   const t=document.getElementById('tbl');t.innerHTML=h;
   t.querySelectorAll('th').forEach(th=>th.onclick=()=>{const k=th.dataset.k;if(S.sort.k===k)S.sort.d*=-1;else S.sort={k,d:k==='name'?1:-1};drawTable();});
   t.querySelectorAll('tr.row').forEach(tr=>tr.onclick=()=>openSchool(tr.dataset.c));
+  // phone cards
+  const ms=document.getElementById('mSort');ms.innerHTML=['name',...cols].map(k=>`<option value="${k}"${k===sk?' selected':''}>${k==='name'?'School name':M[k].l}</option>`).join('');
+  ms.onchange=()=>{S.sort={k:ms.value,d:ms.value==='name'?1:-1};drawTable();};
+  const md=document.getElementById('mDir');md.textContent=sk==='name'?(sd>0?'A → Z':'Z → A'):(sd<0?'High → low':'Low → high');md.onclick=()=>{S.sort.d*=-1;drawTable();};
+  const show=cols.filter(k=>k!=='enr').slice(0,6);if(sk!=='name'&&sk!=='enr'&&!show.includes(sk)){show.pop();show.unshift(sk);}
+  const unit=k=>(k==='enr'||k==='discN'||k==='ratio'||k.startsWith('sgp')||GROUPS.safe.cols.includes(k))?'':'%';
+  const cardsEl=document.getElementById('cards');
+  cardsEl.innerHTML=list.slice(0,S.cardLimit||40).map(o=>`<div class="scard" data-c="${o.code}"><div class="nm">${esc(o.name)}${o.badges.map(b=>`<span class="badge">${b}</span>`).join('')}</div><div class="sub">${o.area} · ${o.grades||''} · ${o.enr} students</div><div class="st">${show.map(k=>`<div class="${k===sk?'on':''}"><b>${fmt(o[k],unit(k))}</b>${SHORT[k]}${S.group==='disc'&&k!=='discN'?' disc.':''}</div>`).join('')}</div></div>`).join('')+(list.length>(S.cardLimit||40)?`<button class="chip" id="moreCards" type="button" style="width:100%">Show all ${list.length} schools</button>`:'');
+  cardsEl.querySelectorAll('.scard').forEach(c=>c.onclick=()=>openSchool(c.dataset.c));
+  const mc=document.getElementById('moreCards');if(mc)mc.onclick=()=>{S.cardLimit=9999;drawTable();};
   document.getElementById('tblCount').textContent=`${list.length} schools shown. "LI" = low-income students. Growth is the median student growth percentile (50 = typical). `+(S.group==='safe'?'Blank = school not in the 2017-18 CRDC (opened later or not reported).':'');
 }
 
@@ -449,19 +491,19 @@ function renderMap(){
   const lat0=47.47,kx=Math.cos(lat0*Math.PI/180);
   const xs=pts.map(o=>o.lon*kx),ys=pts.map(o=>o.lat);
   const minX=Math.min(...xs),maxX=Math.max(...xs),minY=Math.min(...ys),maxY=Math.max(...ys);
-  const W=Math.min(el.clientWidth||700,1000);const pad=26;const scale=(W-2*pad)/(maxX-minX);const H=Math.round((maxY-minY)*scale+2*pad);
+  const W=Math.min(el.clientWidth||700,1000);const pad=W<500?14:26;const scale=(W-2*pad)/(maxX-minX);const H=Math.round((maxY-minY)*scale+2*pad);
   const px=o=>pad+(o.lon*kx-minX)*scale,py=o=>pad+(maxY-o.lat)*scale;
   const vals=pts.map(o=>num(o[k])).filter(v=>v!=null).sort((a,b)=>a-b);
   const qs=[.2,.4,.6,.8].map(p=>vals[Math.floor(p*(vals.length-1))]);
   const bin=v=>v==null?-1:qs.filter(q=>v>q).length;
   const fills=['var(--q1)','var(--q2)','var(--q3)','var(--q4)','var(--q5)'];
   let s=`<svg width="${W}" height="${H}" role="img" aria-label="School locations">`;
-  pts.slice().sort((a,b)=>b.enr-a.enr).forEach(o=>{const v=num(o[k]);const b=bin(v);const r=Math.max(4.5,Math.sqrt(o.enr||100)/4.2);
+  pts.slice().sort((a,b)=>b.enr-a.enr).forEach(o=>{const v=num(o[k]);const b=bin(v);const sc=Math.max(.6,Math.min(1,W/900));const r=Math.max(3.5,Math.sqrt(o.enr||100)/4.2*sc);
     s+=`<circle data-c="${o.code}" cx="${px(o).toFixed(1)}" cy="${py(o).toFixed(1)}" r="${r.toFixed(1)}" fill="${b<0?'var(--muted-mark)':fills[b]}" fill-opacity="${b<0?.5:.95}" stroke="var(--surface)" stroke-width="2"/>`;});
   // area labels at centroids
   AREAS.forEach(a=>{const L=pts.filter(o=>o.area===a);if(!L.length)return;const cx=L.reduce((s,o)=>s+px(o),0)/L.length,cy=L.reduce((s,o)=>s+py(o),0)/L.length;
     const off={'West Seattle':[-30,-6],'South Seattle':[30,-40],'Renton':[0,-38],'Kent':[0,48],'Issaquah':[10,-46],'Bellevue':[0,-44]}[a]||[0,0];
-    s+=`<text x="${cx+off[0]}" y="${cy+off[1]}" text-anchor="middle" style="font-weight:700;font-size:13px;fill:var(--ink-2);letter-spacing:.04em;paint-order:stroke;stroke:var(--surface);stroke-width:4px">${a.toUpperCase()}</text>`;});
+    const hw=a.length*4.8+6;const tx=Math.min(W-hw,Math.max(hw,cx+off[0]));s+=`<text x="${tx}" y="${Math.max(14,cy+off[1])}" text-anchor="middle" style="font-weight:700;font-size:13px;fill:var(--ink-2);letter-spacing:.04em;paint-order:stroke;stroke:var(--surface);stroke-width:4px">${a.toUpperCase()}</text>`;});
   s+='</svg>';el.innerHTML=s;
   const lg=document.getElementById('mapLegend');const f=v=>Math.round(v*10)/10;
   lg.innerHTML=fills.map((c,i)=>`<i style="background:${c}" title="${i===0?'≤'+f(qs[0]):i===4?'>'+f(qs[3]):f(qs[i-1])+'–'+f(qs[i])}"></i>`).join('')+` <span>${f(vals[0])} → ${f(vals[vals.length-1])}${M[k].u} (quintiles)</span>`;
