@@ -348,7 +348,10 @@ export async function buildData(year, config, log = () => {}) {
     generated: new Date().toISOString().slice(0, 10),
     school_year: year,
     notes: 'Percentages are 0-100. Strings like "<3.7" or ">95" are OSPI privacy-suppressed ranges; "N<10" means fewer than 10 students.',
-    sources: { ...ids.years, crdc: CRDC_YEAR, crdc_prev: CRDC_PREV_YEAR, teachers: teachers.year, per_pupil_spending: spending.year },
+    sources: {
+      ...ids.years, crdc: CRDC_YEAR, crdc_prev: CRDC_PREV_YEAR, teachers: teachers.year, per_pupil_spending: spending.year,
+      datasets: Object.fromEntries(Object.entries(ids).filter(([k]) => k !== 'years')),
+    },
     trend_years: years,
     state,
     districts,
@@ -389,7 +392,7 @@ async function urban(path) {
 async function loadNcesDirectory(schoolCodes) {
   const wanted = new Set(schoolCodes);
   const out = {};
-  for (const year of [2023, 2022, 2021]) {
+  for (const year of [2024, 2023, 2022, 2021]) {
     let rows = [];
     try { rows = await urban(`schools/ccd/directory/${year}/?fips=53&county_code=53033`); } catch (err) { console.warn(`NCES directory ${year}: ${err.message}`); continue; }
     for (const r of rows) {

@@ -1,13 +1,13 @@
 [
   {
     "name": "Seattle Public Schools",
-    "text": "No police on campus since 2020. In 2025 the board weighed a one-year \"School Engagement Officer\" pilot at Garfield High and voted it down 5–2 in October. Security staff are district employees under Policy 4311.",
-    "links": [["Garfield officer debate", "https://garfieldptsa.org/?p=20142"]]
+    "text": "No police on campus since 2020. In October 2025 the board voted 5–2 against a one-year \"School Engagement Officer\" pilot at Garfield High. Superintendent Ben Shuldiner, who started in February 2026, has said he favors unarmed district safety officers, and in October 2026 the board backed pilots of walk-through weapons detectors at Rainier Beach and Nathan Hale high schools. Security staff are district employees under Policy 4311.",
+    "links": [["Garfield officer debate", "https://garfieldptsa.org/?p=20142"], ["Weapons detector pilot", "https://kuow.org/education/2026-10-07/two-seattle-high-schools-to-bring-weapons-detectors-to-campus-following-board-approval"]]
   },
   {
     "name": "Renton School District",
-    "text": "Renton Police and the district planned one school resource officer at each comprehensive high school (Renton, Hazen, Lindbergh) starting in 2024-25.",
-    "links": [["Kent Reporter", "https://kentreporter.com/news/threats-to-renton-auburn-and-kent-school-districts-under-investigation"]]
+    "text": "Since 2025-26, a Renton Police school resource officer works full time at each comprehensive high school (Renton, Hazen, Lindbergh).",
+    "links": [["KIRO 7", "https://www.kiro7.com/news/local/school-safety-renton-students-head-back-class/O7LZECOZFNCJBB3BI6NFPF3FPI/"]]
   },
   {
     "name": "Kent School District",
@@ -17,10 +17,7 @@
   {
     "name": "Bellevue School District",
     "text": "Removed campus officers in 2021. Since fall 2022, sworn Bellevue Police \"Community Engagement Officers\" work from the central office and cover groups of schools.",
-    "links": [
-      ["District FAQ", "https://bsd405.org/departments/security/community-engagement-officer-program/faq/"],
-      ["Weapons policy", "https://www.bsd405.org/about-us/official-notices/weapons-policy"]
-    ]
+    "links": [["District FAQ", "https://bsd405.org/departments/security/community-engagement-officer-program/faq/"], ["Weapons policy", "https://www.bsd405.org/about-us/official-notices/weapons-policy"]]
   },
   {
     "name": "Issaquah School District",

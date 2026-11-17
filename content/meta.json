@@ -177,8 +177,8 @@
     "goatcounter": ""
   },
   "district_context": {
-    "_about": "District-level context. Child poverty: U.S. Census SAIPE 2023 estimates of children 5-17 in poverty, via the Urban Institute Education Data Portal. Risk ratings: WA DSHS Community Outcome and Risk Evaluation (CORE), 2024 Community Risk Profile, King County (May 2024). Ratings place a district among Washington school districts: Very Low = bottom 10%, Low = bottom 25%, Average = middle half, High = top 25%, Very High = top 10%.",
-    "saipe_year": "2023",
+    "_about": "District-level context. Child poverty: U.S. Census SAIPE 2024 estimates (released December 2025) of children 5-17 in poverty, via the Urban Institute Education Data Portal. Risk ratings: WA DSHS Community Outcome and Risk Evaluation (CORE), 2024 Community Risk Profile, King County (May 2024). Ratings place a district among Washington school districts: Very Low = bottom 10%, Low = bottom 25%, Average = middle half, High = top 25%, Very High = top 10%.",
+    "saipe_year": "2024",
     "risk_year": "2024",
     "risk_columns": [
       "Substance use",
@@ -196,7 +196,7 @@
       {
         "area": "Renton",
         "district": "Renton",
-        "child_poverty": 13.2,
+        "child_poverty": 12.7,
         "risk": [
           "Average",
           "Average",
@@ -218,7 +218,7 @@
       {
         "area": "Issaquah",
         "district": "Issaquah",
-        "child_poverty": 4.1,
+        "child_poverty": 3.6,
         "risk": [
           "Very Low",
           "Very Low",
@@ -229,7 +229,7 @@
       {
         "area": "Bellevue",
         "district": "Bellevue",
-        "child_poverty": 6.5,
+        "child_poverty": 6.2,
         "risk": [
           "Very Low",
           "Very Low",
@@ -240,7 +240,7 @@
       {
         "area": "West Seattle",
         "district": "Seattle (Chief Sealth HS area)",
-        "child_poverty": 9.4,
+        "child_poverty": 8.5,
         "risk": [
           "Average",
           "Low",
@@ -252,7 +252,7 @@
       {
         "area": "West Seattle",
         "district": "Seattle (West Seattle HS area)",
-        "child_poverty": 9.4,
+        "child_poverty": 8.5,
         "risk": [
           "Low",
           "Very Low",
@@ -264,7 +264,7 @@
       {
         "area": "South Seattle",
         "district": "Seattle (Rainier Beach HS area)",
-        "child_poverty": 9.4,
+        "child_poverty": 8.5,
         "risk": [
           "Low",
           "Low",
@@ -276,7 +276,7 @@
       {
         "area": "South Seattle",
         "district": "Seattle (Franklin HS area)",
-        "child_poverty": 9.4,
+        "child_poverty": 8.5,
         "risk": [
           "Average",
           "Very Low",
@@ -286,10 +286,11 @@
         "poverty_scope": "Seattle-wide"
       }
     ],
-    "seattle_note": "Child poverty for Seattle is district-wide (9.4%). DSHS rates Seattle by high school attendance area.",
+    "seattle_note": "Child poverty for Seattle is district-wide (8.5%). DSHS rates Seattle by high school attendance area.",
     "links": {
       "dshs": "https://www.dshs.wa.gov/ffa/research-and-data-analysis/community-risk-profiles",
-      "hys_king": "https://kingcounty.gov/school-health-profiles"
+      "hys_king": "https://kingcounty.gov/school-health-profiles",
+      "dshs_king_2024": "https://theathenaforum.org/sites/default/files/2024-11/public_King_with_Seattle_HSAAs_2024.pdf"
     }
   }
 }

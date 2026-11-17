@@ -67,6 +67,22 @@ function setUpTheme() {
   });
 }
 
+/** Keeps the Sources list in step with the data file, so automatic updates don't leave it stale. */
+function initSources() {
+  const ds = store.sources.datasets;
+  const yr = store.sources;
+  const link = (id, text) => `<a href="https://data.wa.gov/d/${id}">${text}</a>`;
+  if (ds?.enrollment) {
+    const parts = [
+      ['enrollment', 'enrollment'], ['assessment', 'assessment', ' (Smarter Balanced and WCAS; WA-AIM excluded)'], ['discipline', 'discipline'],
+      ['graduation', 'graduation'], ['sqss', 'attendance, 9th grade on track and dual credit'], ['growth', 'growth'], ['wakids', 'kindergarten readiness'],
+    ].filter(([k]) => ds[k]).map(([k, text, extra = '']) => `${link(ds[k], text)}${extra}${yr[k] && yr[k] !== store.schoolYear ? ` (${yr[k]}, the latest released)` : ''}`);
+    $('#ospiSrc').innerHTML = `OSPI Report Card files on data.wa.gov, ${store.schoolYear}: ${parts.join(', ')}, ${link('gks4-v7ka', 'student–teacher ratio')}. Discipline trend from the ${link('ixvm-ww8s', '2022-23')}, ${link('sm68-769y', '2023-24')} and ${link('c9tq-ntbq', '2024-25')} files.`;
+  }
+  const ty = store.trendYears || [];
+  if (ty.length > 1) $('#trendSrc').innerHTML = `Trends: the same OSPI files for ${link('4h5k-di3v', ty[0])} and ${ty[1]} through ${ty[ty.length - 1]} (assessment, discipline, attendance and enrollment for each year).`;
+}
+
 function initFooter() {
   const month = new Date(`${store.generated}T12:00:00`).toLocaleString('en-US', { month: 'long', year: 'numeric' });
   $('#dataStamp').textContent = `Data updated ${month}; school results are ${store.schoolYear}.`;
@@ -102,6 +118,7 @@ async function start() {
   initCompareList();
   initInfoTips();
   initFooter();
+  initSources();
   initAnalytics();
   initI18n(store.i18n, () => route());
 

@@ -2,7 +2,7 @@
 "generated": "2026-11-17",
 "school_year": "2025-26",
 "notes": "Percentages are 0-100. Strings like \"<3.7\" or \">95\" are OSPI privacy-suppressed ranges; \"N<10\" means fewer than 10 students.",
-"sources": {"enrollment":"2025-26","assessment":"2025-26","discipline":"2024-25","graduation":"2024-25","sqss":"2025-26","growth":"2025-26","wakids":"2025-26","crdc":"2023-24","teachers":"2024-25","per_pupil_spending":"2024-25","lead":"WA Department of Health, tests since 2022","crdc_prev":"2021-22"},
+"sources": {"enrollment":"2025-26","assessment":"2025-26","discipline":"2024-25","graduation":"2024-25","sqss":"2025-26","growth":"2025-26","wakids":"2025-26","crdc":"2023-24","teachers":"2024-25","per_pupil_spending":"2024-25","lead":"WA Department of Health, tests since 2022","crdc_prev":"2021-22","datasets":{"enrollment":"wvqy-yp3m","assessment":"fusr-6kv7","discipline":"c9tq-ntbq","graduation":"isxb-523t","sqss":"5pzm-ence","growth":"248z-p6jd","wakids":"veeh-ue57"}},
 "trend_years": ["2018-19","2022-23","2023-24","2024-25","2025-26"],
 "state": {"pct_low_income":48.4,"ela_proficient":52.8,"math_proficient":43.1,"science_proficient":51,"discipline_all":3.72,"grad_rate_4yr":82.6,"regular_attendance":74.4,"ninth_grade_on_track":72.5,"dual_credit":70},
 "districts": [
