@@ -78,7 +78,7 @@ function renderChange() {
   const row = (label, list) => `<tr><td>${label}</td>${measures.map(([, keys]) => cell(list, keys)).join('')}</tr>`;
   $('#changeTbl').innerHTML = `<thead><tr><th>Area</th>${measures.map(([l]) => `<th>${l}</th>`).join('')}</tr></thead><tbody>`
     + AREAS.map((area) => row(area, both.filter((s) => s.area === area))).join('')
-    + row('<b>All six areas</b>', both)
+    + row('<b>All areas</b>', both)
     + '</tbody>';
   const rate = (keys, get) => fmtRate(per100(sum(both, keys, get), kids(both, get)));
   const enrolled = [kids(both, incidentPrev), kids(both, incident)];
@@ -135,7 +135,7 @@ function renderRisk() {
   if (!c) return;
   const tone = (v) => ({ 'Very Low': 'r1', Low: 'r2', Average: 'r3', High: 'r4', 'Very High': 'r5' }[v] || '');
   $('#riskTbl').innerHTML = `<thead><tr><th>District or area</th><th>Children in poverty, ${c.saipe_year}${info('child_poverty')}</th>${c.risk_columns.map((col, i) => `<th title="${escapeHtml(c.risk_help[i])}">${col}</th>`).join('')}</tr></thead><tbody>`
-    + c.rows.map((r) => `<tr><td>${escapeHtml(r.district)}<div class="xs muted">${r.area}</div></td><td class="num">${r.child_poverty == null ? '—' : `${r.child_poverty}%`}${r.poverty_scope ? `<div class="xs muted">${escapeHtml(r.poverty_scope)}</div>` : ''}</td>${r.risk.map((v) => `<td><span class="risk ${tone(v)}" data-no-t>${v}</span></td>`).join('')}</tr>`).join('')
+    + c.rows.map((r) => `<tr><td>${escapeHtml(r.district)}<div class="xs muted">${r.area}</div></td><td class="num">${r.child_poverty == null ? '—' : `${r.child_poverty}%`}${r.poverty_scope ? `<div class="xs muted">${escapeHtml(r.poverty_scope)}</div>` : ''}</td>${r.risk.map((v) => (v ? `<td><span class="risk ${tone(v)}" data-no-t>${v}</span></td>` : '<td><span class="sup" title="Not added yet">—</span></td>')).join('')}</tr>`).join('')
     + '</tbody>';
   $('#riskNote').innerHTML = `Ratings compare each district with all Washington districts: Very Low is the bottom 10%, High the top 25%. ${escapeHtml(c.seattle_note)} Sources: <a href="${c.links.dshs_king_2024 || c.links.dshs}" rel="noopener">DSHS Community Risk Profile, King County</a> (${c.risk_year}, the latest with these ratings); U.S. Census Small Area Income and Poverty Estimates (${c.saipe_year}) via the Urban Institute.`;
 }

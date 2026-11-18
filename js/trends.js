@@ -28,7 +28,7 @@ export function medianSeries(schools, key) {
   return store.trendYears.map((_, i) => median(schools.filter(comparable).map((s) => s.trend[key][i])));
 }
 
-/** Same-level schools across the six areas. */
+/** Same-level schools across all the areas. */
 export const peerSeries = (s, key) => medianSeries(store.schools.filter((x) => x.level === s.level), key);
 
 /** Median per year for each area. */

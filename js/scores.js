@@ -1,4 +1,4 @@
-// The four 0–100 scores. Each is a percentile among schools at the same level in these six areas.
+// The four 0–100 scores. Each is a percentile among schools at the same level in these areas.
 // See the "How it works" page for the plain-language version of these rules.
 
 import { num, exact, mean } from './util.js';

@@ -9,7 +9,7 @@ const PROGRAM_TYPES = new Set(['A', 'R', 'S', 'I']);
 
 const entry = (code) => store.feeders?.schools?.[code] || null;
 
-/** Link to a school on the site, or its plain name when it's outside the six areas. */
+/** Link to a school on the site, or its plain name when it's outside the areas on the site. */
 function schoolRef(r) {
   const s = r.code && store.byCode[r.code];
   return s ? `<a href="#s-${s.code}">${escapeHtml(s.name)}</a>` : escapeHtml(r.name || '');
@@ -60,6 +60,7 @@ export function feederBox(s) {
   } else {
     if (s.level === 'Elementary' || s.level === 'K-8 / 6-12') {
       if (e?.middle?.length) lines.push(['Middle school', refList(e.middle, '(depends on home address)')]);
+      else if (src.middle_note && e?.high?.length) lines.push(['Middle school', escapeHtml(src.middle_note)]);
       if (e?.high?.length) lines.push(['High school', refList(e.high, '(depends on home address)')]);
     }
     if (s.level === 'Middle') {
@@ -92,6 +93,7 @@ export function feederSentence(s, byCode, feeders) {
   const name = (r) => (r.code && byCode[r.code]?.name) || r.name;
   const parts = [];
   if (e.middle?.length) parts.push(`middle school ${e.middle.map(name).join(' or ')}`);
+  else if (feeders.districts?.[s.district]?.middle_note && s.level === 'Elementary') parts.push(`middle school ${feeders.districts[s.district].middle_note}`);
   if (e.high?.length) parts.push(`high school ${e.high.map(name).join(' or ')}`);
   return parts.length ? `Feeds into ${parts.join(', then ')}.` : '';
 }

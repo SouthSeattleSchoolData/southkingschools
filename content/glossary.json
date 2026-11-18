@@ -3,7 +3,7 @@
   "groups": [
     {
       "title": "The four scores",
-      "intro": "Each score runs from 0 to 100 and compares a school only with schools at the same level (elementary, middle or high) in these six areas. A 70 means the school did better than 70% of those peers. It is not a grade and not a statewide ranking.",
+      "intro": "Each score runs from 0 to 100 and compares a school only with schools at the same level (elementary, middle or high) in these areas. A 70 means the school did better than 70% of those peers. It is not a grade and not a statewide ranking.",
       "items": [
         {
           "key": "score:academics",

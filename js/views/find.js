@@ -194,8 +194,9 @@ function renderResults() {
   const out = $('#findOut');
   $('#findTitle').textContent = findState.areas.size === AREAS.length ? 'All schools' : [...findState.areas].join(', ');
   const hiddenPrograms = findState.include.has('programs') ? 0 : matchingSchools(new Set([...findState.include, 'programs'])).length - list.length;
-  $('#findCount').innerHTML = `${list.length} ${list.length === 1 ? 'school' : 'schools'}, sorted by ${SORTS[findState.sort].toLowerCase()}.`
-    + (hiddenPrograms > 0 ? ` ${hiddenPrograms} preschool, online and special program ${hiddenPrograms === 1 ? 'site is' : 'sites are'} hidden. <button class="linkbtn" id="showPrograms" type="button">Show ${hiddenPrograms === 1 ? 'it' : 'them'}</button>` : '');
+  // Each sentence is its own element so the translations can match it whole.
+  $('#findCount').innerHTML = `<span>${list.length} ${list.length === 1 ? 'school' : 'schools'}, sorted by ${SORTS[findState.sort].toLowerCase()}</span>`
+    + (hiddenPrograms > 0 ? `. <span>${hiddenPrograms} preschool, online and special program ${hiddenPrograms === 1 ? 'site is' : 'sites are'} hidden.</span> <button class="linkbtn" id="showPrograms" type="button">Show ${hiddenPrograms === 1 ? 'it' : 'them'}</button>` : '');
   $('#showPrograms')?.addEventListener('click', () => {
     findState.include.add('programs');
     renderFind();

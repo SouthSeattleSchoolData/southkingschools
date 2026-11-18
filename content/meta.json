@@ -239,6 +239,17 @@
         ]
       },
       {
+        "area": "Maple Valley",
+        "district": "Tahoma",
+        "child_poverty": null,
+        "risk": [
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      {
         "area": "West Seattle",
         "district": "Seattle (Chief Sealth HS area)",
         "child_poverty": 8.5,

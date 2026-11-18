@@ -97,11 +97,6 @@
    "vi": "Bốn xu hướng nên biết trước khi so sánh hai trường.",
    "zh": "比较任何两所学校之前值得了解的四个规律。"
   },
-  "The six areas side by side": {
-   "es": "Las seis zonas, lado a lado",
-   "vi": "So sánh sáu khu vực",
-   "zh": "六个地区并列比较"
-  },
   "Area": {
    "es": "Zona",
    "vi": "Khu vực",
@@ -942,11 +937,6 @@
    "vi": "Khống chế và cách ly",
    "zh": "约束与隔离"
   },
-  "All six areas": {
-   "es": "Las seis zonas",
-   "vi": "Cả sáu khu vực",
-   "zh": "全部六个地区"
-  },
   "Feeder pattern": {
    "es": "Patrón de escuelas",
    "vi": "Lộ trình chuyển cấp",
@@ -991,6 +981,26 @@
    "es": "Escuela secundaria, según la dirección",
    "vi": "Trường THPT, theo địa chỉ nhà",
    "zh": "高中（按家庭住址）"
+  },
+  "Every area side by side": {
+   "es": "Todas las zonas, lado a lado",
+   "vi": "So sánh các khu vực",
+   "zh": "各地区并列比较"
+  },
+  "All areas": {
+   "es": "Todas las zonas",
+   "vi": "Tất cả khu vực",
+   "zh": "全部地区"
+  },
+  "Show them": {
+   "es": "Mostrarlos",
+   "vi": "Hiện",
+   "zh": "显示"
+  },
+  "Show it": {
+   "es": "Mostrarlo",
+   "vi": "Hiện",
+   "zh": "显示"
   }
  },
  "patterns": [
@@ -1071,6 +1081,12 @@
    "es": "Incidentes que cada escuela reportó al gobierno federal, $1",
    "vi": "Sự cố mỗi trường báo cáo cho chính phủ liên bang, $1",
    "zh": "各校向联邦政府报告的事件，$1"
+  },
+  {
+   "re": "^(\\d+) preschool, online and special program sites? (?:is|are) hidden\\.$",
+   "es": "$1 programas preescolares, en línea y especiales están ocultos.",
+   "vi": "$1 cơ sở mầm non, trực tuyến và chương trình đặc biệt đang bị ẩn.",
+   "zh": "已隐藏 $1 个学前、在线和特殊项目。"
   }
  ]
 }

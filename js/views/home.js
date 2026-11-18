@@ -1,4 +1,4 @@
-// Home page: hero search over a map, four findings, and the six-area table.
+// Home page: hero search over a map, four findings, and the area table.
 
 import { store, AREAS, AREA_DISTRICT, districtByCode } from '../data.js';
 import { num, escapeHtml, cssVar, round1, cleanText, searchKey, matchesWords, guardInput, $, $$ } from '../util.js';
@@ -176,7 +176,7 @@ function renderFindings() {
     return { name: s.name, lowIncome: li, expected: trend.a + trend.b * li, actual: readingMathAverage(s) };
   }));
 
-  const names = { R: 'Renton', K: 'Kent', I: 'Issaquah', S: 'Seattle' };
+  const names = { R: 'Renton', K: 'Kent', I: 'Issaquah', S: 'Seattle', T: 'Tahoma' };
   pairedBars($('#fSwd'), Object.entries(names).map(([code, label]) => {
     const d = districtByCode(code);
     return { label, all: num(d.discipline.all), group: num(d.discipline.disability) };
@@ -188,9 +188,9 @@ function renderFindings() {
   }).join('');
 }
 
-// ---------- Six-area table ----------
+// ---------- Area table ----------
 
-/** District totals for the four districts; enrollment-weighted school averages for Seattle areas. */
+/** District totals where an area is a whole district; enrollment-weighted school averages for Seattle areas. */
 function areaStats(area) {
   const inArea = store.schools.filter((s) => s.area === area);
   const district = AREA_DISTRICT[area] ? districtByCode(AREA_DISTRICT[area]) : null;

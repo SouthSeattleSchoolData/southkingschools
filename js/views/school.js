@@ -152,7 +152,7 @@ export function renderSchool(code) {
   <div class="pgrid">
     <div>
       <div class="scorepanel">${scorePanel(s)}</div>
-      <p class="xs muted" style="margin:-18px 0 24px">Scores compare this school only with same-level schools in these six areas. <a href="#glossary">What the scores and measures mean</a></p>
+      <p class="xs muted" style="margin:-18px 0 24px">Scores compare this school only with same-level schools in these areas. <a href="#glossary">What the scores and measures mean</a></p>
 
       <div class="reading">
         <h2 class="readh">Reading this school</h2>
@@ -171,7 +171,7 @@ export function renderSchool(code) {
       ${hasTrend ? `<h2 class="sec">Changes over time${info('trends')}</h2>
       <p class="small">${changeSummary(s) || 'Not enough reported years to compare with 2018-19.'}</p>
       <div class="trendgrid">${TREND_SERIES.map(([key, label]) => `<div><h3 class="trendh">${label}</h3><div class="chartbox" id="trend-${key}"></div></div>`).join('')}</div>
-      <p class="xs muted" style="margin-bottom:28px">No state tests were given in 2019-20 or 2020-21. Hollow dots are privacy ranges plotted at an estimate. Dashed line: the median of same-level schools in these six areas.</p>` : ''}
+      <p class="xs muted" style="margin-bottom:28px">No state tests were given in 2019-20 or 2020-21. Hollow dots are privacy ranges plotted at an estimate. Dashed line: the median of same-level schools in these areas.</p>` : ''}
 
       <h2 class="sec">Discipline, ${store.sources.discipline || store.schoolYear}${info('discipline_group')}</h2>
       <p class="small muted">Share of each group suspended or expelled at least once.</p>

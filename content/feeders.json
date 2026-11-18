@@ -25,6 +25,12 @@
    "as_of": null,
    "source": "Kent publishes boundaries only through its address lookup, not as a feeder list",
    "url": "https://app.guidek12.com/kentwa/school_search/2023/"
+  },
+  "Tahoma School District": {
+   "as_of": "2026-27",
+   "source": "Tahoma School District: one high school for the whole district; the middle school depends on home address (district attendance-area map)",
+   "url": "https://www.tahomasd.us/about/our-district",
+   "middle_note": "Maple View or Summit Trail, depending on home address"
   }
  },
  "schools": {
@@ -1145,6 +1151,62 @@
   },
   "3778": {
    "choice": true
+  },
+  "3286": {
+   "high": [
+    {
+     "code": "2849"
+    }
+   ]
+  },
+  "3589": {
+   "high": [
+    {
+     "code": "2849"
+    }
+   ]
+  },
+  "4415": {
+   "high": [
+    {
+     "code": "2849"
+    }
+   ]
+  },
+  "4453": {
+   "high": [
+    {
+     "code": "2849"
+    }
+   ]
+  },
+  "5489": {
+   "high": [
+    {
+     "code": "2849"
+    }
+   ]
+  },
+  "5490": {
+   "high": [
+    {
+     "code": "2849"
+    }
+   ]
+  },
+  "3937": {
+   "high": [
+    {
+     "code": "2849"
+    }
+   ]
+  },
+  "3341": {
+   "high": [
+    {
+     "code": "2849"
+    }
+   ]
   }
  }
 }

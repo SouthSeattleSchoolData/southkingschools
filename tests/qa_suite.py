@@ -96,7 +96,7 @@ def f01(b, base):
     return f'{len(PAGES)} pages x 2 devices'
 
 
-@case('F02', 'Functional suitability', 'All 177 school profiles render without errors')
+@case('F02', 'Functional suitability', 'All 187 school profiles render without errors')
 def f02(b, base):
     pg = new_page(b, base)
     go(pg, 'home')
@@ -108,7 +108,7 @@ def f02(b, base):
         title = pg.evaluate("document.title")
         if 'South King Schools' not in title or title.startswith('Home'):
             bad.append(c)
-    assert len(codes) == 177, f'{len(codes)} schools in data'
+    assert len(codes) == 187, f'{len(codes)} schools in data'
     assert not bad, f'profiles that did not open: {bad[:10]}'
     assert not pg.errors, pg.errors[:3]
     return f'{len(codes)} profiles'
@@ -243,7 +243,7 @@ def f11(b, base):
     return f"caution shown on {small['name']}"
 
 
-@case('F12', 'Functional suitability', 'Findings: recovery chart shows all six areas; level filter works')
+@case('F12', 'Functional suitability', 'Findings: recovery chart shows all seven areas; level filter works')
 def f12(b, base):
     pg = new_page(b, base)
     go(pg, 'findings', 900)
@@ -251,7 +251,7 @@ def f12(b, base):
     pg.locator('#recLevel button', has_text='High').click(); pg.wait_for_timeout(200)
     after = pg.locator('#recSvg .endlbl').count()
     summary = pg.inner_text('#recoverySum')
-    assert lines == 6 and after >= 5 and 'of' in summary, (lines, after, summary)
+    assert lines == 7 and after >= 6 and 'of' in summary, (lines, after, summary)
     return summary[:120]
 
 
@@ -260,7 +260,7 @@ def f13(b, base):
     pg = new_page(b, base)
     go(pg, 'safety', 900)
     counts = {t: pg.locator(f'#{t} tbody tr').count() for t in ['crdcTbl', 'restraintTbl', 'staffTbl', 'leadTbl', 'riskTbl']}
-    assert counts['crdcTbl'] == 25 and counts['restraintTbl'] == 15 and counts['staffTbl'] == 6 and counts['leadTbl'] > 20 and counts['riskTbl'] == 8, counts
+    assert counts['crdcTbl'] == 25 and counts['restraintTbl'] == 15 and counts['staffTbl'] == 7 and counts['leadTbl'] > 20 and counts['riskTbl'] == 9, counts
     return str(counts)
 
 
@@ -288,7 +288,7 @@ def f15(b, base):
     import subprocess
     pages = sorted((ROOT / 'school').glob('*.html'))
     sitemap = (ROOT / 'sitemap.xml').read_text()
-    assert len(pages) == 177 and sitemap.count('<url>') == 178, (len(pages), sitemap.count('<url>'))
+    assert len(pages) == 187 and sitemap.count('<url>') == 188, (len(pages), sitemap.count('<url>'))
     assert 'Sitemap:' in (ROOT / 'robots.txt').read_text()
     pg = new_page(b, base)
     pg.goto(base + 'school/3586.html'); pg.wait_for_timeout(300)
@@ -587,9 +587,9 @@ def d01(b, base):
     codes = [x['code'] for x in s]
     areas = {x['area'] for x in s}
     probs = []
-    if len(s) != 177: probs.append(f'{len(s)} schools')
+    if len(s) != 187: probs.append(f'{len(s)} schools')
     if len(set(codes)) != len(codes): probs.append('duplicate codes')
-    if not areas <= {'Renton', 'Kent', 'Issaquah', 'Bellevue', 'West Seattle', 'South Seattle'}: probs.append(f'areas {areas}')
+    if areas != {'Renton', 'Kent', 'Issaquah', 'Bellevue', 'West Seattle', 'South Seattle', 'Maple Valley'}: probs.append(f'areas {areas}')
     unmapped = [x['name'] for x in s if x.get('lat') is None]
     if len(unmapped) > 13: probs.append(f'{len(unmapped)} schools without a location (13 known)')
     for x in s:

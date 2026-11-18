@@ -32,6 +32,7 @@
   --c4: #7a5bc7;
   --c5: #b08300;
   --c6: #c43f7a;
+  --c7: #4d7c0f;
 }
 @media (prefers-color-scheme:dark) {
   :root:where(:not([data-theme="light"])) {
@@ -62,6 +63,7 @@
     --c4: #8a73e6;
     --c5: #b88a10;
     --c6: #d9558f;
+    --c7: #6a9a1f;
     --note-bg: #2a2414;
     --note-line: #5d4d22;
   }
@@ -94,6 +96,7 @@
   --c4: #8a73e6;
   --c5: #b88a10;
   --c6: #d9558f;
+  --c7: #6a9a1f;
   --note-bg: #2a2414;
   --note-line: #5d4d22;
 }

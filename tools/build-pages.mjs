@@ -88,7 +88,7 @@ function page(s) {
       <p class="lede">${esc(districtName(s))}, grades ${esc(s.grades)}, ${s.enrollment.toLocaleString('en-US')} students${s.address ? `. ${esc(s.address)}, ${esc(s.zip)}` : ''}.</p>
       ${feederSentence(s, byCode, feeders) ? `<p class="small">${esc(feederSentence(s, byCode, feeders))}</p>` : ''}
       <p><a class="btn" href="${app}" style="text-decoration:none">Open the full interactive profile</a></p>
-      ${scores ? `<p class="small">Scores compared with same-level schools in these six areas (0–100): ${esc(scores)}.</p>` : ''}
+      ${scores ? `<p class="small">Scores compared with same-level schools in these areas (0–100): ${esc(scores)}.</p>` : ''}
       <h2 class="sec">Key numbers, ${esc(data.school_year)}</h2>
       <table class="tbl"><tbody>${rows.map(([k, v]) => `<tr><td>${k}</td><td class="num">${esc(v)}</td></tr>`).join('')}</tbody></table>
       ${change ? `<p class="small" style="margin-top:14px">${esc(change)}.</p>` : ''}

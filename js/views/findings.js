@@ -62,7 +62,7 @@ function renderDisciplineGroups() {
   chips($('#dgChips'), DISCIPLINE_GROUPS, state.group, (k) => { state.group = k; renderDisciplineGroups(); });
   const label = DISCIPLINE_GROUPS.find(([k]) => k === state.group)[1];
 
-  const rows = [['Renton', 'R'], ['Kent', 'K'], ['Seattle', 'S'], ['Issaquah', 'I'], ['Bellevue', 'B']].map(([name, code]) => {
+  const rows = [['Renton', 'R'], ['Kent', 'K'], ['Seattle', 'S'], ['Tahoma', 'T'], ['Issaquah', 'I'], ['Bellevue', 'B']].map(([name, code]) => {
     const d = districtByCode(code).discipline;
     const suppressed = typeof d.all === 'string' || typeof d[state.group] === 'string';
     return {

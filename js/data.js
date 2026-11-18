@@ -1,9 +1,9 @@
 // Loads the data files and adds a few derived fields used across the site.
 
-export const AREAS = ['Renton', 'Kent', 'Issaquah', 'Bellevue', 'West Seattle', 'South Seattle'];
+export const AREAS = ['Renton', 'Kent', 'Issaquah', 'Bellevue', 'West Seattle', 'South Seattle', 'Maple Valley'];
 
 /** District codes used in data/schools.json -> area that uses the district total. */
-export const AREA_DISTRICT = { Renton: 'R', Kent: 'K', Issaquah: 'I', Bellevue: 'B' };
+export const AREA_DISTRICT = { Renton: 'R', Kent: 'K', Issaquah: 'I', Bellevue: 'B', 'Maple Valley': 'T' };
 
 const SCHOOL_TYPE_TAGS = { A: 'Alternative', R: 'Re-engagement', S: 'Special ed', I: 'Institution' };
 
