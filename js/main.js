@@ -120,7 +120,7 @@ async function initVisitCounter() {
     const { value } = await res.json();
     if (typeof value !== 'number') return;
     if (action === 'hit') { try { localStorage.setItem('sks-visit', today); } catch { /* ignore */ } }
-    el.textContent = `${value.toLocaleString()} visits since ${c.since || 'launch'}.`;
+    el.textContent = `${value.toLocaleString()} ${value === 1 ? 'visit' : 'visits'} since ${c.since || 'launch'}.`;
     el.hidden = false;
   } catch { /* counter service unreachable: show nothing */ }
 }

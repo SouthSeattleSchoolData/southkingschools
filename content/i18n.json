@@ -1028,7 +1028,7 @@
    "zh": "各校向联邦政府报告的事件，$1"
   },
   {
-   "re": "^([\\d,]+) visits since November 2026\\.$",
+   "re": "^([\\d,]+) visits? since November 2026\\.$",
    "es": "$1 visitas desde noviembre de 2026.",
    "vi": "$1 lượt truy cập từ tháng 11 năm 2026.",
    "zh": "自2026年11月以来访问 $1 次。"
