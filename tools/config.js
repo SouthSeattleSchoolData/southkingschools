@@ -7,6 +7,8 @@ export const DISTRICTS = [
   { name: 'Kent School District', code: 'K', area: 'Kent', leaid: '5303960' },
   { name: 'Issaquah School District', code: 'I', area: 'Issaquah', leaid: '5303750' },
   { name: 'Bellevue School District', code: 'B', area: 'Bellevue', leaid: '5300390' },
+  // Tahoma serves Maple Valley plus parts of Covington, Black Diamond, Ravensdale and Hobart.
+  { name: 'Tahoma School District', code: 'T', area: 'Maple Valley', leaid: '5308760' },
   // Seattle schools are split into West/South Seattle by ZIP code (see SEATTLE_AREAS); others are dropped.
   { name: 'Seattle School District No. 1', code: 'S', area: null, leaid: '5307710' },
 ];
@@ -39,7 +41,7 @@ export const MANUAL_LOCATIONS = {
 
 /** King County school sites (ArcGIS feature layer). */
 export const SCHOOL_SITES_URL = 'https://services.arcgis.com/Ej0PsM5Aw677QF1W/arcgis/rest/services/SCHSITE_POINT_107/FeatureServer/0/query';
-export const SCHOOL_SITE_DISTRICTS = ['RENTON', 'KENT', 'ISSAQUAH', 'BELLEVUE', 'SEATTLE', 'TUKWILA', 'HIGHLINE'];
+export const SCHOOL_SITE_DISTRICTS = ['RENTON', 'KENT', 'ISSAQUAH', 'BELLEVUE', 'SEATTLE', 'TUKWILA', 'HIGHLINE', 'TAHOMA'];
 
 /**
  * data.wa.gov dataset IDs by school year. For a new year, the updater looks them up by name;

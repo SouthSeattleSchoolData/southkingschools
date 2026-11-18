@@ -21,7 +21,12 @@ const csv = (name) => {
   return lines.map((l) => Object.fromEntries(l.split(',').map((v, i) => [h[i], v])));
 };
 const schools = JSON.parse(readFileSync(join(root, 'data/schools.json'), 'utf8')).schools;
-const codeByNces = Object.fromEntries(schools.filter((s) => s.nces_id).map((s) => [s.nces_id, s.code]));
+// NCES ID -> OSPI code: from the data file, plus tools/raw/nces_directory.txt for schools the data
+// file doesn't have yet (a newly added district, before the first automatic update).
+const codeByNces = Object.fromEntries([
+  ...readFileSync(join(root, 'tools/raw/nces_directory.txt'), 'utf8').trim().split('\n').map((l) => l.split('|')).filter(([, id]) => id).map(([code, id]) => [id, code]),
+  ...schools.filter((s) => s.nces_id).map((s) => [s.nces_id, s.code]),
+]);
 
 const split = Object.fromEntries(csv('crdc_2023_24_sexual_assault.csv').map((r) => [r.nces, r]));
 const enrollment = Object.fromEntries(csv('enrollment_crdc_years.csv').map((r) => [r.code, r]));

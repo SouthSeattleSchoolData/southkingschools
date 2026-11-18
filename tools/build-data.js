@@ -275,7 +275,7 @@ export async function buildData(year, config, log = () => {}) {
       if (!d) continue; // charters have no district total worth showing
       area = d.area ?? 'Seattle (all)';
     }
-    if (isSchool && !area) continue; // outside the six areas
+    if (isSchool && !area) continue; // outside the areas on the site
 
     const spans = gradesBySchool[r.schoolcode] || [];
     const record = {
