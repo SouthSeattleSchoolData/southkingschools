@@ -328,7 +328,7 @@ export async function buildData(year, config, log = () => {}) {
         area,
         school_type: record.school_type,
         grades: record.grades,
-        ...location(loc, nces[r.schoolcode], zip),
+        ...location(config.USE_NCES_LOCATION?.includes(r.schoolcode) && nces[r.schoolcode]?.lat ? null : loc, nces[r.schoolcode], zip),
         nces_id: nces[r.schoolcode]?.id ?? null,
         ...withoutKeys(record, ['area', 'school_type', 'grades']),
         crdc: crdc[r.schoolcode] || null,

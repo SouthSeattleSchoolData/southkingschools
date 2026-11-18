@@ -39,6 +39,15 @@ export const MANUAL_LOCATIONS = {
   3434: { lat: 47.4655, lon: -122.2206, address: '2403 Jones Ave S', zip: '98055' }, // Nelsen Middle
 };
 
+/**
+ * Schools whose King County point is out of date (the county layer still has the building they
+ * left); these take their location from the NCES directory instead. Key = OSPI school code.
+ */
+export const USE_NCES_LOCATION = [
+  '3937', // Maple View Middle: county point is the Sweeney Rd building (now Cedar River Elementary)
+  '3341', // Summit Trail Middle: county point is the SE 216th St building (now Tahoma Elementary)
+];
+
 /** King County school sites (ArcGIS feature layer). */
 export const SCHOOL_SITES_URL = 'https://services.arcgis.com/Ej0PsM5Aw677QF1W/arcgis/rest/services/SCHSITE_POINT_107/FeatureServer/0/query';
 export const SCHOOL_SITE_DISTRICTS = ['RENTON', 'KENT', 'ISSAQUAH', 'BELLEVUE', 'SEATTLE', 'TUKWILA', 'HIGHLINE', 'TAHOMA'];
