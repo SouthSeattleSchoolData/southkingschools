@@ -378,6 +378,18 @@
           "term": "Online",
           "what": "A school where most learning happens online.",
           "read": "Not scored against neighborhood schools."
+        },
+        {
+          "key": "state_results",
+          "term": "State titles and runner-up finishes",
+          "what": "First- and second-place team finishes at Washington state tournaments (WIAA sports), plus top finishes in statewide academic competitions, over the last 10 school years.",
+          "read": "Schools compete only against schools of similar size (4A is the largest, then 3A, 2A, and so on), so a title means beating schools in its own class. Classes are reset every few years, so a school can win in different classes. Richer schools win far more often, partly because of club teams and booster money, so a short list here isn't a sign of weak coaching."
+        },
+        {
+          "key": "wiaa_class",
+          "term": "WIAA classification",
+          "what": "The size group a high school competes in, set by enrollment: 4A (largest), 3A, 2A, 1A, 2B and 1B.",
+          "read": "Titles in different classes aren't directly comparable. The class shown next to each result is the one the school played in that year."
         }
       ]
     }

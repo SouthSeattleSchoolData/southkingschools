@@ -1,4 +1,4 @@
-// Findings page: results vs. low-income share, discipline by group, discipline trend.
+// Findings page: results vs. low-income share, discipline by group, discipline trend, state titles.
 
 import { store, AREAS, districtByCode } from '../data.js';
 import { num, escapeHtml, plain, $, $$ } from '../util.js';
@@ -6,6 +6,7 @@ import { incomeTrend, readingMathAverage } from '../scores.js';
 import { DISCIPLINE_GROUPS } from '../metrics.js';
 import { incomeScatter, pairedBars, trendChart } from '../charts.js';
 import { TREND_SERIES, areaSeries } from '../trends.js';
+import { renderStateResults } from '../activities.js';
 
 const MEASURES = {
   readingMath: { label: 'Reading + math', unit: '%', yTitle: 'Reading + math proficiency (%)', get: readingMathAverage },
@@ -23,6 +24,7 @@ export function renderFindings() {
   renderRecovery();
   renderDisciplineGroups();
   renderTrend();
+  renderStateResults();
 }
 
 function chips(el, options, current, onPick) {

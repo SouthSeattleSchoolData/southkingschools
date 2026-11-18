@@ -1,0 +1,2165 @@
+{
+ "window": "2016-17 to 2025-26",
+ "updated": "2026-11-18",
+ "sources": [
+  {
+   "name": "WIAA Tournament History (state champions and runners-up)",
+   "url": "https://www.wiaa.com/history/"
+  },
+  {
+   "name": "WIAA school directory (classification, league and sports)",
+   "url": "https://wiaa.finalforms.com/state_schools"
+  },
+  {
+   "name": "Washington Science Olympiad state results (Duosmium)",
+   "url": "https://www.duosmium.org/results/"
+  },
+  {
+   "name": "Washington State Knowledge Bowl champions",
+   "url": "https://en.wikipedia.org/wiki/Washington_State_Knowledge_Bowl_Tournament"
+  },
+  {
+   "name": "2026 state high school chess team championships (KPQ)",
+   "url": "https://kpq.com/washington-high-school-chess/"
+  }
+ ],
+ "schools": {
+  "2182": {
+   "results": [],
+   "cls": "3A",
+   "league": "Metro",
+   "mascot": "Quakers",
+   "sports": {
+    "Boys": [
+     "baseball",
+     "basketball",
+     "cross country",
+     "football",
+     "golf",
+     "soccer",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "wrestling"
+    ],
+    "Girls": [
+     "basketball",
+     "cheerleading",
+     "cross country",
+     "golf",
+     "slowpitch softball",
+     "soccer",
+     "softball",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "volleyball",
+     "wrestling"
+    ]
+   },
+   "titles": 0,
+   "sport_titles": 0,
+   "runner_up": 0
+  },
+  "2234": {
+   "results": [
+    {
+     "year": "2023-24",
+     "kind": "sport",
+     "event": "Boys baseball",
+     "cls": "3A",
+     "place": 1
+    }
+   ],
+   "cls": "3A",
+   "league": "Metro",
+   "mascot": "Wildcats",
+   "sports": {
+    "Boys": [
+     "baseball",
+     "basketball",
+     "cross country",
+     "football",
+     "golf",
+     "lacrosse",
+     "soccer",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "wrestling"
+    ],
+    "Girls": [
+     "basketball",
+     "bowling",
+     "cross country",
+     "golf",
+     "gymnastics",
+     "slowpitch softball",
+     "soccer",
+     "softball",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "volleyball",
+     "wrestling"
+    ]
+   },
+   "titles": 1,
+   "sport_titles": 1,
+   "runner_up": 0
+  },
+  "2392": {
+   "results": [
+    {
+     "year": "2025-26",
+     "kind": "academic",
+     "event": "Chess team championship",
+     "cls": "2A",
+     "place": 3
+    }
+   ],
+   "cls": "2A",
+   "league": "Metro",
+   "mascot": "Eagles",
+   "sports": {
+    "Boys": [
+     "baseball",
+     "basketball",
+     "cross country",
+     "football",
+     "golf",
+     "soccer",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "wrestling"
+    ],
+    "Girls": [
+     "basketball",
+     "bowling",
+     "cheerleading",
+     "cross country",
+     "flag football",
+     "golf",
+     "gymnastics",
+     "slowpitch softball",
+     "soccer",
+     "softball",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "volleyball",
+     "wrestling"
+    ]
+   },
+   "titles": 0,
+   "sport_titles": 0,
+   "runner_up": 0
+  },
+  "2475": {
+   "results": [],
+   "cls": "2A",
+   "league": "KingCo",
+   "mascot": "RedHawks",
+   "sports": {
+    "Boys": [
+     "baseball",
+     "basketball",
+     "cross country",
+     "football",
+     "golf",
+     "soccer",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "wrestling"
+    ],
+    "Girls": [
+     "basketball",
+     "cross country",
+     "flag football",
+     "golf",
+     "gymnastics",
+     "soccer",
+     "softball",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "volleyball",
+     "wrestling"
+    ],
+    "Coed": [
+     "cheerleading",
+     "competitive cheer"
+    ]
+   },
+   "titles": 0,
+   "sport_titles": 0,
+   "runner_up": 0
+  },
+  "2701": {
+   "results": [
+    {
+     "year": "2025-26",
+     "kind": "sport",
+     "event": "Boys swimming and diving",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2025-26",
+     "kind": "sport",
+     "event": "Girls golf",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2025-26",
+     "kind": "sport",
+     "event": "Girls soccer",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2025-26",
+     "kind": "sport",
+     "event": "Girls basketball",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2024-25",
+     "kind": "sport",
+     "event": "Boys swimming and diving",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2024-25",
+     "kind": "sport",
+     "event": "Girls golf",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2024-25",
+     "kind": "sport",
+     "event": "Boys golf",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2024-25",
+     "kind": "sport",
+     "event": "Girls swimming and diving",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2024-25",
+     "kind": "sport",
+     "event": "Football",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2023-24",
+     "kind": "sport",
+     "event": "Girls golf",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2023-24",
+     "kind": "sport",
+     "event": "Football",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2023-24",
+     "kind": "sport",
+     "event": "Girls swimming and diving",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2022-23",
+     "kind": "sport",
+     "event": "Girls golf",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2022-23",
+     "kind": "sport",
+     "event": "Girls soccer",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2022-23",
+     "kind": "sport",
+     "event": "Girls swimming and diving",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2022-23",
+     "kind": "sport",
+     "event": "Girls track and field",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2021-22",
+     "kind": "sport",
+     "event": "Football",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2021-22",
+     "kind": "sport",
+     "event": "Girls golf",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2019-20",
+     "kind": "sport",
+     "event": "Girls swimming and diving",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2019-20",
+     "kind": "sport",
+     "event": "Girls soccer",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2018-19",
+     "kind": "sport",
+     "event": "Girls swimming and diving",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2018-19",
+     "kind": "sport",
+     "event": "Boys soccer",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2017-18",
+     "kind": "sport",
+     "event": "Girls golf",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2017-18",
+     "kind": "sport",
+     "event": "Girls swimming and diving",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2016-17",
+     "kind": "sport",
+     "event": "Girls soccer",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2016-17",
+     "kind": "sport",
+     "event": "Boys swimming and diving",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2016-17",
+     "kind": "sport",
+     "event": "Girls swimming and diving",
+     "cls": "3A",
+     "place": 2
+    }
+   ],
+   "cls": "3A",
+   "league": "KingCo",
+   "mascot": "Wolverines",
+   "sports": {
+    "Boys": [
+     "baseball",
+     "basketball",
+     "cross country",
+     "football",
+     "golf",
+     "lacrosse",
+     "soccer",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "water polo",
+     "wrestling"
+    ],
+    "Girls": [
+     "badminton",
+     "basketball",
+     "cross country",
+     "flag football",
+     "golf",
+     "gymnastics",
+     "lacrosse",
+     "soccer",
+     "softball",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "volleyball",
+     "water polo",
+     "wrestling"
+    ]
+   },
+   "titles": 15,
+   "sport_titles": 15,
+   "runner_up": 12
+  },
+  "2797": {
+   "results": [],
+   "cls": "3A",
+   "league": "North Puget Sound 3A/4A",
+   "mascot": "Royals",
+   "sports": {
+    "Boys": [
+     "baseball",
+     "basketball",
+     "cross country",
+     "football",
+     "golf",
+     "soccer",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "wrestling"
+    ],
+    "Girls": [
+     "basketball",
+     "cross country",
+     "flag football",
+     "golf",
+     "gymnastics",
+     "soccer",
+     "softball",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "volleyball",
+     "wrestling"
+    ],
+    "Coed": [
+     "cheerleading",
+     "competitive dance"
+    ]
+   },
+   "titles": 0,
+   "sport_titles": 0,
+   "runner_up": 0
+  },
+  "2849": {
+   "results": [
+    {
+     "year": "2025-26",
+     "kind": "sport",
+     "event": "Boys wrestling",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2025-26",
+     "kind": "sport",
+     "event": "Girls soccer",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2024-25",
+     "kind": "sport",
+     "event": "Boys wrestling",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2023-24",
+     "kind": "sport",
+     "event": "Boys wrestling",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2022-23",
+     "kind": "sport",
+     "event": "Girls cross country",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2022-23",
+     "kind": "sport",
+     "event": "Girls swimming and diving",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2021-22",
+     "kind": "sport",
+     "event": "Girls swimming and diving",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2019-20",
+     "kind": "sport",
+     "event": "Girls volleyball",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2019-20",
+     "kind": "sport",
+     "event": "Boys cross country",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2018-19",
+     "kind": "sport",
+     "event": "Boys cross country",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2018-19",
+     "kind": "sport",
+     "event": "Girls track and field",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2018-19",
+     "kind": "sport",
+     "event": "Boys track and field",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2017-18",
+     "kind": "sport",
+     "event": "Girls track and field",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2017-18",
+     "kind": "sport",
+     "event": "Boys golf",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2016-17",
+     "kind": "sport",
+     "event": "Boys wrestling",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2016-17",
+     "kind": "sport",
+     "event": "Girls track and field",
+     "cls": "4A",
+     "place": 1
+    }
+   ],
+   "cls": "4A",
+   "league": "North Puget Sound 3A/4A",
+   "mascot": "Bears",
+   "sports": {
+    "Boys": [
+     "baseball",
+     "basketball",
+     "cross country",
+     "football",
+     "golf",
+     "soccer",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "wrestling"
+    ],
+    "Girls": [
+     "basketball",
+     "competitive cheer",
+     "cross country",
+     "golf",
+     "gymnastics",
+     "soccer",
+     "softball",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "volleyball",
+     "wrestling"
+    ],
+    "Coed": [
+     "cheerleading",
+     "competitive dance"
+    ]
+   },
+   "titles": 11,
+   "sport_titles": 11,
+   "runner_up": 5
+  },
+  "3096": {
+   "results": [],
+   "cls": "2A",
+   "league": "Metro",
+   "mascot": "Seahawks",
+   "sports": {
+    "Boys": [
+     "baseball",
+     "basketball",
+     "cross country",
+     "football",
+     "golf",
+     "soccer",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "wrestling"
+    ],
+    "Girls": [
+     "basketball",
+     "bowling",
+     "cheerleading",
+     "cross country",
+     "flag football",
+     "golf",
+     "gymnastics",
+     "slowpitch softball",
+     "soccer",
+     "softball",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "volleyball",
+     "wrestling"
+    ]
+   },
+   "titles": 0,
+   "sport_titles": 0,
+   "runner_up": 0
+  },
+  "3282": {
+   "results": [
+    {
+     "year": "2023-24",
+     "kind": "sport",
+     "event": "Girls swimming and diving",
+     "cls": "2A",
+     "place": 1
+    },
+    {
+     "year": "2023-24",
+     "kind": "sport",
+     "event": "Boys swimming and diving",
+     "cls": "2A",
+     "place": 2
+    },
+    {
+     "year": "2023-24",
+     "kind": "sport",
+     "event": "Girls tennis",
+     "cls": "2A",
+     "place": 2
+    },
+    {
+     "year": "2022-23",
+     "kind": "sport",
+     "event": "Girls gymnastics",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2022-23",
+     "kind": "sport",
+     "event": "Girls swimming and diving",
+     "cls": "2A",
+     "place": 1
+    },
+    {
+     "year": "2021-22",
+     "kind": "sport",
+     "event": "Boys tennis",
+     "cls": "2A",
+     "place": 1
+    },
+    {
+     "year": "2021-22",
+     "kind": "sport",
+     "event": "Girls gymnastics",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2021-22",
+     "kind": "sport",
+     "event": "Girls swimming and diving",
+     "cls": "2A",
+     "place": 2
+    },
+    {
+     "year": "2019-20",
+     "kind": "sport",
+     "event": "Boys swimming and diving",
+     "cls": "2A",
+     "place": 1
+    },
+    {
+     "year": "2019-20",
+     "kind": "sport",
+     "event": "Girls gymnastics",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2019-20",
+     "kind": "sport",
+     "event": "Girls swimming and diving",
+     "cls": "2A",
+     "place": 2
+    },
+    {
+     "year": "2017-18",
+     "kind": "sport",
+     "event": "Girls golf",
+     "cls": "2A",
+     "place": 1
+    }
+   ],
+   "cls": "3A",
+   "league": "KingCo",
+   "mascot": "Redhawks",
+   "sports": {
+    "Boys": [
+     "baseball",
+     "basketball",
+     "cross country",
+     "football",
+     "golf",
+     "lacrosse",
+     "soccer",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "water polo",
+     "wrestling"
+    ],
+    "Girls": [
+     "badminton",
+     "basketball",
+     "cross country",
+     "flag football",
+     "golf",
+     "gymnastics",
+     "lacrosse",
+     "soccer",
+     "softball",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "volleyball",
+     "water polo",
+     "wrestling"
+    ]
+   },
+   "titles": 7,
+   "sport_titles": 7,
+   "runner_up": 5
+  },
+  "3327": {
+   "results": [
+    {
+     "year": "2025-26",
+     "kind": "sport",
+     "event": "Boys basketball",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2024-25",
+     "kind": "sport",
+     "event": "Boys basketball",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2023-24",
+     "kind": "sport",
+     "event": "Boys basketball",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2021-22",
+     "kind": "sport",
+     "event": "Boys basketball",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2017-18",
+     "kind": "sport",
+     "event": "Boys basketball",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2017-18",
+     "kind": "sport",
+     "event": "Football",
+     "cls": "3A",
+     "place": 2
+    }
+   ],
+   "cls": "3A",
+   "league": "Metro",
+   "mascot": "Vikings",
+   "sports": {
+    "Boys": [
+     "baseball",
+     "basketball",
+     "cross country",
+     "football",
+     "golf",
+     "soccer",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "wrestling"
+    ],
+    "Girls": [
+     "basketball",
+     "bowling",
+     "cross country",
+     "flag football",
+     "golf",
+     "slowpitch softball",
+     "soccer",
+     "softball",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "volleyball",
+     "wrestling"
+    ]
+   },
+   "titles": 2,
+   "sport_titles": 2,
+   "runner_up": 4
+  },
+  "3338": {
+   "results": [
+    {
+     "year": "2016-17",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 15,
+     "of": 22
+    }
+   ],
+   "titles": 0,
+   "sport_titles": 0,
+   "runner_up": 0
+  },
+  "3385": {
+   "results": [
+    {
+     "year": "2025-26",
+     "kind": "sport",
+     "event": "Girls cross country",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2025-26",
+     "kind": "sport",
+     "event": "Girls tennis",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2025-26",
+     "kind": "sport",
+     "event": "Boys swimming and diving",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2025-26",
+     "kind": "sport",
+     "event": "Girls flag football",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2024-25",
+     "kind": "sport",
+     "event": "Boys swimming and diving",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2024-25",
+     "kind": "sport",
+     "event": "Boys cross country",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2024-25",
+     "kind": "sport",
+     "event": "Girls cross country",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2023-24",
+     "kind": "sport",
+     "event": "Boys cross country",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2023-24",
+     "kind": "sport",
+     "event": "Girls cross country",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2022-23",
+     "kind": "sport",
+     "event": "Boys cross country",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2022-23",
+     "kind": "sport",
+     "event": "Boys tennis",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2022-23",
+     "kind": "sport",
+     "event": "Girls cross country",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2022-23",
+     "kind": "sport",
+     "event": "Girls golf",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2022-23",
+     "kind": "sport",
+     "event": "Girls soccer",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2021-22",
+     "kind": "sport",
+     "event": "Boys cross country",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2021-22",
+     "kind": "sport",
+     "event": "Girls soccer",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2017-18",
+     "kind": "sport",
+     "event": "Girls soccer",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2017-18",
+     "kind": "sport",
+     "event": "Girls tennis",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2017-18",
+     "kind": "sport",
+     "event": "Boys tennis",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2017-18",
+     "kind": "sport",
+     "event": "Girls track and field",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2016-17",
+     "kind": "sport",
+     "event": "Girls cross country",
+     "cls": "4A",
+     "place": 1
+    }
+   ],
+   "cls": "4A",
+   "league": "KingCo",
+   "mascot": "Eagles",
+   "sports": {
+    "Boys": [
+     "baseball",
+     "basketball",
+     "cross country",
+     "football",
+     "golf",
+     "soccer",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "wrestling"
+    ],
+    "Girls": [
+     "badminton",
+     "basketball",
+     "cross country",
+     "flag football",
+     "golf",
+     "gymnastics",
+     "soccer",
+     "softball",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "volleyball",
+     "wrestling"
+    ],
+    "Coed": [
+     "bowling"
+    ]
+   },
+   "titles": 8,
+   "sport_titles": 8,
+   "runner_up": 13
+  },
+  "3486": {
+   "results": [
+    {
+     "year": "2025-26",
+     "kind": "academic",
+     "event": "Chess team championship",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2024-25",
+     "kind": "sport",
+     "event": "Boys golf",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2024-25",
+     "kind": "sport",
+     "event": "Girls tennis",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2024-25",
+     "kind": "sport",
+     "event": "Boys swimming and diving",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2024-25",
+     "kind": "sport",
+     "event": "Boys tennis",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2023-24",
+     "kind": "sport",
+     "event": "Boys golf",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2023-24",
+     "kind": "sport",
+     "event": "Boys swimming and diving",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2023-24",
+     "kind": "sport",
+     "event": "Girls tennis",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2022-23",
+     "kind": "sport",
+     "event": "Boys swimming and diving",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2022-23",
+     "kind": "sport",
+     "event": "Girls golf",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2022-23",
+     "kind": "sport",
+     "event": "Girls swimming and diving",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2022-23",
+     "kind": "sport",
+     "event": "Girls tennis",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2021-22",
+     "kind": "sport",
+     "event": "Girls golf",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2021-22",
+     "kind": "sport",
+     "event": "Boys swimming and diving",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2019-20",
+     "kind": "sport",
+     "event": "Girls swimming and diving",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2018-19",
+     "kind": "sport",
+     "event": "Boys tennis",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2018-19",
+     "kind": "sport",
+     "event": "Girls swimming and diving",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2017-18",
+     "kind": "sport",
+     "event": "Girls swimming and diving",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2016-17",
+     "kind": "sport",
+     "event": "Girls tennis",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2016-17",
+     "kind": "sport",
+     "event": "Boys tennis",
+     "cls": "4A",
+     "place": 2
+    }
+   ],
+   "cls": "4A",
+   "league": "KingCo",
+   "mascot": "Knights",
+   "sports": {
+    "Boys": [
+     "baseball",
+     "basketball",
+     "cross country",
+     "football",
+     "golf",
+     "lacrosse",
+     "soccer",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "water polo",
+     "wrestling"
+    ],
+    "Girls": [
+     "badminton",
+     "basketball",
+     "cross country",
+     "flag football",
+     "golf",
+     "gymnastics",
+     "lacrosse",
+     "soccer",
+     "softball",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "volleyball",
+     "water polo",
+     "wrestling"
+    ]
+   },
+   "titles": 11,
+   "sport_titles": 11,
+   "runner_up": 8
+  },
+  "3588": {
+   "results": [
+    {
+     "year": "2025-26",
+     "kind": "sport",
+     "event": "Boys tennis",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2025-26",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 2,
+     "of": 25
+    },
+    {
+     "year": "2025-26",
+     "kind": "academic",
+     "event": "Chess team championship",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2024-25",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 4,
+     "of": 24
+    },
+    {
+     "year": "2023-24",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 4,
+     "of": 20
+    },
+    {
+     "year": "2022-23",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 3,
+     "of": 20
+    },
+    {
+     "year": "2021-22",
+     "kind": "sport",
+     "event": "Girls golf",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2021-22",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 5,
+     "of": 26
+    },
+    {
+     "year": "2020-21",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 4,
+     "of": 32
+    },
+    {
+     "year": "2018-19",
+     "kind": "sport",
+     "event": "Girls tennis",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2018-19",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 3,
+     "of": 22
+    },
+    {
+     "year": "2017-18",
+     "kind": "sport",
+     "event": "Girls tennis",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2017-18",
+     "kind": "academic",
+     "event": "Knowledge Bowl",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2017-18",
+     "kind": "sport",
+     "event": "Boys cross country",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2017-18",
+     "kind": "sport",
+     "event": "Girls golf",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2017-18",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 5,
+     "of": 22
+    },
+    {
+     "year": "2016-17",
+     "kind": "sport",
+     "event": "Boys cross country",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2016-17",
+     "kind": "sport",
+     "event": "Girls golf",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2016-17",
+     "kind": "sport",
+     "event": "Girls tennis",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2016-17",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 3,
+     "of": 22
+    }
+   ],
+   "cls": "3A",
+   "league": "KingCo",
+   "mascot": "Saints",
+   "sports": {
+    "Boys": [
+     "baseball",
+     "basketball",
+     "cross country",
+     "football",
+     "golf",
+     "lacrosse",
+     "soccer",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "water polo",
+     "wrestling"
+    ],
+    "Girls": [
+     "badminton",
+     "basketball",
+     "cross country",
+     "flag football",
+     "golf",
+     "gymnastics",
+     "lacrosse",
+     "soccer",
+     "softball",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "volleyball",
+     "water polo",
+     "wrestling"
+    ]
+   },
+   "titles": 4,
+   "sport_titles": 3,
+   "runner_up": 6
+  },
+  "3630": {
+   "results": [
+    {
+     "year": "2025-26",
+     "kind": "academic",
+     "event": "Knowledge Bowl",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2024-25",
+     "kind": "sport",
+     "event": "Boys soccer",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2023-24",
+     "kind": "academic",
+     "event": "Knowledge Bowl",
+     "cls": "3A",
+     "place": 1
+    }
+   ],
+   "cls": "4A",
+   "league": "KingCo",
+   "mascot": "Highlanders",
+   "sports": {
+    "Boys": [
+     "baseball",
+     "basketball",
+     "cross country",
+     "football",
+     "golf",
+     "soccer",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "wrestling"
+    ],
+    "Girls": [
+     "basketball",
+     "competitive dance",
+     "cross country",
+     "flag football",
+     "golf",
+     "gymnastics",
+     "soccer",
+     "softball",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "volleyball",
+     "wrestling"
+    ],
+    "Coed": [
+     "cheerleading"
+    ]
+   },
+   "titles": 2,
+   "sport_titles": 0,
+   "runner_up": 1
+  },
+  "3631": {
+   "results": [
+    {
+     "year": "2025-26",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 4,
+     "of": 28
+    },
+    {
+     "year": "2024-25",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 5,
+     "of": 25
+    },
+    {
+     "year": "2023-24",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 8,
+     "of": 21
+    },
+    {
+     "year": "2022-23",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 12,
+     "of": 20
+    },
+    {
+     "year": "2021-22",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 5,
+     "of": 25
+    },
+    {
+     "year": "2020-21",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 6,
+     "of": 24
+    },
+    {
+     "year": "2018-19",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 7,
+     "of": 22
+    },
+    {
+     "year": "2017-18",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 13,
+     "of": 22
+    },
+    {
+     "year": "2016-17",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 7,
+     "of": 22
+    }
+   ],
+   "titles": 0,
+   "sport_titles": 0,
+   "runner_up": 0
+  },
+  "3640": {
+   "results": [
+    {
+     "year": "2021-22",
+     "kind": "sport",
+     "event": "Boys tennis",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2016-17",
+     "kind": "sport",
+     "event": "Girls basketball",
+     "cls": "4A",
+     "place": 1
+    }
+   ],
+   "cls": "4A",
+   "league": "North Puget Sound 3A/4A",
+   "mascot": "Chargers",
+   "sports": {
+    "Boys": [
+     "baseball",
+     "basketball",
+     "cross country",
+     "football",
+     "golf",
+     "soccer",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "wrestling"
+    ],
+    "Girls": [
+     "basketball",
+     "competitive dance",
+     "cross country",
+     "flag football",
+     "golf",
+     "gymnastics",
+     "soccer",
+     "softball",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "volleyball",
+     "wrestling"
+    ],
+    "Coed": [
+     "cheerleading",
+     "competitive cheer"
+    ]
+   },
+   "titles": 1,
+   "sport_titles": 1,
+   "runner_up": 1
+  },
+  "3741": {
+   "results": [],
+   "cls": "2A",
+   "league": "KingCo",
+   "mascot": "Eagles",
+   "sports": {
+    "Boys": [
+     "baseball",
+     "basketball",
+     "cross country",
+     "football",
+     "golf",
+     "soccer",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "wrestling"
+    ],
+    "Girls": [
+     "basketball",
+     "cheerleading",
+     "cross country",
+     "flag football",
+     "golf",
+     "gymnastics",
+     "soccer",
+     "softball",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "volleyball",
+     "wrestling"
+    ]
+   },
+   "titles": 0,
+   "sport_titles": 0,
+   "runner_up": 0
+  },
+  "3879": {
+   "results": [
+    {
+     "year": "2024-25",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 23,
+     "of": 25
+    }
+   ],
+   "titles": 0,
+   "sport_titles": 0,
+   "runner_up": 0
+  },
+  "3962": {
+   "results": [
+    {
+     "year": "2025-26",
+     "kind": "sport",
+     "event": "Boys track and field",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2024-25",
+     "kind": "sport",
+     "event": "Boys track and field",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2023-24",
+     "kind": "sport",
+     "event": "Boys track and field",
+     "cls": "3A",
+     "place": 2
+    },
+    {
+     "year": "2020-21",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 14,
+     "of": 32
+    },
+    {
+     "year": "2018-19",
+     "kind": "sport",
+     "event": "Girls soccer",
+     "cls": "2A",
+     "place": 1
+    },
+    {
+     "year": "2018-19",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 9,
+     "of": 22
+    },
+    {
+     "year": "2017-18",
+     "kind": "sport",
+     "event": "Boys golf",
+     "cls": "2A",
+     "place": 1
+    },
+    {
+     "year": "2017-18",
+     "kind": "sport",
+     "event": "Girls swimming and diving",
+     "cls": "2A",
+     "place": 1
+    },
+    {
+     "year": "2016-17",
+     "kind": "sport",
+     "event": "Boys golf",
+     "cls": "2A",
+     "place": 1
+    },
+    {
+     "year": "2016-17",
+     "kind": "sport",
+     "event": "Girls swimming and diving",
+     "cls": "2A",
+     "place": 1
+    },
+    {
+     "year": "2016-17",
+     "kind": "sport",
+     "event": "Girls cross country",
+     "cls": "2A",
+     "place": 2
+    },
+    {
+     "year": "2016-17",
+     "kind": "sport",
+     "event": "Girls golf",
+     "cls": "2A",
+     "place": 2
+    },
+    {
+     "year": "2016-17",
+     "kind": "sport",
+     "event": "Girls soccer",
+     "cls": "2A",
+     "place": 2
+    }
+   ],
+   "cls": "3A",
+   "league": "KingCo",
+   "mascot": "Patriots",
+   "sports": {
+    "Boys": [
+     "baseball",
+     "basketball",
+     "cross country",
+     "football",
+     "golf",
+     "soccer",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "wrestling"
+    ],
+    "Girls": [
+     "badminton",
+     "basketball",
+     "cross country",
+     "flag football",
+     "golf",
+     "gymnastics",
+     "soccer",
+     "softball",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "volleyball",
+     "wrestling"
+    ]
+   },
+   "titles": 6,
+   "sport_titles": 6,
+   "runner_up": 5
+  },
+  "4128": {
+   "results": [
+    {
+     "year": "2025-26",
+     "kind": "sport",
+     "event": "Girls golf",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2024-25",
+     "kind": "sport",
+     "event": "Girls golf",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2016-17",
+     "kind": "sport",
+     "event": "Boys basketball",
+     "cls": "4A",
+     "place": 1
+    }
+   ],
+   "cls": "4A",
+   "league": "North Puget Sound 3A/4A",
+   "mascot": "Conquerors",
+   "sports": {
+    "Boys": [
+     "baseball",
+     "basketball",
+     "cross country",
+     "football",
+     "golf",
+     "soccer",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "wrestling"
+    ],
+    "Girls": [
+     "basketball",
+     "cross country",
+     "flag football",
+     "golf",
+     "gymnastics",
+     "soccer",
+     "softball",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "volleyball",
+     "wrestling"
+    ],
+    "Coed": [
+     "cheerleading",
+     "competitive dance"
+    ]
+   },
+   "titles": 1,
+   "sport_titles": 1,
+   "runner_up": 2
+  },
+  "4460": {
+   "results": [
+    {
+     "year": "2024-25",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 25,
+     "of": 25
+    },
+    {
+     "year": "2023-24",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 14,
+     "of": 21
+    }
+   ],
+   "titles": 0,
+   "sport_titles": 0,
+   "runner_up": 0
+  },
+  "4492": {
+   "results": [
+    {
+     "year": "2025-26",
+     "kind": "sport",
+     "event": "Boys baseball",
+     "cls": "3A",
+     "place": 1
+    },
+    {
+     "year": "2016-17",
+     "kind": "sport",
+     "event": "Boys baseball",
+     "cls": "4A",
+     "place": 2
+    }
+   ],
+   "cls": "3A",
+   "league": "North Puget Sound 3A/4A",
+   "mascot": "Falcons",
+   "sports": {
+    "Boys": [
+     "baseball",
+     "basketball",
+     "cross country",
+     "football",
+     "golf",
+     "soccer",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "wrestling"
+    ],
+    "Girls": [
+     "basketball",
+     "competitive dance",
+     "cross country",
+     "flag football",
+     "golf",
+     "gymnastics",
+     "soccer",
+     "softball",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "volleyball",
+     "wrestling"
+    ],
+    "Coed": [
+     "cheerleading"
+    ]
+   },
+   "titles": 1,
+   "sport_titles": 1,
+   "runner_up": 1
+  },
+  "4495": {
+   "results": [
+    {
+     "year": "2025-26",
+     "kind": "sport",
+     "event": "Boys golf",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2025-26",
+     "kind": "sport",
+     "event": "Girls fastpitch softball",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2025-26",
+     "kind": "sport",
+     "event": "Girls flag football",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2025-26",
+     "kind": "academic",
+     "event": "Chess team championship",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2023-24",
+     "kind": "sport",
+     "event": "Boys swimming and diving",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2023-24",
+     "kind": "sport",
+     "event": "Girls soccer",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2022-23",
+     "kind": "sport",
+     "event": "Boys soccer",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2022-23",
+     "kind": "sport",
+     "event": "Girls soccer",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2021-22",
+     "kind": "sport",
+     "event": "Boys soccer",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2020-21",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 18,
+     "of": 32
+    },
+    {
+     "year": "2019-20",
+     "kind": "sport",
+     "event": "Boys swimming and diving",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2018-19",
+     "kind": "sport",
+     "event": "Boys swimming and diving",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2018-19",
+     "kind": "sport",
+     "event": "Girls soccer",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2018-19",
+     "kind": "sport",
+     "event": "Girls swimming and diving",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2017-18",
+     "kind": "sport",
+     "event": "Boys soccer",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2017-18",
+     "kind": "sport",
+     "event": "Girls swimming and diving",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2017-18",
+     "kind": "sport",
+     "event": "Girls tennis",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2016-17",
+     "kind": "sport",
+     "event": "Girls swimming and diving",
+     "cls": "4A",
+     "place": 1
+    },
+    {
+     "year": "2016-17",
+     "kind": "sport",
+     "event": "Boys swimming and diving",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2016-17",
+     "kind": "sport",
+     "event": "Girls tennis",
+     "cls": "4A",
+     "place": 2
+    },
+    {
+     "year": "2016-17",
+     "kind": "academic",
+     "event": "Science Olympiad state tournament",
+     "place": 17,
+     "of": 22
+    }
+   ],
+   "cls": "4A",
+   "league": "KingCo",
+   "mascot": "Spartans",
+   "sports": {
+    "Boys": [
+     "baseball",
+     "basketball",
+     "cross country",
+     "football",
+     "golf",
+     "soccer",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "wrestling"
+    ],
+    "Girls": [
+     "badminton",
+     "basketball",
+     "competitive dance",
+     "cross country",
+     "flag football",
+     "golf",
+     "gymnastics",
+     "soccer",
+     "softball",
+     "swimming and diving",
+     "tennis",
+     "track and field",
+     "volleyball",
+     "wrestling"
+    ]
+   },
+   "titles": 12,
+   "sport_titles": 11,
+   "runner_up": 7
+  },
+  "5469": {
+   "results": [],
+   "cls": "2B",
+   "league": "Sea-Tac 1B/2B",
+   "mascot": "Orca",
+   "sports": {
+    "Boys": [
+     "basketball",
+     "football",
+     "soccer"
+    ],
+    "Girls": [
+     "basketball",
+     "soccer",
+     "volleyball"
+    ]
+   },
+   "titles": 0,
+   "sport_titles": 0,
+   "runner_up": 0
+  }
+ }
+}

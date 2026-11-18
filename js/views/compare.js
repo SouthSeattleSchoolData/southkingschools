@@ -5,6 +5,7 @@ import { fmt, escapeHtml, $, $$ } from '../util.js';
 import { METRICS, incident, CRDC_YEAR } from '../metrics.js';
 import { compareCodes, setCompare, toggleCompare } from '../compare-list.js';
 import { info, glossaryKey, withInfo } from '../glossary.js';
+import { activityValue } from '../activities.js';
 
 // [key, label, better]: better = 'high' | 'low' | null (no "best" marker). A null key starts a group.
 const ROWS = [
@@ -48,11 +49,17 @@ const ROWS = [
   ['incident:harassment_allegations', 'Bullying allegations', null],
   ['restraint', 'Restraint and seclusion uses', 'low'],
   ['lead', 'Outlets above 5 ppb lead', 'low'],
+  [null, 'Sports and competitions, last 10 years'],
+  ['act:titles', 'State titles (sports)', 'high'],
+  ['act:runner', 'State runner-up finishes', 'high'],
+  ['act:academic', 'Top-3 academic finishes', 'high'],
+  ['act:sports', 'WIAA sports offered', 'high'],
 ];
 
 function valueOf(s, key) {
   if (key === 'restraint') return s.crdc ? ['restraint_physical', 'restraint_mechanical', 'seclusion'].reduce((t, k) => t + (s.crdc[k] || 0), 0) : null;
   if (key === 'lead') return s.lead ? s.lead.over5 : null;
+  if (key.startsWith('act:')) return activityValue(s, key);
   if (key.startsWith('score:')) return s.scores?.[key.slice(6)] ?? null;
   if (key.startsWith('incident:')) return incident(s, key.slice(9));
   return METRICS[key].get(s);
@@ -85,7 +92,7 @@ export function renderCompare() {
       best = better === 'high' ? Math.max(...candidates) : Math.min(...candidates);
       if (candidates.every((v) => v === best)) best = null;
     }
-    const termKey = key.startsWith('score:') || key.startsWith('incident:') || key === 'restraint' || key === 'lead' ? key : glossaryKey(key);
+    const termKey = key.startsWith('score:') || key.startsWith('incident:') || key.startsWith('act:') || key === 'restraint' || key === 'lead' ? key : glossaryKey(key);
     const unit = METRICS[key]?.unit === '$' ? '$' : '';
     return `<tr><td>${withInfo(label, termKey)}</td>${raw.map((v, i) => `<td class="${best != null && exactValues[i] === best ? 'best' : ''}">${fmt(v, unit)}</td>`).join('')}</tr>`;
   }).join('');

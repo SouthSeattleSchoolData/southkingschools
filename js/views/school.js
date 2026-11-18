@@ -1,5 +1,5 @@
 // School profile page: scores, interpretation, measures, trends, discipline, demographics,
-// safety and support staff, teachers and spending, lead testing, nearby schools.
+// safety and support staff, teachers and spending, sports and competitions, lead testing, nearby schools.
 
 import { store, districtFor, districtLabel } from '../data.js';
 import { num, fmt, plain, round1, escapeHtml, cssVar, $ } from '../util.js';
@@ -15,6 +15,7 @@ import { tagList } from '../components.js';
 import { info, withInfo, glossaryKey } from '../glossary.js';
 import { reportUrl } from '../feedback.js';
 import { feederBox } from '../feeders.js';
+import { activitiesSection } from '../activities.js';
 
 /** Order of student groups in the profile's discipline chart. */
 const PROFILE_GROUP_ORDER = ['disability', 'low_income', 'black', 'hispanic', 'white', 'asian'];
@@ -190,6 +191,8 @@ export function renderSchool(code) {
 
       <h2 class="sec">Teachers and resources</h2>
       ${resourcesSection(s, d)}
+
+      ${activitiesSection(s)}
 
       <h2 class="sec">Lead in drinking water${info('lead')}</h2>
       ${leadSection(s)}

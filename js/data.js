@@ -41,7 +41,7 @@ export function newsDateKey(text) {
 }
 
 export async function loadData() {
-  const [data, news, policies, meta, glossary, i18n, feeders] = await Promise.all([
+  const [data, news, policies, meta, glossary, i18n, feeders, activities] = await Promise.all([
     getJson('data/schools.json'),
     getJson('content/news.json'),
     getJson('content/policies.json'),
@@ -49,6 +49,7 @@ export async function loadData() {
     getJson('content/glossary.json'),
     getJson('content/i18n.json').catch(() => null),
     getJson('content/feeders.json').catch(() => null),
+    getJson('content/activities.json').catch(() => null),
   ]);
   store.schools = data.schools.map(prepareSchool);
   store.districts = data.districts;
@@ -65,6 +66,7 @@ export async function loadData() {
   store.meta = meta;
   store.i18n = i18n;
   store.feeders = feeders;
+  store.activities = activities;
   store.glossaryGroups = glossary.groups;
   store.glossary = Object.fromEntries(glossary.groups.flatMap((g) => g.items.map((i) => [i.key, i])));
 }

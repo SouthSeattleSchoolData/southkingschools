@@ -541,6 +541,31 @@ def f16(b, base):
     assert not pg.errors, pg.errors[:3]
 
 
+@case('F17', 'Functional suitability', 'Sports and competitions: high school lists state results and sports, middle school explains, Compare and Findings show titles')
+def f17(b, base):
+    pg = new_page(b, base)
+    go(pg, 's-2701')
+    sec = pg.locator('h2.sec', has_text='Sports and competitions')
+    assert sec.count() == 1, 'no Sports and competitions section on Bellevue High'
+    rows = pg.locator('.results li').count()
+    assert rows >= 8, f'expected at least 8 result rows, got {rows}'
+    assert 'State champion' in pg.inner_text('.results'), 'no state champion row'
+    assert 'Sports offered' in pg.inner_text('#v-school'), 'no sports offered list'
+    go(pg, 's-3636')
+    assert 'no state tournament' in pg.inner_text('#v-school'), 'middle school note missing'
+    go(pg, 'findings')
+    n = pg.locator('#wins .wrow').count()
+    assert n >= 20, f'findings state-results chart has {n} rows'
+    pg.locator('#winsChips .chip', has_text='Now 4A').click(); pg.wait_for_timeout(200)
+    assert 0 < pg.locator('#wins .wrow').count() < n, '4A filter did not narrow the chart'
+    assert 'top-two state finishes' in pg.inner_text('#winsSum'), 'summary sentence missing'
+    pg.evaluate("localStorage.setItem('sks-compare', JSON.stringify(['2701','3640']))")
+    go(pg, 'compare'); pg.reload(); pg.wait_for_timeout(800)
+    txt = pg.inner_text('#cmpOut')
+    assert 'State titles (sports)' in txt, 'compare row missing'
+    assert not pg.errors, pg.errors
+
+
 @case('R01', 'Reliability', 'If the data file fails, the page says so instead of going blank')
 def r01(b, base):
     pg = new_page(b, base)
