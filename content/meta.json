@@ -173,12 +173,7 @@
     "email": ""
   },
   "analytics": {
-    "_about": "Visit counter: counts one visit per browser per day on the live site and shows the total in the footer, using the free Abacus service (abacus.jasoncameron.dev, no account needed). To check the count without opening the site: https://abacus.jasoncameron.dev/get/southkingschools-sseattle/visits . Remove 'counter' to turn it off. GoatCounter dashboard (pages, referrers): https://alphey.goatcounter.com . Pages are counted by type (home, find, compare, school...), never by search text. Clear 'goatcounter' to turn it off.",
-    "counter": {
-      "namespace": "southkingschools-sseattle",
-      "key": "visits",
-      "since": "November 2026"
-    },
+    "_about": "Private visit stats through GoatCounter: https://alphey.goatcounter.com . Pages are counted by type (home, find, compare, school...), never by search text. Clear 'goatcounter' to turn it off.",
     "goatcounter": "alphey"
   },
   "district_context": {

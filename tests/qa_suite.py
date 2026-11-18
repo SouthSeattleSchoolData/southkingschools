@@ -70,9 +70,6 @@ def new_page(browser, base, width=1280, height=860, mobile=False, **ctx):
         status=200, content_type='application/json', body='[{"lat":"47.4829","lon":"-122.2171","display_name":"Renton, WA"}]'))
     pg.route('**/gc.zgo.at/**', lambda r: r.fulfill(status=200, content_type='application/javascript', body='window.goatcounter = Object.assign(window.goatcounter || {}, {count() {}});'))
     pg.route('**/*.goatcounter.com/**', lambda r: r.fulfill(status=204, body=''))
-    pg.counter_calls = []
-    pg.route('**/abacus.jasoncameron.dev/**', lambda r: (pg.counter_calls.append(r.request.url), r.fulfill(
-        status=200, content_type='application/json', body='{"value":1234}'))[1])
     pg.base = base
     return pg
 
@@ -553,21 +550,6 @@ def r03(b, base):
     go(pg, 'find')
     pg.fill('#findQ', '1000 Main Ave S, Renton'); pg.press('#findQ', 'Enter'); pg.wait_for_timeout(800)
     assert 'ZIP' in pg.inner_text('#locBar'), pg.inner_text('#locBar')
-
-
-@case('R05', 'Reliability', 'Visit counter shows the total, only reads (never counts) off the live site, and hides if the service is down')
-def r05(b, base):
-    pg = new_page(b, base)
-    go(pg, 'home', 1200)
-    text = pg.inner_text('#visitCount')
-    assert '1,234 visits' in text, text
-    assert pg.counter_calls and all('/get/' in u for u in pg.counter_calls), pg.counter_calls
-    pg2 = new_page(b, base)
-    pg2.unroute('**/abacus.jasoncameron.dev/**')
-    pg2.route('**/abacus.jasoncameron.dev/**', lambda r: r.abort())
-    go(pg2, 'home', 1200)
-    assert pg2.locator('#visitCount').is_hidden(), 'counter should hide when the service is down'
-    assert not [e for e in pg2.errors if 'ERR_FAILED' not in e], pg2.errors[:3]
 
 
 @case('R04', 'Reliability', 'Works with browser storage blocked')
