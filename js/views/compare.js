@@ -49,11 +49,12 @@ const ROWS = [
   ['incident:harassment_allegations', 'Bullying allegations', null],
   ['restraint', 'Restraint and seclusion uses', 'low'],
   ['lead', 'Outlets above 5 ppb lead', 'low'],
-  [null, 'Sports and competitions, last 10 years'],
-  ['act:titles', 'State titles (sports)', 'high'],
-  ['act:runner', 'State runner-up finishes', 'high'],
-  ['act:academic', 'Top-3 academic finishes', 'high'],
+  [null, 'Sports, clubs and competitions'],
+  ['act:titles', 'State titles, last 10 years', 'high'],
+  ['act:runner', 'Runner-up finishes, last 10 years', 'high'],
+  ['act:academic', 'Top-3 academic finishes, last 10 years', 'high'],
   ['act:sports', 'WIAA sports offered', 'high'],
+  ['act:clubs', 'Clubs on the school\'s list', 'high'],
 ];
 
 function valueOf(s, key) {

@@ -541,16 +541,19 @@ def f16(b, base):
     assert not pg.errors, pg.errors[:3]
 
 
-@case('F17', 'Functional suitability', 'Sports and competitions: high school lists state results and sports, middle school explains, Compare and Findings show titles')
+@case('F17', 'Functional suitability', 'Sports, clubs and competitions: high school lists state results, sports and clubs, middle school explains, Compare and Findings show titles')
 def f17(b, base):
     pg = new_page(b, base)
     go(pg, 's-2701')
-    sec = pg.locator('h2.sec', has_text='Sports and competitions')
+    sec = pg.locator('h2.sec', has_text='Sports, clubs and competitions')
     assert sec.count() == 1, 'no Sports and competitions section on Bellevue High'
     rows = pg.locator('.results li').count()
     assert rows >= 8, f'expected at least 8 result rows, got {rows}'
     assert 'State champion' in pg.inner_text('.results'), 'no state champion row'
     assert 'Sports offered' in pg.inner_text('#v-school'), 'no sports offered list'
+    assert pg.locator('.clubrow').count() >= 4, 'club groups missing'
+    go(pg, 's-2797')
+    assert 'no club page' in pg.inner_text('#v-school'), 'missing-club-list note not shown'
     go(pg, 's-3636')
     assert 'no state tournament' in pg.inner_text('#v-school'), 'middle school note missing'
     go(pg, 'findings')
@@ -562,7 +565,7 @@ def f17(b, base):
     pg.evaluate("localStorage.setItem('sks-compare', JSON.stringify(['2701','3640']))")
     go(pg, 'compare'); pg.reload(); pg.wait_for_timeout(800)
     txt = pg.inner_text('#cmpOut')
-    assert 'State titles (sports)' in txt, 'compare row missing'
+    assert 'State titles, last 10 years' in txt and 'Clubs on the school' in txt, 'compare rows missing'
     assert not pg.errors, pg.errors
 
 

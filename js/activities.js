@@ -1,4 +1,4 @@
-// Sports and competitions: WIAA state results, academic competitions and sports offered
+// Sports and competitions: WIAA state results, academic competitions, sports offered and clubs
 // (content/activities.json, built by tools/snapshot/build-activities.py).
 
 import { store } from './data.js';
@@ -27,6 +27,28 @@ function sportsList(rec) {
   const order = ['Boys', 'Girls', 'Coed', 'Unified', 'Mixed'];
   return Object.entries(rec.sports || {}).sort(([a], [b]) => order.indexOf(a) - order.indexOf(b))
     .map(([who, list]) => `<p class="small" style="margin:4px 0"><b>${who}:</b> ${list.map(escapeHtml).join(', ')}</p>`).join('');
+}
+
+const CLUB_SHOWN = 8;
+
+function clubsBlock(s, rec) {
+  const a = store.activities;
+  const c = rec?.clubs;
+  if (!c) {
+    const why = a.club_list_missing?.[s.code];
+    return `<h3 class="trendh" style="margin-top:14px">Clubs</h3><p class="small">${why ? `${escapeHtml(why)}, so no club list is shown.` : 'No club list from this school\'s website yet.'} Ask the school's activities office for the current list.</p>`;
+  }
+  const groups = (a.club_categories || []).map((g) => ({ ...g, items: c.list.filter((x) => x.c === g.key).map((x) => x.n) })).filter((g) => g.items.length);
+  const row = (g) => {
+    const first = g.items.slice(0, CLUB_SHOWN).map(escapeHtml).join(', ');
+    const rest = g.items.slice(CLUB_SHOWN);
+    return `<div class="clubrow"><div class="clubhead"><b>${g.label}</b><span class="muted">${g.items.length}</span></div>
+      <p class="small">${first}${rest.length ? `<details class="more inline"><summary>${rest.length} more</summary>${rest.map(escapeHtml).join(', ')}</details>` : ''}</p></div>`;
+  };
+  return `<h3 class="trendh" style="margin-top:14px">Clubs</h3>
+    <p class="small"><b>${c.list.length} clubs</b> on the school's ${c.year === 'current' ? 'current list (checked November 2026)' : `${c.year} list`}, grouped by type. Clubs change every year as students start and end them.</p>
+    <div class="clubs">${groups.map(row).join('')}</div>
+    <p class="xs muted">From the <a href="${c.url}" rel="noopener">school's club page</a>. Groups are assigned from club names, so a few may sit in the wrong one.</p>`;
 }
 
 /** "Sports and competitions" block for a school page, or '' when it doesn't apply. */
@@ -67,21 +89,23 @@ export function activitiesSection(s) {
   }
   if (rec?.sports) {
     parts.push(`<h3 class="trendh" style="margin-top:14px">Sports offered</h3>${sportsList(rec)}
-      <p class="xs muted">Sports registered with the WIAA. Clubs and non-WIAA teams (robotics, ultimate, esports, drama) aren't listed yet; check the school's website.</p>`);
+      <p class="xs muted">Sports registered with the WIAA. Club teams such as ultimate or esports appear under Clubs.</p>`);
   }
+  if (isHigh || rec?.clubs) parts.push(clubsBlock(s, rec));
   parts.push(`<p class="xs muted">Sources: ${a.sources.map((x) => `<a href="${x.url}" rel="noopener">${escapeHtml(x.name)}</a>`).join(', ')}.</p>`);
-  return `<h2 class="sec">Sports and competitions</h2>${parts.join('')}`;
+  return `<h2 class="sec">Sports, clubs and competitions</h2>${parts.join('')}`;
 }
 
 /** Values for the Compare page. */
 export function activityValue(s, key) {
   const rec = activityRecord(s.code);
   const hs = /^(9|10|11)/.test(s.grades);
-  if (!rec) return hs && !s.isProgram ? 0 : null;
+  if (!rec) return hs && !s.isProgram && key !== 'act:clubs' ? 0 : null;
   const sport = rec.results.filter((r) => r.kind === 'sport');
   if (key === 'act:titles') return rec.cls ? sport.filter((r) => r.place === 1).length : null;
   if (key === 'act:runner') return rec.cls ? sport.filter((r) => r.place === 2).length : null;
   if (key === 'act:academic') return rec.results.filter((r) => r.kind === 'academic' && r.place <= 3).length;
+  if (key === 'act:clubs') return rec.clubs ? rec.clubs.list.length : null;
   if (key === 'act:sports') return rec.sports ? Object.values(rec.sports).reduce((t, l) => t + l.length, 0) : null;
   return null;
 }

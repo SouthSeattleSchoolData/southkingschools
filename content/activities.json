@@ -1,6 +1,45 @@
 {
  "window": "2016-17 to 2025-26",
  "updated": "2026-11-18",
+ "club_categories": [
+  {
+   "key": "stem",
+   "label": "STEM"
+  },
+  {
+   "key": "careers",
+   "label": "Business and careers"
+  },
+  {
+   "key": "academic",
+   "label": "Debate, civics and academics"
+  },
+  {
+   "key": "arts",
+   "label": "Arts, music and writing"
+  },
+  {
+   "key": "culture",
+   "label": "Culture and identity"
+  },
+  {
+   "key": "service",
+   "label": "Service and leadership"
+  },
+  {
+   "key": "hobby",
+   "label": "Games, hobbies and sport clubs"
+  }
+ ],
+ "club_list_missing": {
+  "4495": "Skyline posts its club list only on a student ASB site",
+  "2797": "Kent-Meridian has no club page on its website",
+  "2475": null,
+  "3741": null,
+  "3096": null,
+  "3522": null,
+  "5469": null
+ },
  "sources": [
   {
    "name": "WIAA Tournament History (state champions and runners-up)",
@@ -57,6 +96,192 @@
      "wrestling"
     ]
    },
+   "clubs": {
+    "year": "current",
+    "url": "https://franklinhs.seattleschools.org/?p=103",
+    "list": [
+     {
+      "n": "African Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "Aretha Franklin Jazz",
+      "c": "arts"
+     },
+     {
+      "n": "Art of Resistance and Resilience",
+      "c": "arts"
+     },
+     {
+      "n": "ASB",
+      "c": "service"
+     },
+     {
+      "n": "Asian Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "Badminton Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Band",
+      "c": "arts"
+     },
+     {
+      "n": "Black Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "Cham",
+      "c": "culture"
+     },
+     {
+      "n": "Chess Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Chinese Language Club",
+      "c": "culture"
+     },
+     {
+      "n": "Chinese Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Collage Club",
+      "c": "arts"
+     },
+     {
+      "n": "DECA",
+      "c": "careers"
+     },
+     {
+      "n": "Dice Delvers",
+      "c": "hobby"
+     },
+     {
+      "n": "Digital Music Composition",
+      "c": "arts"
+     },
+     {
+      "n": "Drama and Thespians",
+      "c": "arts"
+     },
+     {
+      "n": "East African Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Environmental Feminist Club",
+      "c": "service"
+     },
+     {
+      "n": "Envirothon",
+      "c": "service"
+     },
+     {
+      "n": "Fashion and Sewing",
+      "c": "arts"
+     },
+     {
+      "n": "Filipino Club",
+      "c": "culture"
+     },
+     {
+      "n": "Girls Hiking Club",
+      "c": "hobby"
+     },
+     {
+      "n": "GLOW",
+      "c": "culture"
+     },
+     {
+      "n": "Green Team",
+      "c": "service"
+     },
+     {
+      "n": "Hacky Sack",
+      "c": "hobby"
+     },
+     {
+      "n": "Key Club",
+      "c": "service"
+     },
+     {
+      "n": "Los Latinos Unidos",
+      "c": "culture"
+     },
+     {
+      "n": "Majorette",
+      "c": "arts"
+     },
+     {
+      "n": "Meditation Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Mock Trial",
+      "c": "academic"
+     },
+     {
+      "n": "Muslim Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Native Club",
+      "c": "culture"
+     },
+     {
+      "n": "Newspaper",
+      "c": "arts"
+     },
+     {
+      "n": "Pasefika Club",
+      "c": "culture"
+     },
+     {
+      "n": "Post84",
+      "c": "hobby"
+     },
+     {
+      "n": "Queenmakers",
+      "c": "culture"
+     },
+     {
+      "n": "RET Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Soccer Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Sources of Strength",
+      "c": "service"
+     },
+     {
+      "n": "Student Health Initiative",
+      "c": "careers"
+     },
+     {
+      "n": "Ultimate Frisbee",
+      "c": "hobby"
+     },
+     {
+      "n": "Victory Club",
+      "c": "culture"
+     },
+     {
+      "n": "X-Bot",
+      "c": "stem"
+     },
+     {
+      "n": "Yearbook",
+      "c": "arts"
+     }
+    ]
+   },
    "titles": 0,
    "sport_titles": 0,
    "runner_up": 0
@@ -102,6 +327,288 @@
      "track and field",
      "volleyball",
      "wrestling"
+    ]
+   },
+   "clubs": {
+    "year": "2026-27",
+    "url": "https://westseattlehs.seattleschools.org/student-life/clubs/",
+    "list": [
+     {
+      "n": "Actualizer's Society",
+      "c": "culture"
+     },
+     {
+      "n": "Advocacy Club",
+      "c": "service"
+     },
+     {
+      "n": "American Sign Language Club",
+      "c": "culture"
+     },
+     {
+      "n": "Anime Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Art Club",
+      "c": "arts"
+     },
+     {
+      "n": "Asian American and Pacific Islander Club",
+      "c": "culture"
+     },
+     {
+      "n": "Aviation Club",
+      "c": "stem"
+     },
+     {
+      "n": "BSU",
+      "c": "culture"
+     },
+     {
+      "n": "Calculus Club",
+      "c": "stem"
+     },
+     {
+      "n": "Car Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Chamber Choir",
+      "c": "arts"
+     },
+     {
+      "n": "Chess Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Chinese Club",
+      "c": "culture"
+     },
+     {
+      "n": "Christian Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "CIEE Alumni Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Climbing Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Color Guard Club",
+      "c": "arts"
+     },
+     {
+      "n": "Community Closet Club",
+      "c": "service"
+     },
+     {
+      "n": "Craft Club",
+      "c": "arts"
+     },
+     {
+      "n": "Creative Writing Club",
+      "c": "arts"
+     },
+     {
+      "n": "Cribbage Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Cycling Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Dance Team Club",
+      "c": "arts"
+     },
+     {
+      "n": "Debate Club",
+      "c": "academic"
+     },
+     {
+      "n": "Earth Club",
+      "c": "service"
+     },
+     {
+      "n": "Fashion Club",
+      "c": "arts"
+     },
+     {
+      "n": "FCCLA",
+      "c": "careers"
+     },
+     {
+      "n": "Film Photography Club",
+      "c": "arts"
+     },
+     {
+      "n": "Film Society Club",
+      "c": "arts"
+     },
+     {
+      "n": "FIRST Tech Robotics",
+      "c": "stem"
+     },
+     {
+      "n": "Fishing Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Fitted.",
+      "c": "arts"
+     },
+     {
+      "n": "French Club",
+      "c": "culture"
+     },
+     {
+      "n": "Fry Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Gender Sexuality Alliance",
+      "c": "culture"
+     },
+     {
+      "n": "Geometry Dash Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Gloving Club",
+      "c": "hobby"
+     },
+     {
+      "n": "HOSA",
+      "c": "careers"
+     },
+     {
+      "n": "Intersectional Feminist Club",
+      "c": "culture"
+     },
+     {
+      "n": "Journalism Club",
+      "c": "arts"
+     },
+     {
+      "n": "Jump Rope Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Key Club",
+      "c": "service"
+     },
+     {
+      "n": "Lacrosse Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Latinx Club",
+      "c": "culture"
+     },
+     {
+      "n": "Living History Club",
+      "c": "academic"
+     },
+     {
+      "n": "MarioKart Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Mock Trial Club",
+      "c": "academic"
+     },
+     {
+      "n": "Model United Nations",
+      "c": "academic"
+     },
+     {
+      "n": "Muslim Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "National Art Honor Society",
+      "c": "academic"
+     },
+     {
+      "n": "Native American Heritage Club",
+      "c": "culture"
+     },
+     {
+      "n": "Poster Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Red Cross Club",
+      "c": "service"
+     },
+     {
+      "n": "Robotics Club",
+      "c": "stem"
+     },
+     {
+      "n": "Rocketry Club",
+      "c": "stem"
+     },
+     {
+      "n": "Sexual Violence Resource Group",
+      "c": "service"
+     },
+     {
+      "n": "Skate/All Wheels Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Soccer Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Socialism Club",
+      "c": "academic"
+     },
+     {
+      "n": "Team Feed",
+      "c": "service"
+     },
+     {
+      "n": "Technology Student Association",
+      "c": "stem"
+     },
+     {
+      "n": "Ultimate Frisbee Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Unified Sports Club",
+      "c": "service"
+     },
+     {
+      "n": "Vogue Club",
+      "c": "arts"
+     },
+     {
+      "n": "West Seattle Coalition for Palestine Club",
+      "c": "academic"
+     },
+     {
+      "n": "West Seattle Melanin Society",
+      "c": "culture"
+     },
+     {
+      "n": "Westside Strength Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Wiffle Ball Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Young Sheldon Fan Club",
+      "c": "hobby"
+     }
     ]
    },
    "titles": 1,
@@ -150,6 +657,216 @@
      "track and field",
      "volleyball",
      "wrestling"
+    ]
+   },
+   "clubs": {
+    "year": "2025-26",
+    "url": "https://clevelandhs.seattleschools.org/student-life/clubs/",
+    "list": [
+     {
+      "n": "African Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Art Club",
+      "c": "arts"
+     },
+     {
+      "n": "ASB Council",
+      "c": "service"
+     },
+     {
+      "n": "Asian Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "Badminton Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Bandworks",
+      "c": "arts"
+     },
+     {
+      "n": "Battle Cats Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Biking Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Black Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "Candid",
+      "c": "arts"
+     },
+     {
+      "n": "Card Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Chinese Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "CHS Lion Dance",
+      "c": "arts"
+     },
+     {
+      "n": "Cleveland Closet",
+      "c": "service"
+     },
+     {
+      "n": "Cleveland Gacha Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Cooking Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Creative Literature",
+      "c": "arts"
+     },
+     {
+      "n": "Debate",
+      "c": "academic"
+     },
+     {
+      "n": "Dungeons & Dragons Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Esports Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Filipino Club",
+      "c": "culture"
+     },
+     {
+      "n": "Girls Frisbee",
+      "c": "hobby"
+     },
+     {
+      "n": "Green Team Environmental Club",
+      "c": "service"
+     },
+     {
+      "n": "GSA",
+      "c": "culture"
+     },
+     {
+      "n": "Habasha Club",
+      "c": "culture"
+     },
+     {
+      "n": "HOSA",
+      "c": "careers"
+     },
+     {
+      "n": "Inspiring Connections Outdoors",
+      "c": "hobby"
+     },
+     {
+      "n": "Investment Club",
+      "c": "careers"
+     },
+     {
+      "n": "Japanese Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Jewish Club",
+      "c": "culture"
+     },
+     {
+      "n": "K-pop Dance Club",
+      "c": "arts"
+     },
+     {
+      "n": "Key Club",
+      "c": "service"
+     },
+     {
+      "n": "Latinx Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "Library Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Magic: The Gathering Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Marsha P. Johnson Society",
+      "c": "culture"
+     },
+     {
+      "n": "Model UN",
+      "c": "academic"
+     },
+     {
+      "n": "Muslim Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "National Honor Society",
+      "c": "academic"
+     },
+     {
+      "n": "Pacific Islander Club",
+      "c": "culture"
+     },
+     {
+      "n": "Ping Pong Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Running Start Club",
+      "c": "careers"
+     },
+     {
+      "n": "Ski and Snowboard Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Technology Student Association",
+      "c": "stem"
+     },
+     {
+      "n": "Teen Health Club",
+      "c": "careers"
+     },
+     {
+      "n": "That's Crafty",
+      "c": "arts"
+     },
+     {
+      "n": "The Cleveland Journal",
+      "c": "arts"
+     },
+     {
+      "n": "Vantage Point",
+      "c": "arts"
+     },
+     {
+      "n": "Vietnamese Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Weight Lifting Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Yarn Club",
+      "c": "arts"
+     }
     ]
    },
    "titles": 0,
@@ -425,6 +1142,260 @@
      "wrestling"
     ]
    },
+   "clubs": {
+    "year": "2025-26",
+    "url": "https://bellevuehigh.bsd405.org/student-life/clubs-and-activities",
+    "list": [
+     {
+      "n": "AAPI",
+      "c": "culture"
+     },
+     {
+      "n": "Aerospace",
+      "c": "stem"
+     },
+     {
+      "n": "AI Club",
+      "c": "stem"
+     },
+     {
+      "n": "American Lung Cancer Screening",
+      "c": "service"
+     },
+     {
+      "n": "Art Club",
+      "c": "arts"
+     },
+     {
+      "n": "Astronomy",
+      "c": "stem"
+     },
+     {
+      "n": "Auto Club",
+      "c": "careers"
+     },
+     {
+      "n": "Band",
+      "c": "arts"
+     },
+     {
+      "n": "Barque",
+      "c": "hobby"
+     },
+     {
+      "n": "Bellevue Booked",
+      "c": "arts"
+     },
+     {
+      "n": "Black Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "Brazil Club",
+      "c": "culture"
+     },
+     {
+      "n": "Bright Hearts Initiative",
+      "c": "service"
+     },
+     {
+      "n": "Catalyst Chemistry",
+      "c": "stem"
+     },
+     {
+      "n": "Chess Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Chinese Club",
+      "c": "culture"
+     },
+     {
+      "n": "Choir",
+      "c": "arts"
+     },
+     {
+      "n": "Coding for Medicine",
+      "c": "stem"
+     },
+     {
+      "n": "Dance Club",
+      "c": "arts"
+     },
+     {
+      "n": "DECA",
+      "c": "careers"
+     },
+     {
+      "n": "Diversity Inclusion Club",
+      "c": "culture"
+     },
+     {
+      "n": "Dungeons and Dragons",
+      "c": "hobby"
+     },
+     {
+      "n": "Economic and Public Policy",
+      "c": "careers"
+     },
+     {
+      "n": "Fashion Club",
+      "c": "arts"
+     },
+     {
+      "n": "Fellowship of Christian Athletes",
+      "c": "culture"
+     },
+     {
+      "n": "Fencing Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Finance Club",
+      "c": "careers"
+     },
+     {
+      "n": "Founders Club",
+      "c": "careers"
+     },
+     {
+      "n": "Game Dev",
+      "c": "stem"
+     },
+     {
+      "n": "Geography and History Club",
+      "c": "academic"
+     },
+     {
+      "n": "Girls Who Code Club",
+      "c": "stem"
+     },
+     {
+      "n": "Glamor Gals",
+      "c": "arts"
+     },
+     {
+      "n": "Green Collective",
+      "c": "service"
+     },
+     {
+      "n": "HOSA",
+      "c": "careers"
+     },
+     {
+      "n": "Indian Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Jewish Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "K Pop Club",
+      "c": "arts"
+     },
+     {
+      "n": "Key Club",
+      "c": "service"
+     },
+     {
+      "n": "Law Honor Society",
+      "c": "academic"
+     },
+     {
+      "n": "Link Crew",
+      "c": "service"
+     },
+     {
+      "n": "Made for More",
+      "c": "culture"
+     },
+     {
+      "n": "Math Club",
+      "c": "stem"
+     },
+     {
+      "n": "Mental Health Awareness Club",
+      "c": "service"
+     },
+     {
+      "n": "Mock Trial",
+      "c": "academic"
+     },
+     {
+      "n": "Model U.N.",
+      "c": "academic"
+     },
+     {
+      "n": "Muslim Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "National Arts Honor Society",
+      "c": "academic"
+     },
+     {
+      "n": "National French Honors Society",
+      "c": "academic"
+     },
+     {
+      "n": "National Honors Society",
+      "c": "academic"
+     },
+     {
+      "n": "National Spanish Honor Society",
+      "c": "academic"
+     },
+     {
+      "n": "Orchestra",
+      "c": "arts"
+     },
+     {
+      "n": "Red Cross",
+      "c": "service"
+     },
+     {
+      "n": "Research Club",
+      "c": "stem"
+     },
+     {
+      "n": "Robotics",
+      "c": "stem"
+     },
+     {
+      "n": "Salvation Army",
+      "c": "service"
+     },
+     {
+      "n": "Science Bowl",
+      "c": "stem"
+     },
+     {
+      "n": "Science Olympiad",
+      "c": "stem"
+     },
+     {
+      "n": "Smiles for All",
+      "c": "service"
+     },
+     {
+      "n": "Speech and Debate",
+      "c": "academic"
+     },
+     {
+      "n": "Theater",
+      "c": "arts"
+     },
+     {
+      "n": "UNESCO",
+      "c": "service"
+     },
+     {
+      "n": "UNICEF",
+      "c": "service"
+     }
+    ]
+   },
    "titles": 15,
    "sport_titles": 15,
    "runner_up": 12
@@ -620,6 +1591,272 @@
      "competitive dance"
     ]
    },
+   "clubs": {
+    "year": "2026-27",
+    "url": "https://sites.google.com/tahomasd.us/ths-activities/leadership-asb/clubs",
+    "list": [
+     {
+      "n": "American Sign Language Club",
+      "c": "culture"
+     },
+     {
+      "n": "Anime Battle Arena",
+      "c": "hobby"
+     },
+     {
+      "n": "AP Physics Electricity & Magnetism Club",
+      "c": "stem"
+     },
+     {
+      "n": "ASB Leadership",
+      "c": "service"
+     },
+     {
+      "n": "Automotive Club",
+      "c": "careers"
+     },
+     {
+      "n": "Bear Crew Leaders",
+      "c": "service"
+     },
+     {
+      "n": "Birthday Dreams at Tahoma",
+      "c": "service"
+     },
+     {
+      "n": "Black Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "Color Guard",
+      "c": "arts"
+     },
+     {
+      "n": "Creative Writing Club",
+      "c": "arts"
+     },
+     {
+      "n": "DECA",
+      "c": "careers"
+     },
+     {
+      "n": "Dogs for the Blind",
+      "c": "service"
+     },
+     {
+      "n": "Drama Club",
+      "c": "arts"
+     },
+     {
+      "n": "Fantasy Football Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Fashion Club",
+      "c": "arts"
+     },
+     {
+      "n": "FBLA",
+      "c": "careers"
+     },
+     {
+      "n": "FCCLA",
+      "c": "careers"
+     },
+     {
+      "n": "Fellowship of Christian Athletes",
+      "c": "culture"
+     },
+     {
+      "n": "Feminist Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "FFA",
+      "c": "careers"
+     },
+     {
+      "n": "Filipino Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "Gear Garden",
+      "c": "stem"
+     },
+     {
+      "n": "Graphic Design Club",
+      "c": "arts"
+     },
+     {
+      "n": "Green Team",
+      "c": "service"
+     },
+     {
+      "n": "Guitar Club",
+      "c": "arts"
+     },
+     {
+      "n": "Happy Hiker Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Heritage Club",
+      "c": "culture"
+     },
+     {
+      "n": "Horror Movie Club",
+      "c": "hobby"
+     },
+     {
+      "n": "HOSA",
+      "c": "careers"
+     },
+     {
+      "n": "Interact Club",
+      "c": "service"
+     },
+     {
+      "n": "Key Club",
+      "c": "service"
+     },
+     {
+      "n": "Latino Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "Lego Club",
+      "c": "stem"
+     },
+     {
+      "n": "Little Literacy Club",
+      "c": "service"
+     },
+     {
+      "n": "Math Club",
+      "c": "stem"
+     },
+     {
+      "n": "Military Club",
+      "c": "careers"
+     },
+     {
+      "n": "Model UN Club",
+      "c": "academic"
+     },
+     {
+      "n": "Muslim Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "National Art Honor Society/Art Club",
+      "c": "academic"
+     },
+     {
+      "n": "National Honor Society",
+      "c": "academic"
+     },
+     {
+      "n": "Precious Gifts Club",
+      "c": "service"
+     },
+     {
+      "n": "Read-a-Movie Club",
+      "c": "arts"
+     },
+     {
+      "n": "Red Cross Club",
+      "c": "service"
+     },
+     {
+      "n": "REVIVE",
+      "c": "service"
+     },
+     {
+      "n": "Robotics Club",
+      "c": "stem"
+     },
+     {
+      "n": "Sending Sunshine Club",
+      "c": "service"
+     },
+     {
+      "n": "Sexuality & Gender Alliance",
+      "c": "culture"
+     },
+     {
+      "n": "Spanish Club",
+      "c": "culture"
+     },
+     {
+      "n": "Speech & Debate Team",
+      "c": "academic"
+     },
+     {
+      "n": "Sports Med Club",
+      "c": "careers"
+     },
+     {
+      "n": "Spread the Love Club",
+      "c": "service"
+     },
+     {
+      "n": "Stock Trading Club",
+      "c": "careers"
+     },
+     {
+      "n": "Student Advocates for Mental Health & Addiction",
+      "c": "service"
+     },
+     {
+      "n": "Table Tennis Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Tahoma Literary Collective",
+      "c": "arts"
+     },
+     {
+      "n": "Tahoma Success Center",
+      "c": "careers"
+     },
+     {
+      "n": "Tea Party Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Technology Student Association",
+      "c": "stem"
+     },
+     {
+      "n": "Teen Toons Animation Group",
+      "c": "arts"
+     },
+     {
+      "n": "Undertale/Deltarune Club",
+      "c": "hobby"
+     },
+     {
+      "n": "UNDIVIDED Club",
+      "c": "culture"
+     },
+     {
+      "n": "Vine Project",
+      "c": "service"
+     },
+     {
+      "n": "Women in Tech",
+      "c": "stem"
+     },
+     {
+      "n": "Youth Alive Club",
+      "c": "culture"
+     },
+     {
+      "n": "Zine Club",
+      "c": "arts"
+     }
+    ]
+   },
    "titles": 11,
    "sport_titles": 11,
    "runner_up": 5
@@ -787,6 +2024,148 @@
      "wrestling"
     ]
    },
+   "clubs": {
+    "year": "2026-27",
+    "url": "https://sammamishhigh.bsd405.org/student-life/clubs-and-activities",
+    "list": [
+     {
+      "n": "AAPI",
+      "c": "culture"
+     },
+     {
+      "n": "Art Club",
+      "c": "arts"
+     },
+     {
+      "n": "BSU",
+      "c": "culture"
+     },
+     {
+      "n": "Builders Club",
+      "c": "service"
+     },
+     {
+      "n": "Drama / Thespian",
+      "c": "arts"
+     },
+     {
+      "n": "Dungeons & Dragons",
+      "c": "hobby"
+     },
+     {
+      "n": "FCCLA",
+      "c": "careers"
+     },
+     {
+      "n": "Feminism Club",
+      "c": "culture"
+     },
+     {
+      "n": "Filipino Club",
+      "c": "culture"
+     },
+     {
+      "n": "Film Club",
+      "c": "arts"
+     },
+     {
+      "n": "Green Club",
+      "c": "service"
+     },
+     {
+      "n": "HOSA",
+      "c": "careers"
+     },
+     {
+      "n": "Jewish Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "Journalism Club",
+      "c": "arts"
+     },
+     {
+      "n": "Key Club",
+      "c": "service"
+     },
+     {
+      "n": "Latino Heat",
+      "c": "culture"
+     },
+     {
+      "n": "LGBTQ+",
+      "c": "culture"
+     },
+     {
+      "n": "Mariachi Club",
+      "c": "arts"
+     },
+     {
+      "n": "Math Club",
+      "c": "stem"
+     },
+     {
+      "n": "Mock Trial",
+      "c": "academic"
+     },
+     {
+      "n": "Model UN",
+      "c": "academic"
+     },
+     {
+      "n": "MSA",
+      "c": "culture"
+     },
+     {
+      "n": "MultiMedia Club",
+      "c": "arts"
+     },
+     {
+      "n": "One Love",
+      "c": "service"
+     },
+     {
+      "n": "Pawsitive Impact Club",
+      "c": "service"
+     },
+     {
+      "n": "Ping Pong Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Red Cross Club",
+      "c": "service"
+     },
+     {
+      "n": "Research & Science",
+      "c": "stem"
+     },
+     {
+      "n": "Robotics",
+      "c": "stem"
+     },
+     {
+      "n": "Rocketry Club",
+      "c": "stem"
+     },
+     {
+      "n": "SHS Bible Study",
+      "c": "culture"
+     },
+     {
+      "n": "Speech & Debate",
+      "c": "academic"
+     },
+     {
+      "n": "UNICEF",
+      "c": "service"
+     },
+     {
+      "n": "Weight Room",
+      "c": "hobby"
+     }
+    ]
+   },
    "titles": 7,
    "sport_titles": 7,
    "runner_up": 5
@@ -866,6 +2245,104 @@
      "track and field",
      "volleyball",
      "wrestling"
+    ]
+   },
+   "clubs": {
+    "year": "2025-26",
+    "url": "https://rainierbeachhs.seattleschools.org/student-life/asb/get-involved-in-c-l-u-b-s-and-a-s-b/",
+    "list": [
+     {
+      "n": "Art Club",
+      "c": "arts"
+     },
+     {
+      "n": "Asian Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "B-5",
+      "c": "hobby"
+     },
+     {
+      "n": "Beach Bots (Robotics)",
+      "c": "stem"
+     },
+     {
+      "n": "Beach Entrepreneur Club",
+      "c": "careers"
+     },
+     {
+      "n": "Biking Vikings",
+      "c": "hobby"
+     },
+     {
+      "n": "Black Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "Drumline",
+      "c": "arts"
+     },
+     {
+      "n": "Filipino Club",
+      "c": "culture"
+     },
+     {
+      "n": "Film Club",
+      "c": "arts"
+     },
+     {
+      "n": "Flag Football",
+      "c": "hobby"
+     },
+     {
+      "n": "Garden Club",
+      "c": "service"
+     },
+     {
+      "n": "Hip Hop Culture Club",
+      "c": "arts"
+     },
+     {
+      "n": "HOSA",
+      "c": "careers"
+     },
+     {
+      "n": "Karate Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Key Club",
+      "c": "service"
+     },
+     {
+      "n": "Latinx Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "Polynesian/Pacific Islander Club",
+      "c": "culture"
+     },
+     {
+      "n": "QSA",
+      "c": "culture"
+     },
+     {
+      "n": "Reading Club",
+      "c": "arts"
+     },
+     {
+      "n": "Real Estate Club",
+      "c": "careers"
+     },
+     {
+      "n": "Sierra Club",
+      "c": "service"
+     },
+     {
+      "n": "United Nations of Rainier Beach",
+      "c": "academic"
+     }
     ]
    },
    "titles": 2,
@@ -1071,6 +2548,312 @@
      "bowling"
     ]
    },
+   "clubs": {
+    "year": "current",
+    "url": "https://issaquahhigh.isd411.org/student-life/activities",
+    "list": [
+     {
+      "n": "Alma Latina",
+      "c": "culture"
+     },
+     {
+      "n": "American Sign Language Honor Society",
+      "c": "academic"
+     },
+     {
+      "n": "Animal Welfare Club",
+      "c": "service"
+     },
+     {
+      "n": "Art Club",
+      "c": "arts"
+     },
+     {
+      "n": "Artificial Intelligence Club",
+      "c": "stem"
+     },
+     {
+      "n": "ASB",
+      "c": "service"
+     },
+     {
+      "n": "Asian American Pacific Islander (AAPI)",
+      "c": "culture"
+     },
+     {
+      "n": "Associative Sports Medicine",
+      "c": "careers"
+     },
+     {
+      "n": "Athletes For Kids",
+      "c": "service"
+     },
+     {
+      "n": "Badminton Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Baking Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Band",
+      "c": "arts"
+     },
+     {
+      "n": "BEST Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Biochemical Engineering Club",
+      "c": "stem"
+     },
+     {
+      "n": "Biology Club",
+      "c": "stem"
+     },
+     {
+      "n": "Cheer",
+      "c": "hobby"
+     },
+     {
+      "n": "Chemistry Club",
+      "c": "stem"
+     },
+     {
+      "n": "Choir",
+      "c": "arts"
+     },
+     {
+      "n": "Class Council 10th Grade",
+      "c": "service"
+     },
+     {
+      "n": "Class Council 11th Grade",
+      "c": "service"
+     },
+     {
+      "n": "Class Council 12th Grade",
+      "c": "service"
+     },
+     {
+      "n": "Class Council 9th Grade",
+      "c": "service"
+     },
+     {
+      "n": "Code Club",
+      "c": "stem"
+     },
+     {
+      "n": "Cubing Club",
+      "c": "stem"
+     },
+     {
+      "n": "Dance Team",
+      "c": "arts"
+     },
+     {
+      "n": "Debate Team",
+      "c": "academic"
+     },
+     {
+      "n": "DECA",
+      "c": "careers"
+     },
+     {
+      "n": "Drama",
+      "c": "arts"
+     },
+     {
+      "n": "Eagle Crew",
+      "c": "service"
+     },
+     {
+      "n": "Eco Club",
+      "c": "service"
+     },
+     {
+      "n": "Economics Club",
+      "c": "careers"
+     },
+     {
+      "n": "Engineering Club",
+      "c": "stem"
+     },
+     {
+      "n": "FCCLA",
+      "c": "careers"
+     },
+     {
+      "n": "Feminism Club",
+      "c": "culture"
+     },
+     {
+      "n": "Film Club",
+      "c": "arts"
+     },
+     {
+      "n": "Forensic Club",
+      "c": "stem"
+     },
+     {
+      "n": "Girls Who Code",
+      "c": "stem"
+     },
+     {
+      "n": "Graduation",
+      "c": "service"
+     },
+     {
+      "n": "Graphic Design Club",
+      "c": "arts"
+     },
+     {
+      "n": "Hi Tones",
+      "c": "arts"
+     },
+     {
+      "n": "HOSA",
+      "c": "careers"
+     },
+     {
+      "n": "IHS Screenwriting",
+      "c": "arts"
+     },
+     {
+      "n": "In Harmony",
+      "c": "arts"
+     },
+     {
+      "n": "Investment Club",
+      "c": "careers"
+     },
+     {
+      "n": "Issaquah Aerospace Initiative",
+      "c": "stem"
+     },
+     {
+      "n": "Issaquah Literary Society",
+      "c": "arts"
+     },
+     {
+      "n": "Issaquah Thespian Society",
+      "c": "arts"
+     },
+     {
+      "n": "Issy Spanish Club",
+      "c": "culture"
+     },
+     {
+      "n": "IT Magazine (Journalism)",
+      "c": "arts"
+     },
+     {
+      "n": "iVision (Video Production)",
+      "c": "arts"
+     },
+     {
+      "n": "Japanese Club",
+      "c": "culture"
+     },
+     {
+      "n": "Jewish Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "Key Club",
+      "c": "service"
+     },
+     {
+      "n": "Math Club",
+      "c": "stem"
+     },
+     {
+      "n": "Mix It Up",
+      "c": "arts"
+     },
+     {
+      "n": "Model U.N. Club",
+      "c": "academic"
+     },
+     {
+      "n": "National Honor Society",
+      "c": "academic"
+     },
+     {
+      "n": "National Science Bowl",
+      "c": "stem"
+     },
+     {
+      "n": "Orchestra",
+      "c": "arts"
+     },
+     {
+      "n": "Photography Club",
+      "c": "arts"
+     },
+     {
+      "n": "Ping Pong Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Pride Club",
+      "c": "culture"
+     },
+     {
+      "n": "Psychology Club (IYNA)",
+      "c": "academic"
+     },
+     {
+      "n": "Red Cross Club",
+      "c": "service"
+     },
+     {
+      "n": "Robotics",
+      "c": "stem"
+     },
+     {
+      "n": "Sage Academy",
+      "c": "hobby"
+     },
+     {
+      "n": "Sports Med Club",
+      "c": "careers"
+     },
+     {
+      "n": "Tabletop Game Design Club",
+      "c": "stem"
+     },
+     {
+      "n": "Technical Innovations",
+      "c": "stem"
+     },
+     {
+      "n": "The Student Soundboard",
+      "c": "arts"
+     },
+     {
+      "n": "Women in Business Club",
+      "c": "careers"
+     },
+     {
+      "n": "Women in STEM",
+      "c": "stem"
+     },
+     {
+      "n": "Women's Health Equity Now Club",
+      "c": "careers"
+     },
+     {
+      "n": "Woodshop Club",
+      "c": "careers"
+     },
+     {
+      "n": "Yearbook",
+      "c": "arts"
+     }
+    ]
+   },
    "titles": 8,
    "sport_titles": 8,
    "runner_up": 13
@@ -1252,6 +3035,332 @@
      "volleyball",
      "water polo",
      "wrestling"
+    ]
+   },
+   "clubs": {
+    "year": "2025-26",
+    "url": "https://newporthigh.bsd405.org/student-life/clubs-and-activities",
+    "list": [
+     {
+      "n": "ACS Chemistry Club",
+      "c": "stem"
+     },
+     {
+      "n": "Acts of Random Kindness",
+      "c": "service"
+     },
+     {
+      "n": "AI Club",
+      "c": "stem"
+     },
+     {
+      "n": "American Cancer Society",
+      "c": "service"
+     },
+     {
+      "n": "Archaeology Club",
+      "c": "academic"
+     },
+     {
+      "n": "Architecture & Interior Design",
+      "c": "careers"
+     },
+     {
+      "n": "Art in Action",
+      "c": "arts"
+     },
+     {
+      "n": "Artisan Alley",
+      "c": "arts"
+     },
+     {
+      "n": "ASL Club",
+      "c": "culture"
+     },
+     {
+      "n": "ASPEN",
+      "c": "hobby"
+     },
+     {
+      "n": "Astronomy Club",
+      "c": "stem"
+     },
+     {
+      "n": "Badminton",
+      "c": "hobby"
+     },
+     {
+      "n": "Band",
+      "c": "arts"
+     },
+     {
+      "n": "Biology Club",
+      "c": "stem"
+     },
+     {
+      "n": "BioTech Club",
+      "c": "stem"
+     },
+     {
+      "n": "Book Club",
+      "c": "arts"
+     },
+     {
+      "n": "BSU",
+      "c": "culture"
+     },
+     {
+      "n": "Card Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Chess Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Chinese Chess Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Chinese Culture Club",
+      "c": "culture"
+     },
+     {
+      "n": "Choir",
+      "c": "arts"
+     },
+     {
+      "n": "Cisco Project Club",
+      "c": "stem"
+     },
+     {
+      "n": "Cover and Choreography",
+      "c": "arts"
+     },
+     {
+      "n": "Cross Disability Solidarity",
+      "c": "culture"
+     },
+     {
+      "n": "Cybersecurity",
+      "c": "stem"
+     },
+     {
+      "n": "Days for Girls",
+      "c": "service"
+     },
+     {
+      "n": "DECA",
+      "c": "careers"
+     },
+     {
+      "n": "Drama Club",
+      "c": "arts"
+     },
+     {
+      "n": "Dungeons & Dragons",
+      "c": "hobby"
+     },
+     {
+      "n": "Eco Club",
+      "c": "service"
+     },
+     {
+      "n": "Entomology Club",
+      "c": "stem"
+     },
+     {
+      "n": "FCCLA",
+      "c": "careers"
+     },
+     {
+      "n": "Filipino American Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Filmmaking Club",
+      "c": "arts"
+     },
+     {
+      "n": "Finance Club",
+      "c": "careers"
+     },
+     {
+      "n": "French Club",
+      "c": "culture"
+     },
+     {
+      "n": "Game Design Club",
+      "c": "stem"
+     },
+     {
+      "n": "Gender Sexuality Alliance",
+      "c": "culture"
+     },
+     {
+      "n": "HOSA",
+      "c": "careers"
+     },
+     {
+      "n": "Immigrant Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "Interact Club",
+      "c": "service"
+     },
+     {
+      "n": "Japanese Culture Club",
+      "c": "culture"
+     },
+     {
+      "n": "Key Club",
+      "c": "service"
+     },
+     {
+      "n": "Knight Pics",
+      "c": "arts"
+     },
+     {
+      "n": "Knights Who Care",
+      "c": "service"
+     },
+     {
+      "n": "Knights Who Code",
+      "c": "stem"
+     },
+     {
+      "n": "Knowledge Bowl Club",
+      "c": "academic"
+     },
+     {
+      "n": "Link Crew",
+      "c": "service"
+     },
+     {
+      "n": "Math Club",
+      "c": "stem"
+     },
+     {
+      "n": "Model United Nations",
+      "c": "academic"
+     },
+     {
+      "n": "Multiracial Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "Muslim Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "National Honor Society",
+      "c": "academic"
+     },
+     {
+      "n": "New Gen",
+      "c": "hobby"
+     },
+     {
+      "n": "Newport Bakes",
+      "c": "hobby"
+     },
+     {
+      "n": "Newport Knives",
+      "c": "hobby"
+     },
+     {
+      "n": "NRG Newport Robotics",
+      "c": "stem"
+     },
+     {
+      "n": "Ocean Science Club",
+      "c": "stem"
+     },
+     {
+      "n": "Orchestra",
+      "c": "arts"
+     },
+     {
+      "n": "Philosophy Club",
+      "c": "academic"
+     },
+     {
+      "n": "Physics Club",
+      "c": "stem"
+     },
+     {
+      "n": "Pickleball Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Programming Club",
+      "c": "stem"
+     },
+     {
+      "n": "Psychology Club",
+      "c": "academic"
+     },
+     {
+      "n": "Red Cross Club",
+      "c": "service"
+     },
+     {
+      "n": "Rocketry",
+      "c": "stem"
+     },
+     {
+      "n": "Scarlet Knights Percussion",
+      "c": "arts"
+     },
+     {
+      "n": "Science Bowl",
+      "c": "stem"
+     },
+     {
+      "n": "South Asian Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Speech & Debate",
+      "c": "academic"
+     },
+     {
+      "n": "STEM League",
+      "c": "stem"
+     },
+     {
+      "n": "Table Tennis Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Teaching Academy",
+      "c": "careers"
+     },
+     {
+      "n": "Tri-M Music Honor Society",
+      "c": "academic"
+     },
+     {
+      "n": "Ultimate Frisbee Club",
+      "c": "hobby"
+     },
+     {
+      "n": "UNICEF Club",
+      "c": "service"
+     },
+     {
+      "n": "Volleyball Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Writing Club",
+      "c": "arts"
+     },
+     {
+      "n": "Youth Economic Initiatives",
+      "c": "careers"
+     }
     ]
    },
    "titles": 11,
@@ -1437,6 +3546,324 @@
      "wrestling"
     ]
    },
+   "clubs": {
+    "year": "2024-25",
+    "url": "https://interlakehigh.bsd405.org/student-life/clubs-and-activities",
+    "list": [
+     {
+      "n": "AI Club",
+      "c": "stem"
+     },
+     {
+      "n": "Art Club",
+      "c": "arts"
+     },
+     {
+      "n": "Aviation Club",
+      "c": "stem"
+     },
+     {
+      "n": "Badminton Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Biology Club",
+      "c": "stem"
+     },
+     {
+      "n": "Biotechnology Club",
+      "c": "stem"
+     },
+     {
+      "n": "Bird Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Black Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "Bollywood Bros",
+      "c": "culture"
+     },
+     {
+      "n": "Builder's Club",
+      "c": "service"
+     },
+     {
+      "n": "Careers and Connections",
+      "c": "careers"
+     },
+     {
+      "n": "Chemistry Club",
+      "c": "stem"
+     },
+     {
+      "n": "Chess Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Citizenship Club",
+      "c": "academic"
+     },
+     {
+      "n": "Civil Engineering Club",
+      "c": "stem"
+     },
+     {
+      "n": "Classical Music Club",
+      "c": "arts"
+     },
+     {
+      "n": "Computer Vision Club",
+      "c": "stem"
+     },
+     {
+      "n": "Contract Bridge Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Culinary Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Dance Crew",
+      "c": "arts"
+     },
+     {
+      "n": "Data Science Club",
+      "c": "stem"
+     },
+     {
+      "n": "DECA",
+      "c": "careers"
+     },
+     {
+      "n": "Dungeons & Dragons",
+      "c": "hobby"
+     },
+     {
+      "n": "FFA",
+      "c": "careers"
+     },
+     {
+      "n": "Fiber Club",
+      "c": "arts"
+     },
+     {
+      "n": "Film & Photography Club",
+      "c": "arts"
+     },
+     {
+      "n": "Film Competition & Creative Media",
+      "c": "arts"
+     },
+     {
+      "n": "French Club",
+      "c": "culture"
+     },
+     {
+      "n": "Future Career Club",
+      "c": "careers"
+     },
+     {
+      "n": "Future Problem Solving",
+      "c": "academic"
+     },
+     {
+      "n": "Game Development",
+      "c": "stem"
+     },
+     {
+      "n": "Girl Up",
+      "c": "culture"
+     },
+     {
+      "n": "Girls Who Code",
+      "c": "stem"
+     },
+     {
+      "n": "Go Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Green Team",
+      "c": "service"
+     },
+     {
+      "n": "Heart and Hands Outreach",
+      "c": "service"
+     },
+     {
+      "n": "HOSA",
+      "c": "careers"
+     },
+     {
+      "n": "IGNITE Worldwide",
+      "c": "stem"
+     },
+     {
+      "n": "Indian Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Interlake Inquirer",
+      "c": "arts"
+     },
+     {
+      "n": "Jewish Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Key Club",
+      "c": "service"
+     },
+     {
+      "n": "Korean Culture Club",
+      "c": "culture"
+     },
+     {
+      "n": "Math Club",
+      "c": "stem"
+     },
+     {
+      "n": "Mobile Gaming Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Mock Trial",
+      "c": "academic"
+     },
+     {
+      "n": "Model United Nations",
+      "c": "academic"
+     },
+     {
+      "n": "Multicultural Club",
+      "c": "culture"
+     },
+     {
+      "n": "Muslim Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "NAMI",
+      "c": "service"
+     },
+     {
+      "n": "National History Day Club",
+      "c": "academic"
+     },
+     {
+      "n": "National Honor Society",
+      "c": "academic"
+     },
+     {
+      "n": "Operation Smile",
+      "c": "service"
+     },
+     {
+      "n": "OSU",
+      "c": "culture"
+     },
+     {
+      "n": "Ping Pong Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Pokemon Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Programming Club",
+      "c": "stem"
+     },
+     {
+      "n": "Quizbowl",
+      "c": "academic"
+     },
+     {
+      "n": "Red Cross Club",
+      "c": "service"
+     },
+     {
+      "n": "Research & Science Fair Club",
+      "c": "stem"
+     },
+     {
+      "n": "Rocketry Club",
+      "c": "stem"
+     },
+     {
+      "n": "Saints Robotics",
+      "c": "stem"
+     },
+     {
+      "n": "SBEF Volunteering",
+      "c": "service"
+     },
+     {
+      "n": "Science Club",
+      "c": "stem"
+     },
+     {
+      "n": "Science Olympiad",
+      "c": "stem"
+     },
+     {
+      "n": "SkillsUSA Welding Club",
+      "c": "careers"
+     },
+     {
+      "n": "Slavic Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "Smash Bros",
+      "c": "hobby"
+     },
+     {
+      "n": "Speech & Debate Club",
+      "c": "academic"
+     },
+     {
+      "n": "Sports Medicine Club",
+      "c": "careers"
+     },
+     {
+      "n": "Stocks Club",
+      "c": "careers"
+     },
+     {
+      "n": "Tech for Good Alliance",
+      "c": "stem"
+     },
+     {
+      "n": "The Gavel Club",
+      "c": "academic"
+     },
+     {
+      "n": "Thespians Club",
+      "c": "arts"
+     },
+     {
+      "n": "Venture Academy",
+      "c": "hobby"
+     },
+     {
+      "n": "Writing Club",
+      "c": "arts"
+     },
+     {
+      "n": "Youth Legislation Club",
+      "c": "academic"
+     },
+     {
+      "n": "Youth Neuroscience Association Club",
+      "c": "stem"
+     }
+    ]
+   },
    "titles": 4,
    "sport_titles": 3,
    "runner_up": 6
@@ -1498,6 +3925,232 @@
     ],
     "Coed": [
      "cheerleading"
+    ]
+   },
+   "clubs": {
+    "year": "2025-26",
+    "url": "https://hazen.rentonschools.us/students/clubs",
+    "list": [
+     {
+      "n": "Animal Advocacy Club",
+      "c": "service"
+     },
+     {
+      "n": "Art Club",
+      "c": "arts"
+     },
+     {
+      "n": "Asian Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Black Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "Board Game Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Books and Literature Club",
+      "c": "arts"
+     },
+     {
+      "n": "Chinese Student Club",
+      "c": "culture"
+     },
+     {
+      "n": "Creative Writing Club",
+      "c": "arts"
+     },
+     {
+      "n": "DECA",
+      "c": "careers"
+     },
+     {
+      "n": "Drama Club (Hazen Players)",
+      "c": "arts"
+     },
+     {
+      "n": "Dungeons & Dragons Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Earth Corps",
+      "c": "service"
+     },
+     {
+      "n": "Educators Rising Club",
+      "c": "careers"
+     },
+     {
+      "n": "European Club",
+      "c": "culture"
+     },
+     {
+      "n": "FBLA",
+      "c": "careers"
+     },
+     {
+      "n": "FFA",
+      "c": "careers"
+     },
+     {
+      "n": "Filipino American Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Fitted Club",
+      "c": "arts"
+     },
+     {
+      "n": "French Club",
+      "c": "culture"
+     },
+     {
+      "n": "Geology Club",
+      "c": "stem"
+     },
+     {
+      "n": "German Club",
+      "c": "culture"
+     },
+     {
+      "n": "Girls in Sports",
+      "c": "hobby"
+     },
+     {
+      "n": "GLOW Club",
+      "c": "culture"
+     },
+     {
+      "n": "Hazen BLAH Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Hazen Games & Activities Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Highlander Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Honor Society",
+      "c": "academic"
+     },
+     {
+      "n": "HOSA",
+      "c": "careers"
+     },
+     {
+      "n": "Japanese Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Jesus Club",
+      "c": "culture"
+     },
+     {
+      "n": "K-Pop Choreography Club",
+      "c": "arts"
+     },
+     {
+      "n": "Key Club",
+      "c": "service"
+     },
+     {
+      "n": "Korean Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Latino Club",
+      "c": "culture"
+     },
+     {
+      "n": "Metal Shop Club",
+      "c": "careers"
+     },
+     {
+      "n": "Mock Trial Club",
+      "c": "academic"
+     },
+     {
+      "n": "Model UN",
+      "c": "academic"
+     },
+     {
+      "n": "Multicultural Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "Muslim Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Origami for Good Club",
+      "c": "arts"
+     },
+     {
+      "n": "Pacific Islander Club",
+      "c": "culture"
+     },
+     {
+      "n": "Photo Club",
+      "c": "arts"
+     },
+     {
+      "n": "Ping Pong Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Pokemon Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Psychology Club",
+      "c": "academic"
+     },
+     {
+      "n": "Robotics Club",
+      "c": "stem"
+     },
+     {
+      "n": "South Asian Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Speech & Debate Club",
+      "c": "academic"
+     },
+     {
+      "n": "STEM Club",
+      "c": "stem"
+     },
+     {
+      "n": "TSA",
+      "c": "stem"
+     },
+     {
+      "n": "UNICEF",
+      "c": "service"
+     },
+     {
+      "n": "Vietnamese Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Volleyball Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Women's Rights Club",
+      "c": "culture"
+     },
+     {
+      "n": "Wood Shop Club",
+      "c": "careers"
+     }
     ]
    },
    "titles": 2,
@@ -1625,6 +4278,232 @@
     "Coed": [
      "cheerleading",
      "competitive cheer"
+    ]
+   },
+   "clubs": {
+    "year": "current",
+    "url": "https://www.kent.k12.wa.us/o/krhs/page/clubs-and-activities",
+    "list": [
+     {
+      "n": "Art Club",
+      "c": "arts"
+     },
+     {
+      "n": "Art for the Heart",
+      "c": "arts"
+     },
+     {
+      "n": "Asian American and Pacific Islander (AAPI)",
+      "c": "culture"
+     },
+     {
+      "n": "Auto Club",
+      "c": "careers"
+     },
+     {
+      "n": "Aviation Club",
+      "c": "stem"
+     },
+     {
+      "n": "Better Me Club",
+      "c": "service"
+     },
+     {
+      "n": "Black Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "Books & Banter",
+      "c": "arts"
+     },
+     {
+      "n": "Boys Volleyball Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Charger Codes",
+      "c": "stem"
+     },
+     {
+      "n": "Charger Crew",
+      "c": "service"
+     },
+     {
+      "n": "Charger Robotics",
+      "c": "stem"
+     },
+     {
+      "n": "Chinese Culture Club",
+      "c": "culture"
+     },
+     {
+      "n": "College Prep",
+      "c": "careers"
+     },
+     {
+      "n": "Dance Club",
+      "c": "arts"
+     },
+     {
+      "n": "Debate Club",
+      "c": "academic"
+     },
+     {
+      "n": "DECA",
+      "c": "careers"
+     },
+     {
+      "n": "East African Union",
+      "c": "culture"
+     },
+     {
+      "n": "Engineering Club",
+      "c": "stem"
+     },
+     {
+      "n": "Environmental Club",
+      "c": "service"
+     },
+     {
+      "n": "Fashion Club",
+      "c": "arts"
+     },
+     {
+      "n": "FCCLA",
+      "c": "careers"
+     },
+     {
+      "n": "Filipino American Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Film Club",
+      "c": "arts"
+     },
+     {
+      "n": "French Club",
+      "c": "culture"
+     },
+     {
+      "n": "Gender and Sexuality Alliance",
+      "c": "culture"
+     },
+     {
+      "n": "Girls Honor",
+      "c": "academic"
+     },
+     {
+      "n": "Gourmet Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Guitar Club",
+      "c": "arts"
+     },
+     {
+      "n": "Health Forward",
+      "c": "careers"
+     },
+     {
+      "n": "Japanese Culture & Exchange",
+      "c": "culture"
+     },
+     {
+      "n": "K-Pop/Eclipse",
+      "c": "arts"
+     },
+     {
+      "n": "Karaoke Club",
+      "c": "arts"
+     },
+     {
+      "n": "Kentridge Players: Drama Club",
+      "c": "arts"
+     },
+     {
+      "n": "Key Club",
+      "c": "service"
+     },
+     {
+      "n": "Latino Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "Letters for Rose",
+      "c": "service"
+     },
+     {
+      "n": "Literature Club",
+      "c": "arts"
+     },
+     {
+      "n": "Little Chargers Preschool",
+      "c": "careers"
+     },
+     {
+      "n": "Math Student Union",
+      "c": "stem"
+     },
+     {
+      "n": "Muslim Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "National Honor Society",
+      "c": "academic"
+     },
+     {
+      "n": "Newspaper Club",
+      "c": "arts"
+     },
+     {
+      "n": "Nursing Club",
+      "c": "careers"
+     },
+     {
+      "n": "Outdoor Adventure Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Psychology Club",
+      "c": "academic"
+     },
+     {
+      "n": "Sikh Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Speech & Debate Club",
+      "c": "academic"
+     },
+     {
+      "n": "Tabletop Game Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Tea Club",
+      "c": "hobby"
+     },
+     {
+      "n": "UNICEF",
+      "c": "service"
+     },
+     {
+      "n": "Vietnamese Culture Association",
+      "c": "culture"
+     },
+     {
+      "n": "Work 2 Be Well",
+      "c": "service"
+     },
+     {
+      "n": "Youth Alive",
+      "c": "culture"
+     },
+     {
+      "n": "Zoology Club",
+      "c": "stem"
+     }
     ]
    },
    "titles": 1,
@@ -1809,6 +4688,212 @@
      "wrestling"
     ]
    },
+   "clubs": {
+    "year": "current",
+    "url": "https://liberty.isd411.org/student-life/activities",
+    "list": [
+     {
+      "n": "Active Minds",
+      "c": "service"
+     },
+     {
+      "n": "Almas Hispanas",
+      "c": "culture"
+     },
+     {
+      "n": "Art Club",
+      "c": "arts"
+     },
+     {
+      "n": "ASB",
+      "c": "service"
+     },
+     {
+      "n": "Asian Culture Club",
+      "c": "culture"
+     },
+     {
+      "n": "Athletes for Kids",
+      "c": "service"
+     },
+     {
+      "n": "Baking Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Best Buddies",
+      "c": "service"
+     },
+     {
+      "n": "Birthday Dreams",
+      "c": "service"
+     },
+     {
+      "n": "BSU",
+      "c": "culture"
+     },
+     {
+      "n": "Care Craft Project Club",
+      "c": "arts"
+     },
+     {
+      "n": "Chemistry Club",
+      "c": "stem"
+     },
+     {
+      "n": "Chess Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Chinese Club",
+      "c": "culture"
+     },
+     {
+      "n": "Club America",
+      "c": "culture"
+     },
+     {
+      "n": "Crochet Club",
+      "c": "arts"
+     },
+     {
+      "n": "Debate",
+      "c": "academic"
+     },
+     {
+      "n": "DECA",
+      "c": "careers"
+     },
+     {
+      "n": "Dungeons and Dragons",
+      "c": "hobby"
+     },
+     {
+      "n": "FCCLA",
+      "c": "careers"
+     },
+     {
+      "n": "Film Club",
+      "c": "arts"
+     },
+     {
+      "n": "Game Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Girls Who Code",
+      "c": "stem"
+     },
+     {
+      "n": "Green Team",
+      "c": "service"
+     },
+     {
+      "n": "Honor Society",
+      "c": "academic"
+     },
+     {
+      "n": "HOSA",
+      "c": "careers"
+     },
+     {
+      "n": "Influence the Choice",
+      "c": "service"
+     },
+     {
+      "n": "Key Club",
+      "c": "service"
+     },
+     {
+      "n": "Make a Wish",
+      "c": "service"
+     },
+     {
+      "n": "Math Club",
+      "c": "stem"
+     },
+     {
+      "n": "Mock Trial Club",
+      "c": "academic"
+     },
+     {
+      "n": "Model UN",
+      "c": "academic"
+     },
+     {
+      "n": "Modern Band Club",
+      "c": "arts"
+     },
+     {
+      "n": "NJROTC",
+      "c": "careers"
+     },
+     {
+      "n": "Orchestra",
+      "c": "arts"
+     },
+     {
+      "n": "Patriot Crew",
+      "c": "service"
+     },
+     {
+      "n": "Patriot Press",
+      "c": "arts"
+     },
+     {
+      "n": "Patriots for People",
+      "c": "service"
+     },
+     {
+      "n": "Poetry Society",
+      "c": "arts"
+     },
+     {
+      "n": "Prism Club",
+      "c": "culture"
+     },
+     {
+      "n": "Quizbowl",
+      "c": "academic"
+     },
+     {
+      "n": "Racket Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Robotics",
+      "c": "stem"
+     },
+     {
+      "n": "SASA",
+      "c": "culture"
+     },
+     {
+      "n": "Sports Med Club",
+      "c": "careers"
+     },
+     {
+      "n": "Thespian Troupe (Drama)",
+      "c": "arts"
+     },
+     {
+      "n": "UNICEF",
+      "c": "service"
+     },
+     {
+      "n": "Vietnamese Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Yearbook",
+      "c": "arts"
+     },
+     {
+      "n": "Youth Alive",
+      "c": "culture"
+     }
+    ]
+   },
    "titles": 6,
    "sport_titles": 6,
    "runner_up": 5
@@ -1870,6 +4955,128 @@
     "Coed": [
      "cheerleading",
      "competitive dance"
+    ]
+   },
+   "clubs": {
+    "year": "current",
+    "url": "https://www.kent.k12.wa.us/o/kwhs/page/clubs-activities",
+    "list": [
+     {
+      "n": "AP Help Club",
+      "c": "careers"
+     },
+     {
+      "n": "Auto Club",
+      "c": "careers"
+     },
+     {
+      "n": "Baking Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Cadet Club",
+      "c": "careers"
+     },
+     {
+      "n": "DECA",
+      "c": "careers"
+     },
+     {
+      "n": "DnD Club",
+      "c": "hobby"
+     },
+     {
+      "n": "East African Association",
+      "c": "culture"
+     },
+     {
+      "n": "Games Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Gender-Sexuality Alliance",
+      "c": "culture"
+     },
+     {
+      "n": "High School Engineering eXploration (HEX)",
+      "c": "stem"
+     },
+     {
+      "n": "Horticulture Club",
+      "c": "careers"
+     },
+     {
+      "n": "Kapamilya Club",
+      "c": "culture"
+     },
+     {
+      "n": "Key Club",
+      "c": "service"
+     },
+     {
+      "n": "Korean/Japan Club",
+      "c": "culture"
+     },
+     {
+      "n": "KW Book Club",
+      "c": "arts"
+     },
+     {
+      "n": "KW Players",
+      "c": "arts"
+     },
+     {
+      "n": "Model UN",
+      "c": "academic"
+     },
+     {
+      "n": "National Honor Society",
+      "c": "academic"
+     },
+     {
+      "n": "Panjabi Cultural Club",
+      "c": "culture"
+     },
+     {
+      "n": "Red Cross Youth",
+      "c": "service"
+     },
+     {
+      "n": "Speech and Debate Club",
+      "c": "academic"
+     },
+     {
+      "n": "Sports Medicine Club",
+      "c": "careers"
+     },
+     {
+      "n": "Tri-M",
+      "c": "arts"
+     },
+     {
+      "n": "Unified Club",
+      "c": "service"
+     },
+     {
+      "n": "Vietnamese Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Voice Acting Club",
+      "c": "arts"
+     },
+     {
+      "n": "Women in Medicine",
+      "c": "careers"
+     },
+     {
+      "n": "Women in STEM",
+      "c": "stem"
+     },
+     {
+      "n": "Youth Alive",
+      "c": "culture"
+     }
     ]
    },
    "titles": 1,
@@ -1947,6 +5154,116 @@
     ],
     "Coed": [
      "cheerleading"
+    ]
+   },
+   "clubs": {
+    "year": "current",
+    "url": "https://www.kent.k12.wa.us/o/khs/page/clubs-and-activities",
+    "list": [
+     {
+      "n": "Academic Support",
+      "c": "careers"
+     },
+     {
+      "n": "ASB Music",
+      "c": "arts"
+     },
+     {
+      "n": "ASL Club",
+      "c": "culture"
+     },
+     {
+      "n": "Choir Club",
+      "c": "arts"
+     },
+     {
+      "n": "Clay Club",
+      "c": "arts"
+     },
+     {
+      "n": "Culinary Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Debate Club",
+      "c": "academic"
+     },
+     {
+      "n": "DECA",
+      "c": "careers"
+     },
+     {
+      "n": "DnD Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Drama Club",
+      "c": "arts"
+     },
+     {
+      "n": "French Club",
+      "c": "culture"
+     },
+     {
+      "n": "HOSA",
+      "c": "careers"
+     },
+     {
+      "n": "Indigenous Peoples Club",
+      "c": "culture"
+     },
+     {
+      "n": "Interact",
+      "c": "service"
+     },
+     {
+      "n": "Japan Club",
+      "c": "culture"
+     },
+     {
+      "n": "Kentlake Chronicles",
+      "c": "arts"
+     },
+     {
+      "n": "Key Club",
+      "c": "service"
+     },
+     {
+      "n": "Latino Student Union",
+      "c": "culture"
+     },
+     {
+      "n": "Lego Club",
+      "c": "stem"
+     },
+     {
+      "n": "Multicultural Council",
+      "c": "culture"
+     },
+     {
+      "n": "Nail Club",
+      "c": "arts"
+     },
+     {
+      "n": "National Honor Society",
+      "c": "academic"
+     },
+     {
+      "n": "Photo-Video Club",
+      "c": "arts"
+     },
+     {
+      "n": "Pride Club",
+      "c": "culture"
+     },
+     {
+      "n": "Weightlifting Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Youth Alive",
+      "c": "culture"
+     }
     ]
    },
    "titles": 1,

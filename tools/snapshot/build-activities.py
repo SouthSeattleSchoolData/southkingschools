@@ -10,8 +10,9 @@ Inputs (all in tools/raw/):
 Knowledge Bowl champions and the 2026 chess results are entered below by hand with their sources.
 
 Run: python3 tools/snapshot/build-activities.py
+  clubs_part1.py, clubs_part2.py  Club lists copied from each high school's website (school year, URL, names).
 """
-import json, pathlib, statistics
+import json, pathlib, re, statistics, importlib.util
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 RAW = ROOT / 'tools' / 'raw'
@@ -55,6 +56,40 @@ def sport_label(raw):
     return who, SPORT_LABEL.get(sport, sport.lower())
 
 
+# Club categories, checked in this order; the first match wins.
+CLUB_CATEGORIES = [
+    ('stem', 'STEM', r"robot|\bbots?\b|cod(e|ing|es)\b|program|\bmath|calcul|scien|engineer|physic|chem|\bbio|\bai\b|artificial|\bdata\b|cyber|rocket|aero|aviation|astronom|tech|computer|stem\b|\btsa\b|olympiad|research|neuro|geolog|entomolog|ocean|cisco|game dev|game design|cubing|lego|zoology|forensic|ignite worldwide|\bhex\b|gear garden"),
+    ('careers', 'Business and careers', r"deca|fbla|fccla|hosa|\bffa\b|skills ?usa|business|financ|invest|stock|econom|entrepreneur|real estate|career|medic|nursing|health|sports? med|educators|teaching|cadet|military|njrotc|welding|\bauto|metal|wood ?shop|architect|preschool|horticulture|running start|founders|success center|college prep|academic support|ap help"),
+    ('academic', 'Debate, civics and academics', r"socialism|palestine|archaeolog|debate|mock trial|model u|united nations|speech|legislation|\blaw\b|citizenship|gavel|policy|quiz|knowledge bowl|history|geography|philosoph|psycholog|problem solving|honor"),
+    ('arts', 'Arts, music and writing', r"\bart\b|\barts\b|music|band|choir|orchestra|drama|theat|thespian|players|film|photo|pics|dance|k[- ]?pop|video|mix it up|eclipse|guitar|jazz|percussion|drum|majorette|color guard|writ|literar|poetry|journal|newspaper|yearbook|magazine|\bzine|animation|toons|graphic|fashion|sewing|craft|crochet|yarn|fiber|origami|clay|mariachi|choreograph|chamber|tri-m|harmony|tones|press|inquirer|chronicles|media|book|literature|\bread|soundboard|karaoke|voice acting|glamor|vogue|fitted|nail|collage|hip hop|candid|vantage|artisan"),
+    ('culture', 'Culture and identity', r"student union|student association|\bbsu\b|\bmsa\b|\bosu\b|aapi|asian|black|latin|hispan|filipin|chinese|japan|korean|vietnam|indian|south asian|sasa|muslim|jewish|christian|bible|jesus|fellowship|sikh|panjabi|habesha|habasha|african|pacific|polynesian|pasefika|native|indigenous|slavic|european|german|french|spanish|culture|cultural|multicultural|multiracial|immigrant|heritage|\bgsa\b|glow|pride|lgbt|prism|gender|sexuality|qsa|feminis|women|girl|\bcham\b|alma|kapamilya|melanin|bollywood|brazil|club america|asl\b|sign language|marsha|youth alive|made for more|queenmakers|unidos|latino heat|kapa|disability|diversity|undivided|victory|actualizer"),
+    ('service', 'Service and leadership', r"key club|interact|red cross|unicef|unesco|\bnhs\b|\basb\b|class council|council|link crew|crew|leader|volunteer|servic|kindness|make a wish|birthday dreams|best buddies|athletes for kids|cancer|salvation|smile|days for girls|community|outreach|advocacy|advocates|green|\beco|earth|environment|sierra|envirothon|garden|animal|pawsitive|sources of strength|mental|nami|active minds|well|beautification|closet|feed|sunshine|spread the love|precious gifts|letters for rose|care craft|patriots for people|bright hearts|one love|dogs for|gifts|influence the choice|graduation|better me|revive|vine project|knights who care|heart|kids|unified|builder|literacy|sexual violence"),
+]
+CLUB_RX = [(k, label, re.compile(rx, re.I)) for k, label, rx in CLUB_CATEGORIES]
+
+
+# Names the keyword rules would put in the wrong group.
+CLUB_OVERRIDES = {'chinese chess club': 'hobby', 'girls frisbee': 'hobby', 'girls hiking club': 'hobby', 'girls in sports': 'hobby', 'days for girls': 'service', 'environmental feminist club': 'service', 'mental health awareness club': 'service', 'student advocates for mental health & addiction': 'service'}
+
+
+def club_category(name):
+    if name.lower() in CLUB_OVERRIDES:
+        return CLUB_OVERRIDES[name.lower()]
+    for k, _, rx in CLUB_RX:
+        if rx.search(name):
+            return k
+    return 'hobby'
+
+
+def load_clubs():
+    out = {}
+    for part in ('clubs_part1.py', 'clubs_part2.py'):
+        spec = importlib.util.spec_from_file_location(part[:-3], RAW / part)
+        mod = importlib.util.module_from_spec(spec); spec.loader.exec_module(mod)
+        out.update(mod.CLUBS)
+    return out
+
+
 def school_year(y):
     return f"{y - 1}-{str(y)[2:]}"
 
@@ -96,6 +131,14 @@ def main():
     for cls, place, code in CHESS_2026:
         rec(code)['results'].append({'year': school_year(2026), 'kind': 'academic', 'event': 'Chess team championship', 'cls': cls, 'place': place})
 
+    for code, (year, url, names) in load_clubs().items():
+        seen, items = set(), []
+        for n in names.split('|'):
+            n = n.strip()
+            if n and n.lower() not in seen:
+                seen.add(n.lower()); items.append({'n': n, 'c': club_category(n)})
+        rec(code)['clubs'] = {'year': year, 'url': url, 'list': sorted(items, key=lambda x: x['n'].lower())}
+
     for r in schools.values():
         r['results'].sort(key=lambda x: (x['year'], x['place'] == 1), reverse=True)
         res = r['results']
@@ -106,6 +149,8 @@ def main():
     out = {
         'window': f"{school_year(FIRST_YEAR)} to {school_year(LAST_YEAR)}",
         'updated': '2026-11-18',
+        'club_categories': [{'key': k, 'label': label} for k, label, _ in CLUB_CATEGORIES] + [{'key': 'hobby', 'label': 'Games, hobbies and sport clubs'}],
+        'club_list_missing': {'4495': 'Skyline posts its club list only on a student ASB site', '2797': 'Kent-Meridian has no club page on its website', '2475': None, '3741': None, '3096': None, '3522': None, '5469': None},
         'sources': [
             {'name': 'WIAA Tournament History (state champions and runners-up)', 'url': 'https://www.wiaa.com/history/'},
             {'name': 'WIAA school directory (classification, league and sports)', 'url': 'https://wiaa.finalforms.com/state_schools'},
@@ -118,6 +163,11 @@ def main():
     (ROOT / 'content' / 'activities.json').write_text(json.dumps(out, indent=1, ensure_ascii=False) + '\n')
 
     data = {s['code']: s for s in json.loads((ROOT / 'data' / 'schools.json').read_text())['schools']}
+    from collections import Counter
+    for code, r in schools.items():
+        if 'clubs' in r:
+            c = Counter(x['c'] for x in r['clubs']['list'])
+            print(f"{data[code]['name']:<30} clubs {len(r['clubs']['list']):>3}  " + ' '.join(f"{k}:{v}" for k, v in sorted(c.items())))
     for code, r in sorted(schools.items(), key=lambda kv: -kv[1]['titles']):
         print(f"{data[code]['name']:<32} {r.get('cls','-'):>3} titles {r['titles']:>2} (sport {r['sport_titles']:>2}) runner-up {r['runner_up']:>2}  low-income {data[code].get('pct_low_income')}")
 

@@ -1349,3 +1349,10 @@ details.more summary { cursor: pointer; font-size: 13px; color: var(--forest-ink
   .results li { grid-template-columns: 4.2em 1fr; }
   .results .rp { grid-column: 2; text-align: left; }
 }
+.clubs { display: grid; gap: 2px; margin: 6px 0; }
+.clubrow { padding: 6px 0; border-bottom: 1px solid var(--line); }
+.clubrow:last-child { border-bottom: 0; }
+.clubhead { display: flex; gap: 8px; align-items: baseline; font-size: 14px; }
+.clubrow p { margin: 2px 0 0; }
+details.more.inline { display: inline; }
+details.more.inline summary { display: inline; margin-left: 6px; }
