@@ -68,6 +68,8 @@ def new_page(browser, base, width=1280, height=860, mobile=False, **ctx):
     pg.route('**/tile.openstreetmap.org/**', lambda r: r.fulfill(status=200, content_type='image/png', body=TILE))
     pg.route('**/nominatim.openstreetmap.org/**', lambda r: r.fulfill(
         status=200, content_type='application/json', body='[{"lat":"47.4829","lon":"-122.2171","display_name":"Renton, WA"}]'))
+    pg.route('**/gc.zgo.at/**', lambda r: r.fulfill(status=200, content_type='application/javascript', body='window.goatcounter = Object.assign(window.goatcounter || {}, {count() {}});'))
+    pg.route('**/*.goatcounter.com/**', lambda r: r.fulfill(status=204, body=''))
     pg.counter_calls = []
     pg.route('**/abacus.jasoncameron.dev/**', lambda r: (pg.counter_calls.append(r.request.url), r.fulfill(
         status=200, content_type='application/json', body='{"value":1234}'))[1])
