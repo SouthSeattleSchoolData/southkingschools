@@ -4,7 +4,7 @@ import { store } from '../data.js';
 import { fmt, escapeHtml, $, $$ } from '../util.js';
 import { METRICS, incident, CRDC_YEAR } from '../metrics.js';
 import { compareCodes, setCompare, toggleCompare } from '../compare-list.js';
-import { info, glossaryKey } from '../glossary.js';
+import { info, glossaryKey, withInfo } from '../glossary.js';
 
 // [key, label, better]: better = 'high' | 'low' | null (no "best" marker). A null key starts a group.
 const ROWS = [
@@ -87,7 +87,7 @@ export function renderCompare() {
     }
     const termKey = key.startsWith('score:') || key.startsWith('incident:') || key === 'restraint' || key === 'lead' ? key : glossaryKey(key);
     const unit = METRICS[key]?.unit === '$' ? '$' : '';
-    return `<tr><td>${label}${info(termKey)}</td>${raw.map((v, i) => `<td class="${best != null && exactValues[i] === best ? 'best' : ''}">${fmt(v, unit)}</td>`).join('')}</tr>`;
+    return `<tr><td>${withInfo(label, termKey)}</td>${raw.map((v, i) => `<td class="${best != null && exactValues[i] === best ? 'best' : ''}">${fmt(v, unit)}</td>`).join('')}</tr>`;
   }).join('');
 
   out.innerHTML = `<div class="scroll" style="margin-top:16px"><table class="cmp" style="--n:${schools.length}"><thead><tr><th></th>${head}</tr></thead><tbody>${body}</tbody></table></div>

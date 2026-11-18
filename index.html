@@ -40,7 +40,7 @@
         <a href="#find">Find schools</a><a href="#compare">Compare<span class="cmpcount" id="cmpCount" hidden>0</span></a><a href="#findings">Findings</a><a href="#safety">Safety &amp; wellbeing</a><a href="#glossary">Glossary</a><a href="#method">How it works</a>
       </nav>
       <select class="langsel" id="langSel" aria-label="Language"><option value="en">English</option></select>
-      <button class="iconbtn" id="themeBtn" type="button" aria-label="Switch light or dark theme">Theme</button>
+      <button class="iconbtn" id="themeBtn" type="button" aria-label="Switch light or dark theme" title="Light or dark theme"><svg class="ticon" width="16" height="16" viewBox="0 0 16 16" aria-hidden="true"><circle cx="8" cy="8" r="6.25" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 1.75a6.25 6.25 0 0 1 0 12.5z" fill="currentColor"/></svg><span class="tlabel">Theme</span></button>
     </div>
   </div>
 
@@ -287,7 +287,7 @@
         </ul>
         <h3>Reading the numbers</h3>
         <ul>
-          <li><b>Suppression:</b> OSPI hides small counts. "&lt;3.7%" means somewhere between 0 and 3.7%. For scores and charts these are placed at the midpoint. "n&lt;10" means too few students to report.</li>
+          <li><b>Suppression:</b> OSPI hides small counts. <span class="nw">“&lt;3.7%”</span> means somewhere between 0 and 3.7%. For scores and charts these are placed at the midpoint. <span class="nw">“n&lt;10”</span> means too few students to report.</li>
           <li><b>Discipline</b> is the share of students suspended or expelled at least once. Low can mean calm, restorative or under-reported, so read it next to attendance.</li>
           <li><b>Federal incident counts</b> are self-reported and from 2023-24, with 2021-22, the first full year back in buildings, for comparison. A change between the two can reflect reporting practices as much as behavior. Use them to raise questions, not to rank safety.</li>
           <li><b>Trends</b> start in 2018-19 because no state tests were given in 2019-20 or 2020-21. Small schools get a caution when they have under 150 students or their results move 8+ points a year on average.</li>
@@ -301,6 +301,24 @@
     <script>
     // Show the requested page's static text right away; js/main.js takes over once the data has loaded.
     (function () { var h = location.hash.slice(1) || 'home'; var v = document.getElementById('v-' + (/^s-/.test(h) ? 'school' : h)) || document.getElementById('v-home'); v.classList.add('on'); })();
+    // Right after the site updates, a browser can hold a mix of old and new script files for a few minutes.
+    // If the app hasn't started, offer a reload that refreshes the cached scripts first.
+    addEventListener('load', function () {
+      setTimeout(function () {
+        if (window.__sksBooted) return;
+        var n = document.createElement('div');
+        n.className = 'langnotice';
+        n.setAttribute('role', 'alert');
+        n.innerHTML = 'This page didn\'t finish loading, which can happen for a few minutes after the site updates. <button class="linkbtn" type="button">Reload</button>';
+        n.querySelector('button').onclick = function () {
+          var urls = performance.getEntriesByType('resource').map(function (e) { return e.name; })
+            .filter(function (u) { return /\.(js|json|css)(\?|$)/.test(u) && u.indexOf(location.origin) === 0; });
+          Promise.all(urls.map(function (u) { return fetch(u, { cache: 'reload' }).catch(function () {}); }))
+            .then(function () { location.reload(); });
+        };
+        document.body.insertBefore(n, document.body.firstChild);
+      }, 6000);
+    });
   </script>
 </main>
 

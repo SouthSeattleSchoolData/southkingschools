@@ -89,6 +89,17 @@ export function guardInput(input, hint) {
   input.addEventListener('input', () => { if (!composing) apply(); });
 }
 
+/** Privacy ranges like "<0.0146" read as "<0.015": two significant digits, rounded so the bound stays true. */
+export function tidyRange(value) {
+  const m = /^([<>])\s*(\d*\.?\d+)$/.exec(String(value));
+  if (!m) return value;
+  const n = Number(m[2]);
+  if (!(n > 0) || n >= 1 || String(m[2]).replace(/^0\.0*/, '').length <= 2) return value;
+  const scale = 10 ** (1 - Math.floor(Math.log10(n)));
+  const r = (m[1] === '<' ? Math.ceil(n * scale) : Math.floor(n * scale)) / scale;
+  return m[1] + Number(r.toPrecision(2));
+}
+
 /** Formats a value as HTML. Suppressed values are greyed and explained on hover. */
 export function fmt(value, unit = '') {
   if (value == null || value === '') return '<span class="sup">—</span>';
@@ -96,7 +107,7 @@ export function fmt(value, unit = '') {
   if (unit === '$' && typeof value === 'number') return `$${Math.round(value).toLocaleString()}`;
   if (typeof value === 'string') {
     if (/^n</i.test(value)) return '<span class="sup" title="Fewer than 10 students">n&lt;10</span>';
-    return `<span class="sup" title="Suppressed for privacy; the true value is in this range">${escapeHtml(value)}${unit}</span>`;
+    return `<span class="sup" title="Suppressed for privacy; the true value is in this range">${escapeHtml(tidyRange(value))}${unit}</span>`;
   }
   return round1(value).toLocaleString() + unit;
 }
@@ -106,7 +117,7 @@ export function plain(value, unit = '') {
   if (value == null || value === '') return '—';
   if (value === 'none') return 'none on staff';
   if (unit === '$' && typeof value === 'number') return `$${Math.round(value).toLocaleString()}`;
-  if (typeof value === 'string') return /^n</i.test(value) ? 'n<10' : value + unit;
+  if (typeof value === 'string') return /^n</i.test(value) ? 'n<10' : tidyRange(value) + unit;
   return round1(value).toLocaleString() + unit;
 }
 

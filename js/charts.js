@@ -5,6 +5,33 @@ import { escapeHtml, plain, round1, num, showTip, hideTip } from './util.js';
 
 const chartWidth = (el, max = 640) => Math.max(260, Math.min((el.clientWidth || 560) - 32, max));
 
+let measureCtx;
+/** Width in px of chart text, measured with the page's own font (estimated if canvas is unavailable). */
+function textWidth(text, size = 12, weight = 400) {
+  try {
+    measureCtx ||= document.createElement('canvas').getContext('2d');
+    measureCtx.font = `${weight} ${size}px "Public Sans", sans-serif`;
+    return measureCtx.measureText(String(text)).width;
+  } catch {
+    return String(text).length * size * 0.55;
+  }
+}
+
+/** Splits an axis title into one or two lines so it fits `maxW` pixels. */
+function titleLines(text, maxW, size = 12, weight = 600) {
+  if (textWidth(text, size, weight) <= maxW) return [text];
+  const words = text.split(' ');
+  let best = [text];
+  let bestW = Infinity;
+  for (let k = 1; k < words.length; k++) {
+    const a = words.slice(0, k).join(' ');
+    const b = words.slice(k).join(' ');
+    const w = Math.max(textWidth(a, size, weight), textWidth(b, size, weight));
+    if (w < bestW) { bestW = w; best = [a, b]; }
+  }
+  return best;
+}
+
 /** Round, readable tick values from 0 up to at least `max`. */
 function niceTicks(max, target = 4) {
   if (!(max > 0)) return [0, 1];
@@ -20,16 +47,28 @@ function niceTicks(max, target = 4) {
 const tickLabel = (v, unit) => `${Number.isInteger(v) ? v : Math.round(v * 100) / 100}${unit}`;
 
 /** Bottom axis for horizontal bar charts: baseline, gridlines, tick labels, axis title. */
-function bottomAxis({ x, ticks, unit, top, bottom, left, right, title }) {
+function bottomAxis({ x, ticks, unit, top, bottom, left, right, title, W }) {
   let svg = '';
   for (const t of ticks) {
+    const label = tickLabel(t, unit);
+    const half = textWidth(label) / 2;
+    const anchor = x(t) - half < 0 ? 'start' : W && x(t) + half > W ? 'end' : 'middle';
+    const tx = anchor === 'start' ? 0 : anchor === 'end' ? W : x(t);
     svg += `<line class="gl" x1="${x(t)}" x2="${x(t)}" y1="${top}" y2="${bottom}"/>`;
-    svg += `<text x="${x(t)}" y="${bottom + 15}" text-anchor="middle" class="num">${tickLabel(t, unit)}</text>`;
+    svg += `<text x="${tx}" y="${bottom + 15}" text-anchor="${anchor}" class="num">${label}</text>`;
   }
   svg += `<line x1="${left}" x2="${right}" y1="${bottom}" y2="${bottom}" stroke="var(--line-2)"/>`;
-  svg += `<text class="axis-title" x="${(left + right) / 2}" y="${bottom + 34}" text-anchor="middle">${escapeHtml(title)}</text>`;
+  const lines = titleLines(title, (W || right) - 4);
+  const widest = Math.max(...lines.map((l) => textWidth(l, 12, 600)));
+  const cx = Math.min(Math.max((left + right) / 2, widest / 2 + 2), (W || right) - widest / 2 - 2);
+  lines.forEach((l, i) => {
+    svg += `<text class="axis-title" x="${cx}" y="${bottom + 34 + i * 15}" text-anchor="middle">${escapeHtml(l)}</text>`;
+  });
   return svg;
 }
+
+/** Extra height a bottom axis needs when its title wraps to two lines. */
+const axisExtra = (title, W) => (titleLines(title, W - 4).length - 1) * 15;
 
 /** Title above the category labels of a horizontal bar chart (the y axis). */
 const yHeader = (x, text) => `<text class="axis-title" x="${x}" y="12" text-anchor="end">${escapeHtml(text)}</text>`;
@@ -45,13 +84,13 @@ export function pairedBars(el, rows, groupLabel, { xTitle = 'Share of students s
   const right = W - 70;
   const top = 22;
   const plotBottom = top + rows.length * rowH;
-  const H = plotBottom + 44;
+  const H = plotBottom + 44 + axisExtra(xTitle, W);
   const ticks = niceTicks(Math.max(...rows.map((r) => Math.max(r.all || 0, r.group || 0))));
   const max = ticks[ticks.length - 1];
   const x = (v) => left + ((right - left) * (v || 0)) / max;
 
   let svg = `<svg width="${W}" height="${H}" role="img" aria-label="${escapeHtml(groupLabel)} compared with all students, by ${escapeHtml(yTitle.toLowerCase())}">`;
-  svg += bottomAxis({ x, ticks, unit: '%', top, bottom: plotBottom, left, right, title: xTitle });
+  svg += bottomAxis({ x, ticks, unit: '%', top, bottom: plotBottom, left, right, title: xTitle, W });
   svg += yHeader(left - 8, yTitle);
   rows.forEach((r, i) => {
     const y = top + i * rowH + 4;
@@ -114,22 +153,26 @@ export function incomeScatter(el, points, trend, { label, unit = '', yTitle, hig
 export function disciplineBars(el, groups) {
   const W = chartWidth(el);
   const rowH = 26;
-  const left = Math.min(170, W * 0.42);
+  const maxLabel = W * 0.45;
+  const fits = groups.every((g) => textWidth(g.label, 12) + 14 <= maxLabel);
+  const labelOf = (g) => (fits ? g.label : g.short || g.label);
+  const left = Math.min(maxLabel, Math.max(...groups.map((g) => textWidth(labelOf(g), 12))) + 14);
   const right = W - 60;
   const top = 22;
   const plotBottom = top + groups.length * rowH + 4;
-  const H = plotBottom + 44;
+  const xTitle = 'Share of the group suspended or expelled (%)';
+  const H = plotBottom + 44 + axisExtra(xTitle, W);
   const bound = (g) => (typeof g.raw === 'string' && g.raw[0] === '<' ? parseFloat(g.raw.slice(1)) : g.value);
   const ticks = niceTicks(Math.max(1, ...groups.map(bound).filter((v) => v != null)));
   const max = ticks[ticks.length - 1];
   const X = (v) => left + ((right - left) * v) / max;
 
   let svg = `<svg width="${W}" height="${H}" role="img" aria-label="Suspension rates by student group">`;
-  svg += bottomAxis({ x: X, ticks, unit: '%', top, bottom: plotBottom, left, right, title: 'Share of the group suspended or expelled (%)' });
-  svg += yHeader(left - 8, 'Student group');
+  svg += bottomAxis({ x: X, ticks, unit: '%', top, bottom: plotBottom, left, right, title: xTitle, W });
+  svg += `<text class="axis-title" x="0" y="12">Student group</text>`;
   groups.forEach((g, i) => {
     const y = top + i * rowH + 3;
-    svg += `<text x="${left - 8}" y="${y + 14}" text-anchor="end" style="fill:${i ? 'var(--ink-2)' : 'var(--ink)'}">${escapeHtml(g.label)}</text>`;
+    svg += `<text x="${left - 8}" y="${y + 14}" text-anchor="end" style="fill:${i ? 'var(--ink-2)' : 'var(--ink)'}">${escapeHtml(labelOf(g))}</text>`;
     if (g.value == null) {
       const why = typeof g.raw === 'string' && /^n</i.test(g.raw) ? 'fewer than 10 students' : '—';
       svg += `<text x="${left + 4}" y="${y + 14}" style="fill:var(--ink-3)">${why}</text>`;
@@ -153,12 +196,13 @@ export function expectedVsActual(el, rows) {
   const right = W - 90;
   const top = 6;
   const plotBottom = top + rows.length * rowH;
-  const H = plotBottom + 44;
+  const xTitle = 'Students meeting standard, reading + math average (%)';
+  const H = plotBottom + 44 + axisExtra(xTitle, W);
   const ticks = [0, 25, 50, 75, 100];
   const X = (v) => left + ((right - left) * v) / 100;
 
   let svg = `<svg width="${W}" height="${H}" role="img" aria-label="Expected and actual results">`;
-  svg += bottomAxis({ x: X, ticks, unit: '%', top, bottom: plotBottom, left, right, title: 'Students meeting standard, reading + math average (%)' });
+  svg += bottomAxis({ x: X, ticks, unit: '%', top, bottom: plotBottom, left, right, title: xTitle, W });
   rows.forEach((r, i) => {
     const y = top + i * rowH + 6;
     svg += `<text x="0" y="${y + 12}" style="fill:var(--ink);font-weight:600">${escapeHtml(r.name)}</text><text x="${W}" y="${y + 12}" text-anchor="end">${r.lowIncome}% low-income</text>`;
@@ -201,14 +245,27 @@ export function trendChart(el, years, series, { unit = '%', yTitle, yMax, height
 
   let svg = `<svg width="${W}" height="${H}" role="img" aria-label="${escapeHtml(yTitle || '')} by school year">`;
   for (const t of ticks) svg += `<line class="gl" x1="${pl}" x2="${W - pr}" y1="${Y(t)}" y2="${Y(t)}"/><text x="${pl - 6}" y="${Y(t) + 4}" text-anchor="end" class="num">${tickLabel(t, '')}</text>`;
-  years.forEach((y, i) => { svg += `<text x="${X(i)}" y="${H - pb + 16}" text-anchor="middle" class="num">${y.replace(/^20(\d\d)-(\d\d)$/, '’$1–’$2')}</text>`; });
+  // year labels: keep the first and last, drop any that would collide with a kept neighbour
+  const yearText = years.map((y) => y.replace(/^20(\d\d)-(\d\d)$/, '’$1–’$2'));
+  const half = Math.max(...yearText.map((t) => textWidth(t))) / 2 + 3;
+  const keep = new Set([0, years.length - 1]);
+  let lastX = X(0);
+  for (let i = 1; i < years.length - 1; i++) {
+    if (X(i) - lastX >= half * 2 && X(years.length - 1) - X(i) >= half * 2) { keep.add(i); lastX = X(i); }
+  }
+  years.forEach((y, i) => {
+    svg += `<line x1="${X(i)}" x2="${X(i)}" y1="${H - pb}" y2="${H - pb + 4}" stroke="var(--line-2)"/>`;
+    if (keep.has(i)) svg += `<text x="${X(i)}" y="${H - pb + 16}" text-anchor="middle" class="num">${yearText[i]}</text>`;
+  });
   if (gapAfter > 0) {
     const gx = (X(gapAfter - 1) + X(gapAfter)) / 2;
     svg += `<text x="${gx}" y="${pt + 10}" text-anchor="middle" class="xs gaplbl">no tests</text>`;
   }
   svg += `<line x1="${pl}" x2="${W - pr}" y1="${H - pb}" y2="${H - pb}" stroke="var(--line-2)"/>`;
   svg += `<text class="axis-title" x="${(pl + W - pr) / 2}" y="${H - 8}" text-anchor="middle">School year</text>`;
-  svg += `<text class="axis-title" transform="translate(13 ${(pt + H - pb) / 2}) rotate(-90)" text-anchor="middle">${escapeHtml(yTitle || '')}</text>`;
+  const plotH = H - pt - pb;
+  const yFont = Math.max(10, Math.min(12, (12 * (plotH - 6)) / Math.max(1, textWidth(yTitle || '', 12, 600))));
+  svg += `<text class="axis-title" transform="translate(13 ${(pt + H - pb) / 2}) rotate(-90)" text-anchor="middle" style="font-size:${yFont.toFixed(1)}px">${escapeHtml(yTitle || '')}</text>`;
 
   const ends = [];
   series.forEach((s, si) => {

@@ -12,7 +12,7 @@ import { milesBetween } from '../geo.js';
 import { createMap, addSchoolDots } from '../maps.js';
 import { disciplineBars, demographicsBar, trendChart } from '../charts.js';
 import { tagList } from '../components.js';
-import { info, glossaryKey } from '../glossary.js';
+import { info, withInfo, glossaryKey } from '../glossary.js';
 import { reportUrl } from '../feedback.js';
 import { feederBox } from '../feeders.js';
 
@@ -40,7 +40,7 @@ function measure(school, district, key, { showEmpty = false } = {}) {
   const notes = [];
   if (dv != null && dv !== '') notes.push(`District ${plain(dv, m.unit)}`);
   if (sv != null) notes.push(`state ${sv}${m.unit}`);
-  return `<div class="kv"><div class="k">${m.label}${info(glossaryKey(key))}</div><div class="v num">${fmt(v, m.unit)}</div><div class="c">${notes.join(', ')}</div></div>`;
+  return `<div class="kv"><div class="k">${withInfo(m.label, glossaryKey(key))}</div><div class="v num">${fmt(v, m.unit)}</div><div class="c">${notes.join(', ')}</div></div>`;
 }
 
 function scorePanel(s) {
@@ -73,7 +73,7 @@ function safetySection(s) {
   if (!c) return `<p class="small muted">No ${CRDC_YEAR} federal record for this school. It may have opened later or reported under another name.</p>`;
   const was = (k) => { const p = incidentPrev(s, k); return p == null ? '' : `<div class="c">${CRDC_PREV_YEAR}: ${p}</div>`; };
   const byStaff = (k) => (k === 'sexual_assault' && c.sexual_assault_by_staff > 0 ? `<div class="c">${c.sexual_assault_by_staff} by a staff member</div>` : '');
-  const cell = (label, v, key, k) => `<div class="kv"><div class="k">${label}${key ? info(`incident:${key}`) : ''}</div><div class="v num">${fmt(v)}</div>${byStaff(k)}${was(k)}</div>`;
+  const cell = (label, v, key, k) => `<div class="kv"><div class="k">${key ? withInfo(label, `incident:${key}`) : label}</div><div class="v num">${fmt(v)}</div>${byStaff(k)}${was(k)}</div>`;
   const bases = BULLYING_BASES.filter(([k]) => (c.bullying?.[k] || 0) > 0).map(([k, label]) => `${c.bullying[k]} based on ${label}`);
   const restraint = RESTRAINT.map(([k, label]) => [label, c[k], k]).filter(([, v]) => v != null);
   return `<div class="kgrid">${INCIDENTS.map(([key, label]) => cell(label, incident(s, key), key, key)).join('')}
@@ -93,7 +93,7 @@ function staffSection(s) {
     const guide = STAFF_GUIDES[role];
     let note = typeof per === 'number' ? `1 per ${per.toLocaleString()} students` : '';
     if (guide && typeof per === 'number') note += per > guide.per ? ` (recommended: 1 per ${guide.per})` : ` (meets the 1 per ${guide.per} guideline)`;
-    return `<div class="kv"><div class="k">${label}${role === 'counselors' ? info('staff:counselors') : role === 'police' ? info('staff:police') : ''}</div><div class="v num">${fte == null ? '<span class="sup">—</span>' : fte === 0 ? 'None' : round1(fte)}</div><div class="c">${note}</div></div>`;
+    return `<div class="kv"><div class="k">${role === 'counselors' ? withInfo(label, 'staff:counselors') : role === 'police' ? withInfo(label, 'staff:police') : label}</div><div class="v num">${fte == null ? '<span class="sup">—</span>' : fte === 0 ? 'None' : round1(fte)}</div><div class="c">${note}</div></div>`;
   }).join('');
   return `<h3 class="subsec">Support staff on site${info('staff:fte')}</h3><div class="kgrid">${rows}</div>
     <p class="xs muted">Full-time equivalents from the ${CRDC_YEAR} federal collection, divided into this year's enrollment. Staff shared between schools appear as fractions.</p>`;
@@ -199,7 +199,7 @@ export function renderSchool(code) {
       ${feederBox(s)}
       <div class="box"><h3>Questions to ask on a tour</h3><ol>${tourQuestions(s).map((q) => `<li>${q}</li>`).join('')}</ol></div>
       ${near.length ? `<div class="box near"><h3>Nearby ${s.level.toLowerCase()} schools</h3><div class="pmap" id="profileMap"></div>
-        ${near.map(({ school: x, miles }) => `<a href="#s-${x.code}">${escapeHtml(x.name)}<span>${miles.toFixed(1)} mi${x.scores?.academics != null ? ` · Acad. ${x.scores.academics}` : ''}</span></a>`).join('')}</div>` : ''}
+        ${near.map(({ school: x, miles }) => `<a href="#s-${x.code}">${escapeHtml(x.name)}<span>${miles.toFixed(1)} mi${x.scores?.academics != null ? `, academics ${x.scores.academics}` : ''}</span></a>`).join('')}</div>` : ''}
       <div class="box small"><h3>Boundaries</h3>The nearest school isn't always the assigned one. Check a home address on the <a href="${store.feeders?.districts?.[s.district]?.url && !/feeder|find-your-school|school-assignment/.test(store.feeders.districts[s.district].url) ? store.feeders.districts[s.district].url : 'https://www.greatschools.org/school-district-boundaries-map/'}" rel="noopener">boundary map</a> or the district's school locator.</div>
       <div class="box small"><h3>More about this school</h3><ul class="links">
         ${s.zip ? `<li><a href="https://censusreporter.org/profiles/86000US${s.zip}/" rel="noopener">Neighborhood (ZIP ${s.zip}) on Census Reporter</a>: income, child poverty, languages</li>` : ''}
@@ -217,7 +217,7 @@ export function renderSchool(code) {
     { label: 'All students', raw: s.discipline?.all, value: num(s.discipline?.all) },
     ...PROFILE_GROUP_ORDER.map((key) => {
       const label = DISCIPLINE_GROUPS.find(([k]) => k === key)[1];
-      return { label: key === 'disability' ? label : label.replace(' students', ''), raw: s.discipline?.[key], value: num(s.discipline?.[key]) };
+      return { label: key === 'disability' ? label : label.replace(' students', ''), short: key === 'disability' ? 'With disabilities' : undefined, raw: s.discipline?.[key], value: num(s.discipline?.[key]) };
     }),
   ]);
 

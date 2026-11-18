@@ -53,7 +53,7 @@ function renderScatter() {
 
   const direction = m.lowerIsBetter ? -1 : 1;
   const ranked = [...points].sort((a, b) => direction * (b.res - a.res));
-  const item = (p) => `<a href="#s-${p.s.code}">${escapeHtml(p.s.name)}<span>${p.s.area}, ${p.x}% low-inc · ${p.res >= 0 ? '+' : ''}${p.res.toFixed(1)}</span></a>`;
+  const item = (p) => `<a href="#s-${p.s.code}">${escapeHtml(p.s.name)}<span>${p.s.area}, ${p.x}% low-income, ${Math.abs(p.res).toFixed(1)} points ${p.res >= 0 ? 'above' : 'below'}</span></a>`;
   $('#eqTop').innerHTML = ranked.slice(0, 10).map(item).join('');
   $('#eqBot').innerHTML = ranked.slice(-10).reverse().map(item).join('');
 }

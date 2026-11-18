@@ -110,6 +110,7 @@ function countPage() {
 }
 
 async function start() {
+  window.__sksBooted = true;
   setUpTheme();
   try {
     await loadData();

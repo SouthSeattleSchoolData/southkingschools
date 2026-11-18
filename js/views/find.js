@@ -115,11 +115,16 @@ function renderFilters() {
   const count = (fn) => store.schools.filter(fn).length;
   $('#fArea').innerHTML = AREAS.map((a) => checkbox('data-area', a, a, findState.areas.has(a), count((s) => s.area === a))).join('');
   $('#fLevel').innerHTML = LEVELS.map((l) => checkbox('data-level', l, l, findState.levels.has(l), count((s) => s.level === l))).join('');
+  const includeCounts = {
+    charter: count((s) => s.is_charter),
+    alternative: count((s) => s.school_type === 'A'),
+    programs: count((s) => s.isProgram || ['Preschool', 'Other'].includes(s.level)),
+  };
   $('#fInc').innerHTML = [
     ['charter', 'Charter schools'],
     ['alternative', 'Alternative schools'],
     ['programs', 'Special programs & online'],
-  ].map(([k, l]) => checkbox('data-include', k, l, findState.include.has(k))).join('');
+  ].map(([k, l]) => checkbox('data-include', k, l, findState.include.has(k), includeCounts[k])).join('');
 
   const toggle = (set, value, on) => (on ? set.add(value) : set.delete(value));
   $$('#fArea input').forEach((i) => i.addEventListener('change', () => { toggle(findState.areas, i.dataset.area, i.checked); findState.limit = PAGE_SIZE; renderResults(); }));
@@ -151,9 +156,8 @@ function renderLocationBar() {
   });
 }
 
-function matchingSchools() {
+function matchingSchools(inc = findState.include) {
   const q = searchKey(findState.query);
-  const inc = findState.include;
   return store.schools.filter((s) => {
     const levelOk = findState.levels.has(s.level) || (['Preschool', 'Other'].includes(s.level) && inc.has('programs'));
     return findState.areas.has(s.area)
@@ -189,7 +193,13 @@ function renderResults() {
   const list = sortSchools(matchingSchools());
   const out = $('#findOut');
   $('#findTitle').textContent = findState.areas.size === AREAS.length ? 'All schools' : [...findState.areas].join(', ');
-  $('#findCount').textContent = `${list.length} ${list.length === 1 ? 'school' : 'schools'}, sorted by ${SORTS[findState.sort].toLowerCase()}`;
+  const hiddenPrograms = findState.include.has('programs') ? 0 : matchingSchools(new Set([...findState.include, 'programs'])).length - list.length;
+  $('#findCount').innerHTML = `${list.length} ${list.length === 1 ? 'school' : 'schools'}, sorted by ${SORTS[findState.sort].toLowerCase()}.`
+    + (hiddenPrograms > 0 ? ` ${hiddenPrograms} preschool, online and special program ${hiddenPrograms === 1 ? 'site is' : 'sites are'} hidden. <button class="linkbtn" id="showPrograms" type="button">Show ${hiddenPrograms === 1 ? 'it' : 'them'}</button>` : '');
+  $('#showPrograms')?.addEventListener('click', () => {
+    findState.include.add('programs');
+    renderFind();
+  });
 
   if (!list.length) {
     out.innerHTML = '<div class="empty">No schools match. Turn on more areas or levels in the filters.</div>';
@@ -213,7 +223,7 @@ function resultRow(s) {
         <span>Reading <b>${plain(s.ela_proficient, '%')}</b></span>
         <span>Math <b>${plain(s.math_proficient, '%')}</b></span>
         <span>Low-income <b>${plain(s.pct_low_income, '%')}</b></span>
-        ${s.regular_attendance != null ? `<span>Attendance <b>${plain(s.regular_attendance, '%')}</b></span>` : ''}
+        ${s.regular_attendance != null ? `<span>Regular attendance <b>${plain(s.regular_attendance, '%')}</b></span>` : ''}
       </div>
       ${compareButton(s.code)}
     </div>
@@ -314,7 +324,7 @@ function renderTableView(out, list) {
       ${showDistance ? `<td>${s.distance != null ? s.distance.toFixed(1) : '—'}</td>` : ''}
       ${TABLE_COLUMNS.map(([k]) => `<td>${fmt(cell(s, k))}</td>`).join('')}
     </tr>`).join('');
-  out.innerHTML = `<div class="scroll" style="border:1px solid var(--line);border-radius:12px;background:var(--surface)"><table class="tbl"><thead>${head}</thead><tbody>${body}</tbody></table></div>
+  out.innerHTML = `<div class="scroll" style="border:1px solid var(--line);border-radius:12px;background:var(--surface);--tbl-bg:var(--surface)"><table class="tbl"><thead>${head}</thead><tbody>${body}</tbody></table></div>
     <p class="xs muted" style="margin-top:6px">Gray values are privacy-suppressed ranges from OSPI. Use the Sort menu to reorder.</p>`;
 }
 

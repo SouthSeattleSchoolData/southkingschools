@@ -19,9 +19,11 @@ export function info(key) {
   return `<button class="info" type="button" data-term="${escapeHtml(key)}" aria-label="What is ${escapeHtml(entry.term)}?">i</button>`;
 }
 
-/** Label text followed by its ⓘ button. */
+/** Label text followed by its ⓘ button; the last word and the button wrap together. */
 export function withInfo(label, key) {
-  return `${label}${info(key)}`;
+  const icon = info(key);
+  const m = /^([\s\S]*\s)?(\S+)$/.exec(label);
+  return icon && m ? `${m[1] || ''}<span class="nw">${m[2]}${icon}</span>` : `${label}${icon}`;
 }
 
 function tipHtml(key) {

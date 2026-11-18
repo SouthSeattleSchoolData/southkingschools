@@ -30,6 +30,16 @@ async function getJson(path) {
   return res.json();
 }
 
+const MONTHS = ['jan', 'feb', 'mar', 'apr', 'may', 'jun', 'jul', 'aug', 'sep', 'oct', 'nov', 'dec'];
+
+/** Sort key for timeline dates like "Sep 25, 2026", "Mar 2026" or "Jun 3–12, 2024"; undated items go last. */
+export function newsDateKey(text) {
+  const m = /^([A-Za-z]{3})[a-z]*\.?\s+(?:(\d{1,2})[^,]*,\s*)?(\d{4})/.exec(String(text || ''));
+  if (!m) return -Infinity;
+  const month = MONTHS.indexOf(m[1].toLowerCase());
+  return Number(m[3]) * 10000 + (month + 1) * 100 + Number(m[2] || 0);
+}
+
 export async function loadData() {
   const [data, news, policies, meta, glossary, i18n, feeders] = await Promise.all([
     getJson('data/schools.json'),
@@ -50,7 +60,7 @@ export async function loadData() {
   store.districtPoverty = data.district_poverty || null;
   store.sources = data.sources || {};
   store.byCode = Object.fromEntries(store.schools.map((s) => [s.code, s]));
-  store.news = news;
+  store.news = news.map((n, i) => ({ n, i })).sort((a, b) => newsDateKey(b.n.date) - newsDateKey(a.n.date) || a.i - b.i).map(({ n }) => n);
   store.policies = policies;
   store.meta = meta;
   store.i18n = i18n;
