@@ -1,0 +1,42 @@
+# Pulls raw federal CRDC rows for the districts on the site (plus any district whose name matches
+# the input) and saves them on the `snapshot` branch. Used when adding a district; see
+# tools/snapshot/fetch-federal.mjs. Run it by hand: Actions → "Snapshot federal data" → Run workflow.
+name: Snapshot federal data
+
+on:
+  workflow_dispatch:
+    inputs:
+      match:
+        description: 'Extra district name to include (for example Tahoma)'
+        required: false
+        default: ''
+
+permissions:
+  contents: write
+
+jobs:
+  snapshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Download and filter
+        run: node tools/snapshot/fetch-federal.mjs "${{ github.event.inputs.match }}"
+
+      - name: Save to the snapshot branch
+        run: |
+          mv snapshot /tmp/snapshot-out
+          git config user.name "school-data-bot"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout --orphan snapshot
+          git rm -rq --cached .
+          find . -mindepth 1 -maxdepth 1 ! -name .git -exec rm -rf {} +
+          cp -r /tmp/snapshot-out/. .
+          git add -A
+          git commit -qm "Federal data snapshot ($(date -u +%Y-%m-%d))"
+          git push -f origin snapshot
