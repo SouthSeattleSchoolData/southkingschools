@@ -69,7 +69,7 @@ CLUB_RX = [(k, label, re.compile(rx, re.I)) for k, label, rx in CLUB_CATEGORIES]
 
 
 # Names the keyword rules would put in the wrong group.
-CLUB_OVERRIDES = {'chinese chess club': 'hobby', 'girls frisbee': 'hobby', 'girls hiking club': 'hobby', 'girls in sports': 'hobby', 'days for girls': 'service', 'environmental feminist club': 'service', 'mental health awareness club': 'service', 'student advocates for mental health & addiction': 'service'}
+CLUB_OVERRIDES = {'chinese chess club': 'hobby', 'girls frisbee': 'hobby', 'girls hiking club': 'hobby', 'girls in sports': 'hobby', 'days for girls': 'service', 'environmental feminist club': 'service', 'mental health awareness club': 'service', 'student advocates for mental health & addiction': 'service', 'mental health club': 'service', 'byte club': 'stem', 'criminal justice club': 'careers', 'digital recording club': 'arts', 'pro justice union (pju)': 'academic', 'mesa builders': 'stem', 'international buddy': 'service', 'mun': 'academic', 'roots and shoots': 'service', 'seattle humane support club': 'service'}
 
 
 def club_category(name):
@@ -150,7 +150,7 @@ def main():
         'window': f"{school_year(FIRST_YEAR)} to {school_year(LAST_YEAR)}",
         'updated': '2026-11-18',
         'club_categories': [{'key': k, 'label': label} for k, label, _ in CLUB_CATEGORIES] + [{'key': 'hobby', 'label': 'Games, hobbies and sport clubs'}],
-        'club_list_missing': {'4495': 'Skyline posts its club list only on a student ASB site', '2797': 'Kent-Meridian has no club page on its website', '2475': None, '3741': None, '3096': None, '3522': None, '5469': None},
+        'club_list_missing': {'4495': 'Skyline posts its club list only on a student ASB site', '2797': 'Kent-Meridian has no club page on its website', '2475': "Renton High's website could not be read automatically", '5469': 'Summit Atlas does not post a club list on its website'},
         'sources': [
             {'name': 'WIAA Tournament History (state champions and runners-up)', 'url': 'https://www.wiaa.com/history/'},
             {'name': 'WIAA school directory (classification, league and sports)', 'url': 'https://wiaa.finalforms.com/state_schools'},

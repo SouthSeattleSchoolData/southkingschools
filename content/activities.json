@@ -34,11 +34,8 @@
  "club_list_missing": {
   "4495": "Skyline posts its club list only on a student ASB site",
   "2797": "Kent-Meridian has no club page on its website",
-  "2475": null,
-  "3741": null,
-  "3096": null,
-  "3522": null,
-  "5469": null
+  "2475": "Renton High's website could not be read automatically",
+  "5469": "Summit Atlas does not post a club list on its website"
  },
  "sources": [
   {
@@ -1897,6 +1894,120 @@
      "wrestling"
     ]
    },
+   "clubs": {
+    "year": "current",
+    "url": "https://chiefsealthhs.seattleschools.org/student-life/clubs/",
+    "list": [
+     {
+      "n": "Arabic Honor Society Club",
+      "c": "academic"
+     },
+     {
+      "n": "Asian Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Astronomy Club",
+      "c": "stem"
+     },
+     {
+      "n": "Bike Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Black Student Union (BSU)",
+      "c": "culture"
+     },
+     {
+      "n": "Chess Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Chief Sealth Automotive Association",
+      "c": "careers"
+     },
+     {
+      "n": "CSI Gaming Collective",
+      "c": "hobby"
+     },
+     {
+      "n": "D & D Club",
+      "c": "hobby"
+     },
+     {
+      "n": "DECA",
+      "c": "careers"
+     },
+     {
+      "n": "Drama Club",
+      "c": "arts"
+     },
+     {
+      "n": "East African Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "Filipino Student Association (FSA)",
+      "c": "culture"
+     },
+     {
+      "n": "Gender and Sexuality Alliance (GSA)",
+      "c": "culture"
+     },
+     {
+      "n": "Green Team",
+      "c": "service"
+     },
+     {
+      "n": "Guitar Club",
+      "c": "arts"
+     },
+     {
+      "n": "Health Occupation Student Association (HOSA)",
+      "c": "careers"
+     },
+     {
+      "n": "Key Club",
+      "c": "service"
+     },
+     {
+      "n": "Khmer Student Association",
+      "c": "culture"
+     },
+     {
+      "n": "MechLA",
+      "c": "hobby"
+     },
+     {
+      "n": "MESA Builders",
+      "c": "stem"
+     },
+     {
+      "n": "Mock Trial",
+      "c": "academic"
+     },
+     {
+      "n": "Movie Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Skateboarding Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Table Tennis Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Tabletop Games Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Technology Student Association",
+      "c": "stem"
+     }
+    ]
+   },
    "titles": 0,
    "sport_titles": 0,
    "runner_up": 0
@@ -3367,6 +3478,142 @@
    "sport_titles": 11,
    "runner_up": 8
   },
+  "3522": {
+   "results": [],
+   "clubs": {
+    "year": "2024-25",
+    "url": "https://international.bsd405.org/student-life/clubs-and-activities",
+    "list": [
+     {
+      "n": "Art Club",
+      "c": "arts"
+     },
+     {
+      "n": "Chess Club",
+      "c": "hobby"
+     },
+     {
+      "n": "FBLA",
+      "c": "careers"
+     },
+     {
+      "n": "Feminism Club",
+      "c": "culture"
+     },
+     {
+      "n": "Future Health Professionals",
+      "c": "careers"
+     },
+     {
+      "n": "Garden Club",
+      "c": "service"
+     },
+     {
+      "n": "Green Team",
+      "c": "service"
+     },
+     {
+      "n": "International Buddy",
+      "c": "service"
+     },
+     {
+      "n": "International Thespian Society",
+      "c": "arts"
+     },
+     {
+      "n": "Investment Club",
+      "c": "careers"
+     },
+     {
+      "n": "Key Club",
+      "c": "service"
+     },
+     {
+      "n": "Math Honor Society",
+      "c": "stem"
+     },
+     {
+      "n": "MUN",
+      "c": "academic"
+     },
+     {
+      "n": "National Art Honor Society",
+      "c": "academic"
+     },
+     {
+      "n": "National French Honor Society",
+      "c": "academic"
+     },
+     {
+      "n": "National Honor Society",
+      "c": "academic"
+     },
+     {
+      "n": "National Social Studies Honor Society",
+      "c": "academic"
+     },
+     {
+      "n": "National Speech and Debate Association",
+      "c": "academic"
+     },
+     {
+      "n": "National Technical Honor Society",
+      "c": "stem"
+     },
+     {
+      "n": "Philosophy",
+      "c": "academic"
+     },
+     {
+      "n": "QSA",
+      "c": "culture"
+     },
+     {
+      "n": "Red Cross Club",
+      "c": "service"
+     },
+     {
+      "n": "Robotics",
+      "c": "stem"
+     },
+     {
+      "n": "Robotics (FIRST Lego League)",
+      "c": "stem"
+     },
+     {
+      "n": "Roots and Shoots",
+      "c": "service"
+     },
+     {
+      "n": "Science National Honor Society",
+      "c": "stem"
+     },
+     {
+      "n": "Seattle Humane Support Club",
+      "c": "service"
+     },
+     {
+      "n": "Titan MS Science Club",
+      "c": "stem"
+     },
+     {
+      "n": "Tri-M Music Honor Society",
+      "c": "academic"
+     },
+     {
+      "n": "Weightlifting",
+      "c": "hobby"
+     },
+     {
+      "n": "Yearbook",
+      "c": "arts"
+     }
+    ]
+   },
+   "titles": 0,
+   "sport_titles": 0,
+   "runner_up": 0
+  },
   "3588": {
    "results": [
     {
@@ -4542,6 +4789,128 @@
      "track and field",
      "volleyball",
      "wrestling"
+    ]
+   },
+   "clubs": {
+    "year": "current",
+    "url": "https://lindbergh.rentonschools.us/for-students/activities",
+    "list": [
+     {
+      "n": "Art Club",
+      "c": "arts"
+     },
+     {
+      "n": "Asian Student Union (ASU)",
+      "c": "culture"
+     },
+     {
+      "n": "Black Student Union (BSU)",
+      "c": "culture"
+     },
+     {
+      "n": "BYTE Club",
+      "c": "stem"
+     },
+     {
+      "n": "Criminal Justice Club",
+      "c": "careers"
+     },
+     {
+      "n": "Debate Club",
+      "c": "academic"
+     },
+     {
+      "n": "DECA",
+      "c": "careers"
+     },
+     {
+      "n": "Digital Recording Club",
+      "c": "arts"
+     },
+     {
+      "n": "Drama",
+      "c": "arts"
+     },
+     {
+      "n": "Eagle Crew",
+      "c": "service"
+     },
+     {
+      "n": "Educators Rising",
+      "c": "careers"
+     },
+     {
+      "n": "Environmental Science Club",
+      "c": "stem"
+     },
+     {
+      "n": "FCCLA",
+      "c": "careers"
+     },
+     {
+      "n": "Filipino Club",
+      "c": "culture"
+     },
+     {
+      "n": "Gender Sexuality Alliance (GSA)",
+      "c": "culture"
+     },
+     {
+      "n": "Hispanos Unidos",
+      "c": "culture"
+     },
+     {
+      "n": "HOSA",
+      "c": "careers"
+     },
+     {
+      "n": "Japanese Club",
+      "c": "culture"
+     },
+     {
+      "n": "Key Club",
+      "c": "service"
+     },
+     {
+      "n": "Knitting Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Mental Health Club",
+      "c": "service"
+     },
+     {
+      "n": "Muslim Students Club",
+      "c": "culture"
+     },
+     {
+      "n": "National Honors Society",
+      "c": "academic"
+     },
+     {
+      "n": "Pickleball Club",
+      "c": "hobby"
+     },
+     {
+      "n": "Poetry Club",
+      "c": "arts"
+     },
+     {
+      "n": "Pro Justice Union (PJU)",
+      "c": "academic"
+     },
+     {
+      "n": "Robotics",
+      "c": "stem"
+     },
+     {
+      "n": "Vietnamese Student Association (VSA)",
+      "c": "culture"
+     },
+     {
+      "n": "Youth Alive",
+      "c": "culture"
+     }
     ]
    },
    "titles": 0,
