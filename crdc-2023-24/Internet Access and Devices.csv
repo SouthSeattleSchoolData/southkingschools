@@ -1,0 +1,253 @@
+LEA_STATE,LEA_STATE_NAME,LEAID,LEA_NAME,SCHID,SCH_NAME,COMBOKEY,SCH_JUST,SCH_INTERNET_FIBER,SCH_INTERNET_WIFI,SCH_INTERNET_SCHDEV,SCH_INTERNET_STUDDEV,SCH_INTERNET_WIFIENDEV,SCH_INTERNET_WIFINEEDED,SCH_INTERNET_HOTSPOTNEEDED,SCH_INTERNET_WIFIRECEIVED,SCH_INTERNET_HOTSPOTRECEIVED
+"WA","WASHINGTON","5300342","Rainier Valley Leadership Academy","03602","RAINIER VALLEY LEADERSHIP ACADEMY","530034203602","No","Yes","Yes","Yes","No",164,-9,-9,-9,-9
+"WA","WASHINGTON","5300343","Summit Public School: Atlas","03611","SUMMIT PUBLIC SCHOOL: ATLAS","530034303611","No","Yes","Yes","Yes","Yes",580,-9,-9,-9,-9
+"WA","WASHINGTON","5300348","Impact | Salish Sea Elementary","03749","IMPACT | SALISH SEA ELEMENTARY","530034803749","No","Yes","Yes","No","No",324,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00058","ARDMORE ELEMENTARY SCHOOL","530039000058","No","Yes","Yes","Yes","No",351,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00060","BELLEVUE HIGH SCHOOL","530039000060","No","Yes","Yes","Yes","No",1714,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00062","BENNETT ELEMENTARY SCHOOL","530039000062","No","Yes","Yes","Yes","No",464,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00063","CHERRY CREST ELEMENTARY SCHOOL","530039000063","No","Yes","Yes","Yes","No",546,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00064","CHINOOK MIDDLE SCHOOL","530039000064","No","Yes","Yes","Yes","No",763,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00065","CLYDE HILL ELEMENTARY","530039000065","No","Yes","Yes","Yes","No",532,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00067","ENATAI ELEMENTARY SCHOOL","530039000067","No","Yes","Yes","Yes","No",476,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00068","HIGHLAND MIDDLE SCHOOL","530039000068","No","Yes","Yes","Yes","No",593,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00072","INTERLAKE SENIOR HIGH SCHOOL","530039000072","No","Yes","Yes","Yes","No",1644,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00075","LAKE HILLS ELEMENTARY","530039000075","No","Yes","Yes","Yes","No",455,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00076","MEDINA ELEMENTARY SCHOOL","530039000076","No","Yes","Yes","Yes","No",563,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00077","NEWPORT HEIGHTS ELEMENTARY","530039000077","No","Yes","Yes","Yes","No",477,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00078","NEWPORT SENIOR HIGH SCHOOL","530039000078","No","Yes","Yes","Yes","No",1865,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00079","ODLE MIDDLE SCHOOL","530039000079","No","Yes","Yes","Yes","No",969,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00082","PHANTOM LAKE ELEMENTARY","530039000082","No","Yes","Yes","Yes","No",331,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00085","SAMMAMISH SENIOR HIGH","530039000085","No","Yes","Yes","Yes","No",1377,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00086","SHERWOOD FOREST ELEMENTARY","530039000086","No","Yes","Yes","Yes","No",363,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00087","SOMERSET ELEMENTARY SCHOOL","530039000087","No","Yes","Yes","Yes","No",755,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00088","SPIRITRIDGE ELEMENTARY SCHOOL","530039000088","No","Yes","Yes","Yes","No",497,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00089","STEVENSON ELEMENTARY","530039000089","No","Yes","Yes","Yes","No",497,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00090","PUESTA DEL SOL ELEMENTARY SCHOOL","530039000090","No","Yes","Yes","Yes","No",459,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00093","TILLICUM MIDDLE SCHOOL","530039000093","No","Yes","Yes","Yes","No",678,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00094","TYEE MIDDLE SCHOOL","530039000094","No","Yes","Yes","Yes","No",1016,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","00096","WOODRIDGE ELEMENTARY","530039000096","No","Yes","Yes","Yes","No",515,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","03149","INTERNATIONAL SCHOOL","530039003149","No","Yes","Yes","Yes","No",599,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","03354","BELLEVUE BIG PICTURE SCHOOL","530039003354","No","Yes","Yes","Yes","No",349,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","03434","TRANSITION PROGRAM","530039003434","No","Yes","Yes","Yes","No",73,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","03455","JING MEI ELEMENTARY SCHOOL","530039003455","No","Yes","Yes","Yes","No",501,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","03462","BELLEVUE OPEN DOORS","530039003462","No","Yes","Yes","Yes","No",24,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","00482","COUGAR RIDGE ELEMENTARY","530375000482","No","Yes","Yes","No","No",583,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","00570","APOLLO ELEMENTARY","530375000570","No","Yes","Yes","No","No",621,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","00571","BRIARWOOD ELEMENTARY","530375000571","No","Yes","Yes","No","No",622,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","00573","ISSAQUAH MIDDLE SCHOOL","530375000573","No","Yes","Yes","Yes","No",978,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","00574","ISSAQUAH HIGH SCHOOL","530375000574","No","Yes","Yes","Yes","Yes",6380,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","00575","ISSAQUAH VALLEY ELEMENTARY","530375000575","No","Yes","Yes","No","No",602,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","00576","LIBERTY SR HIGH SCHOOL","530375000576","No","Yes","Yes","Yes","Yes",4437,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","00577","MAPLE HILLS ELEMENTARY","530375000577","No","Yes","Yes","No","No",507,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","00579","MAYWOOD MIDDLE SCHOOL","530375000579","No","Yes","Yes","Yes","No",1012,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","00580","PINE LAKE MIDDLE SCHOOL","530375000580","No","Yes","Yes","Yes","No",1037,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","00581","SUNNY HILLS ELEMENTARY","530375000581","No","Yes","Yes","No","No",566,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","01490","ISSAQUAH SPECIAL SERVICES","530375001490","No","No","No","No","No",0,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","01495","BEAVER LAKE MIDDLE SCHOOL","530375001495","No","Yes","Yes","Yes","No",914,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","01773","ECHO GLEN SCHOOL","530375001773","Yes","Yes","No","No","No",0,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","02107","CLARK ELEMENTARY","530375002107","No","Yes","Yes","No","No",643,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","02214","CHALLENGER ELEMENTARY","530375002214","No","Yes","Yes","No","No",405,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","02307","SUNSET ELEMENTARY","530375002307","No","Yes","Yes","No","No",647,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","02426","DISCOVERY ELEMENTARY","530375002426","No","Yes","Yes","No","No",518,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","02518","ENDEAVOUR ELEMENTARY SCHOOL","530375002518","No","Yes","Yes","No","No",460,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","02567","SKYLINE HIGH SCHOOL","530375002567","No","Yes","Yes","Yes","Yes",5755,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","02881","CASCADE RIDGE ELEMENTARY","530375002881","No","Yes","Yes","No","No",407,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","02981","NEWCASTLE ELEMENTARY SCHOOL","530375002981","No","Yes","Yes","No","No",509,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","03067","GRAND RIDGE ELEMENTARY","530375003067","No","Yes","Yes","No","No",468,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","03167","ISSAQUAH HEAD START","530375003167","No","Yes","Yes","No","No",0,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","03331","CREEKSIDE ELEMENTARY","530375003331","No","Yes","Yes","No","No",600,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","03337","PACIFIC CASCADE MIDDLE SCHOOL","530375003337","No","Yes","Yes","Yes","No",743,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","03588","GIBSON EK HIGH SCHOOL","530375003588","No","Yes","Yes","Yes","Yes",172,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","03707","ISSAQUAH PRESCHOOL","530375003707","No","Yes","Yes","No","No",0,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","03794","CEDAR TRAILS ELEMENTARY","530375003794","No","Yes","Yes","No","No",500,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","03795","COUGAR MOUNTAIN MIDDLE SCHOOL","530375003795","No","Yes","Yes","Yes","No",671,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","00612","CEDAR VALLEY ELEMENTARY SCHOOL","530396000612","No","Yes","Yes","No","No",273,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","00613","COVINGTON ELEMENTARY SCHOOL","530396000613","No","Yes","Yes","No","No",437,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","00614","EAST HILL ELEMENTARY SCHOOL","530396000614","No","Yes","Yes","No","No",373,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","00615","FAIRWOOD ELEMENTARY SCHOOL","530396000615","No","Yes","Yes","No","No",314,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","00617","GRASS LAKE ELEMENTARY SCHOOL","530396000617","No","Yes","Yes","No","No",355,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","00619","KENT ELEMENTARY SCHOOL","530396000619","No","Yes","Yes","No","No",415,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","00621","KENT-MERIDIAN HIGH SCHOOL","530396000621","No","Yes","Yes","Yes","No",1697,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","00622","KENTRIDGE HIGH SCHOOL","530396000622","No","Yes","Yes","Yes","No",2034,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","00623","LAKE YOUNGS ELEMENTARY SCHOOL","530396000623","No","Yes","Yes","No","No",292,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","00624","MEEKER MIDDLE SCHOOL","530396000624","No","Yes","Yes","Yes","No",786,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","00625","MERIDIAN ELEMENTARY SCHOOL","530396000625","No","Yes","Yes","No","No",384,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","00626","MERIDIAN MIDDLE SCHOOL","530396000626","No","Yes","Yes","Yes","No",660,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","00628","PANTHER LAKE ELEMENTARY SCHOOL","530396000628","No","Yes","Yes","No","No",415,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","00629","PARK ORCHARD ELEMENTARY SCHOOL","530396000629","No","Yes","Yes","No","No",475,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","00630","PINE TREE ELEMENTARY SCHOOL","530396000630","No","Yes","Yes","No","No",278,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","00631","SCENIC HILL ELEMENTARY SCHOOL","530396000631","No","Yes","Yes","No","No",511,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","00633","SOOS CREEK ELEMENTARY SCHOOL","530396000633","No","Yes","Yes","No","No",241,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","00635","SPRINGBROOK ELEMENTARY SCHOOL","530396000635","No","Yes","Yes","No","No",306,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","00690","GEORGE T. DANIEL ELEMENTARY SCHOOL","530396000690","No","Yes","Yes","No","No",327,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","00706","SUNRISE ELEMENTARY SCHOOL","530396000706","No","Yes","Yes","No","No",499,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","01142","CEDAR HEIGHTS MIDDLE SCHOOL","530396001142","No","Yes","Yes","Yes","No",914,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","01603","MEADOW RIDGE ELEMENTARY SCHOOL","530396001603","No","Yes","Yes","No","No",379,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","01610","SAWYER WOODS ELEMENTARY SCHOOL","530396001610","No","Yes","Yes","No","No",335,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","01779","CRESTWOOD ELEMENTARY SCHOOL","530396001779","No","Yes","Yes","No","No",284,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","01780","MATTSON MIDDLE SCHOOL","530396001780","No","Yes","Yes","Yes","No",797,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","01840","KENTWOOD HIGH SCHOOL","530396001840","No","Yes","Yes","Yes","No",1875,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","02111","RIDGEWOOD ELEMENTARY SCHOOL","530396002111","No","Yes","Yes","No","No",416,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","02112","MARTIN SORTUN ELEMENTARY SCHOOL","530396002112","No","Yes","Yes","No","No",454,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","02113","JENKINS CREEK ELEMENTARY SCHOOL","530396002113","No","Yes","Yes","No","No",299,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","02308","CARRIAGE CREST ELEMENTARY SCHOOL","530396002308","No","Yes","Yes","No","No",295,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","02309","NEELY O BRIEN ELEMENTARY SCHOOL","530396002309","No","Yes","Yes","No","No",480,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","02310","HORIZON ELEMENTARY SCHOOL","530396002310","No","Yes","Yes","No","No",390,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","02521","NORTHWOOD MIDDLE SCHOOL","530396002521","No","Yes","Yes","Yes","No",898,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","02522","GLENRIDGE ELEMENTARY","530396002522","No","Yes","Yes","No","No",327,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","02570","KENTLAKE HIGH SCHOOL","530396002570","No","Yes","Yes","Yes","No",1473,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","02729","EMERALD PARK ELEMENTARY SCHOOL","530396002729","No","Yes","Yes","No","No",321,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","02799","MILLENNIUM ELEMENTARY SCHOOL","530396002799","No","Yes","Yes","No","No",464,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","02986","MILL CREEK MIDDLE SCHOOL","530396002986","No","Yes","Yes","Yes","No",849,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","03382","IGRAD","530396003382","No","Yes","Yes","Yes","No",362,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","03564","THE OUTREACH PROGRAM","530396003564","No","Yes","Yes","Yes","No",69,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","03797","KENT LABORATORY ACADEMY","530396003797","No","Yes","Yes","Yes","No",316,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","03798","RIVER RIDGE ELEMENTARY","530396003798","No","Yes","Yes","No","No",558,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","03907","CANYON RIDGE MIDDLE SCHOOL","530396003907","No","Yes","Yes","Yes","No",811,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","01064","BENSON HILL ELEMENTARY SCHOOL","530723001064","No","Yes","Yes","Yes","No",474,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","01065","BRYN MAWR ELEMENTARY SCHOOL","530723001065","No","Yes","Yes","Yes","No",387,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","01066","CAMPBELL HILL ELEMENTARY SCHOOL","530723001066","No","Yes","Yes","Yes","No",365,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","01067","CASCADE ELEMENTARY SCHOOL","530723001067","No","Yes","Yes","Yes","No",438,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","01070","NELSEN MIDDLE SCHOOL","530723001070","No","Yes","Yes","Yes","No",881,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","01071","HAZELWOOD ELEMENTARY SCHOOL","530723001071","No","Yes","Yes","Yes","No",459,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","01072","HIGHLANDS ELEMENTARY SCHOOL","530723001072","No","Yes","Yes","Yes","No",402,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","01075","KENNYDALE ELEMENTARY SCHOOL","530723001075","No","Yes","Yes","Yes","No",498,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","01076","LAKERIDGE ELEMENTARY SCHOOL","530723001076","No","Yes","Yes","Yes","No",330,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","01077","LINDBERGH SENIOR HIGH SCHOOL","530723001077","No","Yes","Yes","Yes","Yes",1214,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","01078","MAPLEWOOD HEIGHTS ELEMENTARY SCHOOL","530723001078","No","Yes","Yes","Yes","No",602,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","01079","MCKNIGHT MIDDLE SCHOOL","530723001079","No","Yes","Yes","Yes","No",822,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","01080","HAZEN SENIOR HIGH SCHOOL","530723001080","No","Yes","Yes","Yes","Yes",1690,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","01081","RENTON PARK ELEMENTARY SCHOOL","530723001081","No","Yes","Yes","Yes","No",361,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","01082","RENTON SENIOR HIGH SCHOOL","530723001082","No","Yes","Yes","Yes","Yes",1179,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","01084","SIERRA HEIGHTS ELEMENTARY SCHOOL","530723001084","No","Yes","Yes","Yes","No",456,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","01085","TALBOT HILL ELEMENTARY SCHOOL","530723001085","No","Yes","Yes","Yes","No",415,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","01087","TIFFANY PARK ELEMENTARY SCHOOL","530723001087","No","Yes","Yes","Yes","No",371,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","01410","OUT OF DISTRICT FACILITY","530723001410","No","No","No","No","No",0,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","02343","GRIFFIN HOME","530723002343","No","Yes","Yes","Yes","No",3,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","02564","DIMMITT MIDDLE SCHOOL","530723002564","No","Yes","Yes","Yes","No",632,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","02721","HOME PROGRAM","530723002721","No","Yes","Yes","Yes","No",137,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","03073","RENTON ACADEMY","530723003073","No","Yes","Yes","Yes","No",29,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","03351","HONEY DEW ELEMENTARY","530723003351","No","Yes","Yes","Yes","No",293,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","03400","TALLEY SENIOR HIGH SCHOOL","530723003400","No","Yes","Yes","Yes","Yes",216,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","03447","MEADOW CREST EARLY CHILDHOOD EDUCATION CENTER","530723003447","No","Yes","Yes","No","No",0,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","03450","OPEN DOOR YOUTH REENGAGEMENT RENTON","530723003450","No","No","No","Yes","Yes",32,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","03603","RISDON MIDDLE SCHOOL","530723003603","No","Yes","Yes","Yes","No",759,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","03651","SARTORI ELEMENTARY SCHOOL","530723003651","No","Yes","Yes","Yes","No",511,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","03910","HILLTOP HERITAGE ELEMENTARY SCHOOL","530723003910","No","Yes","Yes","Yes","No",507,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01102","PATHFINDER K-8 SCHOOL","530771001102","No","Yes","Yes","Yes","Yes",443,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01127","ADAMS ELEMENTARY SCHOOL","530771001127","No","Yes","Yes","Yes","Yes",295,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01129","ALKI ELEMENTARY SCHOOL","530771001129","No","Yes","Yes","Yes","Yes",262,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01132","LICTON SPRINGS K-8","530771001132","No","Yes","Yes","Yes","Yes",126,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01135","ARBOR HEIGHTS ELEMENTARY SCHOOL","530771001135","No","Yes","Yes","Yes","Yes",499,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01136","MERCER INTERNATIONAL MIDDLE SCHOOL","530771001136","No","Yes","Yes","Yes","Yes",758,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01137","DANIEL BAGLEY ELEMENTARY SCHOOL","530771001137","No","Yes","Yes","Yes","Yes",357,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01138","BALLARD HIGH SCHOOL","530771001138","No","Yes","Yes","Yes","Yes",1509,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01140","BEACON HILL INTERNATIONAL SCHOOL","530771001140","No","Yes","Yes","Yes","Yes",357,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01143","MARTIN LUTHER KING JR. ELEMENTARY SCHOOL","530771001143","No","Yes","Yes","Yes","Yes",279,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01145","BROADVIEW-THOMSON K-8 SCHOOL","530771001145","No","Yes","Yes","Yes","Yes",573,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01146","BRYANT ELEMENTARY SCHOOL","530771001146","No","Yes","Yes","Yes","Yes",487,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01149","CHIEF SEALTH INTERNATIONAL HIGH SCHOOL","530771001149","No","Yes","Yes","Yes","Yes",1113,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01150","CLEVELAND HIGH SCHOOL","530771001150","No","Yes","Yes","Yes","Yes",742,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01151","FRANTZ COE ELEMENTARY SCHOOL","530771001151","No","Yes","Yes","Yes","Yes",448,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01154","CONCORD INTERNATIONAL SCHOOL","530771001154","No","Yes","Yes","Yes","Yes",307,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01157","B F DAY ELEMENTARY SCHOOL","530771001157","No","Yes","Yes","Yes","Yes",412,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01158","DEARBORN PARK INTERNATIONAL SCHOOL","530771001158","No","Yes","Yes","Yes","Yes",328,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01161","DUNLAP ELEMENTARY SCHOOL","530771001161","No","Yes","Yes","Yes","Yes",256,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01162","ECKSTEIN MIDDLE SCHOOL","530771001162","No","Yes","Yes","Yes","Yes",1039,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01163","EMERSON ELEMENTARY SCHOOL","530771001163","No","Yes","Yes","Yes","Yes",352,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01168","FRANKLIN HIGH SCHOOL","530771001168","No","Yes","Yes","Yes","Yes",1155,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01169","KIMBALL ELEMENTARY SCHOOL","530771001169","No","Yes","Yes","Yes","Yes",431,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01171","GARFIELD HIGH SCHOOL","530771001171","No","Yes","Yes","Yes","Yes",1512,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01172","GATEWOOD ELEMENTARY SCHOOL","530771001172","No","Yes","Yes","Yes","Yes",382,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01173","BAILEY GATZERT ELEMENTARY SCHOOL","530771001173","No","Yes","Yes","Yes","Yes",367,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01175","GRAHAM HILL ELEMENTARY SCHOOL","530771001175","No","Yes","Yes","Yes","Yes",269,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01176","GREEN LAKE ELEMENTARY SCHOOL","530771001176","No","Yes","Yes","Yes","Yes",326,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01177","GREENWOOD ELEMENTARY SCHOOL","530771001177","No","Yes","Yes","Yes","Yes",317,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01180","HAMILTON INTERNATIONAL MIDDLE SCHOOL","530771001180","No","Yes","Yes","Yes","Yes",917,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01182","WEST SEATTLE ELEMENTARY SCHOOL","530771001182","No","Yes","Yes","Yes","Yes",338,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01183","HIGHLAND PARK ELEMENTARY SCHOOL","530771001183","No","Yes","Yes","Yes","Yes",284,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01187","INGRAHAM HIGH SCHOOL","530771001187","No","Yes","Yes","Yes","Yes",1294,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01192","JOHN HAY ELEMENTARY SCHOOL","530771001192","No","Yes","Yes","Yes","Yes",274,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01193","JOHN ROGERS ELEMENTARY SCHOOL","530771001193","No","Yes","Yes","Yes","Yes",223,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01195","LAFAYETTE ELEMENTARY SCHOOL","530771001195","No","Yes","Yes","Yes","Yes",519,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01197","JOHN STANFORD INTERNATIONAL SCHOOL","530771001197","No","Yes","Yes","Yes","Yes",412,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01198","LAURELHURST ELEMENTARY SCHOOL","530771001198","No","Yes","Yes","Yes","Yes",281,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01199","LAWTON ELEMENTARY SCHOOL","530771001199","No","Yes","Yes","Yes","Yes",321,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01201","LESCHI ELEMENTARY SCHOOL","530771001201","No","Yes","Yes","Yes","Yes",274,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01205","LOWELL ELEMENTARY SCHOOL - SEATTLE","530771001205","No","Yes","Yes","Yes","Yes",443,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01206","LOYAL HEIGHTS ELEMENTARY SCHOOL","530771001206","No","Yes","Yes","Yes","Yes",541,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01207","MADISON MIDDLE SCHOOL","530771001207","No","Yes","Yes","Yes","Yes",1027,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01209","MAPLE ELEMENTARY SCHOOL","530771001209","No","Yes","Yes","Yes","Yes",415,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01212","MCCLURE MIDDLE SCHOOL","530771001212","No","Yes","Yes","Yes","Yes",465,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01214","MCGILVRA ELEMENTARY SCHOOL","530771001214","No","Yes","Yes","Yes","Yes",219,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01216","MADRONA K-8 SCHOOL","530771001216","No","Yes","Yes","Yes","Yes",222,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01219","MONTLAKE ELEMENTARY SCHOOL","530771001219","No","Yes","Yes","Yes","Yes",170,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01221","JOHN MUIR ELEMENTARY SCHOOL","530771001221","No","Yes","Yes","Yes","Yes",345,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01222","NATHAN HALE HIGH SCHOOL","530771001222","No","Yes","Yes","Yes","Yes",1047,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01223","NORTH BEACH ELEMENTARY SCHOOL","530771001223","No","Yes","Yes","Yes","Yes",351,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01225","James Baldwin Elementary School","530771001225","No","Yes","Yes","Yes","Yes",256,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01226","NOVA HIGH SCHOOL","530771001226","No","Yes","Yes","Yes","Yes",185,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01228","OLYMPIC HILLS ELEMENTARY SCHOOL","530771001228","No","Yes","Yes","Yes","Yes",415,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01229","OLYMPIC VIEW ELEMENTARY SCHOOL","530771001229","No","Yes","Yes","Yes","Yes",362,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01234","Alan T. Sugiyama High School","530771001234","No","Yes","Yes","Yes","Yes",44,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01236","RAINIER BEACH HIGH SCHOOL","530771001236","No","Yes","Yes","Yes","Yes",744,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01239","ROOSEVELT HIGH SCHOOL","530771001239","No","Yes","Yes","Yes","Yes",1362,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01240","ROXHILL ELEMENTARY SCHOOL","530771001240","No","Yes","Yes","Yes","Yes",298,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01242","SACAJAWEA ELEMENTARY SCHOOL","530771001242","No","Yes","Yes","Yes","Yes",221,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01244","SANISLO ELEMENTARY SCHOOL","530771001244","No","Yes","Yes","Yes","Yes",179,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01245","Genesee Hill Elementary","530771001245","No","Yes","Yes","Yes","Yes",477,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01249","AKI KUROSE MIDDLE SCHOOL","530771001249","No","Yes","Yes","Yes","Yes",858,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01251","STEVENS ELEMENTARY SCHOOL","530771001251","No","Yes","Yes","Yes","Yes",161,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01253","THORNTON CREEK ELEMENTARY SCHOOL","530771001253","No","Yes","Yes","Yes","Yes",433,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01255","Rising Star Elementary School","530771001255","No","Yes","Yes","Yes","Yes",346,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01256","VIEW RIDGE ELEMENTARY SCHOOL","530771001256","No","Yes","Yes","Yes","Yes",279,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01259","WASHINGTON MIDDLE SCHOOL","530771001259","No","Yes","Yes","Yes","Yes",541,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01261","WEDGWOOD ELEMENTARY SCHOOL","530771001261","No","Yes","Yes","Yes","Yes",362,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01262","WEST SEATTLE HIGH SCHOOL","530771001262","No","Yes","Yes","Yes","Yes",1321,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01263","WEST WOODLAND ELEMENTARY SCHOOL","530771001263","No","Yes","Yes","Yes","Yes",390,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01264","WHITMAN MIDDLE SCHOOL","530771001264","No","Yes","Yes","Yes","Yes",673,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01265","WHITTIER ELEMENTARY SCHOOL","530771001265","No","Yes","Yes","Yes","Yes",345,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01267","WING LUKE ELEMENTARY SCHOOL","530771001267","No","Yes","Yes","Yes","Yes",365,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01307","TOPS K-8 SCHOOL","530771001307","No","Yes","Yes","Yes","Yes",482,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01311","SEATTLE WORLD SCHOOL","530771001311","No","Yes","Yes","Yes","Yes",257,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01365","INTERAGENCY PROGRAMS","530771001365","No","Yes","Yes","Yes","Yes",259,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","01913","DAVID T. DENNY INTERNATIONAL MIDDLE SCHOOL","530771001913","No","Yes","Yes","Yes","Yes",741,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","02017","CATHARINE BLAINE K-8 SCHOOL","530771002017","No","Yes","Yes","Yes","Yes",443,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","02231","ORCA K-8 SCHOOL","530771002231","No","Yes","Yes","Yes","Yes",349,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","02269","HAWTHORNE ELEMENTARY SCHOOL - SEATTLE","530771002269","No","Yes","Yes","Yes","Yes",358,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","02347","THURGOOD MARSHALL ELEMENTARY","530771002347","No","Yes","Yes","Yes","Yes",490,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","02349","MIDDLE COLLEGE HIGH SCHOOL","530771002349","No","Yes","Yes","Yes","Yes",78,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","02635","CASCADE PARENT PARTNERSHIP PROGRAM","530771002635","No","Yes","Yes","Yes","Yes",352,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","02716","SALMON BAY K-8 SCHOOL","530771002716","No","Yes","Yes","Yes","Yes",613,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","02842","THE CENTER SCHOOL","530771002842","No","Yes","Yes","Yes","Yes",136,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","02928","INTERAGENCY DETENTION SCHOOL","530771002928","Yes","Yes","Yes","Yes","Yes",11,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","02933","SOUTH SHORE K-8 SCHOOL","530771002933","No","Yes","Yes","Yes","Yes",593,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","03046","PRIVATE SCHOOL SERVICES","530771003046","No","Yes","Yes","Yes","Yes",12,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","03271","HAZEL WOLF K-8","530771003271","No","Yes","Yes","Yes","Yes",711,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","03316","SAND POINT ELEMENTARY","530771003316","No","Yes","Yes","Yes","Yes",215,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","03318","QUEEN ANNE ELEMENTARY","530771003318","No","Yes","Yes","Yes","Yes",213,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","03332","MCDONALD INTERNATIONAL SCHOOL","530771003332","No","Yes","Yes","Yes","Yes",468,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","03356","VIEWLANDS ELEMENTARY SCHOOL","530771003356","No","Yes","Yes","Yes","Yes",278,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","03361","RAINIER VIEW ELEMENTARY SCHOOL","530771003361","No","Yes","Yes","Yes","Yes",208,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","03390","Cascadia Elementary","530771003390","No","Yes","Yes","Yes","Yes",486,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","03426","LOUISA BOREN STEM K-8","530771003426","No","Yes","Yes","Yes","Yes",465,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","03467","JANE ADDAMS MIDDLE SCHOOL","530771003467","No","Yes","Yes","Yes","Yes",875,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","03497","FAIRMOUNT PARK ELEMENTARY SCHOOL","530771003497","No","Yes","Yes","Yes","Yes",413,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","03505","INTERAGENCY OPEN DOORS","530771003505","No","Yes","Yes","Yes","Yes",63,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","03555","BRIDGES TRANSITION","530771003555","No","Yes","Yes","Yes","Yes",109,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","03612","MEANY MIDDLE SCHOOL","530771003612","No","Yes","Yes","Yes","Yes",513,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","03613","CEDAR PARK ELEMENTARY SCHOOL","530771003613","No","Yes","Yes","Yes","Yes",280,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","03618","DECATUR ELEMENTARY SCHOOL","530771003618","No","Yes","Yes","Yes","Yes",187,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","03620","ROBERT EAGLE STAFF MIDDLE SCHOOL","530771003620","No","Yes","Yes","Yes","Yes",693,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","03714","MAGNOLIA ELEMENTARY SCHOOL","530771003714","No","Yes","Yes","Yes","Yes",339,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","03719","LINCOLN HIGH SCHOOL","530771003719","No","Yes","Yes","Yes","Yes",1382,-9,-9,-9,-9
+"WA","WASHINGTON","5308760","Tahoma School District","00692","ROCK CREEK ELEMENTARY","530876000692","No","Yes","Yes","No","No",773,-9,-9,-9,-9
+"WA","WASHINGTON","5308760","Tahoma School District","01463","GLACIER PARK ELEMENTARY","530876001463","No","Yes","Yes","No","No",819,-9,-9,-9,-9
+"WA","WASHINGTON","5308760","Tahoma School District","01515","Maple View MIDDLE SCHOOL","530876001515","No","Yes","Yes","Yes","Yes",1068,-9,-9,-9,-9
+"WA","WASHINGTON","5308760","Tahoma School District","01516","LAKE WILDERNESS ELEMENTARY","530876001516","No","Yes","Yes","No","No",812,-9,-9,-9,-9
+"WA","WASHINGTON","5308760","Tahoma School District","01517","SHADOW LAKE ELEMENTARY","530876001517","No","Yes","Yes","No","No",571,-9,-9,-9,-9
+"WA","WASHINGTON","5308760","Tahoma School District","01519","TAHOMA SENIOR HIGH SCHOOL","530876001519","No","Yes","Yes","Yes","Yes",2436,-9,-9,-9,-9
+"WA","WASHINGTON","5308760","Tahoma School District","02979","Summit Trail MIDDLE SCHOOL","530876002979","No","Yes","Yes","Yes","Yes",1305,-9,-9,-9,-9
+"WA","WASHINGTON","5308760","Tahoma School District","03604","TAHOMA ELEMENTARY","530876003604","No","Yes","Yes","No","No",761,-9,-9,-9,-9
+"WA","WASHINGTON","5308760","Tahoma School District","03605","CEDAR RIVER ELEMENTARY","530876003605","No","Yes","Yes","No","No",709,-9,-9,-9,-9
+"WA","WASHINGTON","5310172","IMPACT | BLACK RIVER ELEMENTARY","03905","IMPACT | BLACK RIVER ELEMENTARY","531017203905","No","Yes","Yes","No","No",132,-9,-9,-9,-9

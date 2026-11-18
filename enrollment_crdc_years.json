@@ -1,0 +1,126 @@
+{
+ "2021-22": [
+  {
+   "districtname": "Tahoma School District",
+   "schoolcode": "2849",
+   "schoolname": "Tahoma Senior High School",
+   "all_students": "2766"
+  },
+  {
+   "districtname": "Tahoma School District",
+   "schoolcode": "3286",
+   "schoolname": "Lake Wilderness Elementary",
+   "all_students": "884"
+  },
+  {
+   "districtname": "Tahoma School District",
+   "schoolcode": "3341",
+   "schoolname": "Summit Trail Middle School",
+   "all_students": "1113"
+  },
+  {
+   "districtname": "Tahoma School District",
+   "schoolcode": "3589",
+   "schoolname": "Shadow Lake Elementary",
+   "all_students": "462"
+  },
+  {
+   "districtname": "Tahoma School District",
+   "schoolcode": "3937",
+   "schoolname": "Maple View Middle School",
+   "all_students": "969"
+  },
+  {
+   "districtname": "Tahoma School District",
+   "schoolcode": "4415",
+   "schoolname": "Rock Creek Elementary",
+   "all_students": "711"
+  },
+  {
+   "districtname": "Tahoma School District",
+   "schoolcode": "4453",
+   "schoolname": "Glacier Park Elementary",
+   "all_students": "754"
+  },
+  {
+   "districtname": "Tahoma School District",
+   "schoolcode": "5489",
+   "schoolname": "Cedar River Elementary",
+   "all_students": "587"
+  },
+  {
+   "districtname": "Tahoma School District",
+   "schoolcode": "5490",
+   "schoolname": "Tahoma Elementary",
+   "all_students": "668"
+  },
+  {
+   "districtname": "Tahoma School District",
+   "schoolcode": "5563",
+   "schoolname": "Tahoma Open Doors",
+   "all_students": "26"
+  }
+ ],
+ "2023-24": [
+  {
+   "districtname": "Tahoma School District",
+   "schoolcode": "2849",
+   "schoolname": "Tahoma Senior High School",
+   "all_students": "2890"
+  },
+  {
+   "districtname": "Tahoma School District",
+   "schoolcode": "3286",
+   "schoolname": "Lake Wilderness Elementary",
+   "all_students": "909"
+  },
+  {
+   "districtname": "Tahoma School District",
+   "schoolcode": "3341",
+   "schoolname": "Summit Trail Middle School",
+   "all_students": "1117"
+  },
+  {
+   "districtname": "Tahoma School District",
+   "schoolcode": "3589",
+   "schoolname": "Shadow Lake Elementary",
+   "all_students": "508"
+  },
+  {
+   "districtname": "Tahoma School District",
+   "schoolcode": "3937",
+   "schoolname": "Maple View Middle School",
+   "all_students": "980"
+  },
+  {
+   "districtname": "Tahoma School District",
+   "schoolcode": "4415",
+   "schoolname": "Rock Creek Elementary",
+   "all_students": "699"
+  },
+  {
+   "districtname": "Tahoma School District",
+   "schoolcode": "4453",
+   "schoolname": "Glacier Park Elementary",
+   "all_students": "793"
+  },
+  {
+   "districtname": "Tahoma School District",
+   "schoolcode": "5489",
+   "schoolname": "Cedar River Elementary",
+   "all_students": "600"
+  },
+  {
+   "districtname": "Tahoma School District",
+   "schoolcode": "5490",
+   "schoolname": "Tahoma Elementary",
+   "all_students": "679"
+  },
+  {
+   "districtname": "Tahoma School District",
+   "schoolcode": "5563",
+   "schoolname": "Tahoma Open Doors",
+   "all_students": "80"
+  }
+ ]
+}

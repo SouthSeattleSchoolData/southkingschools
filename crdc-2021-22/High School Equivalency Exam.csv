@@ -1,0 +1,10 @@
+LEA_STATE,LEA_STATE_NAME,LEAID,LEA_NAME,LEA_ADDRESS,LEA_CITY,LEA_ZIP,CJJ,LEA_HSE_IND,LEA_HSEPART_HI_M,LEA_HSEPART_HI_F,LEA_HSEPART_AM_M,LEA_HSEPART_AM_F,LEA_HSEPART_AS_M,LEA_HSEPART_AS_F,LEA_HSEPART_HP_M,LEA_HSEPART_HP_F,LEA_HSEPART_BL_M,LEA_HSEPART_BL_F,LEA_HSEPART_WH_M,LEA_HSEPART_WH_F,LEA_HSEPART_TR_M,LEA_HSEPART_TR_F,TOT_HSEPART_M,TOT_HSEPART_F,LEA_HSEPART_EL_M,LEA_HSEPART_EL_F,LEA_HSEPART_IDEA_M,LEA_HSEPART_IDEA_F
+"WA","WASHINGTON","5300342","Rainier Valley Leadership Academy","6020 Rainier Avenue S.","Seattle","98118","No","No",-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9
+"WA","WASHINGTON","5300343","Summit Public School: Atlas","9601 35th Ave SW","Seattle","98104","No","No",-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9
+"WA","WASHINGTON","5300348","Impact | Salish Sea Elementary","3438 S. 148th Street","Tukwila","98118","No","No",-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9
+"WA","WASHINGTON","5300390","Bellevue School District","12111 NE 1ST ST","BELLEVUE","98005","No","No",-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9
+"WA","WASHINGTON","5303750","Issaquah School District","5150 220th Ave SE","ISSAQUAH","98029","Yes","No",-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9
+"WA","WASHINGTON","5303960","Kent School District","12033 SE 256TH ST","Kent","98030","Yes","No",-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9
+"WA","WASHINGTON","5307230","Renton School District","300 SW 7TH ST","RENTON","98057","No","No",-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9
+"WA","WASHINGTON","5307710","Seattle School District No. 1","2445 3RD AVE S","SEATTLE","98134","Yes","Yes",12,16,0,0,18,9,0,0,19,22,62,55,13,15,124,117,9,9,37,22
+"WA","WASHINGTON","5308760","Tahoma School District","25720 MAPLE VALLEY BLK DIAM RD","MAPLE VALLEY","98038","No","No",-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9,-9
