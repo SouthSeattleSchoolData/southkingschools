@@ -167,10 +167,11 @@
     "3740"
   ],
   "feedback": {
-    "_about": "Where Report a mistake links go. Leave form_url and email empty to use GitHub issues (needs a free GitHub account). Paste a Google Form link into form_url to accept reports from anyone.",
+    "_about": "Where 'Report a mistake' links go. Put a Google Form link (ending in /viewform) in form_url to accept reports from anyone. Optional form_page_field is the form's prefill key for the 'Which school or page?' question (e.g. entry.123456789, from the form's 'Get pre-filled link'); then the form opens with the school already filled in. Leave form_url empty to use GitHub issues.",
     "github_repo": "SouthSeattleSchoolData/southkingschools",
     "form_url": "",
-    "email": ""
+    "email": "",
+    "form_page_field": ""
   },
   "analytics": {
     "_about": "Private visit stats through GoatCounter: https://alphey.goatcounter.com . Pages are counted by type (home, find, compare, school...), never by search text. Clear 'goatcounter' to turn it off.",

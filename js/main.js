@@ -86,7 +86,10 @@ function initSources() {
 function initFooter() {
   const month = new Date(`${store.generated}T12:00:00`).toLocaleString('en-US', { month: 'long', year: 'numeric' });
   $('#dataStamp').textContent = `Data updated ${month}; school results are ${store.schoolYear}.`;
-  $('#reportLink').href = reportUrl();
+  const link = $('#reportLink');
+  link.href = reportUrl();
+  // Refresh on use so a prefilled form names the page the reader is on now.
+  ['pointerdown', 'focus'].forEach((ev) => link.addEventListener(ev, () => { link.href = reportUrl(); }));
 }
 
 /** Optional visit counts with GoatCounter (no cookies, no personal data). Off unless meta.analytics.goatcounter is set. */
