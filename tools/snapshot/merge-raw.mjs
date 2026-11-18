@@ -66,6 +66,7 @@ const LEAD_ALIASES = {
   "Beacon Hill Int'l Elementary School": 'Beacon Hill International',
   'Cooper (Pathfinder) Elementary School': 'Pathfinder K-8',
   'Roxhill Elementary (at former Hughes ES)': 'Roxhill Elementary',
+  'Tahoma Elementary School (Formerly Tahoma Jhs And Tahoma Ms)': 'Tahoma Elementary',
 };
 const lead = {};
 if (existsSync(join(root, 'tools/raw/lead_doh.txt'))) {

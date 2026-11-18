@@ -243,10 +243,10 @@
         "district": "Tahoma",
         "child_poverty": null,
         "risk": [
-          null,
-          null,
-          null,
-          null
+          "Very Low",
+          "Low",
+          "Very Low",
+          "Low"
         ]
       },
       {

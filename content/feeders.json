@@ -28,9 +28,8 @@
   },
   "Tahoma School District": {
    "as_of": "2026-27",
-   "source": "Tahoma School District: one high school for the whole district; the middle school depends on home address (district attendance-area map)",
-   "url": "https://www.tahomasd.us/about/our-district",
-   "middle_note": "Maple View or Summit Trail, depending on home address"
+   "source": "Tahoma School District \"Find Your School\" boundary map (elementary attendance areas list their middle school; one high school for the district)",
+   "url": "https://experience.arcgis.com/experience/076f3d9d9e25482fa345f90a042fe466"
   }
  },
  "schools": {
@@ -1153,6 +1152,11 @@
    "choice": true
   },
   "3286": {
+   "middle": [
+    {
+     "code": "3937"
+    }
+   ],
    "high": [
     {
      "code": "2849"
@@ -1160,6 +1164,11 @@
    ]
   },
   "3589": {
+   "middle": [
+    {
+     "code": "3937"
+    }
+   ],
    "high": [
     {
      "code": "2849"
@@ -1167,6 +1176,11 @@
    ]
   },
   "4415": {
+   "middle": [
+    {
+     "code": "3341"
+    }
+   ],
    "high": [
     {
      "code": "2849"
@@ -1174,6 +1188,11 @@
    ]
   },
   "4453": {
+   "middle": [
+    {
+     "code": "3937"
+    }
+   ],
    "high": [
     {
      "code": "2849"
@@ -1181,6 +1200,11 @@
    ]
   },
   "5489": {
+   "middle": [
+    {
+     "code": "3341"
+    }
+   ],
    "high": [
     {
      "code": "2849"
@@ -1188,6 +1212,11 @@
    ]
   },
   "5490": {
+   "middle": [
+    {
+     "code": "3341"
+    }
+   ],
    "high": [
     {
      "code": "2849"
