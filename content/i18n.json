@@ -67,10 +67,10 @@
    "vi": "Tên, địa chỉ hoặc mã ZIP",
    "zh": "名称、地址或邮编"
   },
-  "See what the public record says about your school.": {
-   "es": "Vea lo que dicen los registros públicos sobre su escuela.",
-   "vi": "Xem hồ sơ công khai nói gì về trường của quý vị.",
-   "zh": "看看公开记录如何描述您的学校。"
+  "What the ratings don’t tell you about Puget Sound schools.": {
+   "es": "Lo que las calificaciones no le dicen sobre las escuelas de Puget Sound.",
+   "vi": "Những điều các bảng xếp hạng không cho quý vị biết về các trường học vùng Puget Sound.",
+   "zh": "关于普吉特湾地区的学校，评分没有告诉您的事。"
   },
   "schools": {
    "es": "escuelas",

@@ -68,11 +68,11 @@ function page(s) {
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>${esc(s.name)} | South King Schools</title>
+  <title>${esc(s.name)} | Sound Choice</title>
   <meta name="description" content="${esc(description(s))}">
   <link rel="canonical" href="${url}">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="${esc(s.name)} | South King Schools">
+  <meta property="og:title" content="${esc(s.name)} | Sound Choice">
   <meta property="og:description" content="${esc(description(s))}">
   <meta property="og:image" content="${SITE_URL}og-image.png">
   <meta name="twitter:card" content="summary_large_image">
@@ -83,7 +83,7 @@ function page(s) {
 <body>
   <main class="static-school">
     <div class="wrap" style="padding:28px 20px 60px;max-width:760px">
-      <p class="small"><a href="../#home">South King Schools</a> / <a href="../#find">${esc(s.area)}</a></p>
+      <p class="small"><a href="../#home">Sound Choice</a> / <a href="../#find">${esc(s.area)}</a></p>
       <h1>${esc(s.name)}</h1>
       <p class="lede">${esc(districtName(s))}, grades ${esc(s.grades)}, ${s.enrollment.toLocaleString('en-US')} students${s.address ? `. ${esc(s.address)}, ${esc(s.zip)}` : ''}.</p>
       ${feederSentence(s, byCode, feeders) ? `<p class="small">${esc(feederSentence(s, byCode, feeders))}</p>` : ''}

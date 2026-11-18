@@ -47,9 +47,9 @@ function route() {
   else PAGES[page]();
 
   const navLabel = $('#nav a.on')?.firstChild?.textContent;
-  document.title = page === 'school' ? `${store.byCode[code].name} · South King Schools`
-    : page === 'home' ? 'South King Schools'
-      : `${navLabel} · South King Schools`;
+  document.title = page === 'school' ? `${store.byCode[code].name} · Sound Choice`
+    : page === 'home' ? "Sound Choice: What ratings don’t tell you about Puget Sound schools"
+      : `${navLabel} · Sound Choice`;
 }
 
 function setUpTheme() {

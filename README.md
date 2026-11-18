@@ -1,4 +1,6 @@
-# South King Schools
+# Sound Choice
+
+*What the ratings don't tell you about Puget Sound schools.*
 
 A public-data guide to the 187 public and charter schools in Renton, Kent, Maple Valley, Issaquah, Bellevue, West Seattle and South Seattle.
 

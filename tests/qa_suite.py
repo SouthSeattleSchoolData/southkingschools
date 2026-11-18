@@ -1,5 +1,5 @@
 """
-South King Schools - automated QA suite.
+Sound Choice - automated QA suite.
 
 Test cases are grouped by ISO/IEC 25010 quality characteristic and identified
 by ID so the report (tests/QA-REPORT.md) can trace each result.
@@ -106,7 +106,7 @@ def f02(b, base):
         pg.evaluate(f"location.hash = 's-{c}'")
         pg.wait_for_timeout(60)
         title = pg.evaluate("document.title")
-        if 'South King Schools' not in title or title.startswith('Home'):
+        if 'Sound Choice' not in title or title.startswith('Home'):
             bad.append(c)
     assert len(codes) == 187, f'{len(codes)} schools in data'
     assert not bad, f'profiles that did not open: {bad[:10]}'
