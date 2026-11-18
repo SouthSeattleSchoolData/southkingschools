@@ -1,7 +1,7 @@
 // Home page: hero search over a map, four findings, and the area table.
 
 import { store, AREAS, AREA_DISTRICT, districtByCode } from '../data.js';
-import { num, escapeHtml, cssVar, round1, cleanText, searchKey, matchesWords, guardInput, $, $$ } from '../util.js';
+import { num, escapeHtml, cssVar, round1, oneDp, cleanText, searchKey, matchesWords, guardInput, $, $$ } from '../util.js';
 import { readingMathAverage, scoreColorVar } from '../scores.js';
 import { createMap, addSchoolDots, drawDotPlot } from '../maps.js';
 import { incomeScatter, pairedBars, expectedVsActual } from '../charts.js';
@@ -230,7 +230,7 @@ function renderAreaTable() {
   const cell = (key, v, unit) => {
     if (v == null) return '—';
     if (key === 'discipline_all' && v < 0.05) return '&lt;0.05%';
-    return round1(v) + unit;
+    return unit === '%' ? oneDp(v) + unit : round1(v) + unit;
   };
   const rows = AREAS.map((area) => {
     const st = areaStats(area);
@@ -238,7 +238,7 @@ function renderAreaTable() {
   });
   const state = store.state;
   const stateVals = { pct_low_income: state.pct_low_income, ela_proficient: state.ela_proficient, math_proficient: state.math_proficient, discipline_all: state.discipline_all, regular_attendance: state.regular_attendance, grad_rate_4yr: state.grad_rate_4yr };
-  rows.push(`<tr class="ref"><td>Washington State</td><td></td>${cols.map(([k, , u]) => `<td>${stateVals[k] != null ? stateVals[k] + u : ''}</td>`).join('')}</tr>`);
+  rows.push(`<tr class="ref"><td>Washington State</td><td></td>${cols.map(([k, , u]) => `<td>${stateVals[k] != null ? cell(k, Number(stateVals[k]), u) : ''}</td>`).join('')}</tr>`);
 
   $('#areaTbl').innerHTML = `<thead><tr><th>Area</th><th>Schools</th>${cols.map(([k, l]) => `<th>${l}${info(k)}</th>`).join('')}</tr></thead><tbody>${rows.join('')}</tbody>`;
   $$('#areaTbl [data-area]').forEach((a) => a.addEventListener('click', () => { findState.areas = new Set([a.dataset.area]); }));

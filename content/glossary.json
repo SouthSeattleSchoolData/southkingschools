@@ -38,13 +38,13 @@
           "key": "ela_proficient",
           "term": "Reading proficiency",
           "what": "Share of tested students who met the state standard on the Smarter Balanced English language arts test (grades 3–8 and 10).",
-          "read": "State average is about 51%. Strongly tied to family income, so compare schools with similar low-income shares."
+          "read": "State average is about 53%. Strongly tied to family income, so compare schools with similar low-income shares."
         },
         {
           "key": "math_proficient",
           "term": "Math proficiency",
           "what": "Share of tested students who met the state standard on the Smarter Balanced math test (grades 3–8 and 10).",
-          "read": "State average is about 41%. Math usually runs lower than reading, especially in high school."
+          "read": "State average is about 43%. Math usually runs lower than reading, especially in high school."
         },
         {
           "key": "science_proficient",
@@ -80,7 +80,7 @@
           "key": "regular_attendance",
           "term": "Regular attendance",
           "what": "Share of students who missed fewer than 10% of school days (about 18 days a year).",
-          "read": "State average is about 73%. Below 65% is a concern: chronic absence often signals disengagement, anxiety, illness or instability at home."
+          "read": "State average is about 74%. Below 65% is a concern: chronic absence often signals disengagement, anxiety, illness or instability at home."
         },
         {
           "key": "grad_rate_4yr",
@@ -92,7 +92,7 @@
           "key": "ninth_grade_on_track",
           "term": "9th graders on track",
           "what": "Share of 9th graders who passed all their classes and earned a full year of credits.",
-          "read": "One of the strongest predictors of graduating. State average is about 72%."
+          "read": "One of the strongest predictors of graduating. State average is about 73%."
         },
         {
           "key": "dual_credit",

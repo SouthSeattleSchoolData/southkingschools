@@ -94,14 +94,14 @@ export function pairedBars(el, rows, groupLabel, { xTitle = 'Share of students s
   svg += yHeader(left - 8, yTitle);
   rows.forEach((r, i) => {
     const y = top + i * rowH + 4;
-    const ratio = r.all && r.group && !r.allText ? `  ${(r.group / r.all).toFixed(1)}×` : '';
+    const ratio = r.all && r.group && !r.allText ? `<tspan dx="8" style="font-weight:400;fill:var(--ink-2)">${(r.group / r.all).toFixed(1)}×</tspan>` : '';
     svg += `<text x="${left - 8}" y="${y + 21}" text-anchor="end" style="fill:var(--ink)">${escapeHtml(r.label)}</text>`;
     svg += `<rect x="${left}" y="${y + 4}" width="${Math.max(2, x(r.all) - left)}" height="13" rx="4" fill="var(--mute)"/>`;
     svg += `<text x="${x(r.all) + 5}" y="${y + 15}" class="num">${escapeHtml(r.allText ?? (r.all != null ? r.all.toFixed(2) + '%' : '—'))}</text>`;
     svg += `<rect x="${left}" y="${y + 20}" width="${Math.max(2, x(r.group) - left)}" height="13" rx="4" fill="var(--d1)"/>`;
     svg += `<text x="${x(r.group) + 5}" y="${y + 31}" class="num" style="fill:var(--ink);font-weight:600">${escapeHtml(r.groupText ?? (r.group != null ? r.group.toFixed(2) + '%' : '—'))}${ratio}</text>`;
   });
-  el.innerHTML = `${svg}</svg><div class="legend"><span><i style="background:var(--mute)"></i>All students</span><span><i style="background:var(--d1)"></i>${escapeHtml(groupLabel)}</span><span>×: how many times the all-students rate</span></div>`;
+  el.innerHTML = `${svg}</svg><div class="legend"><span><i style="background:var(--mute)"></i>All students</span><span><i style="background:var(--d1)"></i>${escapeHtml(groupLabel)}</span><span>2.1× = 2.1 times the all-students rate</span></div>`;
 }
 
 /**

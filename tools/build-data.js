@@ -322,7 +322,7 @@ export async function buildData(year, config, log = () => {}) {
     if (isSchool) {
       schools.push({
         code: r.schoolcode,
-        name: r.schoolname.replace(/ School$/, ''),
+        name: config.DISPLAY_NAMES?.[r.schoolcode] || r.schoolname.replace(/ School$/, ''),
         district: r.districtname,
         is_charter: !!config.CHARTERS[r.districtname],
         area,

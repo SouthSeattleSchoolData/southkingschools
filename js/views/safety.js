@@ -2,7 +2,7 @@
 // support staff, lead testing, Healthy Youth Survey, district risk, policies and a public-records request.
 
 import { store, AREAS } from '../data.js';
-import { num, escapeHtml, round1, $ } from '../util.js';
+import { num, escapeHtml, round1, oneDp, $ } from '../util.js';
 import { INCIDENTS, incident, incidentPrev, CRDC_YEAR, CRDC_PREV_YEAR } from '../metrics.js';
 import { info } from '../glossary.js';
 
@@ -82,15 +82,15 @@ function renderChange() {
     + '</tbody>';
   const rate = (keys, get) => fmtRate(per100(sum(both, keys, get), kids(both, get)));
   const enrolled = [kids(both, incidentPrev), kids(both, incident)];
-  $('#changeSum').textContent = `Big numbers are incidents per 100 students; the small line under each is the raw count. Based on the ${both.length} schools that reported in both ${CRDC_PREV_YEAR} and ${CRDC_YEAR}, with ${enrolled[0].toLocaleString()} and ${enrolled[1].toLocaleString()} students enrolled. Across them, attacks or fights went from ${rate(['attacks'], incidentPrev)} to ${rate(['attacks'], incident)} per 100 students, and restraint and seclusion from ${rate(['restraint_physical', 'restraint_mechanical', 'seclusion'], incidentPrev)} to ${rate(['restraint_physical', 'restraint_mechanical', 'seclusion'], incident)}. A rise can mean more careful reporting rather than more incidents, so read it alongside the school climate survey and district reports.${both.some((s) => s.crdc.suspect?.includes('threats')) ? ` *Kent reported exactly as many threats as attacks at every school in ${CRDC_YEAR}, which looks like one figure entered twice, so its threat rate (and the six-area total) is unreliable.` : ''}`;
+  $('#changeSum').textContent = `Big numbers are incidents per 100 students; the small line under each is the raw count. Based on the ${both.length} schools that reported in both ${CRDC_PREV_YEAR} and ${CRDC_YEAR}, with ${enrolled[0].toLocaleString()} and ${enrolled[1].toLocaleString()} students enrolled. Across them, attacks or fights went from ${rate(['attacks'], incidentPrev)} to ${rate(['attacks'], incident)} per 100 students, and restraint and seclusion from ${rate(['restraint_physical', 'restraint_mechanical', 'seclusion'], incidentPrev)} to ${rate(['restraint_physical', 'restraint_mechanical', 'seclusion'], incident)}. A rise can mean more careful reporting rather than more incidents, so read it alongside the school climate survey and district reports.${both.some((s) => s.crdc.suspect?.includes('threats')) ? ` *Kent reported exactly as many threats as attacks at every school in ${CRDC_YEAR}, which looks like one figure entered twice, so its threat rate (and the total across all areas) is unreliable.` : ''}`;
 }
 
 function renderRestraint() {
   const uses = (s) => ['restraint_physical', 'restraint_mechanical', 'seclusion'].reduce((t, k) => t + (s.crdc?.[k] || 0), 0);
   const withUse = store.schools.filter((s) => uses(s) > 0).sort((a, b) => uses(b) - uses(a));
   const top = withUse.slice(0, 15);
-  $('#restraintTbl').innerHTML = `<thead><tr><th>School</th><th>Students</th><th>Physical restraint${info('restraint')}</th><th>Seclusion</th><th>Per 100 students</th></tr></thead><tbody>`
-    + top.map((s) => `<tr><td><a href="#s-${s.code}">${escapeHtml(s.name)}</a><div class="xs muted">${s.area}</div></td><td class="num">${s.enrollment.toLocaleString()}</td><td class="num">${s.crdc.restraint_physical ?? '—'}</td><td class="num">${s.crdc.seclusion ?? '—'}</td><td class="num">${round1((100 * uses(s)) / s.enrollment)}</td></tr>`).join('')
+  $('#restraintTbl').innerHTML = `<thead><tr><th>School</th><th>Students</th><th>Physical restraint${info('restraint')}</th><th>Mechanical restraint</th><th>Seclusion</th><th>Total uses</th><th>Per 100 students</th></tr></thead><tbody>`
+    + top.map((s) => `<tr><td><a href="#s-${s.code}">${escapeHtml(s.name)}</a><div class="xs muted">${s.area}</div></td><td class="num">${s.enrollment.toLocaleString()}</td><td class="num">${s.crdc.restraint_physical ?? '—'}</td><td class="num">${s.crdc.restraint_mechanical ?? '—'}</td><td class="num">${s.crdc.seclusion ?? '—'}</td><td class="num"><b>${uses(s)}</b></td><td class="num">${oneDp((100 * uses(s)) / s.enrollment)}</td></tr>`).join('')
     + '</tbody>';
   const total = store.schools.reduce((t, s) => t + uses(s), 0);
   $('#restraintSum').textContent = `${withUse.length} of ${store.schools.filter((s) => s.crdc).length} schools reported at least one use, ${total.toLocaleString()} in all. Several of the highest counts are at programs that serve students with significant disabilities, where a few students can account for most uses.`;
@@ -135,7 +135,7 @@ function renderRisk() {
   if (!c) return;
   const tone = (v) => ({ 'Very Low': 'r1', Low: 'r2', Average: 'r3', High: 'r4', 'Very High': 'r5' }[v] || '');
   $('#riskTbl').innerHTML = `<thead><tr><th>District or area</th><th>Children in poverty, ${c.saipe_year}${info('child_poverty')}</th>${c.risk_columns.map((col, i) => `<th title="${escapeHtml(c.risk_help[i])}">${col}</th>`).join('')}</tr></thead><tbody>`
-    + c.rows.map((r) => `<tr><td>${escapeHtml(r.district)}<div class="xs muted">${r.area}</div></td><td class="num">${r.child_poverty == null ? '—' : `${r.child_poverty}%`}${r.poverty_scope ? `<div class="xs muted">${escapeHtml(r.poverty_scope)}</div>` : ''}</td>${r.risk.map((v) => (v ? `<td><span class="risk ${tone(v)}" data-no-t>${v}</span></td>` : '<td><span class="sup" title="Not added yet">—</span></td>')).join('')}</tr>`).join('')
+    + c.rows.map((r) => `<tr><td>${escapeHtml(r.district)}${r.area && r.area !== r.district ? `<div class="xs muted">${r.area}</div>` : ''}</td><td class="num">${r.child_poverty == null ? '—' : `${r.child_poverty}%`}${r.poverty_scope ? `<div class="xs muted">${escapeHtml(r.poverty_scope)}</div>` : ''}</td>${r.risk.map((v) => (v ? `<td><span class="risk ${tone(v)}" data-no-t>${v}</span></td>` : '<td><span class="sup" title="Not added yet">—</span></td>')).join('')}</tr>`).join('')
     + '</tbody>';
   $('#riskNote').innerHTML = `Ratings compare each district with all Washington districts: Very Low is the bottom 10%, High the top 25%. ${escapeHtml(c.seattle_note)} Sources: <a href="${c.links.dshs_king_2024 || c.links.dshs}" rel="noopener">DSHS Community Risk Profile, King County</a> (${c.risk_year}, the latest with these ratings); U.S. Census Small Area Income and Poverty Estimates (${c.saipe_year}) via the Urban Institute.`;
 }
@@ -143,7 +143,7 @@ function renderRisk() {
 function renderSurvey() {
   const h = store.meta.healthy_youth_survey;
   $('#hysTbl').innerHTML = `<thead><tr><th>% of students</th>${h.columns.map((c) => `<th>${c}</th>`).join('')}</tr></thead><tbody>`
-    + h.rows.map((r) => `<tr><td>${r.label}</td>${r.values.map((v) => `<td>${v || '<span class="sup">—</span>'}</td>`).join('')}</tr>`).join('')
+    + h.rows.map((r) => `<tr><td>${r.label}</td>${r.values.map((v) => `<td>${v || v === 0 ? (Number.isFinite(Number(v)) ? oneDp(v) : escapeHtml(v)) : '<span class="sup">—</span>'}</td>`).join('')}</tr>`).join('')
     + '</tbody>';
 }
 

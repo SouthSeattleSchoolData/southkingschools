@@ -530,7 +530,7 @@ def f16(b, base):
     go(pg, 's-2597', 900)   # Kennydale Elementary (Renton): split feeder
     box = pg.locator('.box:has(h3:has-text("Feeder pattern"))')
     t = box.inner_text()
-    assert 'Vera Risdon Middle' in t and 'Hazen Senior High' in t, t
+    assert 'Vera Risdon Middle' in t and 'Hazen High' in t, t
     box.locator('a:has-text("Vera Risdon Middle")').click(); pg.wait_for_timeout(600)
     assert pg.url.endswith('#s-5484'), pg.url
     go(pg, 's-3096', 900)   # Chief Sealth: fed by Denny and its elementaries

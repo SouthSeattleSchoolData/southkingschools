@@ -108,10 +108,14 @@ export function drawDotPlot(el, schools, { width, height, colorVarOf, tipOf, ext
       const r = Math.max(3.5, (Math.sqrt(s.enrollment || 100) / 4.2) * scale);
       svg += `<circle data-code="${s.code}" cx="${P.x(s).toFixed(1)}" cy="${P.y(s).toFixed(1)}" r="${r.toFixed(1)}" fill="var(${colorVarOf(s)})" stroke="var(--surface)" stroke-width="1.5" style="cursor:pointer"/>`;
     });
+  const placed = [];
   (labels || []).forEach(({ text, at }) => {
-    const half = text.length * 3.6 + 6;
+    const half = text.length * 3.9 + 6;
     const x = Math.min(width - half, Math.max(half, P.x(at)));
-    const y = Math.max(14, Math.min(height - 6, P.y(at) - 30));
+    let y = Math.max(14, Math.min(height - 6, P.y(at) - 30));
+    // Nudge a label down until it no longer overlaps one already placed (narrow screens put West and South Seattle close together).
+    for (let i = 0; i < 6 && placed.some((b) => Math.abs(b.x - x) < b.half + half && Math.abs(b.y - y) < 16); i++) y += 17;
+    placed.push({ x, y, half });
     svg += `<text class="lbl" x="${x}" y="${y}" text-anchor="middle">${escapeHtml(text)}</text>`;
   });
   el.innerHTML = svg + '</svg>';

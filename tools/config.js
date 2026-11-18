@@ -49,6 +49,25 @@ export const USE_NCES_LOCATION = [
 ];
 
 /** King County school sites (ArcGIS feature layer). */
+/** Cleaner display names, keyed by OSPI school code (OSPI's own names stay in the raw files). */
+export const DISPLAY_NAMES = {
+  '3630': "Hazen High",
+  '3741': "Lindbergh High",
+  '3962': "Liberty High",
+  '3282': "Sammamish High",
+  '3486': "Newport High",
+  '3588': "Interlake High",
+  '2475': "Renton High",
+  '2849': "Tahoma High",
+  '2392': "Cleveland STEM High",
+  '5469': "Summit Atlas",
+  '5608': "Impact Salish Sea Elementary",
+  '5736': "Impact Black River Elementary",
+  '4356': "Neely-O'Brien Elementary",
+  '3522': "International School",
+  '1648': "Out-of-District Facility",
+};
+
 export const SCHOOL_SITES_URL = 'https://services.arcgis.com/Ej0PsM5Aw677QF1W/arcgis/rest/services/SCHSITE_POINT_107/FeatureServer/0/query';
 export const SCHOOL_SITE_DISTRICTS = ['RENTON', 'KENT', 'ISSAQUAH', 'BELLEVUE', 'SEATTLE', 'TUKWILA', 'HIGHLINE', 'TAHOMA'];
 

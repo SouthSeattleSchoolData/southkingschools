@@ -17,7 +17,7 @@ function schoolRef(r) {
 
 const shareLabel = (v) => (v == null || v >= 60 ? 'most of the area' : v >= 40 ? 'about half the area' : 'part of the area');
 
-/** "Hazen Senior High (most of the area), Renton Senior High (part of the area)" */
+/** "Hazen High (most of the area), Renton High (part of the area)" */
 function refList(list, splitNote) {
   const shares = list.some((r) => r.share != null);
   const items = list.map((r) => {

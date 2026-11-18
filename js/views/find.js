@@ -323,7 +323,7 @@ function renderTableView(out, list) {
   const body = list.map((s) => `<tr>
       <td><a href="#s-${s.code}">${escapeHtml(s.name)}</a><div class="xs muted">${s.area}, ${s.grades}</div></td>
       ${showDistance ? `<td>${s.distance != null ? s.distance.toFixed(1) : '—'}</td>` : ''}
-      ${TABLE_COLUMNS.map(([k]) => `<td>${fmt(cell(s, k))}</td>`).join('')}
+      ${TABLE_COLUMNS.map(([k]) => `<td>${fmt(cell(s, k), '', { dp: METRICS[k]?.unit === '%' ? 1 : undefined })}</td>`).join('')}
     </tr>`).join('');
   out.innerHTML = `<div class="scroll" style="border:1px solid var(--line);border-radius:12px;background:var(--surface);--tbl-bg:var(--surface)"><table class="tbl"><thead>${head}</thead><tbody>${body}</tbody></table></div>
     <p class="xs muted" style="margin-top:6px">Gray values are privacy-suppressed ranges from OSPI. Use the Sort menu to reorder.</p>`;

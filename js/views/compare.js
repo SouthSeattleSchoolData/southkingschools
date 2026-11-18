@@ -95,7 +95,8 @@ export function renderCompare() {
     }
     const termKey = key.startsWith('score:') || key.startsWith('incident:') || key.startsWith('act:') || key === 'restraint' || key === 'lead' ? key : glossaryKey(key);
     const unit = METRICS[key]?.unit === '$' ? '$' : '';
-    return `<tr><td>${withInfo(label, termKey)}</td>${raw.map((v, i) => `<td class="${best != null && exactValues[i] === best ? 'best' : ''}">${fmt(v, unit)}</td>`).join('')}</tr>`;
+    const dp = ['%', ' pts'].includes(METRICS[key]?.unit) ? 1 : undefined;
+    return `<tr><td>${withInfo(label, termKey)}</td>${raw.map((v, i) => `<td class="${best != null && exactValues[i] === best ? 'best' : ''}">${fmt(v, unit, { dp })}</td>`).join('')}</tr>`;
   }).join('');
 
   out.innerHTML = `<div class="scroll" style="margin-top:16px"><table class="cmp" style="--n:${schools.length}"><thead><tr><th></th>${head}</tr></thead><tbody>${body}</tbody></table></div>

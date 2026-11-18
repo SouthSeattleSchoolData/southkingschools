@@ -55,7 +55,7 @@ export function searchKey(s) {
     .replace(/[^a-z0-9]+/g, ' ').trim();
 }
 
-/** True when every word of the query appears in the text, in any order ("summit atlas" finds "Summit Public School: Atlas"). */
+/** True when every word of the query appears in the text, in any order ("atlas summit" finds "Summit Atlas"). */
 export function matchesWords(text, query) {
   const key = searchKey(text);
   return searchKey(query).split(' ').every((w) => key.includes(w));
@@ -100,8 +100,13 @@ export function tidyRange(value) {
   return m[1] + Number(r.toPrecision(2));
 }
 
-/** Formats a value as HTML. Suppressed values are greyed and explained on hover. */
-export function fmt(value, unit = '') {
+/** One decimal place, always shown (91 -> "91.0"), so columns of percentages line up. */
+export function oneDp(value) {
+  return Number(value).toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+}
+
+/** Formats a value as HTML. Suppressed values are greyed and explained on hover. Percentages and point changes get one decimal. */
+export function fmt(value, unit = '', { dp } = {}) {
   if (value == null || value === '') return '<span class="sup">—</span>';
   if (value === 'none') return 'None on staff';
   if (unit === '$' && typeof value === 'number') return `$${Math.round(value).toLocaleString()}`;
@@ -109,6 +114,7 @@ export function fmt(value, unit = '') {
     if (/^n</i.test(value)) return '<span class="sup" title="Fewer than 10 students">n&lt;10</span>';
     return `<span class="sup" title="Suppressed for privacy; the true value is in this range">${escapeHtml(tidyRange(value))}${unit}</span>`;
   }
+  if (dp === 1 || unit === '%' || unit === ' pts') return oneDp(value) + unit;
   return round1(value).toLocaleString() + unit;
 }
 
@@ -118,6 +124,7 @@ export function plain(value, unit = '') {
   if (value === 'none') return 'none on staff';
   if (unit === '$' && typeof value === 'number') return `$${Math.round(value).toLocaleString()}`;
   if (typeof value === 'string') return /^n</i.test(value) ? 'n<10' : tidyRange(value) + unit;
+  if (unit === '%' || unit === ' pts') return oneDp(value) + unit;
   return round1(value).toLocaleString() + unit;
 }
 

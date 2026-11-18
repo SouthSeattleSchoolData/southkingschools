@@ -1,7 +1,7 @@
 // Findings page: results vs. low-income share, discipline by group, discipline trend, state titles.
 
 import { store, AREAS, districtByCode } from '../data.js';
-import { num, escapeHtml, plain, $, $$ } from '../util.js';
+import { num, escapeHtml, plain, tidyRange, $, $$ } from '../util.js';
 import { incomeTrend, readingMathAverage } from '../scores.js';
 import { DISCIPLINE_GROUPS } from '../metrics.js';
 import { incomeScatter, pairedBars, trendChart } from '../charts.js';
@@ -102,6 +102,6 @@ function renderRecovery() {
 function renderTrend() {
   const t = store.disciplineTrend || store.meta.discipline_trend;
   $('#trendTbl').innerHTML = `<thead><tr><th>District</th>${t.years.map((y) => `<th>${y}</th>`).join('')}</tr></thead><tbody>`
-    + t.rows.map((r) => `<tr${r.reference ? ' class="ref"' : ''}><td>${r.name}</td>${r.values.map((v) => `<td>${escapeHtml(v)}%</td>`).join('')}</tr>`).join('')
+    + t.rows.map((r) => `<tr${r.reference ? ' class="ref"' : ''}><td>${r.name}</td>${r.values.map((v) => `<td>${escapeHtml(typeof v === 'string' && /^[<>]/.test(v) ? tidyRange(v) : v)}%</td>`).join('')}</tr>`).join('')
     + '</tbody>';
 }

@@ -891,8 +891,10 @@ select, .field {
 }
 h2.sec {
   font-size: 22px;
-  margin: 6px 0 12px
+  margin: 36px 0 12px
 }
+
+.reading + h2.sec { margin-top: 28px; }
 
 /* compare */
 .cmp {
