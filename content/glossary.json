@@ -332,6 +332,12 @@
       "title": "Other terms",
       "items": [
         {
+          "key": "feeder",
+          "term": "Feeder pattern",
+          "what": "The middle and high school that students from an elementary school's attendance area are usually assigned to. Districts set these by drawing middle and high school boundaries around groups of elementary areas.",
+          "read": "A split means part of the elementary's area goes to one school and part to another; your home address decides which. Choice, charter and program schools enroll by application and have no feeder pattern. Kent publishes boundaries only through its address lookup, so Kent schools link there instead."
+        },
+        {
           "key": "suppressed",
           "term": "Gray values like \"<3.7\" or \"n<10\"",
           "what": "OSPI hides small numbers to protect student privacy. \"<3.7%\" means the true rate is somewhere between 0 and 3.7%. \"n<10\" means fewer than 10 students, so nothing is shown.",

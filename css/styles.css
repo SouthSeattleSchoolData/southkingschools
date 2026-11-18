@@ -1299,3 +1299,9 @@ svg .gaplbl { font-size: 10.5px; fill: var(--ink-3); font-style: italic; }
   .bar .langsel + .iconbtn { margin-left: 0; }
 }
 .reading .readh { font-weight: 650; font-size: 19px; line-height: 1.25; margin-bottom: 10px; }
+
+/* Feeder pattern box on school pages */
+.feeders { margin: 6px 0 0; display: grid; grid-template-columns: max-content 1fr; gap: 6px 12px; }
+.feeders dt { color: var(--ink-3); font-size: 13px; }
+.feeders dd { margin: 0; }
+@media (max-width: 380px) { .feeders { grid-template-columns: 1fr; gap: 2px; } .feeders dd { margin-bottom: 6px; } }

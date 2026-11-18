@@ -14,6 +14,7 @@ import { disciplineBars, demographicsBar, trendChart } from '../charts.js';
 import { tagList } from '../components.js';
 import { info, glossaryKey } from '../glossary.js';
 import { reportUrl } from '../feedback.js';
+import { feederBox } from '../feeders.js';
 
 /** Order of student groups in the profile's discipline chart. */
 const PROFILE_GROUP_ORDER = ['disability', 'low_income', 'black', 'hispanic', 'white', 'asian'];
@@ -195,10 +196,11 @@ export function renderSchool(code) {
     </div>
 
     <aside class="side">
+      ${feederBox(s)}
       <div class="box"><h3>Questions to ask on a tour</h3><ol>${tourQuestions(s).map((q) => `<li>${q}</li>`).join('')}</ol></div>
       ${near.length ? `<div class="box near"><h3>Nearby ${s.level.toLowerCase()} schools</h3><div class="pmap" id="profileMap"></div>
         ${near.map(({ school: x, miles }) => `<a href="#s-${x.code}">${escapeHtml(x.name)}<span>${miles.toFixed(1)} mi${x.scores?.academics != null ? ` · Acad. ${x.scores.academics}` : ''}</span></a>`).join('')}</div>` : ''}
-      <div class="box small"><h3>Boundaries</h3>The nearest school isn't always the assigned one. Check the <a href="https://www.greatschools.org/school-district-boundaries-map/">boundary map</a> or the district's school locator.</div>
+      <div class="box small"><h3>Boundaries</h3>The nearest school isn't always the assigned one. Check a home address on the <a href="${store.feeders?.districts?.[s.district]?.url && !/feeder|find-your-school|school-assignment/.test(store.feeders.districts[s.district].url) ? store.feeders.districts[s.district].url : 'https://www.greatschools.org/school-district-boundaries-map/'}" rel="noopener">boundary map</a> or the district's school locator.</div>
       <div class="box small"><h3>More about this school</h3><ul class="links">
         ${s.zip ? `<li><a href="https://censusreporter.org/profiles/86000US${s.zip}/" rel="noopener">Neighborhood (ZIP ${s.zip}) on Census Reporter</a>: income, child poverty, languages</li>` : ''}
         ${s.nces_id ? `<li><a href="https://nces.ed.gov/ccd/schoolsearch/school_detail.asp?ID=${s.nces_id}" rel="noopener">Federal school record (NCES)</a></li>` : ''}

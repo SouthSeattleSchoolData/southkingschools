@@ -1,0 +1,1150 @@
+{
+ "_about": "Feeder patterns: which middle and high school each attendance-area school usually leads to. Built by hand from district sources (see districts); shares are the percent of a school's attendance area that lies in each next school's area, not a count of students. Splits under 10% are left out.",
+ "districts": {
+  "Renton School District": {
+   "as_of": "2026-27",
+   "source": "Renton School District boundary maps (elementary, middle and high), compared area by area",
+   "url": "https://www.rentonschools.us/learning-and-teaching/registration/school-boundary-map"
+  },
+  "Issaquah School District": {
+   "as_of": "2026-27",
+   "source": "Issaquah School District feeder pattern table",
+   "url": "https://www.isd411.org/enrollment/transfers/school-feeder-patterns"
+  },
+  "Bellevue School District": {
+   "as_of": "2026-27",
+   "source": "Bellevue School District \"Find Your School\" feeder patterns",
+   "url": "https://www.bsd405.org/about-us/schools/find-your-school"
+  },
+  "Seattle School District No. 1": {
+   "as_of": "2025-26",
+   "source": "Seattle Public Schools attendance areas (2025-26 GIS): elementary areas combine into middle school areas; outside West Seattle, high school is set by home address",
+   "url": "https://www.seattleschools.org/enroll/find-your-school/school-assignment/"
+  },
+  "Kent School District": {
+   "as_of": null,
+   "source": "Kent publishes boundaries only through its address lookup, not as a feeder list",
+   "url": "https://app.guidek12.com/kentwa/school_search/2023/"
+  }
+ },
+ "schools": {
+  "3587": {
+   "middle": [
+    {
+     "code": "3434"
+    }
+   ],
+   "high": [
+    {
+     "code": "3741"
+    }
+   ]
+  },
+  "2439": {
+   "middle": [
+    {
+     "code": "3280"
+    }
+   ],
+   "high": [
+    {
+     "code": "2475"
+    }
+   ]
+  },
+  "3337": {
+   "middle": [
+    {
+     "code": "3434"
+    }
+   ],
+   "high": [
+    {
+     "code": "3741"
+    }
+   ]
+  },
+  "3485": {
+   "middle": [
+    {
+     "code": "5484"
+    }
+   ],
+   "high": [
+    {
+     "code": "3630"
+    }
+   ]
+  },
+  "2640": {
+   "middle": [
+    {
+     "code": "3035"
+    }
+   ],
+   "high": [
+    {
+     "code": "2475",
+     "share": 97
+    }
+   ]
+  },
+  "5741": {
+   "middle": [
+    {
+     "code": "5484",
+     "share": 75
+    },
+    {
+     "code": "3035",
+     "share": 25
+    }
+   ],
+   "high": [
+    {
+     "code": "3630"
+    }
+   ]
+  },
+  "5229": {
+   "middle": [
+    {
+     "code": "3035",
+     "share": 54
+    },
+    {
+     "code": "5484",
+     "share": 46
+    }
+   ],
+   "high": [
+    {
+     "code": "2475",
+     "share": 61
+    },
+    {
+     "code": "3630",
+     "share": 39
+    }
+   ]
+  },
+  "2929": {
+   "middle": [
+    {
+     "code": "3280"
+    }
+   ],
+   "high": [
+    {
+     "code": "2475"
+    }
+   ]
+  },
+  "2597": {
+   "middle": [
+    {
+     "code": "5484",
+     "share": 64
+    },
+    {
+     "code": "3035",
+     "share": 28
+    }
+   ],
+   "high": [
+    {
+     "code": "2475",
+     "share": 52
+    },
+    {
+     "code": "3630",
+     "share": 48
+    }
+   ]
+  },
+  "3586": {
+   "middle": [
+    {
+     "code": "3035"
+    }
+   ],
+   "high": [
+    {
+     "code": "3630"
+    }
+   ]
+  },
+  "3521": {
+   "middle": [
+    {
+     "code": "3434"
+    }
+   ],
+   "high": [
+    {
+     "code": "3741"
+    }
+   ]
+  },
+  "3668": {
+   "middle": [
+    {
+     "code": "5484",
+     "share": 66
+    },
+    {
+     "code": "3035",
+     "share": 34
+    }
+   ],
+   "high": [
+    {
+     "code": "3630"
+    }
+   ]
+  },
+  "3740": {
+   "middle": [
+    {
+     "code": "3280"
+    }
+   ],
+   "high": [
+    {
+     "code": "2475"
+    }
+   ]
+  },
+  "3702": {
+   "middle": [
+    {
+     "code": "3434"
+    }
+   ],
+   "high": [
+    {
+     "code": "3741"
+    }
+   ]
+  },
+  "3034": {
+   "middle": [
+    {
+     "code": "3280"
+    }
+   ],
+   "high": [
+    {
+     "code": "2475"
+    }
+   ]
+  },
+  "3280": {
+   "high": [
+    {
+     "code": "2475"
+    }
+   ]
+  },
+  "3035": {
+   "high": [
+    {
+     "code": "3630",
+     "share": 64
+    },
+    {
+     "code": "2475",
+     "share": 36
+    }
+   ]
+  },
+  "3434": {
+   "high": [
+    {
+     "code": "3741"
+    }
+   ]
+  },
+  "5484": {
+   "high": [
+    {
+     "code": "3630",
+     "share": 83
+    },
+    {
+     "code": "2475",
+     "share": 17
+    }
+   ]
+  },
+  "5519": {
+   "choice": true
+  },
+  "3746": {
+   "middle": [
+    {
+     "code": "3636"
+    }
+   ],
+   "high": [
+    {
+     "code": "3962"
+    }
+   ]
+  },
+  "3440": {
+   "middle": [
+    {
+     "code": "3636"
+    }
+   ],
+   "high": [
+    {
+     "code": "3962"
+    }
+   ]
+  },
+  "3637": {
+   "middle": [
+    {
+     "code": "3636"
+    }
+   ],
+   "high": [
+    {
+     "code": "3962"
+    }
+   ]
+  },
+  "4592": {
+   "middle": [
+    {
+     "code": "5674"
+    }
+   ],
+   "high": [
+    {
+     "code": "3962"
+    }
+   ]
+  },
+  "5673": {
+   "middle": [
+    {
+     "code": "5200"
+    }
+   ],
+   "high": [
+    {
+     "code": "3385"
+    }
+   ]
+  },
+  "2738": {
+   "middle": [
+    {
+     "code": "3038"
+    }
+   ],
+   "high": [
+    {
+     "code": "3385"
+    }
+   ]
+  },
+  "4375": {
+   "middle": [
+    {
+     "code": "5674"
+    }
+   ],
+   "high": [
+    {
+     "code": "3385"
+    }
+   ]
+  },
+  "5056": {
+   "middle": [
+    {
+     "code": "5200"
+    }
+   ],
+   "high": [
+    {
+     "code": "3385"
+    }
+   ]
+  },
+  "3673": {
+   "middle": [
+    {
+     "code": "3038"
+    }
+   ],
+   "high": [
+    {
+     "code": "3385"
+    }
+   ]
+  },
+  "3228": {
+   "middle": [
+    {
+     "code": "3038"
+    }
+   ],
+   "high": [
+    {
+     "code": "3385"
+    }
+   ]
+  },
+  "4565": {
+   "middle": [
+    {
+     "code": "4460"
+    }
+   ],
+   "high": [
+    {
+     "code": "4495"
+    }
+   ]
+  },
+  "4300": {
+   "middle": [
+    {
+     "code": "4460"
+    }
+   ],
+   "high": [
+    {
+     "code": "4495"
+    }
+   ]
+  },
+  "5201": {
+   "middle": [
+    {
+     "code": "3879"
+    }
+   ],
+   "high": [
+    {
+     "code": "4495"
+    }
+   ]
+  },
+  "4376": {
+   "middle": [
+    {
+     "code": "3879"
+    }
+   ],
+   "high": [
+    {
+     "code": "4495"
+    }
+   ]
+  },
+  "4493": {
+   "middle": [
+    {
+     "code": "4460"
+    }
+   ],
+   "high": [
+    {
+     "code": "4495"
+    }
+   ]
+  },
+  "3386": {
+   "middle": [
+    {
+     "code": "3879"
+    }
+   ],
+   "high": [
+    {
+     "code": "4495"
+    }
+   ]
+  },
+  "3636": {
+   "high": [
+    {
+     "code": "3962"
+    }
+   ]
+  },
+  "5674": {
+   "high": [
+    {
+     "code": "3962"
+    },
+    {
+     "code": "3385"
+    }
+   ]
+  },
+  "5200": {
+   "high": [
+    {
+     "code": "3385"
+    }
+   ]
+  },
+  "3038": {
+   "high": [
+    {
+     "code": "3385"
+    }
+   ]
+  },
+  "4460": {
+   "high": [
+    {
+     "code": "4495"
+    }
+   ]
+  },
+  "3879": {
+   "high": [
+    {
+     "code": "4495"
+    }
+   ]
+  },
+  "5437": {
+   "choice": true
+  },
+  "2847": {
+   "middle": [
+    {
+     "code": "3338"
+    },
+    {
+     "code": "3631"
+    }
+   ],
+   "high": [
+    {
+     "code": "2701"
+    },
+    {
+     "code": "3282"
+    }
+   ]
+  },
+  "2846": {
+   "middle": [
+    {
+     "code": "3338"
+    }
+   ],
+   "high": [
+    {
+     "code": "2701"
+    }
+   ]
+  },
+  "3436": {
+   "middle": [
+    {
+     "code": "3338"
+    }
+   ],
+   "high": [
+    {
+     "code": "2701"
+    }
+   ]
+  },
+  "3167": {
+   "middle": [
+    {
+     "code": "3338"
+    },
+    {
+     "code": "3283"
+    }
+   ],
+   "high": [
+    {
+     "code": "2701"
+    },
+    {
+     "code": "3486"
+    }
+   ]
+  },
+  "3633": {
+   "middle": [
+    {
+     "code": "3166"
+    }
+   ],
+   "high": [
+    {
+     "code": "3588"
+    }
+   ]
+  },
+  "3705": {
+   "middle": [
+    {
+     "code": "3166"
+    }
+   ],
+   "high": [
+    {
+     "code": "3588"
+    }
+   ]
+  },
+  "3339": {
+   "middle": [
+    {
+     "code": "3166"
+    }
+   ],
+   "high": [
+    {
+     "code": "3588"
+    }
+   ]
+  },
+  "3100": {
+   "middle": [
+    {
+     "code": "3166"
+    },
+    {
+     "code": "3631"
+    }
+   ],
+   "high": [
+    {
+     "code": "3588"
+    },
+    {
+     "code": "3282"
+    }
+   ]
+  },
+  "3634": {
+   "middle": [
+    {
+     "code": "3435"
+    },
+    {
+     "code": "3283"
+    }
+   ],
+   "high": [
+    {
+     "code": "3486"
+    },
+    {
+     "code": "3282"
+    }
+   ]
+  },
+  "3437": {
+   "middle": [
+    {
+     "code": "3283"
+    }
+   ],
+   "high": [
+    {
+     "code": "3486"
+    }
+   ]
+  },
+  "3789": {
+   "middle": [
+    {
+     "code": "3283"
+    }
+   ],
+   "high": [
+    {
+     "code": "3486"
+    }
+   ]
+  },
+  "3742": {
+   "middle": [
+    {
+     "code": "3631"
+    }
+   ],
+   "high": [
+    {
+     "code": "3282"
+    }
+   ]
+  },
+  "3225": {
+   "middle": [
+    {
+     "code": "3631"
+    }
+   ],
+   "high": [
+    {
+     "code": "3282"
+    }
+   ]
+  },
+  "3168": {
+   "middle": [
+    {
+     "code": "3631"
+    },
+    {
+     "code": "3435"
+    }
+   ],
+   "high": [
+    {
+     "code": "3282"
+    }
+   ]
+  },
+  "3338": {
+   "high": [
+    {
+     "code": "2701"
+    }
+   ]
+  },
+  "3166": {
+   "high": [
+    {
+     "code": "3588"
+    }
+   ]
+  },
+  "3435": {
+   "high": [
+    {
+     "code": "3486"
+    },
+    {
+     "code": "3282"
+    }
+   ]
+  },
+  "3283": {
+   "high": [
+    {
+     "code": "3486"
+    }
+   ]
+  },
+  "3631": {
+   "high": [
+    {
+     "code": "3282"
+    }
+   ]
+  },
+  "3224": {
+   "choice": true
+  },
+  "5308": {
+   "choice": true
+  },
+  "3522": {
+   "choice": true
+  },
+  "5240": {
+   "choice": true
+  },
+  "2181": {
+   "middle": [
+    {
+     "code": "2435"
+    }
+   ],
+   "high": [
+    {
+     "code": "2234"
+    }
+   ]
+  },
+  "2730": {
+   "middle": [
+    {
+     "code": "2839"
+    }
+   ],
+   "high": [
+    {
+     "code": "3096"
+    }
+   ]
+  },
+  "2070": {
+   "middle": [
+    {
+     "code": "3095"
+    }
+   ],
+   "high": [
+    {
+     "code": "2182"
+    }
+   ]
+  },
+  "2199": {
+   "middle": [
+    {
+     "code": "2839"
+    }
+   ],
+   "high": [
+    {
+     "code": "3096"
+    }
+   ]
+  },
+  "3803": {
+   "middle": [
+    {
+     "code": "3095"
+    }
+   ],
+   "high": [
+    {
+     "code": "2182"
+    }
+   ]
+  },
+  "2321": {
+   "middle": [
+    {
+     "code": "3774"
+    }
+   ],
+   "high": [
+    {
+     "code": "3327"
+    }
+   ]
+  },
+  "2118": {
+   "middle": [
+    {
+     "code": "3774"
+    }
+   ],
+   "high": [
+    {
+     "code": "3327"
+    }
+   ]
+  },
+  "3518": {
+   "middle": [
+    {
+     "code": "2435"
+    }
+   ],
+   "high": [
+    {
+     "code": "2234"
+    }
+   ]
+  },
+  "2139": {
+   "middle": [
+    {
+     "code": "2435"
+    }
+   ],
+   "high": [
+    {
+     "code": "2234"
+    }
+   ]
+  },
+  "3429": {
+   "middle": [
+    {
+     "code": "2435"
+    }
+   ],
+   "high": [
+    {
+     "code": "2234"
+    }
+   ]
+  },
+  "3378": {
+   "middle": [
+    {
+     "code": "3774"
+    }
+   ],
+   "high": [
+    {
+     "code": "3327"
+    }
+   ]
+  },
+  "4248": {
+   "middle": [
+    {
+     "code": "3774"
+    }
+   ],
+   "high": [
+    {
+     "code": "2182"
+    }
+   ]
+  },
+  "2269": {
+   "middle": [
+    {
+     "code": "2839"
+    }
+   ],
+   "high": [
+    {
+     "code": "3096"
+    }
+   ]
+  },
+  "2143": {
+   "middle": [
+    {
+     "code": "4064"
+    }
+   ],
+   "high": [
+    {
+     "code": "2182"
+    }
+   ]
+  },
+  "3478": {
+   "middle": [
+    {
+     "code": "4064"
+    }
+   ],
+   "high": [
+    {
+     "code": "2182"
+    }
+   ]
+  },
+  "2733": {
+   "middle": [
+    {
+     "code": "2435"
+    }
+   ],
+   "high": [
+    {
+     "code": "2234"
+    }
+   ]
+  },
+  "2089": {
+   "middle": [
+    {
+     "code": "3774"
+    }
+   ],
+   "high": [
+    {
+     "code": "2182"
+    }
+   ]
+  },
+  "2353": {
+   "middle": [
+    {
+     "code": "3095"
+    }
+   ],
+   "high": [
+    {
+     "code": "2182"
+    }
+   ]
+  },
+  "3380": {
+   "middle": [
+    {
+     "code": "3774"
+    }
+   ],
+   "high": [
+    {
+     "code": "3327"
+    }
+   ]
+  },
+  "2120": {
+   "middle": [
+    {
+     "code": "3095"
+    }
+   ],
+   "high": [
+    {
+     "code": "3327",
+     "share": 53
+    },
+    {
+     "code": "2182",
+     "share": 47
+    }
+   ]
+  },
+  "3157": {
+   "middle": [
+    {
+     "code": "2839"
+    }
+   ],
+   "high": [
+    {
+     "code": "3096"
+    }
+   ]
+  },
+  "3665": {
+   "middle": [
+    {
+     "code": "2839"
+    }
+   ],
+   "high": [
+    {
+     "code": "3096"
+    }
+   ]
+  },
+  "2141": {
+   "middle": [
+    {
+     "code": "4064"
+    }
+   ],
+   "high": [
+    {
+     "code": "2182",
+     "share": 51
+    },
+    {
+     "name": "Garfield High",
+     "share": 49
+    }
+   ]
+  },
+  "2645": {
+   "middle": [
+    {
+     "code": "2839"
+    }
+   ],
+   "high": [
+    {
+     "code": "3096"
+    }
+   ]
+  },
+  "3581": {
+   "middle": [
+    {
+     "code": "3774"
+    }
+   ],
+   "high": [
+    {
+     "code": "3327"
+    }
+   ]
+  },
+  "3774": {
+   "high": [
+    {
+     "code": "3327",
+     "share": 72
+    },
+    {
+     "code": "2182",
+     "share": 28
+    }
+   ],
+   "by_address": true
+  },
+  "2839": {
+   "high": [
+    {
+     "code": "3096"
+    }
+   ]
+  },
+  "2435": {
+   "high": [
+    {
+     "code": "2234"
+    }
+   ]
+  },
+  "3095": {
+   "high": [
+    {
+     "code": "2182",
+     "share": 71
+    },
+    {
+     "code": "3327",
+     "share": 29
+    }
+   ],
+   "by_address": true
+  },
+  "4064": {
+   "high": [
+    {
+     "code": "2182",
+     "share": 71
+    },
+    {
+     "name": "Garfield High",
+     "share": 29
+    }
+   ],
+   "by_address": true
+  },
+  "4065": {
+   "choice": true
+  },
+  "4218": {
+   "choice": true
+  },
+  "5276": {
+   "choice": true
+  },
+  "1620": {
+   "choice": true
+  },
+  "2392": {
+   "choice": true
+  },
+  "3778": {
+   "choice": true
+  }
+ }
+}

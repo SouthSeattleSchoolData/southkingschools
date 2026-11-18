@@ -8,9 +8,12 @@ import { readFileSync, writeFileSync, mkdirSync, rmSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
 import { dirname, join } from 'node:path';
 import { SITE_URL } from './config.js';
+import { feederSentence } from '../js/feeders.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const data = JSON.parse(readFileSync(join(root, 'data/schools.json'), 'utf8'));
+const feeders = JSON.parse(readFileSync(join(root, 'content/feeders.json'), 'utf8'));
+const byCode = Object.fromEntries(data.schools.map((x) => [x.code, x]));
 
 // The app's own logic for levels and scores, so pages and app agree.
 const dataModule = await import('../js/data.js');
@@ -83,6 +86,7 @@ function page(s) {
       <p class="small"><a href="../#home">South King Schools</a> / <a href="../#find">${esc(s.area)}</a></p>
       <h1>${esc(s.name)}</h1>
       <p class="lede">${esc(districtName(s))}, grades ${esc(s.grades)}, ${s.enrollment.toLocaleString('en-US')} students${s.address ? `. ${esc(s.address)}, ${esc(s.zip)}` : ''}.</p>
+      ${feederSentence(s, byCode, feeders) ? `<p class="small">${esc(feederSentence(s, byCode, feeders))}</p>` : ''}
       <p><a class="btn" href="${app}" style="text-decoration:none">Open the full interactive profile</a></p>
       ${scores ? `<p class="small">Scores compared with same-level schools in these six areas (0–100): ${esc(scores)}.</p>` : ''}
       <h2 class="sec">Key numbers, ${esc(data.school_year)}</h2>

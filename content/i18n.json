@@ -946,6 +946,51 @@
    "es": "Las seis zonas",
    "vi": "Cả sáu khu vực",
    "zh": "全部六个地区"
+  },
+  "Feeder pattern": {
+   "es": "Patrón de escuelas",
+   "vi": "Lộ trình chuyển cấp",
+   "zh": "升学对口学校"
+  },
+  "Feeder pattern: who comes here": {
+   "es": "Patrón de escuelas: de dónde vienen",
+   "vi": "Lộ trình chuyển cấp: học sinh từ đâu đến",
+   "zh": "升学对口：生源学校"
+  },
+  "Middle school": {
+   "es": "Escuela intermedia",
+   "vi": "Trường trung học cơ sở",
+   "zh": "初中"
+  },
+  "High school": {
+   "es": "Escuela secundaria",
+   "vi": "Trường trung học phổ thông",
+   "zh": "高中"
+  },
+  "Fed by": {
+   "es": "Recibe alumnos de",
+   "vi": "Nhận học sinh từ",
+   "zh": "生源学校"
+  },
+  "Goes on to": {
+   "es": "Continúa en",
+   "vi": "Học tiếp lên",
+   "zh": "升入"
+  },
+  "Middle schools": {
+   "es": "Escuelas intermedias",
+   "vi": "Các trường trung học cơ sở",
+   "zh": "初中"
+  },
+  "Elementary schools": {
+   "es": "Escuelas primarias",
+   "vi": "Các trường tiểu học",
+   "zh": "小学"
+  },
+  "High school, by home address": {
+   "es": "Escuela secundaria, según la dirección",
+   "vi": "Trường THPT, theo địa chỉ nhà",
+   "zh": "高中（按家庭住址）"
   }
  },
  "patterns": [

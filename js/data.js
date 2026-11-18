@@ -31,13 +31,14 @@ async function getJson(path) {
 }
 
 export async function loadData() {
-  const [data, news, policies, meta, glossary, i18n] = await Promise.all([
+  const [data, news, policies, meta, glossary, i18n, feeders] = await Promise.all([
     getJson('data/schools.json'),
     getJson('content/news.json'),
     getJson('content/policies.json'),
     getJson('content/meta.json'),
     getJson('content/glossary.json'),
     getJson('content/i18n.json').catch(() => null),
+    getJson('content/feeders.json').catch(() => null),
   ]);
   store.schools = data.schools.map(prepareSchool);
   store.districts = data.districts;
@@ -53,6 +54,7 @@ export async function loadData() {
   store.policies = policies;
   store.meta = meta;
   store.i18n = i18n;
+  store.feeders = feeders;
   store.glossaryGroups = glossary.groups;
   store.glossary = Object.fromEntries(glossary.groups.flatMap((g) => g.items.map((i) => [i.key, i])));
 }
