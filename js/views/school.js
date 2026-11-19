@@ -2,9 +2,9 @@
 // safety and support staff, teachers and spending, sports and competitions, lead testing, nearby schools.
 
 import { store, districtFor, districtLabel } from '../data.js';
-import { num, fmt, plain, round1, escapeHtml, cssVar, $ } from '../util.js';
+import { num, fmt, plain, round1, oneDp, escapeHtml, cssVar, $ } from '../util.js';
 import { SCORE_NAMES, scoreColorVar } from '../scores.js';
-import { METRICS, INCIDENTS, RESTRAINT, BULLYING_BASES, STAFF_ROLES, STAFF_GUIDES, CRDC_YEAR, CRDC_PREV_YEAR, incidentPrev, DISCIPLINE_GROUPS, DEMOGRAPHICS, incident, perStaff } from '../metrics.js';
+import { METRICS, INCIDENTS, RESTRAINT, BULLYING_BASES, STAFF_ROLES, STAFF_GUIDES, CRDC_YEAR, CRDC_PREV_YEAR, incidentPrev, DISCIPLINE_GROUPS, DEMOGRAPHICS, incident, perStaff, advancedShare } from '../metrics.js';
 import { TREND_SERIES, peerSeries, smallSchoolCaution, changeSummary } from '../trends.js';
 import { interpretSchool, tourQuestions } from '../insights.js';
 import { compareButton, wireCompareButtons } from '../compare-list.js';
@@ -42,6 +42,34 @@ function measure(school, district, key, { showEmpty = false } = {}) {
   if (dv != null && dv !== '') notes.push(`District ${plain(dv, m.unit)}`);
   if (sv != null) notes.push(`state ${sv}${m.unit}`);
   return `<div class="kv"><div class="k">${withInfo(m.label, glossaryKey(key))}</div><div class="v num">${fmt(v, m.unit)}</div><div class="c">${notes.join(', ')}</div></div>`;
+}
+
+/** Reading + math against the income trend for the school's level, as a signed point gap. */
+function similarCard(s) {
+  if (s.vsSimilar == null) return '';
+  const v = s.vsSimilar;
+  const sign = v > 0 ? '+' : v < 0 ? '−' : '';
+  const actual = (s.expectedProf + v);
+  return `<div class="kv"><div class="k">${withInfo('Compared with similar schools', 'vs_similar')}</div>
+    <div class="v num">${sign}${oneDp(Math.abs(v))} pts</div>
+    <div class="c">Reading + math ${oneDp(actual)}%; about ${oneDp(s.expectedProf)}% expected for ${s.vsSimilarPeers} here with ${Math.round(num(s.pct_low_income))}% low-income students</div></div>`;
+}
+
+/** AP and IB participation (federal CRDC), for schools with 12th grade. */
+function advancedSection(s) {
+  const a = s.crdc?.advanced;
+  if (!a || (!a.ap_students && !a.ib_students && (a.hs_enrollment || 0) < 300)) return '';
+  const card = (label, key, value, note) => `<div class="kv"><div class="k">${withInfo(label, key)}</div><div class="v num">${value}</div><div class="c">${note}</div></div>`;
+  const none = '<span class="sup">None reported</span>';
+  const share = (k) => advancedShare(s, k);
+  const hs = a.hs_enrollment ? `${a.hs_enrollment.toLocaleString()} students in grades 9–12` : '';
+  return `<h3 class="trendh" style="margin-top:22px">Advanced courses, ${CRDC_YEAR}</h3>
+    <div class="kgrid">
+      ${card('AP courses offered', 'ap_courses', a.ap_courses ? a.ap_courses : none, a.ap_courses ? 'Different AP courses taught that year' : '')}
+      ${card('Students taking AP', 'ap_share', a.ap_students ? `${oneDp(share('ap_students'))}%` : none, a.ap_students ? `${a.ap_students.toLocaleString()} of ${hs}` : '')}
+      ${card('Students in IB', 'ib_share', a.ib_students ? `${oneDp(share('ib_students'))}%` : none, a.ib_students ? `${a.ib_students.toLocaleString()} of ${hs}` : '')}
+    </div>
+    <p class="xs muted" style="margin:8px 0 0">Federal Civil Rights Data Collection, ${CRDC_YEAR}. Counts students in at least one AP course, and students in IB; a student in both counts in each. The collection doesn't report AP exam scores. Dual credit above is the state's newer figure and includes AP, IB, College in the High School, Running Start and career courses.</p>`;
 }
 
 function scorePanel(s) {
@@ -165,9 +193,10 @@ export function renderSchool(code) {
       <div class="kgrid">
         ${m('ela_proficient', { showEmpty: true })}${m('math_proficient', { showEmpty: true })}${m('science_proficient', { showEmpty: true })}
         ${m('ela_proficient_low_income', { showEmpty: true })}${m('math_proficient_low_income', { showEmpty: true })}
-        ${m('growth_ela')}${m('growth_math')}${m('regular_attendance', { showEmpty: true })}
+        ${similarCard(s)}${m('growth_ela')}${m('growth_math')}${m('regular_attendance', { showEmpty: true })}
         ${m('grad_rate_4yr')}${m('ninth_grade_on_track')}${m('dual_credit')}
       </div>
+      ${advancedSection(s)}
 
       ${hasTrend ? `<h2 class="sec">Changes over time${info('trends')}</h2>
       <p class="small">${changeSummary(s) || 'Not enough reported years to compare with 2018-19.'}</p>

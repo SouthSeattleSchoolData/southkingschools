@@ -14,6 +14,8 @@ export const SCORE_NAMES = {
 const MIN_ENROLLMENT = 60;
 /** A percentile needs at least this many peers to mean anything. */
 const MIN_PEERS = 8;
+/** Schools a level needs before it gets its own income trend line. */
+const MIN_LEVEL_FIT = 15;
 
 /** Average of reading and math proficiency (either one if the other is missing). */
 export function readingMathAverage(s) {
@@ -69,7 +71,8 @@ function percentile(school, peers, getValue, higherIsBetter = true) {
 
 /**
  * Adds to each eligible school:
- *   resid           reading+math minus what the low-income trend predicts
+ *   resid           reading+math minus what the low-income trend predicts (all levels together)
+ *   vsSimilar       the same, against a trend fitted within the school's level; expectedProf is the prediction
  *   lowIncomeProf   low-income students' own reading+math proficiency
  *   disabilityRatio suspension rate for students with disabilities ÷ the school's rate
  *   scores          { academics, growth, equity, climate } as 0–100 or null
@@ -91,6 +94,23 @@ export function computeScores(schools) {
     const lie = num(s.ela_proficient_low_income);
     const lim = num(s.math_proficient_low_income);
     s.lowIncomeProf = lie != null && lim != null ? (lie + lim) / 2 : (lie ?? lim);
+  }
+
+  // "Compared with similar schools": the same income trend, fitted within each level so high
+  // schools are measured against high schools. Groups too small for a stable line use the overall one.
+  const levelTrend = {};
+  for (const group of ['Elementary', 'Middle', 'High', 'Mixed']) {
+    const t = incomeTrend(eligible.filter((p) => peerGroup(p) === group), readingMathAverage);
+    levelTrend[group] = t.points.length >= MIN_LEVEL_FIT ? t : trend;
+  }
+  for (const s of eligible) {
+    const y = readingMathAverage(s);
+    const x = num(s.pct_low_income);
+    if (y == null || x == null) continue;
+    const t = levelTrend[peerGroup(s)];
+    s.expectedProf = Math.round((t.a + t.b * x) * 10) / 10;
+    s.vsSimilar = Math.round((y - (t.a + t.b * x)) * 10) / 10;
+    s.vsSimilarPeers = t === trend ? 'schools' : `${peerGroup(s).toLowerCase()} schools`;
   }
 
   for (const s of eligible) {

@@ -5,6 +5,8 @@
 //                               school rows for our districts keyed by 12-digit NCES ID
 //   tools/raw/crdc_2021_22.csv  Urban Institute Education Data Portal, CRDC 2021-22, keyed by OSPI code
 //   tools/raw/crdc_2023_24_sexual_assault.csv  same 2023-24 file: rape + sexual battery split by staff vs students
+//   tools/raw/crdc_2023_24_advanced.csv  same 2023-24 file: AP courses, AP and IB students for schools with
+//                               12th grade (written by tools/snapshot/crdc_advanced.py)
 //   tools/raw/enrollment_crdc_years.csv  OSPI October enrollment for each CRDC year (ymi4-syjv, q4ba-s3jc),
 //                               so incident counts can be shown per 100 students
 //
@@ -16,7 +18,7 @@ import { crdcRecord, crdcPrevious } from '../shared.js';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..', '..');
 const csv = (name) => {
-  const [head, ...lines] = readFileSync(join(root, 'tools/raw', name), 'utf8').trim().split('\n');
+  const [head, ...lines] = readFileSync(join(root, 'tools/raw', name), 'utf8').trim().split(/\r?\n/);
   const h = head.split(',');
   return lines.map((l) => Object.fromEntries(l.split(',').map((v, i) => [h[i], v])));
 };
@@ -32,11 +34,22 @@ const split = Object.fromEntries(csv('crdc_2023_24_sexual_assault.csv').map((r) 
 const enrollment = Object.fromEntries(csv('enrollment_crdc_years.csv').map((r) => [r.code, r]));
 const num = (x) => (x === '' || x == null ? null : Number(x));
 
+const advanced = Object.fromEntries(csv('crdc_2023_24_advanced.csv').map((r) => [r.nces, r]));
+
 const current = {};
 for (const r of csv('crdc_2023_24.csv')) {
   const code = codeByNces[r.nces];
   if (!code) continue;
   current[code] = { ...crdcRecord({ ...r, ...split[r.nces] }, '2023-24'), enrollment: num(enrollment[code]?.enrollment_2023_24) };
+  const a = advanced[r.nces];
+  if (a) {
+    current[code].advanced = {
+      ap_courses: num(a.ap_courses),
+      ap_students: num(a.ap_students),
+      ib_students: num(a.ib_students),
+      hs_enrollment: num(a.hs_enrollment) ?? current[code].enrollment,
+    };
+  }
 }
 // Quality check: a district whose every school reports exactly as many threats as attacks
 // almost certainly copied one figure into both fields. Flag the threats so pages can say so.

@@ -7,7 +7,7 @@ import { perStaff, trendChange, CRDC_YEAR, CRDC_PREV_YEAR } from './metrics.js';
 import { volatility, SMALL } from './trends.js';
 
 const T = {
-  residHigh: 8, // points above the income trend
+  residHigh: 8, // points above the income trend for the school's level (about one standard deviation)
   residLow: -8,
   growthHigh: 56, // median growth percentile
   growthLow: 44,
@@ -36,14 +36,16 @@ export function interpretSchool(s, state) {
   }
 
   // Results relative to the income trend
-  if (s.resid != null) {
-    const r = s.resid;
+  if (s.vsSimilar != null) {
+    const r = s.vsSimilar;
+    const peers = s.vsSimilarPeers || 'schools';
+    const pts = (x) => `${Math.abs(x).toFixed(0)} ${Math.abs(x).toFixed(0) === '1' ? 'point' : 'points'}`;
     if (r >= T.residHigh) {
-      add('pos', `Reading and math results are <b>${r.toFixed(0)} points higher</b> than schools with a similar share of low-income students. That gap usually reflects teaching and school culture, not just who enrolls.`);
+      add('pos', `Reading and math results are <b>${pts(r)} higher</b> than ${peers} here with a similar share of low-income students. That gap usually reflects teaching and school culture, not just who enrolls.`);
     } else if (r <= T.residLow) {
-      add('neg', `Reading and math results are <b>${Math.abs(r).toFixed(0)} points lower</b> than schools with a similar share of low-income students. Ask what the school is changing and how it measures progress during the year.`);
+      add('neg', `Reading and math results are <b>${pts(r)} lower</b> than ${peers} here with a similar share of low-income students. Ask what the school is changing and how it measures progress during the year.`);
     } else {
-      add('neu', `Reading and math results are about what you'd expect for a school with ${num(s.pct_low_income)}% low-income students (within ${Math.abs(r).toFixed(0)} points of the trend).`);
+      add('neu', `Reading and math results are about what you'd expect for ${/^[aeiou]/.test(peers) ? 'an' : 'a'} ${peers.replace(/s$/, '')} with ${num(s.pct_low_income)}% low-income students (within ${pts(r)} of the trend).`);
     }
   }
 
@@ -144,7 +146,7 @@ export function tourQuestions(s) {
   const q = [];
   if (s.disabilityRatio != null && s.disabilityRatio >= 2) q.push('How do you support students with IEPs or 504 plans before suspension becomes an option?');
   if (num(s.regular_attendance) != null && num(s.regular_attendance) < 75) q.push('What do you do when a student starts missing school? Who calls home, and when?');
-  if (s.resid != null && s.resid <= T.residLow) q.push('What changed in instruction this year, and how do you measure progress before the state test?');
+  if (s.vsSimilar != null && s.vsSimilar <= T.residLow) q.push('What changed in instruction this year, and how do you measure progress before the state test?');
   const ela = exact(s.ela_proficient);
   const elaLI = exact(s.ela_proficient_low_income);
   if (ela != null && elaLI != null && ela - elaLI >= 20) q.push('What extra support do low-income students get in reading and math?');

@@ -569,6 +569,26 @@ def f17(b, base):
     assert not pg.errors, pg.errors
 
 
+@case('F18', 'Functional suitability', 'Compared-with-similar-schools card, AP and IB block, matching interpretation note, and Compare rows')
+def f18(b, base):
+    pg = new_page(b, base)
+    go(pg, 's-3640')
+    txt = pg.inner_text('#v-school')
+    assert 'Compared with similar schools' in txt and 'expected for high schools here' in txt, 'similar-schools card missing'
+    assert 'Advanced courses, 2023-24' in txt and 'Students taking AP' in txt, 'AP block missing on Kentridge'
+    go(pg, 's-2475')
+    txt = pg.inner_text('#v-school')
+    assert 'Students in IB' in txt and '41 of' in txt, 'Renton High IB count missing'
+    assert ' 1 points' not in txt, 'plural bug in interpretation note'
+    go(pg, 's-3636')
+    assert 'Advanced courses' not in pg.inner_text('#v-school'), 'middle school should not show AP block'
+    pg.evaluate("localStorage.setItem('sks-compare', JSON.stringify(['2701','3640']))")
+    go(pg, 'compare'); pg.reload(); pg.wait_for_timeout(800)
+    txt = pg.inner_text('#cmpOut')
+    assert 'Compared with similar schools (pts)' in txt and 'Students taking AP %' in txt, 'compare rows missing'
+    assert not pg.errors, pg.errors
+
+
 @case('R01', 'Reliability', 'If the data file fails, the page says so instead of going blank')
 def r01(b, base):
     pg = new_page(b, base)

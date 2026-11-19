@@ -99,6 +99,30 @@
           "term": "Dual credit",
           "what": "Share of high school students who completed at least one course that also counts for college credit (AP, IB, College in the High School, Running Start, career and technical courses).",
           "read": "Shows access to advanced and college-level work."
+        },
+        {
+          "key": "vs_similar",
+          "term": "Compared with similar schools",
+          "what": "How far this school's reading and math proficiency (the average of the two) sits above or below what schools at the same level in these areas score when they have the same share of low-income students. It uses the trend line on the Findings page, fitted separately for elementary, middle and high schools.",
+          "read": "Family income explains most of the gap between schools' raw scores, so this is the fairer way to compare a school with its neighbors. Most schools land within about 8 points either way; 10 or more above or below is unusual. Small schools swing a lot from year to year."
+        },
+        {
+          "key": "ap_courses",
+          "term": "AP courses offered",
+          "what": "Number of different Advanced Placement courses the school taught in 2023-24, from the federal Civil Rights Data Collection.",
+          "read": "Shows how much college-level choice students have. Schools built around IB often offer few or no AP courses."
+        },
+        {
+          "key": "ap_share",
+          "term": "Students taking AP",
+          "what": "Students enrolled in at least one AP course in 2023-24, as a share of the school's students in grades 9–12.",
+          "read": "Counts taking the course, not passing the exam. The federal collection stopped reporting AP exam results."
+        },
+        {
+          "key": "ib_share",
+          "term": "Students in IB",
+          "what": "Students enrolled in International Baccalaureate courses in 2023-24, as a share of the school's students in grades 9–12.",
+          "read": "IB is an alternative to AP; a few schools offer both. A student in both programs counts in each."
         }
       ]
     },

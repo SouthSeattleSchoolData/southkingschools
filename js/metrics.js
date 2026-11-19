@@ -21,6 +21,10 @@ export const METRICS = {
   grad_rate_4yr: { label: '4-year graduation', short: 'Grad %', unit: '%', better: 'high', get: (s) => s.grad_rate_4yr },
   ninth_grade_on_track: { label: '9th graders on track', unit: '%', better: 'high', get: (s) => s.ninth_grade_on_track },
   dual_credit: { label: 'Earned dual credit', unit: '%', better: 'high', get: (s) => s.dual_credit },
+  vs_similar: { label: 'Compared with similar schools', short: 'Vs similar', unit: ' pts', better: 'high', get: (s) => s.vsSimilar },
+  ap_courses: { label: 'AP courses offered', unit: '', better: 'high', get: (s) => advanced(s, 'ap_courses') },
+  ap_share: { label: 'Students taking AP', unit: '%', better: 'high', get: (s) => advancedShare(s, 'ap_students') },
+  ib_share: { label: 'Students in IB', unit: '%', better: 'high', get: (s) => advancedShare(s, 'ib_students') },
 
   discipline_all: { label: 'Suspended or expelled', short: 'Suspend. %', unit: '%', better: 'low', get: (s) => s.discipline?.all },
   discipline_disability: { label: 'Students with disabilities suspended', short: 'Disab. susp. %', unit: '%', better: 'low', get: (s) => s.discipline?.disability },
@@ -37,6 +41,19 @@ export const METRICS = {
   math_change: { label: 'Math change since 2018-19', short: 'Math vs 2019', unit: ' pts', better: 'high', get: (s) => trendChange(s, 'math') },
   ela_change: { label: 'Reading change since 2018-19', short: 'Reading vs 2019', unit: ' pts', better: 'high', get: (s) => trendChange(s, 'ela') },
 };
+
+/** AP and IB from the federal CRDC (schools with 12th grade only). */
+export function advanced(s, key) {
+  const v = s.crdc?.advanced?.[key];
+  return v == null ? null : v;
+}
+
+/** AP or IB students as a share of high school students (grades 9–12), same school year. */
+export function advancedShare(s, key) {
+  const a = s.crdc?.advanced;
+  if (!a || a[key] == null || !a.hs_enrollment) return null;
+  return Math.round((1000 * a[key]) / a.hs_enrollment) / 10;
+}
 
 /** Students per full-time staff member (federal CRDC staffing, current enrollment). Null when none on staff. */
 export function perStaff(s, role) {
