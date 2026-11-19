@@ -88,7 +88,9 @@ export function renderCompare() {
       <div class="xs muted" style="font-weight:400">${s.area}, ${s.grades}</div>
       <button class="rm" data-remove="${s.code}" type="button">Remove</button></th>`).join('');
 
-  const body = ROWS.map(([key, label, better]) => {
+  const allHigh = schools.every((s) => s.level === 'High');
+  const GROWTH_ROWS = ['score:growth', 'growth_ela', 'growth_math'];
+  const body = ROWS.filter(([key]) => !(allHigh && GROWTH_ROWS.includes(key))).map(([key, label, better]) => {
     if (!key) return `<tr class="grp"><td colspan="${schools.length + 1}">${label}</td></tr>`;
     const raw = schools.map((s) => valueOf(s, key));
     const exactValues = raw.map((v) => (typeof v === 'number' ? v : null));

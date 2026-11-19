@@ -319,11 +319,12 @@ const TABLE_COLUMNS = [
 function renderTableView(out, list) {
   const showDistance = !!userLocation.get();
   const cell = (s, key) => (key in SCORE_NAMES ? s.scores?.[key] ?? null : METRICS[key].get(s));
-  const head = `<tr><th>School</th>${showDistance ? '<th>Miles</th>' : ''}${TABLE_COLUMNS.map(([k, l]) => `<th>${l}${info(glossaryKey(k))}</th>`).join('')}</tr>`;
+  const columns = TABLE_COLUMNS.filter(([k]) => list.some((s) => { const v = cell(s, k); return v != null && v !== ''; }));
+  const head = `<tr><th>School</th>${showDistance ? '<th>Miles</th>' : ''}${columns.map(([k, l]) => `<th>${l}${info(glossaryKey(k))}</th>`).join('')}</tr>`;
   const body = list.map((s) => `<tr>
       <td><a href="#s-${s.code}">${escapeHtml(s.name)}</a><div class="xs muted">${s.area}, ${s.grades}</div></td>
       ${showDistance ? `<td>${s.distance != null ? s.distance.toFixed(1) : '—'}</td>` : ''}
-      ${TABLE_COLUMNS.map(([k]) => `<td>${fmt(cell(s, k), '', { dp: METRICS[k]?.unit === '%' ? 1 : undefined })}</td>`).join('')}
+      ${columns.map(([k]) => `<td>${fmt(cell(s, k), '', { dp: METRICS[k]?.unit === '%' ? 1 : undefined })}</td>`).join('')}
     </tr>`).join('');
   out.innerHTML = `<div class="scroll" style="border:1px solid var(--line);border-radius:12px;background:var(--surface);--tbl-bg:var(--surface)"><table class="tbl"><thead>${head}</thead><tbody>${body}</tbody></table></div>
     <p class="xs muted" style="margin-top:6px">Gray values are privacy-suppressed ranges from OSPI. Use the Sort menu to reorder.</p>`;

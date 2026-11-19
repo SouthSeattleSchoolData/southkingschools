@@ -586,6 +586,10 @@ def f18(b, base):
     go(pg, 'compare'); pg.reload(); pg.wait_for_timeout(800)
     txt = pg.inner_text('#cmpOut')
     assert 'Compared with similar schools (pts)' in txt and 'Students taking AP %' in txt, 'compare rows missing'
+    go(pg, 's-3640')
+    assert pg.locator('.scorepanel .bigscore').count() == 3, 'high school should show three scores, not Growth'
+    go(pg, 'compare')
+    assert 'Reading growth' not in pg.inner_text('#cmpOut'), 'growth rows shown for an all-high-school comparison'
     assert not pg.errors, pg.errors
 
 

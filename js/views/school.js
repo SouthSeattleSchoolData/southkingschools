@@ -3,7 +3,7 @@
 
 import { store, districtFor, districtLabel } from '../data.js';
 import { num, fmt, plain, round1, oneDp, escapeHtml, cssVar, $ } from '../util.js';
-import { SCORE_NAMES, scoreColorVar } from '../scores.js';
+import { SCORE_NAMES, scoreColorVar, scoreKeysFor } from '../scores.js';
 import { METRICS, INCIDENTS, RESTRAINT, BULLYING_BASES, STAFF_ROLES, STAFF_GUIDES, CRDC_YEAR, CRDC_PREV_YEAR, incidentPrev, DISCIPLINE_GROUPS, DEMOGRAPHICS, incident, perStaff, advancedShare } from '../metrics.js';
 import { TREND_SERIES, peerSeries, smallSchoolCaution, changeSummary } from '../trends.js';
 import { interpretSchool, tourQuestions } from '../insights.js';
@@ -77,10 +77,11 @@ function scorePanel(s) {
     return '<div class="small muted" style="grid-column:1/-1">Not scored. Special programs and very small schools aren\'t comparable to neighborhood schools.</div>';
   }
   const peers = s.peerGroup === 'Mixed' ? 'schools' : `${s.peerGroup.toLowerCase()} schools`;
-  return Object.entries(SCORE_NAMES).map(([key, name]) => {
+  return scoreKeysFor(s).map((key) => {
+    const name = SCORE_NAMES[key];
     const v = s.scores[key];
     let detail = `Better than ${v}% of ${peers} here`;
-    if (v == null) detail = key === 'growth' && s.level === 'High' ? 'Not measured in high school' : 'Not enough data';
+    if (v == null) detail = 'Not enough data';
     return `<div class="bigscore" style="border-top-color:var(${scoreColorVar(v)})"><div class="v num">${v ?? '—'}</div><div class="k">${name}${info(`score:${key}`)}</div><div class="d">${detail}</div></div>`;
   }).join('');
 }
@@ -180,8 +181,8 @@ export function renderSchool(code) {
 
   <div class="pgrid">
     <div>
-      <div class="scorepanel">${scorePanel(s)}</div>
-      <p class="xs muted" style="margin:-18px 0 24px">Scores compare this school only with same-level schools in these areas. <a href="#glossary">What the scores and measures mean</a></p>
+      <div class="scorepanel${s.scores && scoreKeysFor(s).length === 3 ? ' three' : ''}">${scorePanel(s)}</div>
+      <p class="xs muted" style="margin:-18px 0 24px">Scores compare this school only with same-level schools in these areas.${s.level === 'High' ? ' High schools have no Growth score: the state measures growth only in grades 4–8.' : ''} <a href="#glossary">What the scores and measures mean</a></p>
 
       <div class="reading">
         <h2 class="readh">Reading this school</h2>

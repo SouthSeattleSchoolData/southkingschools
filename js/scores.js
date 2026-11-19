@@ -10,6 +10,11 @@ export const SCORE_NAMES = {
   climate: 'Climate',
 };
 
+/** Score keys that apply to a school. The state measures growth only in grades 4–8, so high schools have no Growth score. */
+export function scoreKeysFor(s) {
+  return Object.keys(SCORE_NAMES).filter((k) => !(k === 'growth' && s.level === 'High'));
+}
+
 /** Smallest enrollment a school needs to be scored. */
 const MIN_ENROLLMENT = 60;
 /** A percentile needs at least this many peers to mean anything. */

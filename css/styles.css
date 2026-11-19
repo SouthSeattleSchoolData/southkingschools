@@ -769,6 +769,9 @@ select, .field {
   gap: 14px;
   margin-bottom: 30px
 }
+.scorepanel.three {
+  grid-template-columns: repeat(3, 1fr)
+}
 .bigscore {
   border-top: 3px solid var(--line-2);
   padding-top: 10px
@@ -1156,6 +1159,10 @@ footer {
   }
   .scorepanel {
     grid-template-columns: repeat(2, 1fr)
+  }
+  .scorepanel.three {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px
   }
   .kgrid {
     grid-template-columns: repeat(2, 1fr)

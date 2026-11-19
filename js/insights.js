@@ -45,7 +45,7 @@ export function interpretSchool(s, state) {
     } else if (r <= T.residLow) {
       add('neg', `Reading and math results are <b>${pts(r)} lower</b> than ${peers} here with a similar share of low-income students. Ask what the school is changing and how it measures progress during the year.`);
     } else {
-      add('neu', `Reading and math results are about what you'd expect for ${/^[aeiou]/.test(peers) ? 'an' : 'a'} ${peers.replace(/s$/, '')} with ${num(s.pct_low_income)}% low-income students (within ${pts(r)} of the trend).`);
+      add('neu', `Reading and math results are about what you'd expect for ${/^[aeiou]/.test(peers) ? 'an' : 'a'} ${peers.replace(/s$/, '')} with ${num(s.pct_low_income)}% low-income students (within ${Math.abs(r).toFixed(1)} points of the trend).`);
     }
   }
 
